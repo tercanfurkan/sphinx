@@ -1,0 +1,349 @@
+[info] Compiling 13 Scala sources and 65 Java sources to C:\Users\wa.tercano1\efesus\sphinx\target\scala-2.10\classes...
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:31: error: package play.data.format does not exist
+[error] import play.data.format.Formats;
+[error]                        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:32: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\meter\sensitivity\PipeSensitivityIndex.java:17: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\meter\condition\PipeConditionIndex.java:18: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\wrapper\PipeIndexWrapper.java:15: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:17: error: package play.data does not exist
+[error] import play.data.Form;
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:18: error: package play.db.jpa does not exist
+[error] import play.db.jpa.Transactional;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\ComponentType.java:15: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\ComponentType.java:16: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Datasource.java:13: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Datasource.java:14: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\GroundWaterArea.java:11: error: package play.data.format does not exist
+[error] import play.data.format.Formats;
+[error]                        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\GroundWaterArea.java:12: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\GroundWaterArea.java:13: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\BuildingArea.java:12: error: package play.data.format does not exist
+[error] import play.data.format.Formats;
+[error]                        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\BuildingArea.java:13: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\BuildingArea.java:14: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PsScadaHourly.java:18: error: package play.data.format does not exist
+[error] import play.data.format.Formats;
+[error]                        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PsScadaHourly.java:19: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PsScadaHourly.java:20: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\ComponentProperty.java:32: error: package play.data.format does not exist
+[error] import play.data.format.Formats;
+[error]                        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\ComponentProperty.java:33: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\form\PipeIndex.java:8: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PropertyType.java:18: error: package play.data.format does not exist
+[error] import play.data.format.Formats;
+[error]                        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PropertyType.java:19: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PropertyType.java:20: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaHourly.java:17: error: package play.data.format does not exist
+[error] import play.data.format.Formats;
+[error]                        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaHourly.java:18: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaHourly.java:19: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\CalculatedIndicator.java:9: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\CalculatedIndicator.java:10: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PIndexHistory.java:9: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PIndexHistory.java:10: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PIndexPMeterRelation.java:9: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PIndexPMeterRelation.java:10: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PIndexTemplate.java:9: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PIndexTemplate.java:10: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PMeterHistory.java:9: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PMeterHistory.java:10: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PMeterPropertyTypeRelation.java:9: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PMeterPropertyTypeRelation.java:10: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PMeterTemplate.java:9: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PMeterTemplate.java:10: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PropertyTypeRelation.java:9: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PropertyTypeRelation.java:10: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaDaily.java:13: error: package play.data.format does not exist
+[error] import play.data.format.Formats;
+[error]                        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaDaily.java:14: error: package play.data.validation does not exist
+[error] import play.data.validation.Constraints;
+[error]                            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\run\ImportPipes.java:8: error: package play.db.jpa does not exist
+[error] import play.db.jpa.JPA;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\run\ImportPipes.java:9: error: package play.db.jpa does not exist
+[error] import play.db.jpa.Transactional;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\service\MeterService.java:6: error: package org.jaxen.function does not exist
+[error] import org.jaxen.function.FloorFunction;
+[error]                          ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\util\ReadCSV.java:11: error: package play.db.jpa does not exist
+[error] import play.db.jpa.Transactional;
+[error]                   ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\util\ReadXLS.java:15: error: cannot find symbol
+[error] import play.templates.Hash;
+[error]                      ^
+[error]   symbol:   class Hash
+[error]   location: package play.templates
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:100: error: cannot find symbol
+[error] 	@Transactional(readOnly = true)
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:170: error: cannot find symbol
+[error] 	@Transactional(readOnly = true)
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:183: error: cannot find symbol
+[error] 	@Transactional(readOnly = true)
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:198: error: cannot find symbol
+[error] 	@Transactional
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:213: error: cannot find symbol
+[error] 	@Transactional(readOnly = true)
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:222: error: cannot find symbol
+[error] 	@Transactional
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:237: error: cannot find symbol
+[error] 	@Transactional
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:244: error: cannot find symbol
+[error] 	@Transactional(readOnly = true)
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:252: error: cannot find symbol
+[error] 	@Transactional(readOnly = true)
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:264: error: cannot find symbol
+[error] 	@Transactional(readOnly = true)
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\controllers\Application.java:314: error: cannot find symbol
+[error] 	@Transactional(readOnly = true)
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class Application
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:65: error: package Formats does not exist
+[error] 	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+[error] 	        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:68: error: package Formats does not exist
+[error] 	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+[error] 	        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\ComponentType.java:27: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Datasource.java:25: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\GroundWaterArea.java:23: error: package Constraints does not exist
+[error] 	@Constraints.Required
+[error] 	            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\GroundWaterArea.java:42: error: package Formats does not exist
+[error] 	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+[error] 	        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\BuildingArea.java:24: error: package Constraints does not exist
+[error] 	    @Constraints.Required
+[error] 	                ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\BuildingArea.java:35: error: package Formats does not exist
+[error] 	    @Formats.DateTime(pattern="dd.mm.yyyy HH:mm:ss")
+[error] 	            ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PsScadaHourly.java:35: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PsScadaHourly.java:36: error: package Formats does not exist
+[error]     @Formats.DateTime(pattern="dd.mm.yyyy HH:mm:ss")
+[error]             ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\ComponentProperty.java:45: error: package Formats does not exist
+[error] 	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+[error] 	        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\ComponentProperty.java:48: error: package Formats does not exist
+[error] 	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+[error] 	        ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PropertyType.java:31: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PropertyType.java:49: error: package Formats does not exist
+[error]     @Formats.DateTime(pattern="dd.mm.yyyy HH:mm:ss")
+[error]             ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaHourly.java:36: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaHourly.java:37: error: package Formats does not exist
+[error]     @Formats.DateTime(pattern="yyyy-MM-dd HH:mm:ss")
+[error]             ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\CalculatedIndicator.java:18: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PIndexHistory.java:18: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PIndexPMeterRelation.java:18: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PIndexTemplate.java:18: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PMeterHistory.java:17: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PMeterPropertyTypeRelation.java:18: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PMeterTemplate.java:18: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PropertyTypeRelation.java:18: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaDaily.java:30: error: package Constraints does not exist
+[error]     @Constraints.Required
+[error]                 ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaDaily.java:31: error: package Formats does not exist
+[error]     @Formats.DateTime(pattern="yyyy-MM-dd")
+[error]             ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\PumpScadaDaily.java:38: error: package Formats does not exist
+[error]     @Formats.DateTime(pattern="HH:mm:")
+[error]             ^
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\run\ImportPipes.java:34: error: cannot find symbol
+[error] 	@Transactional
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class ImportPipes
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\util\ReadCSV.java:290: error: cannot find symbol
+[error] 	@Transactional
+[error] 	 ^
+[error]   symbol:   class Transactional
+[error]   location: class ReadCSV
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:108: error: cannot find symbol
+[error] 			Query query = JPA
+[error] 			              ^
+[error]   symbol:   variable JPA
+[error]   location: class Component
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:123: error: cannot find symbol
+[error] 		return JPA.em().find(Component.class, id);
+[error] 		       ^
+[error]   symbol:   variable JPA
+[error]   location: class Component
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:128: error: cannot find symbol
+[error] 			return (Component) JPA
+[error] 			                   ^
+[error]   symbol:   variable JPA
+[error]   location: class Component
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:141: error: cannot find symbol
+[error] 			Query query = JPA
+[error] 			              ^
+[error]   symbol:   variable JPA
+[error]   location: class Component
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:154: error: cannot find symbol
+[error] 			Query query = JPA
+[error] 			              ^
+[error]   symbol:   variable JPA
+[error]   location: class Component
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:168: error: cannot find symbol
+[error] 			Query query = JPA
+[error] 			              ^
+[error]   symbol:   variable JPA
+[error]   location: class Component
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:183: error: cannot find symbol
+[error] 			Query query = JPA
+[error] 			              ^
+[error]   symbol:   variable JPA
+[error]   location: class Component
+[error] C:\Users\wa.tercano1\efesus\sphinx\app\models\Component.java:198: error: cannot find symbol
+[error] 			Query query = JPA
+[error] 			              ^
+[error]   symbol:   variable JPA
+[error]   location: class Component
+[error] Note: Some input files use unchecked or unsafe operations.
+[error] Note: Recompile with -Xlint:unchecked for details.
+[error] 100 errors
+[error] (compile:compile) javac returned nonzero exit code

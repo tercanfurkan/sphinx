@@ -94,3 +94,7 @@ exit
 run
 clean
 ~run
+run
+reload
+update
+run

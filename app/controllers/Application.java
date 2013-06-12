@@ -184,7 +184,7 @@ public class Application extends Controller {
 	public static Result edit(Long id) {
 		
 		Component comp = Component.findById(id);
-		Form<Component> componentForm = form(Component.class);
+		Form<Component> componentForm = play.data.Form.form(Component.class);
 		componentForm = componentForm.fill(comp);
 		return ok(editForm.render(id, componentForm));
 	}
@@ -197,7 +197,7 @@ public class Application extends Controller {
 	 */
 	@Transactional
 	public static Result update(Long id) {
-		Form<Component> componentForm = form(Component.class).bindFromRequest();
+		Form<Component> componentForm = play.data.Form.form(Component.class).bindFromRequest();
 		if (componentForm.hasErrors()) {
 			return badRequest(editForm.render(id, componentForm));
 		}
@@ -212,7 +212,7 @@ public class Application extends Controller {
 	 */
 	@Transactional(readOnly = true)
 	public static Result create() {
-		Form<Component> ComponentForm = form(Component.class);
+		Form<Component> ComponentForm = play.data.Form.form(Component.class);
 		return ok(createForm.render(ComponentForm));
 	}
 
@@ -221,7 +221,7 @@ public class Application extends Controller {
 	 */
 	@Transactional
 	public static Result save() {
-		Form<Component> ComponentForm = form(Component.class).bindFromRequest();
+		Form<Component> ComponentForm = play.data.Form.form(Component.class).bindFromRequest();
 		if (ComponentForm.hasErrors()) {
 			return badRequest(createForm.render(ComponentForm));
 		}
@@ -314,7 +314,7 @@ public class Application extends Controller {
 	@Transactional(readOnly = true)
 	public static Result pipeIndex(int page, String sortBy, String order) {
 		
-		Form<PipeIndex> pipeIndexForm = form(PipeIndex.class);		
+		Form<PipeIndex> pipeIndexForm = play.data.Form.form(PipeIndex.class);		
 		PipeIndex pipeIndexFields = pipeIndexForm.bindFromRequest().get();	
 		pipeIndexFields.sortBy = sortBy;
 		pipeIndexFields.order = order;

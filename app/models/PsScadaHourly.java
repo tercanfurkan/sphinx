@@ -15,7 +15,7 @@ import javax.persistence.Query;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.TableGenerator;
 
-import play.data.format.Formats;
+//import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 
@@ -33,7 +33,7 @@ public class PsScadaHourly {
     public Component component = new Component();
     
     @Constraints.Required
-    @Formats.DateTime(pattern="dd.mm.yyyy HH:mm:ss")
+//    @Formats.DateTime(pattern="dd.mm.yyyy HH:mm:ss")
     public Date timestamp;
     
 //    calculation of pumped flow [m3/h]

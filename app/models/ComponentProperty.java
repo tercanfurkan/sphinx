@@ -29,7 +29,7 @@ import models.wrapper.PipeIndexWrapper;
 import models.wrapper.PipeIndexWrapper.PipeIndexWrapperPage;
 import models.wrapper.PipeSensitivityIndexWrapper;
 
-import play.data.format.Formats;
+//import play.data.format.Formats;
 import play.db.jpa.JPA;
 
 @Entity
@@ -42,10 +42,10 @@ public class ComponentProperty {
 
 	public String name;
 
-	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+//	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
 	public Date date;
 
-	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+//	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
 	public Date import_date;
 
 	public Boolean deleted;

@@ -15,7 +15,7 @@ import javax.persistence.TableGenerator;
 
 import models.enums.PropertyDataType;
 
-import play.data.format.Formats;
+//import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 
@@ -46,7 +46,7 @@ public class PropertyType {
     
     public Boolean indicator;
     
-    @Formats.DateTime(pattern="dd.mm.yyyy HH:mm:ss")
+//    @Formats.DateTime(pattern="dd.mm.yyyy HH:mm:ss")
     public Date date;
     
     @ManyToOne(cascade = CascadeType.MERGE)

@@ -1,60 +1,33 @@
-2013-06-12 09:15:28,271 - [INFO] - from play in main 
+2013-06-12 10:07:48,625 - [INFO] - from play in main 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2013-06-12 09:15:49,380 - [ERROR] - from application in New I/O worker #1 
+2013-06-12 10:07:53,158 - [INFO] - from play in New I/O worker #1 
+datasource [jdbc:postgresql://localhost:5432/efesus2?characterEncoding=utf8] bound to JNDI as DefaultDS
 
+2013-06-12 10:07:53,467 - [INFO] - from play in New I/O worker #1 
+database [default] connected at jdbc:postgresql://localhost:5432/efesus2?characterEncoding=utf8
 
-! @6ei44a989 - Internal server error, for (GET) [/] ->
+2013-06-12 10:07:55,582 - [ERROR] - from org.hibernate.tool.hbm2ddl.SchemaUpdate in New I/O worker #1 
+Unsuccessful: create table PipeConditionIndexWrapper (pipeId bigint not null, pipeBlockage integer, pipeCctv34Sum integer, pipeCctvSum integer, pipeFlushing integer, pipeName varchar(255), psAnnualConsumption double, psFlowSum float, psId bigint, psName varchar(255), psNumber bigint, primary key (pipeId))
 
-sbt.PlayExceptions$CompilationException: Compilation error[error: package play.data.format does not exist]
-	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
-	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
-	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
-	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
-	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
-	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
-	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
-	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
-	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
-	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
-	at play.core.ReloadableApplication.get(ApplicationProvider.scala:98) ~[play_2.10.jar:2.1.1]
-	at play.core.server.Server$class.sendHandler$1(Server.scala:56) [play_2.10.jar:2.1.1]
-	at play.core.server.Server$$anonfun$getHandlerFor$4.apply(Server.scala:88) [play_2.10.jar:2.1.1]
-	at play.core.server.Server$$anonfun$getHandlerFor$4.apply(Server.scala:87) [play_2.10.jar:2.1.1]
-	at scala.util.Either$RightProjection.flatMap(Either.scala:523) [scala-library.jar:na]
-	at play.core.server.Server$class.getHandlerFor(Server.scala:87) [play_2.10.jar:2.1.1]
-	at play.core.server.NettyServer.getHandlerFor(NettyServer.scala:34) [play_2.10.jar:2.1.1]
-	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$6.apply(PlayDefaultUpstreamHandler.scala:115) [play_2.10.jar:2.1.1]
-	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$6.apply(PlayDefaultUpstreamHandler.scala:115) [play_2.10.jar:2.1.1]
-	at scala.util.Either.fold(Either.scala:98) [scala-library.jar:na]
-	at play.core.server.netty.PlayDefaultUpstreamHandler.messageReceived(PlayDefaultUpstreamHandler.scala:109) [play_2.10.jar:2.1.1]
-	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70) [netty.jar:na]
-	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:560) [netty.jar:na]
-	at org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:787) [netty.jar:na]
-	at org.jboss.netty.handler.codec.http.HttpContentDecoder.messageReceived(HttpContentDecoder.java:108) [netty.jar:na]
-	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70) [netty.jar:na]
-	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:560) [netty.jar:na]
-	at org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:787) [netty.jar:na]
-	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:296) [netty.jar:na]
-	at org.jboss.netty.handler.codec.frame.FrameDecoder.unfoldAndFireMessageReceived(FrameDecoder.java:459) [netty.jar:na]
-	at org.jboss.netty.handler.codec.replay.ReplayingDecoder.callDecode(ReplayingDecoder.java:536) [netty.jar:na]
-	at org.jboss.netty.handler.codec.replay.ReplayingDecoder.messageReceived(ReplayingDecoder.java:435) [netty.jar:na]
-	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70) [netty.jar:na]
-	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:560) [netty.jar:na]
-	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:555) [netty.jar:na]
-	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:268) [netty.jar:na]
-	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:255) [netty.jar:na]
-	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:88) [netty.jar:na]
-	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:107) [netty.jar:na]
-	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312) [netty.jar:na]
-	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:88) [netty.jar:na]
-	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178) [netty.jar:na]
-	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108) [netty.jar:na]
-	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42) [netty.jar:na]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_07]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_07]
-	at java.lang.Thread.run(Unknown Source) [na:1.7.0_07]
+2013-06-12 10:07:55,583 - [ERROR] - from org.hibernate.tool.hbm2ddl.SchemaUpdate in New I/O worker #1 
+ERROR: type "double" does not exist
+  Position: 196
 
-2013-06-12 09:15:49,454 - [WARN] - from play in New I/O worker #1 
-No application found at invoker init
+2013-06-12 10:07:55,584 - [ERROR] - from org.hibernate.tool.hbm2ddl.SchemaUpdate in New I/O worker #1 
+Unsuccessful: create table PipeIndexWrapper (pipe_id bigint not null, cdm_blockage_limit float, cdm_blockage_pipe_meter float, cdm_blockage_pipe_value float, cdm_cctv34_limit float, cdm_cctv34_pipe_meter float, cdm_cctv34_pipe_value float, cdm_cctv_is_available boolean not null, cdm_cctv_limit float, cdm_cctv_pipe_meter float, cdm_cctv_pipe_value float, cdm_extrawater_limit float, cdm_extrawater_pipe_meter float, cdm_extrawater_pipe_value float, cdm_extrawater_total_consumption_m3_a float, cdm_extrawater_total_flow_m3_a float, cdm_flushing_limit float, cdm_flushing_pipe_meter float, cdm_flushing_pipe_value float, cdm_limit_total float, cqm_floor_area bigint, cqm_floor_area_limit float, cqm_floor_area_pipe_meter float, cqm_floor_area_pipe_value float, cqm_floor_area_total_pipe_length float, cqm_groundwater_area_limit float, cqm_groundwater_area_pipe_meter float, cqm_groundwater_area_pipe_value float, cqm_limit_total float, cqm_pressure_pipe_limit float, cqm_pressure_pipe_meter float, cqm_pressure_pipe_value float, cqm_road_class_limit float, cqm_road_class_pipe_meter float, cqm_road_class_pipe_value float, cqm_wastewater_flow_annual_flow_m3 float, cqm_wastewater_flow_limit float, cqm_wastewater_flow_pipe_meter float, cqm_wastewater_flow_pipe_value float, diameter_mm integer, diameter_original_mm varchar(255), diameter_status varchar(255), installation_year integer, material varchar(255), model varchar(255), original_installation_year integer, owner_ps_area varchar(255), pipe_class varchar(255), pipe_condition_index float, pipe_consequence_index float, pipe_datasource_code bigint, pipe_identifier varchar(255), pipe_length_m double, pipe_total_index float, primary key (pipe_id))
+
+2013-06-12 10:07:55,607 - [ERROR] - from org.hibernate.tool.hbm2ddl.SchemaUpdate in New I/O worker #1 
+ERROR: type "double" does not exist
+  Position: 1637
+
+2013-06-12 10:07:55,631 - [ERROR] - from org.hibernate.tool.hbm2ddl.SchemaUpdate in New I/O worker #1 
+Unsuccessful: create table PipeSensitivityIndexWrapper (pipeId bigint not null, allPipeLengthFloorArea double, isPressurePipe boolean not null, pipeDiameter integer, pipeGroundWaterAreaClassification integer, pipeLength double, pipeName varchar(255), pipeRoadClassification integer, psFlowSum float, psId bigint, psName varchar(255), psNumber bigint, totalFloorArea bigint, primary key (pipeId))
+
+2013-06-12 10:07:55,682 - [ERROR] - from org.hibernate.tool.hbm2ddl.SchemaUpdate in New I/O worker #1 
+ERROR: type "double" does not exist
+  Position: 90
+
+2013-06-12 10:07:55,820 - [INFO] - from play in New I/O worker #1 
+Application started (Dev)
 

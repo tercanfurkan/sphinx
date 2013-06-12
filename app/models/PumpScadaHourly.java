@@ -14,7 +14,7 @@ import javax.persistence.TableGenerator;
 
 import models.enums.PumpName;
 
-import play.data.format.Formats;
+//import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 
@@ -34,7 +34,7 @@ public class PumpScadaHourly {
     public PumpName pumpName;
     
     @Constraints.Required
-    @Formats.DateTime(pattern="yyyy-MM-dd HH:mm:ss")
+//    @Formats.DateTime(pattern="yyyy-MM-dd HH:mm:ss")
     public Date timestamp;
     
 //    P1 T is last calculated yield of pump 1 [l/s]

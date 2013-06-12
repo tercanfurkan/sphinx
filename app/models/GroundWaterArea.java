@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TableGenerator;
-import play.data.format.Formats;
+//import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 
@@ -39,7 +39,7 @@ public class GroundWaterArea {
 
 	public String riskAssesment;
 
-	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+//	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
 	public Date importDate;
 
 	public static GroundWaterArea findByDatasourceCode(Long code) {

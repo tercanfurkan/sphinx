@@ -98,3 +98,15 @@ run
 reload
 update
 run
+clean
+run
+clean
+reload
+update
+run
+reload
+dependencies
+update
+compile
+exit
+run

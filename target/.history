@@ -110,3 +110,6 @@ update
 compile
 exit
 run
+exit
+compile
+run

@@ -51,18 +51,20 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse"
-					data-parent="#accordion2" href="#collapseOne">Adjust meter
-					limits </a>
+					data-parent="#accordion2" href="#collapseOne"></a>
 			</div>
-			<div id="collapseOne" class="accordion-body collapse">
+			<div id="collapseOne" class="accordion-body collapse in">
 				<div class="accordion-inner">
 					<div class="controls span6" id="sensitivity-div">
 						<div class="control-group">
-							<label class="control-label bold-label">Consequence limits</label>
+							<label class="control-label bold-label">CONSEQUENCE INDEX</label>
+						</div>
+						<div class="control-group">
+							<label class="control-label bold-label">Set consequence meter limit values</label>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Waste water threshold</label>
+							<label class="control-label" for="lWasteWater">Pipe diameter </label>
 							<div class="controls">
 								@inputText( field = pipeIndex("wasteWaterLimit"), 
 								args = 'type -> "text", '_label -> "", 'id -> "lWasteWater")
@@ -70,7 +72,7 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lGroundWater">Ground water area threshold</label>						
+							<label class="control-label" for="lGroundWater">Ground water area </label>						
 							<div class="controls">
 								@inputText( field = pipeIndex("groundWaterAreaLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "", 'id -> "lGroundWater")
@@ -78,7 +80,7 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Pressure pipe threshold</label>						
+							<label class="control-label" for="lWasteWater">Pipe type </label>						
 							<div class="controls">
 								@inputText( field = pipeIndex("pressurePipeLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
@@ -86,20 +88,20 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Relative floor area threshold</label>											
+							<label class="control-label" for="lWasteWater">Relative floor area </label>											
 							<div class="controls">
 								@inputText( field = pipeIndex("floorAreaLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">(%)</span>	
+								<span class="help-inline">m2/m pipe</span>	
 							</div>
 						
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Road classification threshold</label>						
+							<label class="control-label" for="lWasteWater">Road classification </label>						
 							<div class="controls">
 								@inputText( field = pipeIndex("roadClassLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">1-highway to 4-connection road</span>	
+								<span class="help-inline">1-highway to 4-connection road (add 2 and 3)</span>	
 							</div>
 						</div>
 
@@ -108,48 +110,50 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 					<div class="controls span6">
 						
 						<div class="control-group">
-							<label class="control-label bold-label">Condition limits</label>
+							<label class="control-label bold-label">CONDITION INDEX</label>
+						</div>
+						<div class="control-group">
+							<label class="control-label bold-label">Set condition meter limit values</label>
 						</div>
 
-
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Blockage threshold</label>						
+							<label class="control-label" for="lWasteWater">Blockages</label>						
 						<div class="controls">
 								@inputText( field = pipeIndex("blockageLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">number of blockage events of a pipe</span>	
+								<span class="help-inline">total number of blockage events of a pipe</span>	
 						</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Flushing threshold</label>						
+							<label class="control-label" for="lWasteWater">Flushings</label>						
 						<div class="controls">
 								@inputText( field = pipeIndex("flushingLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">number of flushing events of a pipe</span>
+								<span class="help-inline">total number of flushing events of a pipe</span>
 						</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Extra Wate threshold</label>						
+							<label class="control-label" for="lWasteWater">Extra Water </label>						
 						<div class="controls">
 								@inputText( field = pipeIndex("extraWaterLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">threshold of the consumption/flow ratio</span>
+								<span class="help-inline">wastewater flow / (0.8 x water consumption)</span>
 						</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">CCTV threshold</label>						
+							<label class="control-label" for="lWasteWater">CCTV defects</label>						
 						<div class="controls">
 								@inputText( field = pipeIndex("cctvLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">pipe's sum of all CCTV importance values</span>
+								<span class="help-inline">sum of all CCTV inspection defects (1 to 4) of a pipe</span>
 						</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">CCTV importance 3 & 4 threshold</label>					
+							<label class="control-label" for="lWasteWater">CCTV major defects</label>					
 						<div class="controls">
 								@inputText( field = pipeIndex("cctv34Limit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">pipe's sum of all CCTV 3 & 4 importance values</span>
+								<span class="help-inline">sum of CCTV inspection defects 3 and 4 of a pipe</span>
 						</div>
 						</div>
 
@@ -280,7 +284,7 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
             <thead class="header">
                 <tr>
                     @header("pipe_identifier", "ID")
-                    @header("cqm_wastewater_flow_pipe_meter", "Waste Water")
+                    @header("cqm_wastewater_flow_pipe_meter", "Diameter")
                     @header("cqm_groundwater_area_pipe_meter", "Ground Water Area")
                     @header("cqm_pressure_pipe_meter", "Pressure Pipe")
                     @header("cqm_floor_area_pipe_meter", "Floor Area")

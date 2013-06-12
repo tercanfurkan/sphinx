@@ -1,17 +1,13 @@
 package models;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityTransaction;
-import javax.persistence.FlushModeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,17 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TableGenerator;
-import javax.transaction.Transaction;
-import javax.transaction.UserTransaction;
 
-import models.meter.sensitivity.PipeSensitivityIndex;
-import models.meter.sensitivity.PipeSensitivityIndex.SensitivityIndexPage;
 import models.wrapper.PipeConditionIndexWrapper;
 import models.wrapper.PipeIndexWrapper;
-import models.wrapper.PipeIndexWrapper.PipeIndexWrapperPage;
 import models.wrapper.PipeSensitivityIndexWrapper;
 
-//import play.data.format.Formats;
+import play.data.format.Formats;
 import play.db.jpa.JPA;
 
 @Entity
@@ -42,10 +33,10 @@ public class ComponentProperty {
 
 	public String name;
 
-//	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
 	public Date date;
 
-//	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
+	@Formats.DateTime(pattern = "dd.mm.yyyy HH:mm:ss")
 	public Date import_date;
 
 	public Boolean deleted;

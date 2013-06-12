@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.TableGenerator;
 
-//import play.data.format.Formats;
+import play.data.format.Formats;
 import play.data.validation.Constraints;
 
 @SequenceGenerator(name = "pump_scada_daily_seq", sequenceName = "pump_scada_daily_seq")
@@ -28,14 +28,14 @@ public class PumpScadaDaily {
     public Component component;
     
     @Constraints.Required
-//    @Formats.DateTime(pattern="yyyy-MM-dd")
+    @Formats.DateTime(pattern="yyyy-MM-dd")
     public Date date;
     
     public Integer activitiy_count;
     
     public Float average_current;
     
-//    @Formats.DateTime(pattern="HH:mm:")
+    @Formats.DateTime(pattern="HH:mm:")
     public Date pumping_duration_alone;
     
 }

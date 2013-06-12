@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.NoResultException;
 import javax.persistence.TableGenerator;
 
-//import play.data.format.Formats;
+import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 
@@ -32,7 +32,7 @@ public class BuildingArea {
 	    
 	    public Long nonDwellingFloorArea;
 	    
-//	    @Formats.DateTime(pattern="dd.mm.yyyy HH:mm:ss")
+	    @Formats.DateTime(pattern="dd.mm.yyyy HH:mm:ss")
 	    public Date importDate;
 	    
 	    public static BuildingArea findByDatasourceCode(Long code) {

@@ -11,7 +11,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,12 +24,8 @@ import javax.persistence.Query;
 import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import play.data.format.Formats;
 import play.db.jpa.JPA;
-import service.MeterService;
 
 @Entity
 public class Component {
@@ -728,7 +723,7 @@ public class Component {
 		Query query = JPA.em().createQuery(queryStr);
 		query.setParameter("biggerAndEqualThenValue", classCodeFilterMap.get("biggerAndEqualThenValue"));
 		query.setParameter("smallerAndEqualThenValue", classCodeFilterMap.get("smallerAndEqualThenValue"));
-		double doubleVal = (double) query.getSingleResult();
+		double doubleVal = (Double) query.getSingleResult();
 		
 		return (int) doubleVal;
 	}

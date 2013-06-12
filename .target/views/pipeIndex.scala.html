@@ -1,0 +1,373 @@
+@(currentPage: models.wrapper.PipeIndexWrapper.PipeIndexWrapperPage,  
+pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: String)
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.Application.pipeIndex(newPage, sortBy, order)
+    
+}
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@main {
+
+<div class="adjustmentRow" class="row">
+	<h1 id="homeTitle">@Messages("pi.pipe.title")</h1>
+</div>
+
+<div class="accordion" id="accordion2">
+	<form class="form-horizontal" action="@routes.Application.pipeIndex(0)" method="GET">
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse"
+					data-parent="#accordion2" href="#collapseOne">Adjust meter
+					limits </a>
+			</div>
+			<div id="collapseOne" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="controls span6" id="sensitivity-div">
+						<div class="control-group">
+							<label class="control-label bold-label">Consequence limits</label>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Waste water threshold</label>
+							<div class="controls">
+								@inputText( field = pipeIndex("wasteWaterLimit"), 
+								args = 'type -> "text", '_label -> "", 'id -> "lWasteWater")
+								<span class="help-inline">pipe diameter caution limit (mm)</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lGroundWater">Ground water area threshold</label>						
+							<div class="controls">
+								@inputText( field = pipeIndex("groundWaterAreaLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "", 'id -> "lGroundWater")
+								<span class="help-inline">0-insignificant to 3-significant</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Pressure pipe threshold</label>						
+							<div class="controls">
+								@inputText( field = pipeIndex("pressurePipeLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">0: non-pressure pipe, 1: pressure pipe</span>					
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Relative floor area threshold</label>											
+							<div class="controls">
+								@inputText( field = pipeIndex("floorAreaLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">(%)</span>	
+							</div>
+						
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Road classification threshold</label>						
+							<div class="controls">
+								@inputText( field = pipeIndex("roadClassLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">1-highway to 4-connection road</span>	
+							</div>
+						</div>
+
+					</div>
+
+					<div class="controls span6">
+						
+						<div class="control-group">
+							<label class="control-label bold-label">Condition limits</label>
+						</div>
+
+
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Blockage threshold</label>						
+						<div class="controls">
+								@inputText( field = pipeIndex("blockageLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">number of blockage events of a pipe</span>	
+						</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Flushing threshold</label>						
+						<div class="controls">
+								@inputText( field = pipeIndex("flushingLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">number of flushing events of a pipe</span>
+						</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Extra Wate threshold</label>						
+						<div class="controls">
+								@inputText( field = pipeIndex("extraWaterLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">threshold of the consumption/flow ratio</span>
+						</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">CCTV threshold</label>						
+						<div class="controls">
+								@inputText( field = pipeIndex("cctvLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">pipe's sum of all CCTV importance values</span>
+						</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">CCTV importance 3 & 4 threshold</label>					
+						<div class="controls">
+								@inputText( field = pipeIndex("cctv34Limit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">pipe's sum of all CCTV 3 & 4 importance values</span>
+						</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse"
+					data-parent="#accordion2" href="#collapseTwo">Filter meter values</a>
+			</div>
+			<div id="collapseTwo" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="controls span12" id="sensitivity-div">
+						<div class="control-group">
+							<label class="control-label bold-label">Filter by</label>
+						</div>
+						<div class="control-group">
+							<div class="controls span1">
+								@checkbox(field = pipeIndex("isInspected"))
+							</div>
+						</div>
+						<div class="control-group">
+						<label class="control-label" >Filter no.1</label>	
+							<div class="controls span2">
+								@select(
+						                pipeIndex("filterNameList[0]"), 
+						                options(models.wrapper.PipeIndexWrapper.options), 
+						                '_label -> "", '_default -> "-- Choose filter type --",
+						                '_showConstraints -> false)
+							</div>
+							<div class="controls span2">
+								@select(
+						                pipeIndex("filterOperatorList[0]"), 
+						                options = options(
+							                ">" -> "Bigger than",
+							                "<" -> "Smaller than",
+							                "=" -> "Equal to"),
+						                '_label -> "",
+						                '_default -> "-- Choose filter operator --", 
+						                '_showConstraints -> false)
+							</div>							
+
+							<div class="controls span1">
+								@inputText( field = pipeIndex("filterValueList[0]"), 
+								args = 'class -> "input-mini", 'placeholder -> "Value",'type -> "text", '_label -> "")
+							</div>
+						</div>
+						<div class="control-group">
+						<label class="control-label" >Filter no.2</label>	
+							<div class="controls span2">
+								@select(
+						                pipeIndex("filterNameList[1]"), 
+						                options(models.wrapper.PipeIndexWrapper.options), 
+						                '_label -> "", '_default -> "-- Choose filter type --",
+						                '_showConstraints -> false)
+							</div>
+							<div class="controls span2">
+								@select(
+						                pipeIndex("filterOperatorList[1]"), 
+						                options = options(
+							                ">" -> "Bigger than",
+							                "<" -> "Smaller than",
+							                "=" -> "Equal to"),
+						                '_label -> "",
+						                '_default -> "-- Choose filter operator --", 
+						                '_showConstraints -> false)
+							</div>							
+
+							<div class="controls span1">
+								@inputText( field = pipeIndex("filterValueList[1]"), 
+								args = 'class -> "input-mini", 'placeholder -> "Value",'type -> "text", '_label -> "")
+							</div>
+						</div>
+						<div class="control-group">
+						<label class="control-label" >Filter no.3</label>	
+							<div class="controls span2">
+								@select(
+						                pipeIndex("filterNameList[2]"), 
+						                options(models.wrapper.PipeIndexWrapper.options), 
+						                '_label -> "", '_default -> "-- Choose filter type --",
+						                '_showConstraints -> false)
+							</div>
+							<div class="controls span2">
+								@select(
+						                pipeIndex("filterOperatorList[2]"), 
+						                options = options(
+							                ">" -> "Bigger than",
+							                "<" -> "Smaller than",
+							                "=" -> "Equal to"),
+						                '_label -> "",
+						                '_default -> "-- Choose filter operator --", 
+						                '_showConstraints -> false)
+							</div>							
+
+							<div class="controls span1">
+								@inputText( field = pipeIndex("filterValueList[2]"), 
+								args = 'class -> "input-mini", 'placeholder -> "Value",'type -> "text", '_label -> "")
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="submit" id="searchsubmit"
+			value="Refresh index calculation" class="btn btn-primary">
+	</form>
+
+</div>
+<div id="paddingToRow" class="row"></div>
+
+
+
+
+@if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+        
+    } else {
+    
+    <h5 id="homeTitle">@Messages("pi.pipe.result", currentPage.getTotalRowCount)</h5>
+ 	<h5 id="homeTitle">@Messages("pi.pipe.resultKm", currentPage.getTotalLengthOfPipes)</h5>
+        
+        <table class="table table-bordered table-hover">
+            <thead class="header">
+                <tr>
+                    @header("pipe_identifier", "ID")
+                    @header("cqm_wastewater_flow_pipe_meter", "Waste Water")
+                    @header("cqm_groundwater_area_pipe_meter", "Ground Water Area")
+                    @header("cqm_pressure_pipe_meter", "Pressure Pipe")
+                    @header("cqm_floor_area_pipe_meter", "Floor Area")
+                    @header("cqm_road_class_pipe_meter", "Road Class")
+                    @header("cdm_blockage_pipe_meter", "Blockages")
+                    @header("cdm_flushing_pipe_meter", "Flushings")
+                    @header("cdm_extrawater_pipe_meter", "Extra Water")
+                    @header("cdm_cctv_pipe_meter", "CCTVs")
+                    @header("cdm_cctv34_pipe_meter", "CCTVs 3&4")
+                    @header("pipe_consequence_index", "Consequence Index")
+                    @header("pipe_condition_index", "Condition Index")
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(index <- currentPage.getList) {
+                    <tr>
+                        <td>@index.pipe_identifier</td>
+                        <td>
+                        	@index.cqm_wastewater_flow_pipe_meter
+                        </td>
+                        <td>
+                            @index.cqm_groundwater_area_pipe_meter
+                        </td>
+                        <td>
+                            @index.cqm_pressure_pipe_meter
+                        </td>                        
+                        <td>
+                        	@index.cqm_floor_area_pipe_meter
+                        </td>
+                        <td>
+                            @index.cqm_road_class_pipe_meter
+                        </td>
+                        <td>
+                        	@index.cdm_blockage_pipe_meter
+                        </td>
+                        <td>
+                            @index.cdm_flushing_pipe_meter
+                        </td>
+                        <td>
+                            @index.cdm_extrawater_pipe_meter
+                        </td>                        
+                        <td>
+                        	@index.cdm_cctv_pipe_meter
+                        </td>
+                        <td>
+                            @index.cdm_cctv34_pipe_meter
+                        </td>
+                        <td>
+                            @index.pipe_consequence_index
+                        </td>
+                        <td>
+                            @index.pipe_condition_index
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>  
+         
+
+        <div id="pagination" class="pagination">
+            <ul>
+                @if(currentPage.hasPrev) {
+                    <li class="prev">
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
+                    </li>
+                } else {
+                    <li class="prev disabled">
+                        <a>&larr; Previous</a>
+                    </li>
+                }
+                <li class="current">
+                    <a>Displaying @currentPage.getDisplayXtoYofZ</a>
+                </li>
+                @if(currentPage.hasNext) {
+                    <li class="next">
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
+                    </li>
+                } else {
+                    <li class="next disabled">
+                        <a>Next &rarr;</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        
+    }
+}
+            

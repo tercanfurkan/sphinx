@@ -1,0 +1,11 @@
+# Messages
+
+components.list.title={0,choice,0#No components|1#One component|1<{0,number,integer} component} found
+
+meters.list.title={0,choice,0#No meter results|1#One meter result|1<{0,number,integer} meter results} found
+
+ps.list.title={0,choice,0#No pumping stations|1#One pumping station|1<{0,number,integer} pumping station} found
+pipe.list.title={0,choice,0#No pipes|1#One pipe|1<{0,number,integer} pipe} found
+manhole.list.title={0,choice,0#No manholes|1#One manhole|1<{0,number,integer} manhole} found
+
+

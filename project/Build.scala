@@ -1,7 +1,5 @@
 import sbt._
 import Keys._
-import play.Project_
-import com.github.play2war.plugin._
 
 object ApplicationBuild extends Build {
 
@@ -16,8 +14,6 @@ object ApplicationBuild extends Build {
       "org.apache.poi" % "poi" % "3.9"
     )
 
-    val main = play.Project(appName, appVersion, appDependencies, mainLang = JAVA).settings( 
-      ebeanEnabled := false
-    )
+    val main = play.Project(appName, appVersion, appDependencies).settings()
 
 }

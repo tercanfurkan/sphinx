@@ -431,6 +431,6 @@ public class Application extends Controller {
 		pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
 
 		pipeIndexForm = pipeIndexForm.fill(pipeIndexFields);
-		return ok(pipeIndex.render(indexWrapperPage, pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));
+		return ok(pipeIndex.render(pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));
 	}
 }

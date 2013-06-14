@@ -47,7 +47,7 @@ public class PipeConditionIndexServ {
 		
 		conditionIndex.cctv34Meter = PipeConditionIndexMeterServ.pipeCctv34Meter(wrapper.pipeCctv34Sum);
 		
-		conditionIndex.extraWaterMeter = PipeConditionIndexMeterServ.pipeExtraWaterMeter(wrapper.psAnnualConsumption, wrapper.psFlowSum, wrapper.psName);
+		conditionIndex.extraWaterMeter = PipeConditionIndexMeterServ.pipeExtraWaterMeter(wrapper.psAnnualConsumption.doubleValue(), wrapper.psFlowSum, wrapper.psName);
 		
 		conditionIndex.pipeIdentifier = wrapper.pipeName;
 		conditionIndex.pipeOwnerComponent = wrapper.psName;

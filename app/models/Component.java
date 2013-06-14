@@ -24,6 +24,8 @@ import javax.persistence.Query;
 import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
 
+import models.meter.sensitivity.PipeSensitivityIndex;
+
 import play.data.format.Formats;
 import play.db.jpa.JPA;
 

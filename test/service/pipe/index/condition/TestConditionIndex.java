@@ -71,7 +71,7 @@ public class TestConditionIndex {
 	}
 
 	//OK
-	@Test
+//	@Test
 	public void testConditionIndexBatch() {
 		running(fakeApplication(), new Runnable() {
 			public void run() {

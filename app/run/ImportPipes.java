@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 
 import util.ReadXLS;

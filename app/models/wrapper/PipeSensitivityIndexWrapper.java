@@ -12,11 +12,11 @@ public class PipeSensitivityIndexWrapper {
 	public Long psId;
 	public Long psNumber;
 	public String psName;
-	public Double pipeLength;
+	public Float pipeLength;
 	public Integer pipeDiameter;
 	public boolean isPressurePipe;
 	public Long totalFloorArea;
-	public Double allPipeLengthFloorArea;
+	public Float allPipeLengthFloorArea;
 	public Integer pipeGroundWaterAreaClassification;
 	public Float psFlowSum;
 	public Integer pipeRoadClassification;

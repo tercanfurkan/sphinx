@@ -15,7 +15,7 @@ public class PipeConditionIndexWrapper {
 	public Long psNumber;
 	public String psName;
 	public Float psFlowSum;
-	public Double psAnnualConsumption;
+	public Float psAnnualConsumption;
 	public Integer pipeBlockage;
 	public Integer pipeFlushing;
 	public Integer pipeCctvSum;

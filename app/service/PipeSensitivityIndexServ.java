@@ -34,7 +34,7 @@ public class PipeSensitivityIndexServ {
 		sensitivityIndex.annualWasteWaterFlowMeter = PipeSensitivityIndexMeterServ.pipeAnnualWasteWaterFlowMeter(wrapper.pipeDiameter);
 		sensitivityIndex.groundWaterAreaMeter = PipeSensitivityIndexMeterServ.pipeGroundWaterAreaMeter(wrapper.pipeGroundWaterAreaClassification);
 		sensitivityIndex.pressureMeter = PipeSensitivityIndexMeterServ.pipePressureMeter(wrapper.isPressurePipe);
-		sensitivityIndex.relativeFloorAreaMeter = PipeSensitivityIndexMeterServ.pipeRelativeFloorAreaMeter(wrapper.allPipeLengthFloorArea, wrapper.totalFloorArea);
+		sensitivityIndex.relativeFloorAreaMeter = PipeSensitivityIndexMeterServ.pipeRelativeFloorAreaMeter(wrapper.allPipeLengthFloorArea.doubleValue(), wrapper.totalFloorArea);
 		sensitivityIndex.roadClassificationMeter = PipeSensitivityIndexMeterServ.pipeRoadClassificationMeter(wrapper.pipeRoadClassification);
 		sensitivityIndex.pipeIdentifier = wrapper.pipeName;
 		sensitivityIndex.pipeOwnerComponent = wrapper.psName;

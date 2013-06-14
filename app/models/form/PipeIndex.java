@@ -1,13 +1,5 @@
 package models.form;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import play.db.jpa.JPA;
-
-import models.ComponentType;
 import models.meter.condition.PipeConditionIndex;
 import models.meter.sensitivity.PipeSensitivityIndex;
 

@@ -1,5 +1,6 @@
-@(currentPage: models.wrapper.PipeIndexWrapper.PipeIndexWrapperPage,  
-pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: String)
+@(currentPage: models.wrapper.PipeIndexWrapper.PipeIndexWrapperPage,
+pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: String,
+pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 
 @import helper._
 
@@ -60,23 +61,23 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 							<label class="control-label bold-label">CONSEQUENCE INDEX</label>
 						</div>
 						<div class="control-group">
-							<label class="control-label bold-label">Set consequence meter limit values</label>
+							<label class="control-label bold-label">Set limit values for consequence meters</label>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Pipe diameter </label>
+							<label class="control-label" for="lWasteWater">Pipe diameter (mm)</label>
 							<div class="controls">
 								@inputText( field = pipeIndex("wasteWaterLimit"), 
 								args = 'type -> "text", '_label -> "", 'id -> "lWasteWater")
-								<span class="help-inline">pipe diameter caution limit (mm)</span>
+								<span class="help-inline">pipe diameter caution limit</span>
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lGroundWater">Ground water area </label>						
+							<label class="control-label" for="lGroundWater">Ground water area (0..3)</label>						
 							<div class="controls">
 								@inputText( field = pipeIndex("groundWaterAreaLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "", 'id -> "lGroundWater")
-								<span class="help-inline">0-insignificant to 3-significant</span>
+								<span class="help-inline">0: not significant to 3: highly significant</span>
 							</div>
 						</div>
 						<div class="control-group">
@@ -84,7 +85,7 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 							<div class="controls">
 								@inputText( field = pipeIndex("pressurePipeLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">0: non-pressure pipe, 1: pressure pipe</span>					
+								<span class="help-inline">0: gravitation pipe, 1: pressure pipe</span>					
 							</div>
 						</div>
 						<div class="control-group">
@@ -92,7 +93,7 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 							<div class="controls">
 								@inputText( field = pipeIndex("floorAreaLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">m2/m pipe</span>	
+								<span class="help-inline">m<sup>2</sup>/m pipe</span>	
 							</div>
 						
 						</div>
@@ -101,7 +102,7 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 							<div class="controls">
 								@inputText( field = pipeIndex("roadClassLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">1-highway to 4-connection road (add 2 and 3)</span>	
+								<span class="help-inline">1:highway to 4:connection road (add 2 and 3)</span>	
 							</div>
 						</div>
 
@@ -113,7 +114,7 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 							<label class="control-label bold-label">CONDITION INDEX</label>
 						</div>
 						<div class="control-group">
-							<label class="control-label bold-label">Set condition meter limit values</label>
+							<label class="control-label bold-label">Set limit values for condition meters</label>
 						</div>
 
 						<div class="control-group">
@@ -125,7 +126,7 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 						</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Flushings</label>						
+							<label class="control-label" for="lWasteWater">Flushing events</label>						
 						<div class="controls">
 								@inputText( field = pipeIndex("flushingLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
@@ -164,7 +165,7 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse"
-					data-parent="#accordion2" href="#collapseTwo">Filter meter values</a>
+					data-parent="#accordion2" href="#collapseTwo"></a>
 			</div>
 			<div id="collapseTwo" class="accordion-body collapse">
 				<div class="accordion-inner">
@@ -266,112 +267,19 @@ pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: Str
 </div>
 <div id="paddingToRow" class="row"></div>
 
-
-
-
-@if(currentPage.getTotalRowCount == 0) {
-        
-        <div class="well">
-            <em>Nothing to display</em>
-        </div>
-        
-    } else {
     
-    <h5 id="homeTitle">@Messages("pi.pipe.result", currentPage.getTotalRowCount)</h5>
- 	<h5 id="homeTitle">@Messages("pi.pipe.resultKm", currentPage.getTotalLengthOfPipes)</h5>
-        
-        <table class="table table-bordered table-hover">
-            <thead class="header">
-                <tr>
-                    @header("pipe_identifier", "ID")
-                    @header("cqm_wastewater_flow_pipe_meter", "Diameter")
-                    @header("cqm_groundwater_area_pipe_meter", "Ground Water Area")
-                    @header("cqm_pressure_pipe_meter", "Pressure Pipe")
-                    @header("cqm_floor_area_pipe_meter", "Floor Area")
-                    @header("cqm_road_class_pipe_meter", "Road Class")
-                    @header("cdm_blockage_pipe_meter", "Blockages")
-                    @header("cdm_flushing_pipe_meter", "Flushings")
-                    @header("cdm_extrawater_pipe_meter", "Extra Water")
-                    @header("cdm_cctv_pipe_meter", "CCTVs")
-                    @header("cdm_cctv34_pipe_meter", "CCTVs 3&4")
-                    @header("pipe_consequence_index", "Consequence Index")
-                    @header("pipe_condition_index", "Condition Index")
-                </tr>
-            </thead>
-            <tbody>
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexLimit") @pipeIndexSummary.consequenceLimit</h5>
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLength") @((math rint pipeIndexSummary.consequenceIndexPipeLength * 10) / 10) km</h5>
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLengthInspected") @((math rint pipeIndexSummary.consequenceIndexPipeLengthInspected * 10) / 10) km</h5>
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLengthNotInspected") @((math rint pipeIndexSummary.consequenceIndexPipeLengthNotInspected * 10) / 10) km</h5>
+ 	
+    <h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexLimit") @pipeIndexSummary.conditionLimit</h5>
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexPipeLength") @((math rint pipeIndexSummary.conditionIndexPipeLength * 10) / 10) km</h5>
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexPipeLengthInspected") @((math rint pipeIndexSummary.conditionIndexPipeLengthInspected * 10) / 10) km</h5>
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexPipeLengthNotInspected") @((math rint pipeIndexSummary.conditionIndexPipeLengthNotInspected * 10) / 10) km</h5>
+ 	
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionAndConsequenceIndexPipeLength") @((math rint pipeIndexSummary.conditionAndConsequencePipeLength * 10) / 10) km</h5>
 
-                @for(index <- currentPage.getList) {
-                    <tr>
-                        <td>@index.pipe_identifier</td>
-                        <td>
-                        	@index.cqm_wastewater_flow_pipe_meter
-                        </td>
-                        <td>
-                            @index.cqm_groundwater_area_pipe_meter
-                        </td>
-                        <td>
-                            @index.cqm_pressure_pipe_meter
-                        </td>                        
-                        <td>
-                        	@index.cqm_floor_area_pipe_meter
-                        </td>
-                        <td>
-                            @index.cqm_road_class_pipe_meter
-                        </td>
-                        <td>
-                        	@index.cdm_blockage_pipe_meter
-                        </td>
-                        <td>
-                            @index.cdm_flushing_pipe_meter
-                        </td>
-                        <td>
-                            @index.cdm_extrawater_pipe_meter
-                        </td>                        
-                        <td>
-                        	@index.cdm_cctv_pipe_meter
-                        </td>
-                        <td>
-                            @index.cdm_cctv34_pipe_meter
-                        </td>
-                        <td>
-                            @index.pipe_consequence_index
-                        </td>
-                        <td>
-                            @index.pipe_condition_index
-                        </td>
-                    </tr>
-                }
 
-            </tbody>
-        </table>  
-         
-
-        <div id="pagination" class="pagination">
-            <ul>
-                @if(currentPage.hasPrev) {
-                    <li class="prev">
-                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
-                    </li>
-                } else {
-                    <li class="prev disabled">
-                        <a>&larr; Previous</a>
-                    </li>
-                }
-                <li class="current">
-                    <a>Displaying @currentPage.getDisplayXtoYofZ</a>
-                </li>
-                @if(currentPage.hasNext) {
-                    <li class="next">
-                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
-                    </li>
-                } else {
-                    <li class="next disabled">
-                        <a>Next &rarr;</a>
-                    </li>
-                }
-            </ul>
-        </div>
-        
-    }
 }
             

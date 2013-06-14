@@ -13,7 +13,7 @@ import play.db.jpa.JPA;
 
 public class TestComponentIntegration {
 	
-	@Test
+//	@Test
 	public void setParentOfChildComponent() {
 		running(fakeApplication(), new Runnable() {
 			public void run() {

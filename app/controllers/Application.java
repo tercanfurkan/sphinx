@@ -1,17 +1,19 @@
 package controllers;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 import models.Component;
+import models.PipeIndexResult;
 import models.Component.AreaAndMeters;
 import models.Component.AreaMeterList;
 import models.form.PipeIndex;
-import models.meter.condition.PipeConditionIndex;
-import models.meter.condition.PipeConditionIndex.ConditionIndexPage;
 import models.meter.sensitivity.PipeSensitivityIndex;
 import models.meter.sensitivity.PipeSensitivityIndex.SensitivityIndexPage;
+import models.wrapper.PipeIndexSummary;
 import models.wrapper.PipeIndexWrapper;
 import models.wrapper.PipeIndexWrapper.PipeIndexWrapperPage;
 import play.data.Form;
@@ -24,6 +26,8 @@ import util.MathUtilSphinx;
 import views.html.*;
 
 public class Application extends Controller {
+	
+	static List<PipeIndexResult> indexResultList;
 
 	/**
 	 * This result directly redirect to application home.
@@ -69,8 +73,8 @@ public class Application extends Controller {
 		FilePart picture = body.getFile("picture");
 		if (picture != null) {
 			try {
-				String fileName = picture.getFilename();
-				String contentType = picture.getContentType();
+//				String fileName = picture.getFilename();
+//				String contentType = picture.getContentType();
 				File file = picture.getFile();
 				org.apache.poi.ss.usermodel.Workbook workbook = org.apache.poi.ss.usermodel.WorkbookFactory
 						.create(file);
@@ -318,18 +322,26 @@ public class Application extends Controller {
 		PipeIndex pipeIndexFields = pipeIndexForm.bindFromRequest().get();	
 		pipeIndexFields.sortBy = sortBy;
 		pipeIndexFields.order = order;
-		PipeIndexWrapperPage indexWrapperPage = PipeIndexWrapper.getPipeIndexWrapperPage(page, 15, pipeIndexFields);
+		PipeIndexWrapperPage indexWrapperPage = PipeIndexWrapper.getPipeIndexWrapperPage(page, 18000, pipeIndexFields);
 		List<PipeIndexWrapper> indexWrapperList = indexWrapperPage.getList();
-//		Double totalLengthOfPipes = 0D;
 		
-//		int count = 0;
+		// fill the 'to the point' pipeIndexResult of each pipe
+		// then fill the 'to the point' pipeIndexSummary and display on page
+		indexResultList = new ArrayList<PipeIndexResult>();
+		PipeIndexResult tempResult = null;
+		PipeIndexSummary pipeIndexSummary = null; // pass this object to render
+		Float conditionIndexLimit = 5.00F; // this is hardcoded. It is 5 and 3 for non inspected pipes
+		Float consequenceIndexLimit = 5.00F;
+		boolean hasExceededConditionIndex = false;
+		boolean hasExceededConsequenceIndex = false;
+		boolean hasExceededConditionAndConsequenceIndex = false;
+		Float conditionPipeLengthInspected = 0.000F; // length of inspected pipes exceed condition index limit
+		Float conditionPipeLengthNotInspected = 0.000F; // length of not inspected pipes exceed condition index limit
+		Float consequencePipeLengthInspected = 0.000F; // length of inspected pipes exceed consequence index limit
+		Float consequencePipeLengthNotInspected = 0.000F; // length of not inspected pipes exceed consequence index limit
+		Float conditionAndConsequencePipeLength = 0.000F; // length of pipes that exceed condition and consequence index limit
+		
 		for(PipeIndexWrapper wrapper : indexWrapperList) {
-//			count ++;
-//			if (count <50) System.out.println(wrapper.pipe_condition_index);
-			
-			// re calculate index & meter vals
-			
-//			totalLengthOfPipes += wrapper.pipe_length_m;
 
 			wrapper.cqm_wastewater_flow_pipe_meter = wrapper.cqm_wastewater_flow_pipe_value
 					/ pipeIndexFields.wasteWaterLimit;
@@ -392,10 +404,33 @@ public class Application extends Controller {
 			
 			wrapper.pipe_total_index = wrapper.pipe_consequence_index + wrapper.pipe_condition_index;
 			wrapper.pipe_total_index = (float) MathUtilSphinx.truncateDouble(wrapper.pipe_total_index, 3);
+			
+			
+			
+			// fill the 'to the point' pipeIndexResult of each pipe. then calculate summary values during the loop
+			tempResult = new PipeIndexResult(wrapper.pipe_datasource_code, wrapper.pipe_identifier, wrapper.pipe_consequence_index, wrapper.cqm_limit_total, wrapper.pipe_condition_index, wrapper.cdm_limit_total, wrapper.pipe_length_m.floatValue());
+			
+			hasExceededConditionIndex = (tempResult.conditionIndex >= tempResult.conditionTotalLimit);
+			hasExceededConsequenceIndex = (tempResult.consequenceIndex >= tempResult.consequenceTotalLimit -1);
+			hasExceededConditionAndConsequenceIndex = (hasExceededConditionIndex && hasExceededConsequenceIndex);
+			
+			if (hasExceededConditionAndConsequenceIndex) conditionAndConsequencePipeLength += tempResult.pipeLength;
+			
+			if (tempResult.isInspected) {
+				if (hasExceededConsequenceIndex) consequencePipeLengthInspected += tempResult.pipeLength;
+				if (hasExceededConditionIndex) conditionPipeLengthInspected += tempResult.pipeLength;
+			}
+			else {
+				if (hasExceededConsequenceIndex) consequencePipeLengthNotInspected += tempResult.pipeLength;
+				if (hasExceededConditionIndex) conditionPipeLengthNotInspected += tempResult.pipeLength;
+			}
 
 		}
+		
+		// then fill the 'to the point' pipeIndexSummary and display on page
+		pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
 
 		pipeIndexForm = pipeIndexForm.fill(pipeIndexFields);
-		return ok(pipeIndex.render(indexWrapperPage, pipeIndexForm, sortBy, order));
+		return ok(pipeIndex.render(indexWrapperPage, pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));
 	}
 }

@@ -15,6 +15,7 @@ object ApplicationBuild extends Build {
 		"org.apache.poi" % "poi" % "3.9"
     )
 
-    val main = play.Project(appName, appVersion, appDependencies).settings()
+    val main = play.Project(appName, appVersion, appDependencies).settings(
+    )
 
 }

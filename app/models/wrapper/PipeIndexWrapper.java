@@ -11,11 +11,9 @@ import javax.persistence.Query;
 
 import javax.persistence.Id;
 
-import play.db.jpa.JPA;
-
-import models.ComponentType;
 import models.form.PipeIndex;
-import models.meter.sensitivity.PipeSensitivityIndex;
+
+import play.db.jpa.JPA;
 
 @Entity
 public class PipeIndexWrapper {
@@ -29,7 +27,7 @@ public class PipeIndexWrapper {
 	public String diameter_original_mm;
 	public Integer diameter_mm;
 	public String diameter_status;
-	public Double pipe_length_m;
+	public Float pipe_length_m;
 	public Integer installation_year;
 	public Integer original_installation_year;
 	public String material;

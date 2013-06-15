@@ -49,7 +49,7 @@ public class PipeIndexServ {
 		retWrapper.cqm_groundwater_area_limit = meterLimit.groundWaterAreaLimit;
 		
 		retWrapper.cqm_pipe_type_value = view.pipeTypeValue;
-		retWrapper.cqm_pipe_type_meter = retWrapper.cqm_pipe_type_value * view.pipeDiameter / meterLimit.pipeTypeLimit;
+		retWrapper.cqm_pipe_type_meter = (retWrapper.cqm_pipe_type_value * view.pipeDiameter) / (meterLimit.pipeTypeLimit * 500F);
 		retWrapper.cqm_pipe_type_limit = meterLimit.pipeTypeLimit;
 		
 		retWrapper.cqm_floor_area_pipe_value = (view.allPipeLengthFloorArea == 0F) ? 0F : (float) view.totalFloorArea / view.allPipeLengthFloorArea;
@@ -57,7 +57,7 @@ public class PipeIndexServ {
 		retWrapper.cqm_floor_area_limit = meterLimit.floorAreaLimit;
 		
 		retWrapper.cqm_road_class_pipe_value = (float) view.pipeRoadClassification;
-		retWrapper.cqm_road_class_pipe_meter = meterLimit.roadClassLimit / retWrapper.cqm_road_class_pipe_value;
+		retWrapper.cqm_road_class_pipe_meter = (retWrapper.cqm_road_class_pipe_value != 0) ? (meterLimit.roadClassLimit / retWrapper.cqm_road_class_pipe_value) : 0F;
 		retWrapper.cqm_road_class_limit = meterLimit.roadClassLimit;
 		
 		retWrapper.pipe_consequence_index = retWrapper.cqm_wastewater_flow_pipe_meter

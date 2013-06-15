@@ -80,7 +80,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Pipe type </label>						
+							<label class="control-label" for="lWasteWater">Pipe type (0..4)</label>						
 							<div class="controls">
 								@inputText( field = pipeIndex("pipeTypeLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
@@ -88,20 +88,20 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Relative floor area </label>											
+							<label class="control-label" for="lWasteWater">Relative floor area (m<sup>2</sup>/m)</label>											
 							<div class="controls">
 								@inputText( field = pipeIndex("floorAreaLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">m<sup>2</sup> / m of pipe</span>	
+								<span class="help-inline">floor area m<sup>2</sup>/ length of pipes</span>	
 							</div>
 						
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Road classification </label>						
+							<label class="control-label" for="lWasteWater">Road classification (1..4)</label>						
 							<div class="controls">
 								@inputText( field = pipeIndex("roadClassLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">1:highway, 2:(Seudullinen p‰‰katu / kantatie), 3:regional road (Alueellinen p‰‰katu / seututie), 4:connection road (add 2 and 3)</span>	
+								<span class="help-inline">1:highway, 2:(Seudullinen paakatu / kantatie), 3:regional road (Alueellinen paakatu / seututie), 4:connection road</span>	
 							</div>
 						</div>
 
@@ -133,7 +133,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Extra Water </label>						
+							<label class="control-label" for="lWasteWater">Extra Water (%)</label>						
 						<div class="controls">
 								@inputText( field = pipeIndex("extraWaterLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")

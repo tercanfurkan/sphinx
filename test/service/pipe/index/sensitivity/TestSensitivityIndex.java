@@ -26,7 +26,7 @@ import util.DateUtilSphinx;
 
 public class TestSensitivityIndex {
 
-	
+//	@Test
 	public void testSensitivityIndex() {
 		running(fakeApplication(), new Runnable() {
 			public void run() {

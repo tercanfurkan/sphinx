@@ -15,7 +15,7 @@ public abstract class AbstractPipeMeter {
 	public AbstractPipeMeter() {
 
 		this.scale = "";
-		this.specialCautionLimit = 0F;
+		this.specialCautionLimit = 2F;
 		this.valueOfPipe = 0F;
 		this.meterValue = 0F;
 	}

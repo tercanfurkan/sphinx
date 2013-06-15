@@ -13,7 +13,7 @@ public class PipePressureMeter extends AbstractPipeMeter{
 	public PipePressureMeter() {
 		super();
 		this.scale = "0/1";
-		this.specialCautionLimit = 1F;
+		this.specialCautionLimit = 2F;
 	}
 	
 //	@Id

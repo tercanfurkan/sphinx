@@ -33,9 +33,9 @@ public class PipeIndexWrapper {
 	public String material;
 	public String model;
 	public String owner_ps_area;
-	public Float cqm_pressure_pipe_limit;
-	public Float cqm_pressure_pipe_value;
-	public Float cqm_pressure_pipe_meter;
+	public Float cqm_pipe_type_limit;
+	public Integer cqm_pipe_type_value;
+	public Float cqm_pipe_type_meter;
 	public Float cqm_wastewater_flow_limit;
 	public Float cqm_wastewater_flow_annual_flow_m3;
 	public Float cqm_wastewater_flow_pipe_value;
@@ -60,7 +60,7 @@ public class PipeIndexWrapper {
 	public Float cdm_flushing_pipe_value;
 	public Float cdm_flushing_pipe_meter;
 	public Float cdm_cctv_limit;
-	public boolean cdm_cctv_is_available;
+	public boolean inspected;
 	public Float cdm_cctv_pipe_value;
 	public Float cdm_cctv_pipe_meter;
 	public Float cdm_cctv34_limit;

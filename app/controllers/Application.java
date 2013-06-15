@@ -15,19 +15,23 @@ import models.meter.sensitivity.PipeSensitivityIndex;
 import models.meter.sensitivity.PipeSensitivityIndex.SensitivityIndexPage;
 import models.wrapper.PipeIndexSummary;
 import models.wrapper.PipeIndexWrapper;
+import models.wrapper.PipeIndexWrapperView;
 import models.wrapper.PipeIndexWrapper.PipeIndexWrapperPage;
 import play.data.Form;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import service.PipeIndexServ;
+import service.PipeSensitivityIndexServ;
 import util.MathUtilSphinx;
 
 import views.html.*;
 
 public class Application extends Controller {
 	
-	static List<PipeIndexResult> indexResultList;
+	static List<PipeIndexWrapper> indexWrapperList = null;;
+	static List<PipeIndexWrapperView> pipeIndexWrapperViewList = null;
 
 	/**
 	 * This result directly redirect to application home.
@@ -318,17 +322,29 @@ public class Application extends Controller {
 	@Transactional(readOnly = true)
 	public static Result pipeIndex(int page, String sortBy, String order) {
 		
-		Form<PipeIndex> pipeIndexForm = play.data.Form.form(PipeIndex.class);		
+		Form<PipeIndex> pipeIndexForm = play.data.Form.form(PipeIndex.class);
+		PipeIndex pipeIndexDefault = new PipeIndex();
 		PipeIndex pipeIndexFields = pipeIndexForm.bindFromRequest().get();	
 		pipeIndexFields.sortBy = sortBy;
 		pipeIndexFields.order = order;
-		PipeIndexWrapperPage indexWrapperPage = PipeIndexWrapper.getPipeIndexWrapperPage(page, 18000, pipeIndexFields);
-		List<PipeIndexWrapper> indexWrapperList = indexWrapperPage.getList();
+		
+		if (pipeIndexWrapperViewList == null) {
+			System.out.println("--- pipeIndexWrapperViewList is now NULL! both pipeIndexWrapperViewList and indexWrapperList will be FILLED");
+			pipeIndexWrapperViewList = PipeIndexWrapperView.getPipeIndexWrapperViewList();
+			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
+		}
+		else if (!pipeIndexFields.equals(pipeIndexDefault)) {
+			System.out.println("--- pipeIndexFields is now not equal to DEFAULT! indexWrapperList will be FILLED");
+			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
+		}
+		if (indexWrapperList == null  || indexWrapperList.size() == 0) {
+			System.out.println("--- indexWrapperList was NULL and will be FILLED!");
+			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
+		}
+
 		
 		// fill the 'to the point' pipeIndexResult of each pipe
 		// then fill the 'to the point' pipeIndexSummary and display on page
-		indexResultList = new ArrayList<PipeIndexResult>();
-		PipeIndexResult tempResult = null;
 		PipeIndexSummary pipeIndexSummary = null; // pass this object to render
 		Float conditionIndexLimit = 5.00F; // this is hardcoded. It is 5 and 3 for non inspected pipes
 		Float consequenceIndexLimit = 5.00F;
@@ -342,87 +358,20 @@ public class Application extends Controller {
 		Float conditionAndConsequencePipeLength = 0.000F; // length of pipes that exceed condition and consequence index limit
 		
 		for(PipeIndexWrapper wrapper : indexWrapperList) {
-
-			wrapper.cqm_wastewater_flow_pipe_meter = wrapper.cqm_wastewater_flow_pipe_value
-					/ pipeIndexFields.wasteWaterLimit;
-			wrapper.cqm_wastewater_flow_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cqm_wastewater_flow_pipe_meter, 3);
 			
-			wrapper.cqm_groundwater_area_pipe_meter = wrapper.cqm_groundwater_area_pipe_value
-					/ pipeIndexFields.groundWaterAreaLimit;
-			wrapper.cqm_groundwater_area_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cqm_groundwater_area_pipe_meter, 3);
-			
-			wrapper.cqm_pressure_pipe_meter = wrapper.cqm_pressure_pipe_value
-					/ pipeIndexFields.pressurePipeLimit;
-			wrapper.cqm_pressure_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cqm_pressure_pipe_meter, 3);
-			
-			wrapper.cqm_floor_area_pipe_meter = wrapper.cqm_floor_area_pipe_value
-					/ pipeIndexFields.floorAreaLimit;
-			wrapper.cqm_floor_area_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cqm_floor_area_pipe_meter, 3);
-			
-			wrapper.cqm_road_class_pipe_meter = wrapper.cqm_road_class_pipe_value
-					/ pipeIndexFields.roadClassLimit;
-			wrapper.cqm_road_class_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cqm_road_class_pipe_meter, 3);
-			
-			wrapper.pipe_consequence_index = wrapper.cqm_wastewater_flow_pipe_meter
-					+ wrapper.cqm_groundwater_area_pipe_meter
-					+ wrapper.cqm_pressure_pipe_meter
-					+ wrapper.cqm_floor_area_pipe_meter
-					+ wrapper.cqm_road_class_pipe_meter;
-			wrapper.pipe_consequence_index = (float) MathUtilSphinx.truncateDouble(wrapper.pipe_consequence_index, 3);
-			
-			wrapper.cdm_blockage_pipe_meter = wrapper.cdm_blockage_pipe_value
-					/ pipeIndexFields.blockageLimit;
-			wrapper.cdm_blockage_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cdm_blockage_pipe_meter, 3);
-			
-			wrapper.cdm_flushing_pipe_meter = wrapper.cdm_flushing_pipe_value
-					/ pipeIndexFields.flushingLimit;
-			wrapper.cdm_flushing_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cdm_flushing_pipe_meter, 3);
-			
-			wrapper.cdm_extrawater_pipe_meter = (wrapper.cdm_extrawater_pipe_value - 1)
-					/ pipeIndexFields.extraWaterLimit;
-			
-			if (wrapper.cdm_extrawater_pipe_meter < 0 || MathUtilSphinx.truncateDouble(wrapper.cdm_extrawater_pipe_meter.doubleValue(), 2) == 0D)
-				wrapper.cdm_extrawater_pipe_meter = 0F;
-			wrapper.cdm_extrawater_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cdm_extrawater_pipe_meter, 3);
-			
-			wrapper.cdm_cctv_pipe_meter = wrapper.cdm_cctv_pipe_value
-					/ pipeIndexFields.cctvLimit;
-			wrapper.cdm_cctv_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cdm_cctv_pipe_meter, 3);
-			
-			wrapper.cdm_cctv34_pipe_meter = wrapper.cdm_cctv34_pipe_value
-					/ pipeIndexFields.cctv34Limit;
-			wrapper.cdm_cctv34_pipe_meter = (float) MathUtilSphinx.truncateDouble(wrapper.cdm_cctv34_pipe_meter, 3);
-			
-			wrapper.pipe_condition_index = wrapper.cdm_blockage_pipe_meter
-					+ wrapper.cdm_flushing_pipe_meter
-					+ wrapper.cdm_extrawater_pipe_meter;
-			
-			if (wrapper.cdm_cctv_is_available) {
-				wrapper.pipe_condition_index += wrapper.cdm_cctv_pipe_meter + wrapper.cdm_cctv34_pipe_meter;
-			}
-			wrapper.pipe_condition_index = (float) MathUtilSphinx.truncateDouble(wrapper.pipe_condition_index, 3);
-			
-			wrapper.pipe_total_index = wrapper.pipe_consequence_index + wrapper.pipe_condition_index;
-			wrapper.pipe_total_index = (float) MathUtilSphinx.truncateDouble(wrapper.pipe_total_index, 3);
-			
-			
-			
-			// fill the 'to the point' pipeIndexResult of each pipe. then calculate summary values during the loop
-			tempResult = new PipeIndexResult(wrapper.pipe_datasource_code, wrapper.pipe_identifier, wrapper.pipe_consequence_index, wrapper.cqm_limit_total, wrapper.pipe_condition_index, wrapper.cdm_limit_total, wrapper.pipe_length_m.floatValue());
-			
-			hasExceededConditionIndex = (tempResult.conditionIndex >= tempResult.conditionTotalLimit);
-			hasExceededConsequenceIndex = (tempResult.consequenceIndex >= tempResult.consequenceTotalLimit -1);
+			hasExceededConditionIndex = (wrapper.pipe_condition_index >= wrapper.cdm_limit_total);
+			hasExceededConsequenceIndex = (wrapper.pipe_consequence_index >= wrapper.cqm_limit_total -1);
 			hasExceededConditionAndConsequenceIndex = (hasExceededConditionIndex && hasExceededConsequenceIndex);
 			
-			if (hasExceededConditionAndConsequenceIndex) conditionAndConsequencePipeLength += tempResult.pipeLength;
+			if (hasExceededConditionAndConsequenceIndex) conditionAndConsequencePipeLength += wrapper.pipe_length_m;
 			
-			if (tempResult.isInspected) {
-				if (hasExceededConsequenceIndex) consequencePipeLengthInspected += tempResult.pipeLength;
-				if (hasExceededConditionIndex) conditionPipeLengthInspected += tempResult.pipeLength;
+			if (wrapper.inspected) {
+				if (hasExceededConsequenceIndex) consequencePipeLengthInspected += wrapper.pipe_length_m;
+				if (hasExceededConditionIndex) conditionPipeLengthInspected += wrapper.pipe_length_m;
 			}
 			else {
-				if (hasExceededConsequenceIndex) consequencePipeLengthNotInspected += tempResult.pipeLength;
-				if (hasExceededConditionIndex) conditionPipeLengthNotInspected += tempResult.pipeLength;
+				if (hasExceededConsequenceIndex) consequencePipeLengthNotInspected += wrapper.pipe_length_m;
+				if (hasExceededConditionIndex) conditionPipeLengthNotInspected += wrapper.pipe_length_m;
 			}
 
 		}

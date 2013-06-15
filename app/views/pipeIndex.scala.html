@@ -279,6 +279,10 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
  	
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionAndConsequenceIndexPipeLength") @((math rint pipeIndexSummary.conditionAndConsequencePipeLength * 10) / 10) km</h5>
 
+<div class="actions">
+	<a href="@routes.Application.sendFile()" class="btn">Export index results</a>
+</div>
+
 
 }
             

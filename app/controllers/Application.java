@@ -1,9 +1,13 @@
 package controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 
 import models.Component;
@@ -24,6 +28,7 @@ import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
 import service.PipeIndexServ;
 import service.PipeSensitivityIndexServ;
+import service.export.WritePipeIndexAsXLS;
 import util.MathUtilSphinx;
 
 import views.html.*;
@@ -382,4 +387,19 @@ public class Application extends Controller {
 		pipeIndexForm = pipeIndexForm.fill(pipeIndexFields);
 		return ok(pipeIndex.render(pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));
 	}
+	
+	public static Result sendFile() {
+		File file = null;
+		try {
+			file = WritePipeIndexAsXLS.writePipeIndexAsXLS("Pipe Index Results", indexWrapperList);
+		} catch (WriteException | IOException | IllegalArgumentException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			System.out.println("------SOMETHING BAD HAPPENED");
+			e.printStackTrace();
+		}
+		
+		response().setContentType("application/x-download");  
+		response().setHeader("Content-disposition","attachment; filename=Pipe Index Results.xls");
+		  return ok(file);
+		}
 }

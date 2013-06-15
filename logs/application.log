@@ -1,12 +1,119 @@
-2013-06-15 19:04:58,227 - [INFO] - from play in main 
+2013-06-15 20:28:39,677 - [INFO] - from play in main 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2013-06-15 19:05:03,778 - [INFO] - from play in New I/O worker #1 
+2013-06-15 20:28:50,356 - [INFO] - from play in New I/O worker #1 
 datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
 
-2013-06-15 19:05:03,974 - [INFO] - from play in New I/O worker #1 
+2013-06-15 20:28:50,548 - [INFO] - from play in New I/O worker #1 
 database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
 
-2013-06-15 19:05:06,227 - [INFO] - from play in New I/O worker #1 
+2013-06-15 20:28:52,578 - [INFO] - from play in New I/O worker #1 
+Application started (Dev)
+
+2013-06-15 20:29:00,236 - [ERROR] - from application in play-internal-execution-context-4 
+
+
+! @6ej39pl28 - Internal server error, for (GET) [/export] ->
+
+play.api.Application$$anon$1: Execution exception[[ClassCastException: java.lang.Long cannot be cast to java.lang.Double]]
+	at play.api.Application$class.handleError(Application.scala:289) ~[play_2.10.jar:2.1.1]
+	at play.api.DefaultApplication.handleError(Application.scala:383) [play_2.10.jar:2.1.1]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anon$2$$anonfun$handle$1.apply(PlayDefaultUpstreamHandler.scala:144) [play_2.10.jar:2.1.1]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anon$2$$anonfun$handle$1.apply(PlayDefaultUpstreamHandler.scala:140) [play_2.10.jar:2.1.1]
+	at play.api.libs.concurrent.PlayPromise$$anonfun$extend1$1.apply(Promise.scala:113) [play_2.10.jar:2.1.1]
+	at play.api.libs.concurrent.PlayPromise$$anonfun$extend1$1.apply(Promise.scala:113) [play_2.10.jar:2.1.1]
+	at play.api.libs.concurrent.PlayPromise$$anonfun$extend$1$$anonfun$apply$1.apply(Promise.scala:104) [play_2.10.jar:2.1.1]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) [scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) [scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_07]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_07]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_07]
+java.lang.ClassCastException: java.lang.Long cannot be cast to java.lang.Double
+	at service.export.WritePipeIndexAsXLS.writePipeIndexAsXLS(WritePipeIndexAsXLS.java:47) ~[na:na]
+	at controllers.Application.sendFile(Application.java:394) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$10$$anonfun$apply$10.apply(routes_routing.scala:177) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$10$$anonfun$apply$10.apply(routes_routing.scala:177) ~[na:na]
+	at play.core.Router$HandlerInvoker$$anon$6$$anon$2.invocation(Router.scala:164) ~[play_2.10.jar:2.1.1]
+	at play.core.Router$Routes$$anon$1.invocation(Router.scala:345) ~[play_2.10.jar:2.1.1]
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:31) ~[play_2.10.jar:2.1.1]
+	at play.core.j.JavaAction$$anon$2.apply(JavaAction.scala:74) ~[play_2.10.jar:2.1.1]
+	at play.core.j.JavaAction$$anon$2.apply(JavaAction.scala:73) ~[play_2.10.jar:2.1.1]
+	at play.libs.F$Promise$PromiseActor.onReceive(F.java:420) ~[play_2.10.jar:2.1.1]
+	at akka.actor.UntypedActor$$anonfun$receive$1.applyOrElse(UntypedActor.scala:159) ~[akka-actor_2.10.jar:na]
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:425) ~[akka-actor_2.10.jar:na]
+	at akka.actor.ActorCell.invoke(ActorCell.scala:386) ~[akka-actor_2.10.jar:na]
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:230) ~[akka-actor_2.10.jar:na]
+	at akka.dispatch.Mailbox.run(Mailbox.scala:212) ~[akka-actor_2.10.jar:na]
+	at akka.dispatch.ForkJoinExecutorConfigurator$MailboxExecutionTask.exec(AbstractDispatcher.scala:502) ~[akka-actor_2.10.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:262) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:975) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1478) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:104) ~[scala-library.jar:na]
+
+2013-06-15 20:29:28,509 - [INFO] - from play in New I/O worker #9 
+datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
+
+2013-06-15 20:29:28,653 - [INFO] - from play in New I/O worker #9 
+database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
+
+2013-06-15 20:29:29,876 - [INFO] - from play in New I/O worker #9 
+Application started (Dev)
+
+2013-06-15 20:29:37,066 - [ERROR] - from application in play-internal-execution-context-4 
+
+
+! @6ej3a1nf1 - Internal server error, for (GET) [/export] ->
+
+play.api.Application$$anon$1: Execution exception[[ClassCastException: java.lang.Long cannot be cast to java.lang.Double]]
+	at play.api.Application$class.handleError(Application.scala:289) ~[play_2.10.jar:2.1.1]
+	at play.api.DefaultApplication.handleError(Application.scala:383) [play_2.10.jar:2.1.1]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anon$2$$anonfun$handle$1.apply(PlayDefaultUpstreamHandler.scala:144) [play_2.10.jar:2.1.1]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anon$2$$anonfun$handle$1.apply(PlayDefaultUpstreamHandler.scala:140) [play_2.10.jar:2.1.1]
+	at play.api.libs.concurrent.PlayPromise$$anonfun$extend1$1.apply(Promise.scala:113) [play_2.10.jar:2.1.1]
+	at play.api.libs.concurrent.PlayPromise$$anonfun$extend1$1.apply(Promise.scala:113) [play_2.10.jar:2.1.1]
+	at play.api.libs.concurrent.PlayPromise$$anonfun$extend$1$$anonfun$apply$1.apply(Promise.scala:104) [play_2.10.jar:2.1.1]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) [scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) [scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_07]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_07]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_07]
+java.lang.ClassCastException: java.lang.Long cannot be cast to java.lang.Double
+	at service.export.WritePipeIndexAsXLS.writePipeIndexAsXLS(WritePipeIndexAsXLS.java:47) ~[na:na]
+	at controllers.Application.sendFile(Application.java:394) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$10$$anonfun$apply$10.apply(routes_routing.scala:177) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$10$$anonfun$apply$10.apply(routes_routing.scala:177) ~[na:na]
+	at play.core.Router$HandlerInvoker$$anon$6$$anon$2.invocation(Router.scala:164) ~[play_2.10.jar:2.1.1]
+	at play.core.Router$Routes$$anon$1.invocation(Router.scala:345) ~[play_2.10.jar:2.1.1]
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:31) ~[play_2.10.jar:2.1.1]
+	at play.core.j.JavaAction$$anon$2.apply(JavaAction.scala:74) ~[play_2.10.jar:2.1.1]
+	at play.core.j.JavaAction$$anon$2.apply(JavaAction.scala:73) ~[play_2.10.jar:2.1.1]
+	at play.libs.F$Promise$PromiseActor.onReceive(F.java:420) ~[play_2.10.jar:2.1.1]
+	at akka.actor.UntypedActor$$anonfun$receive$1.applyOrElse(UntypedActor.scala:159) ~[akka-actor_2.10.jar:na]
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:425) ~[akka-actor_2.10.jar:na]
+	at akka.actor.ActorCell.invoke(ActorCell.scala:386) ~[akka-actor_2.10.jar:na]
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:230) ~[akka-actor_2.10.jar:na]
+	at akka.dispatch.Mailbox.run(Mailbox.scala:212) ~[akka-actor_2.10.jar:na]
+	at akka.dispatch.ForkJoinExecutorConfigurator$MailboxExecutionTask.exec(AbstractDispatcher.scala:502) ~[akka-actor_2.10.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:262) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:975) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1478) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:104) ~[scala-library.jar:na]
+
+2013-06-15 20:32:43,325 - [INFO] - from play in New I/O worker #5 
+datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
+
+2013-06-15 20:32:43,466 - [INFO] - from play in New I/O worker #5 
+database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
+
+2013-06-15 20:32:44,656 - [INFO] - from play in New I/O worker #5 
+Application started (Dev)
+
+2013-06-15 20:34:24,161 - [INFO] - from play in New I/O worker #7 
+datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
+
+2013-06-15 20:34:24,310 - [INFO] - from play in New I/O worker #7 
+database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
+
+2013-06-15 20:34:25,449 - [INFO] - from play in New I/O worker #7 
 Application started (Dev)
 

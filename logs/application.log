@@ -10,3 +10,31 @@ database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/
 2013-06-16 16:48:20,526 - [INFO] - from play in New I/O worker #1 
 Application started (Dev)
 
+2013-06-16 19:53:59,213 - [INFO] - from play in main 
+datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1606-backup?characterEncoding=utf8] bound to JNDI as DefaultDS
+
+2013-06-16 19:54:43,282 - [ERROR] - from org.hibernate.util.JDBCExceptionReporter in main 
+Batch entry 0 insert into PipeIndexWrapper (cdm_blockage_limit, cdm_blockage_pipe_meter, cdm_blockage_pipe_value, cdm_cctv34_limit, cdm_cctv34_pipe_meter, cdm_cctv34_pipe_value, cdm_cctv_limit, cdm_cctv_pipe_meter, cdm_cctv_pipe_value, cdm_extrawater_percentange_limit, cdm_extrawater_pipe_meter, cdm_extrawater_pipe_value, cdm_extrawater_total_consumption_m3_a, cdm_extrawater_total_flow_m3_a, cdm_flushing_limit, cdm_flushing_pipe_meter, cdm_flushing_pipe_value, cdm_industrial_ww_pipe_meter, cdm_industrial_ww_pipe_value, cdm_limit_total, cdm_overflow_limit, cdm_overflow_m3_a, cdm_overflow_pipe_meter, cdm_overflow_pipe_value, cqm_beach_distance_limit, cqm_beach_distance_pipe_meter, cqm_beach_distance_pipe_value, cqm_floor_area, cqm_floor_area_limit, cqm_floor_area_pipe_meter, cqm_floor_area_pipe_value, cqm_floor_area_total_pipe_length, cqm_groundwater_area_limit, cqm_groundwater_area_pipe_meter, cqm_groundwater_area_pipe_value, cqm_limit_total, cqm_pipe_type_diameter_limit, cqm_pipe_type_limit, cqm_pipe_type_meter, cqm_pipe_type_value, cqm_road_class_limit, cqm_road_class_pipe_meter, cqm_road_class_pipe_value, cqm_wastewater_flow_annual_flow_m3, cqm_wastewater_flow_limit, cqm_wastewater_flow_pipe_meter, cqm_wastewater_flow_pipe_value, diameter_mm, inspected, installation_year, material, owner_ps_area, pipe_class, pipe_condition_index, pipe_consequence_index, pipe_datasource_code, pipe_identifier, pipe_length_m, pipe_id) values ('2.0', '0.0', '0.0', '7.0', '0.0', '0.0', '10.0', '0.0', '0.0', '15.0', '9.087384', '2.3631077', '11478.0', '21699.0', '2.0', '0.0', '0.0', '0', '0', '5.0', '2.0', '0.0', '0.0', '0.0', '200.0', '0.4', '500.0', '219586', '20.0', '0.6200228', '12.400455', '17707.898', '1.0', '0.0', '0.0', '6.0', '500.0', '2.0', '0.972', '4', '4.0', '0.0', '0.0', '11478.0', '500.0', '0.486', '243.0', '243', '0', '0', '', 'JVP7', 'Paineviemäri - Jäte', '0.0', '2.4780228', '232757', 'J35210', '30.304', '2253301') was aborted.  Call getNextException to see the cause.
+
+2013-06-16 19:54:43,282 - [ERROR] - from org.hibernate.util.JDBCExceptionReporter in main 
+ERROR: column "cdm_industrial_ww_pipe_value" is of type boolean but expression is of type integer
+  Hint: You will need to rewrite or cast the expression.
+  Position: 1517
+
+2013-06-16 19:57:07,901 - [INFO] - from play in main 
+datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1606-backup?characterEncoding=utf8] bound to JNDI as DefaultDS
+
+2013-06-16 20:14:32,783 - [INFO] - from play in main 
+datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
+
+2013-06-16 20:15:17,376 - [ERROR] - from org.hibernate.util.JDBCExceptionReporter in main 
+Batch entry 0 insert into PipeIndexWrapper (cdm_blockage_limit, cdm_blockage_pipe_meter, cdm_blockage_pipe_value, cdm_cctv34_limit, cdm_cctv34_pipe_meter, cdm_cctv34_pipe_value, cdm_cctv_limit, cdm_cctv_pipe_meter, cdm_cctv_pipe_value, cdm_extrawater_percentange_limit, cdm_extrawater_pipe_meter, cdm_extrawater_pipe_value, cdm_extrawater_total_consumption_m3_a, cdm_extrawater_total_flow_m3_a, cdm_flushing_limit, cdm_flushing_pipe_meter, cdm_flushing_pipe_value, cdm_industrial_ww_pipe_meter, cdm_industrial_ww_pipe_value, cdm_limit_total, cdm_overflow_limit, cdm_overflow_m3_a, cdm_overflow_pipe_meter, cdm_overflow_pipe_value, cqm_beach_distance_limit, cqm_beach_distance_pipe_meter, cqm_beach_distance_pipe_value, cqm_floor_area, cqm_floor_area_limit, cqm_floor_area_pipe_meter, cqm_floor_area_pipe_value, cqm_floor_area_total_pipe_length, cqm_groundwater_area_limit, cqm_groundwater_area_pipe_meter, cqm_groundwater_area_pipe_value, cqm_limit_total, cqm_pipe_type_diameter_limit, cqm_pipe_type_limit, cqm_pipe_type_meter, cqm_pipe_type_value, cqm_road_class_limit, cqm_road_class_pipe_meter, cqm_road_class_pipe_value, cqm_wastewater_flow_annual_flow_m3, cqm_wastewater_flow_limit, cqm_wastewater_flow_pipe_meter, cqm_wastewater_flow_pipe_value, diameter_mm, inspected, installation_year, material, owner_ps_area, pipe_class, pipe_condition_index, pipe_consequence_index, pipe_datasource_code, pipe_identifier, pipe_length_m, pipe_id) values ('2.0', '0.0', '0.0', '7.0', '0.0', '0.0', '10.0', '0.0', '0.0', '15.0', '9.087384', '2.3631077', '11478.0', '21699.0', '2.0', '0.0', '0.0', '0', '0', '5.0', '2.0', '0.0', '0.0', '0.0', '200.0', '0.4', '500.0', '219586', '20.0', '0.6200228', '12.400455', '17707.898', '1.0', '0.0', '0.0', '6.0', '500.0', '2.0', '0.972', '4', '4.0', '0.0', '0.0', '11478.0', '500.0', '0.486', '243.0', '243', '0', '0', '', 'JVP7', 'Paineviemäri - Jäte', '0.0', '2.4780228', '232757', 'J35210', '30.304', '2253301') was aborted.  Call getNextException to see the cause.
+
+2013-06-16 20:15:17,376 - [ERROR] - from org.hibernate.util.JDBCExceptionReporter in main 
+ERROR: column "cdm_industrial_ww_pipe_value" is of type boolean but expression is of type integer
+  Hint: You will need to rewrite or cast the expression.
+  Position: 1517
+
+2013-06-16 20:19:03,291 - [INFO] - from play in main 
+datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
+

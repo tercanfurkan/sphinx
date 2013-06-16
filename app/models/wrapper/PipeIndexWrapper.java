@@ -11,6 +11,8 @@ import javax.persistence.Query;
 
 import javax.persistence.Id;
 
+import models.Component;
+import models.ComponentType;
 import models.form.PipeIndex;
 
 import play.db.jpa.JPA;
@@ -312,4 +314,8 @@ public class PipeIndexWrapper {
         return options;
     }
 	
+    
+	public PipeIndexWrapper merge() {
+		return JPA.em().merge(this);
+	}
 }

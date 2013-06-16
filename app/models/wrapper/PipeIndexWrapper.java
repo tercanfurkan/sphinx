@@ -24,14 +24,14 @@ public class PipeIndexWrapper {
 	public Long pipe_datasource_code;
 	public String pipe_identifier;
 	public String pipe_class;
-	public String diameter_original_mm;
+//	public String diameter_original_mm;
 	public Integer diameter_mm;
-	public String diameter_status;
+//	public String diameter_status;
 	public Float pipe_length_m;
 	public Integer installation_year;
-	public Integer original_installation_year;
+//	public Integer original_installation_year;
 	public String material;
-	public String model;
+//	public String model;
 	public String owner_ps_area;
 	public Float cqm_pipe_type_limit;
 	public Float cqm_pipe_type_diameter_limit;
@@ -53,6 +53,9 @@ public class PipeIndexWrapper {
 	public Float cqm_road_class_pipe_value;
 	public Float cqm_road_class_pipe_meter;
 	public Float cqm_limit_total;
+	public Float cqm_beach_distance_limit;
+	public Float cqm_beach_distance_pipe_value;
+	public Float cqm_beach_distance_pipe_meter;
 	public Float pipe_consequence_index;
 	public Float cdm_blockage_limit;
 	public Float cdm_blockage_pipe_value;

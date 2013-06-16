@@ -25,6 +25,7 @@ public class PipeIndex {
 		this.cctvLimit = this.conditionIndex.cctvTotalMeter.specialCautionLimit;
 		this.cctv34Limit = this.conditionIndex.cctv34Meter.specialCautionLimit;
 		this.overFlowLimit = 2F;
+		this.ofBeachDistanceLimit = 200F; //in meters
 	}
 
 	public int page;
@@ -45,6 +46,7 @@ public class PipeIndex {
 	public float cctvLimit;
 	public float cctv34Limit;
 	public float overFlowLimit;
+	public float ofBeachDistanceLimit;
 	public boolean isInspected;
 	public String[] filterNameList = {"", "", ""}; 
 	public String[] filterValueList = {"", "", ""}; 

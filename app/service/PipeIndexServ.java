@@ -5,15 +5,7 @@ import java.util.List;
 
 import util.MathUtilSphinx;
 
-import models.ComponentProperty;
 import models.form.PipeIndex;
-import models.meter.condition.PipeBlockageMeter;
-import models.meter.condition.PipeCctv34Meter;
-import models.meter.condition.PipeCctvTotalMeter;
-import models.meter.condition.PipeFlushingEventMeter;
-import models.meter.sensitivity.PipeAnnualWasteWaterFlowMeter;
-import models.meter.sensitivity.PipeGroundWaterAreaMeter;
-import models.meter.sensitivity.PipeRelativeFloorAreaMeter;
 import models.wrapper.PipeIndexWrapper;
 import models.wrapper.PipeIndexWrapperView;
 
@@ -33,6 +25,16 @@ public class PipeIndexServ {
 			retWrapper.pipe_length_m = view.pipeLength;
 			retWrapper.diameter_mm = view.pipeDiameter.intValue();
 			retWrapper.pipe_datasource_code = view.pipeCode;
+			retWrapper.cdm_extrawater_total_consumption_m3_a = view.psAnnualConsumption;
+			retWrapper.cdm_extrawater_total_flow_m3_a = view.psFlowSum;
+			retWrapper.cqm_floor_area = view.totalFloorArea;
+			retWrapper.cqm_floor_area_total_pipe_length = view.allPipeLengthFloorArea;
+			retWrapper.cqm_wastewater_flow_annual_flow_m3 = view.psAnnualConsumption;
+			retWrapper.pipe_class = view.pipeClassName;
+			retWrapper.owner_ps_area = view.psName;
+			retWrapper.material = view.pipeMaterial;
+			retWrapper.installation_year = view.pipeInstallationYear;
+			
 			retValList.add(retWrapper);
 		}
 		
@@ -62,13 +64,18 @@ public class PipeIndexServ {
 		retWrapper.cqm_road_class_pipe_meter = (retWrapper.cqm_road_class_pipe_value != 0) ? (meterLimit.roadClassLimit / retWrapper.cqm_road_class_pipe_value) : 0F;
 		retWrapper.cqm_road_class_limit = meterLimit.roadClassLimit;
 		
+		retWrapper.cqm_beach_distance_limit = meterLimit.ofBeachDistanceLimit;
+		retWrapper.cqm_beach_distance_pipe_value = view.ofDistanceToBeach;
+		retWrapper.cqm_beach_distance_pipe_meter = (retWrapper.cqm_beach_distance_pipe_value != 0F) ? (retWrapper.cqm_beach_distance_limit / retWrapper.cqm_beach_distance_pipe_value) : 0F;
+		
 		retWrapper.pipe_consequence_index = retWrapper.cqm_wastewater_flow_pipe_meter
 				+ retWrapper.cqm_groundwater_area_pipe_meter
 				+ retWrapper.cqm_pipe_type_meter
 				+ retWrapper.cqm_floor_area_pipe_meter
-				+ retWrapper.cqm_road_class_pipe_meter; 
+				+ retWrapper.cqm_road_class_pipe_meter
+				+ retWrapper.cqm_beach_distance_pipe_meter; 
 		
-		retWrapper.cqm_limit_total = 5F;
+		retWrapper.cqm_limit_total = 6F;
 		
 		return retWrapper;
 	}

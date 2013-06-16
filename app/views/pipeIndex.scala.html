@@ -113,6 +113,14 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 								<span class="help-inline">1:Regional main street 1, 2:Regional main street 2, 3:Local main street, 4:Collector street</span>	
 							</div>
 						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Beach distance (m)</label>						
+							<div class="controls">
+								@inputText( field = pipeIndex("ofBeachDistanceLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">distance between the areal overflow structure and the nearest beach</span>	
+							</div>
+						</div>
 
 					</div>
 
@@ -287,7 +295,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexLimit") @pipeIndexSummary.consequenceLimit</h5>
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexLimit") @pipeIndexSummary.conditionLimit (5 for uninspected pipes)</h5>
  	
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.allIndexPipeLength") 455.5 km</h5>    
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.allIndexPipeLength") 386.5 km</h5>    
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLength") @((math rint pipeIndexSummary.consequenceIndexPipeLength * 10) / 10) km</h5>
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLengthInspected") @((math rint pipeIndexSummary.consequenceIndexPipeLengthInspected * 10) / 10) km</h5>
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLengthNotInspected") @((math rint pipeIndexSummary.consequenceIndexPipeLengthNotInspected * 10) / 10) km</h5>

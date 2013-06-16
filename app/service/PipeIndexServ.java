@@ -87,7 +87,7 @@ public class PipeIndexServ {
 		
 		retWrapper.cdm_cctv_pipe_value = (view.pipeCctvSum != null) ? view.pipeCctvSum : 0F;
 		retWrapper.cdm_cctv_pipe_meter = retWrapper.cdm_cctv_pipe_value / meterLimit.cctvLimit;
-		retWrapper.inspected = (retWrapper.cdm_cctv_pipe_value != 0) ? true:false;
+		retWrapper.inspected = (retWrapper.cdm_cctv_pipe_value != 0) ? 1:0;
 		retWrapper.cdm_cctv_limit = meterLimit.cctvLimit;
 		
 		retWrapper.cdm_cctv34_pipe_value = (view.pipeCctv34Sum != null) ? view.pipeCctv34Sum : 0F;
@@ -100,13 +100,23 @@ public class PipeIndexServ {
 			retWrapper.cdm_extrawater_pipe_meter = 0F;
 		retWrapper.cdm_extrawater_limit = meterLimit.extraWaterLimit;
 		
+		retWrapper.cdm_overflow_limit = meterLimit.overFlowLimit;
+		retWrapper.cdm_overflow_m3_a = (view.ofAnnualOverFlow != null) ? view.ofAnnualOverFlow : 0F;
+		retWrapper.cdm_overflow_pipe_value = retWrapper.cdm_overflow_m3_a;
+		retWrapper.cdm_overflow_pipe_meter = retWrapper.cdm_overflow_pipe_value / meterLimit.overFlowLimit;
+		retWrapper.cdm_industrial_ww_pipe_value = (view.pipeInIndustrialRoot) ? 1:0;
+		retWrapper.cdm_industrial_ww_pipe_meter = retWrapper.cdm_industrial_ww_pipe_value;
+		
+		
 		retWrapper.pipe_condition_index = retWrapper.cdm_blockage_pipe_meter
 				+ retWrapper.cdm_flushing_pipe_meter
 				+ retWrapper.cdm_cctv_pipe_meter
 				+ retWrapper.cdm_cctv34_pipe_meter
-				+ retWrapper.cdm_blockage_pipe_meter;
+				+ retWrapper.cdm_blockage_pipe_meter
+				+ retWrapper.cdm_overflow_pipe_meter
+				+ retWrapper.cdm_industrial_ww_pipe_meter;
 		
-		retWrapper.cdm_limit_total = (retWrapper.inspected) ? 5F : 3F;
+		retWrapper.cdm_limit_total = (retWrapper.inspected == 1) ? 7F : 5F;
 		
 		return retWrapper;
 	}

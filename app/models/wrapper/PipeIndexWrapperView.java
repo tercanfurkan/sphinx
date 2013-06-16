@@ -29,6 +29,8 @@ public final class PipeIndexWrapperView {
 	public Integer pipeGroundWaterAreaClassification;
 	public Float psFlowSum;
 	public Integer pipeRoadClassification;
+	public boolean pipeInIndustrialRoot;
+	public Float ofAnnualOverFlow;
 	
 	public static List<PipeIndexWrapperView> getPipeIndexWrapperViewList() {
 		

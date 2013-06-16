@@ -349,72 +349,69 @@ public class ModelTest {
 	// });
 	// }
 
-	// @Test
-	// public void addComponentList() {
-	// running(fakeApplication(), new Runnable() {
-	// public void run() {
-	// JPA.withTransaction(new play.libs.F.Callback0() {
-	// public void invoke() {
-	// Collection<Component> list = ReadCSV.getComponents();
-	// for (Component com: list) {
-	// com.save();
-	// }
-	// ScadaHrWrapper scadaHrWrapper = ReadCSV
-	// .getScadaHourly();
-	//
-	// Map <String, ScadaWrapper> wrapperMap = new HashMap<String,
-	// ScadaWrapper>();
-	//
-	// for (String key : scadaHrWrapper.pumpSHMap.keySet()) {
-	// PumpScadaHourly psh = scadaHrWrapper.pumpSHMap.get(key);
-	// psh.save();
-	// System.out.println(psh.component.name + " | "
-	// + psh.pumpName + " | "
-	// + psh.pumped_flow + " | "
-	// + psh.average_current + " | "
-	// + psh.yield + " | "
-	// + psh.pumping_duration_alone + " | "
-	// + psh.timestamp);
-	// }
-	//
-	// for (String key : scadaHrWrapper.psSHMap.keySet()) {
-	// PsScadaHourly psh = scadaHrWrapper.psSHMap.get(key);
-	// psh.save();
-	// System.out.println(psh.component.name + " | "
-	// + psh.timestamp + " | "
-	// + psh.FI_01 + " | "
-	// + psh.EQ_01 + " | "
-	// + psh.FI_02 + " | "
-	// + psh.YHTK + " | "
-	// + psh.pumpung_duration_2p + " | "
-	// + psh.pumpung_duration_3p + " | "
-	// + psh.pumpung_duration_4p + " | "
-	// + psh.PINT);
-	// }
-	// }
-	// });
-	// }
-	// });
-	// }
+//	 @Test
+	public void addComponentList() {
+		running(fakeApplication(), new Runnable() {
+			public void run() {
+				JPA.withTransaction(new play.libs.F.Callback0() {
+					public void invoke() {
+//						Collection<Component> list = ReadCSV.getComponents();
+//						for (Component com : list) {
+//							com.save();
+//						}
+//						ScadaHrWrapper scadaHrWrapper = ReadCSV
+//								.getScadaHourly();
+//
+//						Map<String, ScadaWrapper> wrapperMap = new HashMap<String, ScadaWrapper>();
+//
+//						for (String key : scadaHrWrapper.pumpSHMap.keySet()) {
+//							PumpScadaHourly psh = scadaHrWrapper.pumpSHMap
+//									.get(key);
+//							psh.save();
+//							System.out.println(psh.component.name + " | "
+//									+ psh.pumpName + " | " + psh.pumped_flow
+//									+ " | " + psh.average_current + " | "
+//									+ psh.yield + " | "
+//									+ psh.pumping_duration_alone + " | "
+//									+ psh.timestamp);
+//						}
+//
+//						for (String key : scadaHrWrapper.psSHMap.keySet()) {
+//							PsScadaHourly psh = scadaHrWrapper.psSHMap.get(key);
+//							psh.save();
+//							System.out.println(psh.component.name + " | "
+//									+ psh.timestamp + " | " + psh.FI_01 + " | "
+//									+ psh.EQ_01 + " | " + psh.FI_02 + " | "
+//									+ psh.YHTK + " | "
+//									+ psh.pumpung_duration_2p + " | "
+//									+ psh.pumpung_duration_3p + " | "
+//									+ psh.pumpung_duration_4p + " | "
+//									+ psh.PINT);
+//						}
+					}
+				});
+			}
+		});
+	}
 
-	// @Test
-	// public void addNIS() {
-	// running(fakeApplication(), new Runnable() {
-	// public void run() {
-	// JPA.withTransaction(new play.libs.F.Callback0() {
-	// public void invoke() {
-	//
-	// try {
-	// ReadXLS.main(null);
-	// } catch (IOException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// }
-	// });
-	// }
-	// });
-	// }
+//	@Test
+	public void addNIS() {
+		running(fakeApplication(), new Runnable() {
+			public void run() {
+				JPA.withTransaction(new play.libs.F.Callback0() {
+					public void invoke() {
+
+						try {
+							ReadXLS.main(null);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+	}
 
 	// @Test
 	// public void addFlushingEventsNIS() {

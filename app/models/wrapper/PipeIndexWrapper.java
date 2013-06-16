@@ -60,7 +60,7 @@ public class PipeIndexWrapper {
 	public Float cdm_flushing_pipe_value;
 	public Float cdm_flushing_pipe_meter;
 	public Float cdm_cctv_limit;
-	public boolean inspected;
+	public int inspected;
 	public Float cdm_cctv_pipe_value;
 	public Float cdm_cctv_pipe_meter;
 	public Float cdm_cctv34_limit;
@@ -71,9 +71,14 @@ public class PipeIndexWrapper {
 	public Float cdm_extrawater_total_consumption_m3_a;
 	public Float cdm_extrawater_pipe_value;
 	public Float cdm_extrawater_pipe_meter;
+	public Float cdm_overflow_limit;
+	public Float cdm_overflow_m3_a;
+	public Float cdm_overflow_pipe_value;
+	public Float cdm_overflow_pipe_meter;
+	public int cdm_industrial_ww_pipe_value;
+	public int cdm_industrial_ww_pipe_meter;
 	public Float cdm_limit_total;
 	public Float pipe_condition_index;
-	public Float pipe_total_index;
 	
 	
 	public static class PipeIndexWrapperPage {

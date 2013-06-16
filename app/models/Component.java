@@ -55,6 +55,8 @@ public class Component {
 	public String owner;
 	
 	public Integer roadClassification;
+	public Float annualOverFlow; //m3
+	public boolean inIndustrialRoot = false; //only for pipes at the moment. is true if pipe is in the  industrial waste water root
 
 	@Transient
 	public Boolean selected;

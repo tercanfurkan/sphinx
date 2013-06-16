@@ -370,7 +370,7 @@ public class Application extends Controller {
 			
 			if (hasExceededConditionAndConsequenceIndex) conditionAndConsequencePipeLength += wrapper.pipe_length_m;
 			
-			if (wrapper.inspected) {
+			if (wrapper.inspected == 1) {
 				if (hasExceededConsequenceIndex) consequencePipeLengthInspected += wrapper.pipe_length_m;
 				if (hasExceededConditionIndex) conditionPipeLengthInspected += wrapper.pipe_length_m;
 			}

@@ -23,7 +23,9 @@ public class WritePipeIndexAsXLS {
 		File retFile = new File("export/" + fileName + ".xls");
 		
 		WritableWorkbook workbook = Workbook.createWorkbook(retFile);
+		System.out.println("------workbook created");
 		WritableSheet sheet = workbook.createSheet("All Index results", 0);
+		System.out.println("------sheet created");
 		Label label = null;
 		
 		Class wrapperClass = wrapperList.get(0).getClass();
@@ -34,6 +36,7 @@ public class WritePipeIndexAsXLS {
 			label = new Label(i,0,valueObjFields[i].getName());
 			sheet.addCell(label);
 		}
+		System.out.println("------headers filled");
 		
 		int row  = 1;
 		for (PipeIndexWrapper wrapper : wrapperList) {
@@ -59,10 +62,13 @@ public class WritePipeIndexAsXLS {
 			}
 			row ++;
 		}
+		System.out.println("------content filled");
 
 		
 		workbook.write(); 
+		System.out.println("------workbook written to file");
 		workbook.close();
+		System.out.println("------workbook closed!");
 		
 		return retFile;
 	}

@@ -54,11 +54,9 @@ public class PipeIndexWrapper {
 	public Float cqm_road_class_limit;
 	public Float cqm_road_class_pipe_value;
 	public Float cqm_road_class_pipe_meter;
-	public Float cqm_limit_total;
 	public Float cqm_beach_distance_limit;
 	public Float cqm_beach_distance_pipe_value;
 	public Float cqm_beach_distance_pipe_meter;
-	public Float pipe_consequence_index;
 	public Float cdm_blockage_limit;
 	public Float cdm_blockage_pipe_value;
 	public Float cdm_blockage_pipe_meter;
@@ -85,6 +83,8 @@ public class PipeIndexWrapper {
 	public int cdm_industrial_ww_pipe_meter;
 	public Float cdm_limit_total;
 	public Float pipe_condition_index;
+	public Float cqm_limit_total;
+	public Float pipe_consequence_index;
 	
 	
 	public static class PipeIndexWrapperPage {

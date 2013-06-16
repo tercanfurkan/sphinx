@@ -8,7 +8,7 @@ public class PipeExtraWaterMeter extends PipeConditionMeter {
 
 	public PipeExtraWaterMeter() {
 		super();
-		this.specialCautionLimit = 0.15F;
+		this.specialCautionLimit = 15F;
 		this.totalFlow = 0F;
 		this.totalConsumption = 0F;
 		this.ownerPsComponent = "";

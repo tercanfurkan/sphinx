@@ -70,7 +70,7 @@ public class PipeIndexWrapper {
 	public Float cdm_cctv34_limit;
 	public Float cdm_cctv34_pipe_value;
 	public Float cdm_cctv34_pipe_meter;
-	public Float cdm_extrawater_limit;
+	public Float cdm_extrawater_percentange_limit;
 	public Float cdm_extrawater_total_flow_m3_a;
 	public Float cdm_extrawater_total_consumption_m3_a;
 	public Float cdm_extrawater_pipe_value;

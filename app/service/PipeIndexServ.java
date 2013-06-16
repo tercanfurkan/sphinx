@@ -104,10 +104,10 @@ public class PipeIndexServ {
 		retWrapper.cdm_cctv34_limit = meterLimit.cctv34Limit;
 		
 		retWrapper.cdm_extrawater_pipe_value = totalConsumption != 0F ? (float) (totalFlow / (totalConsumption * 0.8)) : 0F;
-		retWrapper.cdm_extrawater_pipe_meter = (retWrapper.cdm_extrawater_pipe_value - 1) / meterLimit.extraWaterLimit;
+		retWrapper.cdm_extrawater_pipe_meter = (retWrapper.cdm_extrawater_pipe_value - 1) / (meterLimit.extraWaterLimit / 100);
 		if (retWrapper.cdm_extrawater_pipe_meter < 0 || MathUtilSphinx.truncateDouble(retWrapper.cdm_extrawater_pipe_meter.doubleValue(), 2) == 0D)
 			retWrapper.cdm_extrawater_pipe_meter = 0F;
-		retWrapper.cdm_extrawater_limit = meterLimit.extraWaterLimit;
+		retWrapper.cdm_extrawater_percentange_limit = meterLimit.extraWaterLimit;
 		
 		retWrapper.cdm_overflow_limit = meterLimit.overFlowLimit;
 		retWrapper.cdm_overflow_m3_a = (view.ofAnnualOverFlow != null) ? view.ofAnnualOverFlow : 0F;

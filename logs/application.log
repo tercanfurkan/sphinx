@@ -1,12 +1,12 @@
-2013-06-16 16:33:34,043 - [INFO] - from play in main 
+2013-06-16 16:46:03,988 - [INFO] - from play in main 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2013-06-16 16:33:39,154 - [INFO] - from play in New I/O worker #1 
+2013-06-16 16:48:18,052 - [INFO] - from play in New I/O worker #1 
 datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
 
-2013-06-16 16:33:39,335 - [INFO] - from play in New I/O worker #1 
+2013-06-16 16:48:18,266 - [INFO] - from play in New I/O worker #1 
 database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
 
-2013-06-16 16:33:41,390 - [INFO] - from play in New I/O worker #1 
+2013-06-16 16:48:20,526 - [INFO] - from play in New I/O worker #1 
 Application started (Dev)
 

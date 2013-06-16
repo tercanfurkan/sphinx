@@ -15,7 +15,8 @@ public class PipeIndex {
 		this.filter = "";
 		this.wasteWaterLimit = this.sensitivityIndex.annualWasteWaterFlowMeter.specialCautionLimit;
 		this.groundWaterAreaLimit = this.sensitivityIndex.groundWaterAreaMeter.specialCautionLimit;
-		this.pipeTypeLimit = this.sensitivityIndex.pressureMeter.specialCautionLimit;
+		this.pipeTypeLimit = 2F;
+		this.pipeTypeDiameterLimit = 500F;
 		this.floorAreaLimit = this.sensitivityIndex.relativeFloorAreaMeter.specialCautionLimit;
 		this.roadClassLimit = this.sensitivityIndex.roadClassificationMeter.specialCautionLimit;
 		this.blockageLimit = this.conditionIndex.blockageMeter.specialCautionLimit;
@@ -35,6 +36,7 @@ public class PipeIndex {
 	public float wasteWaterLimit;
 	public float groundWaterAreaLimit; 
 	public float pipeTypeLimit; 
+	public float pipeTypeDiameterLimit;
 	public float floorAreaLimit;
 	public float roadClassLimit;
 	public float blockageLimit;

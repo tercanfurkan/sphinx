@@ -31,6 +31,7 @@ public class PipeIndexServ {
 			retWrapper.pipe_id = view.pipeId;
 			retWrapper.pipe_identifier = view.pipeName;
 			retWrapper.pipe_length_m = view.pipeLength;
+			retWrapper.diameter_mm = view.pipeDiameter.intValue();
 			retWrapper.pipe_datasource_code = view.pipeCode;
 			retValList.add(retWrapper);
 		}
@@ -49,8 +50,9 @@ public class PipeIndexServ {
 		retWrapper.cqm_groundwater_area_limit = meterLimit.groundWaterAreaLimit;
 		
 		retWrapper.cqm_pipe_type_value = view.pipeTypeValue;
-		retWrapper.cqm_pipe_type_meter = (retWrapper.cqm_pipe_type_value * view.pipeDiameter) / (meterLimit.pipeTypeLimit * 500F);
+		retWrapper.cqm_pipe_type_meter = (retWrapper.cqm_pipe_type_value * view.pipeDiameter) / (meterLimit.pipeTypeLimit * meterLimit.pipeTypeDiameterLimit);
 		retWrapper.cqm_pipe_type_limit = meterLimit.pipeTypeLimit;
+		retWrapper.cqm_pipe_type_diameter_limit = meterLimit.pipeTypeDiameterLimit;
 		
 		retWrapper.cqm_floor_area_pipe_value = (view.allPipeLengthFloorArea == 0F) ? 0F : (float) view.totalFloorArea / view.allPipeLengthFloorArea;
 		retWrapper.cqm_floor_area_pipe_meter = retWrapper.cqm_floor_area_pipe_value / meterLimit.floorAreaLimit;

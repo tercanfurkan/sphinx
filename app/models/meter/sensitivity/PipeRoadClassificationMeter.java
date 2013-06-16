@@ -13,7 +13,7 @@ public class PipeRoadClassificationMeter extends AbstractPipeMeter {
 	public PipeRoadClassificationMeter() {
 		super();
 		this.scale = "0-4";
-		this.specialCautionLimit = 1F;
+		this.specialCautionLimit = 4F;
 	}
 	
 

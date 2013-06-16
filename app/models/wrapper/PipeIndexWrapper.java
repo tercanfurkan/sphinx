@@ -34,6 +34,7 @@ public class PipeIndexWrapper {
 	public String model;
 	public String owner_ps_area;
 	public Float cqm_pipe_type_limit;
+	public Float cqm_pipe_type_diameter_limit;
 	public Integer cqm_pipe_type_value;
 	public Float cqm_pipe_type_meter;
 	public Float cqm_wastewater_flow_limit;

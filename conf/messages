@@ -12,6 +12,7 @@ pi.pipe.title=INDEX CALCULATION
 
 pipeIndex.summary.conditionIndexLimit=Condition index limit :  
 pipeIndex.summary.consequenceIndexLimit=Consequence index limit : 
+pipeIndex.summary.allIndexPipeLength=Length of all pipes :
 pipeIndex.summary.conditionIndexPipeLengthInspected=Length of inspected pipes exceeding condition index limit : 
 pipeIndex.summary.conditionIndexPipeLengthNotInspected=Length of uninspected pipes exceeding condition index limit : 
 pipeIndex.summary.conditionIndexPipeLength=Length of all pipes exceeding condition index limit : 

@@ -87,6 +87,15 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 								<span class="help-inline">0: gravitation pipe, 1: collection sewer, 2: main sewer, 4: pressure pipe</span>					
 							</div>
 						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Pipe type diameter (mm)</label>						
+							<div class="controls">
+								@inputText( field = pipeIndex("pipeTypeDiameterLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">pipe diameter caution limit for pipe type</span>					
+							</div>
+						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Relative floor area (m<sup>2</sup>/m)</label>											
 							<div class="controls">
@@ -101,7 +110,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 							<div class="controls">
 								@inputText( field = pipeIndex("roadClassLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">1:highway, 2:(Seudullinen paakatu / kantatie), 3:regional road (Alueellinen paakatu / seututie), 4:connection road</span>	
+								<span class="help-inline">1:Regional main street 1, 2:Regional main street 2, 3:Local main street, 4:Collector street</span>	
 							</div>
 						</div>
 
@@ -154,6 +163,14 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 								@inputText( field = pipeIndex("cctv34Limit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
 								<span class="help-inline">sum of CCTV inspection defects 3 and 4 of a pipe</span>
+						</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Over flow (m<sup>3</sup>/year)</label>					
+						<div class="controls">
+								@inputText( field = pipeIndex("overFlowLimit"), 
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<span class="help-inline">annual overflow (m<sup>3</sup>) of the area</span>
 						</div>
 						</div>
 
@@ -268,11 +285,13 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 
     
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexLimit") @pipeIndexSummary.consequenceLimit</h5>
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexLimit") @pipeIndexSummary.conditionLimit (5 for uninspected pipes)</h5>
+ 	
+ 	<h5 id="homeTitle">@Messages("pipeIndex.summary.allIndexPipeLength") 455.5 km</h5>    
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLength") @((math rint pipeIndexSummary.consequenceIndexPipeLength * 10) / 10) km</h5>
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLengthInspected") @((math rint pipeIndexSummary.consequenceIndexPipeLengthInspected * 10) / 10) km</h5>
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLengthNotInspected") @((math rint pipeIndexSummary.consequenceIndexPipeLengthNotInspected * 10) / 10) km</h5>
  	
-    <h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexLimit") @pipeIndexSummary.conditionLimit</h5>
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexPipeLength") @((math rint pipeIndexSummary.conditionIndexPipeLength * 10) / 10) km</h5>
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexPipeLengthInspected") @((math rint pipeIndexSummary.conditionIndexPipeLengthInspected * 10) / 10) km</h5>
  	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexPipeLengthNotInspected") @((math rint pipeIndexSummary.conditionIndexPipeLengthNotInspected * 10) / 10) km</h5>

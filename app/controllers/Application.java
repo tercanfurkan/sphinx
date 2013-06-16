@@ -351,7 +351,7 @@ public class Application extends Controller {
 		// fill the 'to the point' pipeIndexResult of each pipe
 		// then fill the 'to the point' pipeIndexSummary and display on page
 		PipeIndexSummary pipeIndexSummary = null; // pass this object to render
-		Float conditionIndexLimit = 5.00F; // this is hardcoded. It is 5 and 3 for non inspected pipes
+		Float conditionIndexLimit = 7.00F; // this is hardcoded. It is 5 and 3 for non inspected pipes
 		Float consequenceIndexLimit = 5.00F;
 		boolean hasExceededConditionIndex = false;
 		boolean hasExceededConsequenceIndex = false;

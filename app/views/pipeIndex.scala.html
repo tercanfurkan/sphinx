@@ -67,7 +67,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 							<label class="control-label" for="lWasteWater">Pipe diameter (mm)</label>
 							<div class="controls">
 								@inputText( field = pipeIndex("wasteWaterLimit"), 
-								args = 'type -> "text", '_label -> "", 'id -> "lWasteWater")
+								args = 'class -> "input-mini", 'type -> "text", '_label -> "", 'id -> "lWasteWater")
 								<span class="help-inline">pipe diameter caution limit</span>
 							</div>
 						</div>
@@ -186,126 +186,46 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 				</div>
 			</div>
 		</div>
-		<div class="accordion-group">
-			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse"
-					data-parent="#accordion2" href="#collapseTwo"></a>
-			</div>
-			<div id="collapseTwo" class="accordion-body collapse">
-				<div class="accordion-inner">
-					<div class="controls span12" id="sensitivity-div">
-						<div class="control-group">
-							<label class="control-label bold-label">Filter by</label>
-						</div>
-						<div class="control-group">
-							<div class="controls span1">
-								@checkbox(field = pipeIndex("isInspected"))
-							</div>
-						</div>
-						<div class="control-group">
-						<label class="control-label" >Filter no.1</label>	
-							<div class="controls span2">
-								@select(
-						                pipeIndex("filterNameList[0]"), 
-						                options(models.wrapper.PipeIndexWrapper.options), 
-						                '_label -> "", '_default -> "-- Choose filter type --",
-						                '_showConstraints -> false)
-							</div>
-							<div class="controls span2">
-								@select(
-						                pipeIndex("filterOperatorList[0]"), 
-						                options = options(
-							                ">" -> "Bigger than",
-							                "<" -> "Smaller than",
-							                "=" -> "Equal to"),
-						                '_label -> "",
-						                '_default -> "-- Choose filter operator --", 
-						                '_showConstraints -> false)
-							</div>							
-
-							<div class="controls span1">
-								@inputText( field = pipeIndex("filterValueList[0]"), 
-								args = 'class -> "input-mini", 'placeholder -> "Value",'type -> "text", '_label -> "")
-							</div>
-						</div>
-						<div class="control-group">
-						<label class="control-label" >Filter no.2</label>	
-							<div class="controls span2">
-								@select(
-						                pipeIndex("filterNameList[1]"), 
-						                options(models.wrapper.PipeIndexWrapper.options), 
-						                '_label -> "", '_default -> "-- Choose filter type --",
-						                '_showConstraints -> false)
-							</div>
-							<div class="controls span2">
-								@select(
-						                pipeIndex("filterOperatorList[1]"), 
-						                options = options(
-							                ">" -> "Bigger than",
-							                "<" -> "Smaller than",
-							                "=" -> "Equal to"),
-						                '_label -> "",
-						                '_default -> "-- Choose filter operator --", 
-						                '_showConstraints -> false)
-							</div>							
-
-							<div class="controls span1">
-								@inputText( field = pipeIndex("filterValueList[1]"), 
-								args = 'class -> "input-mini", 'placeholder -> "Value",'type -> "text", '_label -> "")
-							</div>
-						</div>
-						<div class="control-group">
-						<label class="control-label" >Filter no.3</label>	
-							<div class="controls span2">
-								@select(
-						                pipeIndex("filterNameList[2]"), 
-						                options(models.wrapper.PipeIndexWrapper.options), 
-						                '_label -> "", '_default -> "-- Choose filter type --",
-						                '_showConstraints -> false)
-							</div>
-							<div class="controls span2">
-								@select(
-						                pipeIndex("filterOperatorList[2]"), 
-						                options = options(
-							                ">" -> "Bigger than",
-							                "<" -> "Smaller than",
-							                "=" -> "Equal to"),
-						                '_label -> "",
-						                '_default -> "-- Choose filter operator --", 
-						                '_showConstraints -> false)
-							</div>							
-
-							<div class="controls span1">
-								@inputText( field = pipeIndex("filterValueList[2]"), 
-								args = 'class -> "input-mini", 'placeholder -> "Value",'type -> "text", '_label -> "")
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<input type="submit" id="searchsubmit"
 			value="Refresh index calculation" class="btn btn-primary">
 	</form>
 
 </div>
-<div id="paddingToRow" class="row"></div>
-
-    
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexLimit") @pipeIndexSummary.consequenceLimit</h5>
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexLimit") @pipeIndexSummary.conditionLimit (5 for uninspected pipes)</h5>
- 	
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.allIndexPipeLength") 386.5 km</h5>    
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLength") @((math rint pipeIndexSummary.consequenceIndexPipeLength * 10) / 10) km</h5>
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLengthInspected") @((math rint pipeIndexSummary.consequenceIndexPipeLengthInspected * 10) / 10) km</h5>
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.consequenceIndexPipeLengthNotInspected") @((math rint pipeIndexSummary.consequenceIndexPipeLengthNotInspected * 10) / 10) km</h5>
- 	
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexPipeLength") @((math rint pipeIndexSummary.conditionIndexPipeLength * 10) / 10) km</h5>
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexPipeLengthInspected") @((math rint pipeIndexSummary.conditionIndexPipeLengthInspected * 10) / 10) km</h5>
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionIndexPipeLengthNotInspected") @((math rint pipeIndexSummary.conditionIndexPipeLengthNotInspected * 10) / 10) km</h5>
- 	
- 	<h5 id="homeTitle">@Messages("pipeIndex.summary.conditionAndConsequenceIndexPipeLength") @((math rint pipeIndexSummary.conditionAndConsequencePipeLength * 10) / 10) km</h5>
-
+<h5 id="homeTitle">Index Calculation Summary</h5>
+	<table class="table table-bordered table-hover">
+		<tbody>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.allIndexPipeLength")</td>
+				<td class="controls span2">386.5 km</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionAndConsequenceIndexPipeLength")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.conditionAndConsequencePipeLength * 100) / 100) km</td>
+			</tr>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexLimit")</td>
+				<td class="controls span2">@pipeIndexSummary.consequenceLimit</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexLimit")</td>
+				<td class="controls span2">@pipeIndexSummary.conditionLimit / 5.0 (unispected)</td>
+			</tr>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexPipeLength")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.consequenceIndexPipeLength * 10) / 10) km</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexPipeLength")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.conditionIndexPipeLength * 10) / 10) km</td>
+			</tr>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexPipeLengthInspected")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.consequenceIndexPipeLengthInspected * 10) / 10) km</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexPipeLengthInspected")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.conditionIndexPipeLengthInspected * 10) / 10) km</td>
+			</tr>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexPipeLengthNotInspected")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.consequenceIndexPipeLengthNotInspected * 10) / 10) km</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexPipeLengthNotInspected")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.conditionIndexPipeLengthNotInspected * 10) / 10) km</td>
+			</tr>
+		</tbody>
+	</table>
 <div class="actions">
 	<a href="@routes.Application.sendFile()" class="btn">Export index results</a>
 </div>

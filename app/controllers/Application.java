@@ -338,14 +338,15 @@ public class Application extends Controller {
 			pipeIndexWrapperViewList = PipeIndexWrapperView.getPipeIndexWrapperViewList();
 			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
 		}
-		else if (!pipeIndexFields.equals(pipeIndexDefault)) {
-			System.out.println("--- pipeIndexFields is now not equal to DEFAULT! indexWrapperList will be FILLED");
-			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
-		}
-		if (indexWrapperList == null  || indexWrapperList.size() == 0) {
-			System.out.println("--- indexWrapperList was NULL and will be FILLED!");
-			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
-		}
+//		else if (!pipeIndexFields.equals(pipeIndexDefault)) {
+//			System.out.println("--- pipeIndexFields is now not equal to DEFAULT! indexWrapperList will be FILLED");
+//			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
+//		}
+//		if (indexWrapperList == null  || indexWrapperList.size() == 0) {
+//			System.out.println("--- indexWrapperList was NULL and will be FILLED!");
+//			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
+//		}
+		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
 
 		
 		// fill the 'to the point' pipeIndexResult of each pipe
@@ -362,7 +363,8 @@ public class Application extends Controller {
 		Float consequencePipeLengthNotInspected = 0.000F; // length of not inspected pipes exceed consequence index limit
 		Float conditionAndConsequencePipeLength = 0.000F; // length of pipes that exceed condition and consequence index limit
 		
-		for(PipeIndexWrapper wrapper : indexWrapperList) {
+//		System.out.println(indexWrapperList.size() + " " + conditionPipeLengthInspected);
+		for(PipeIndexWrapper wrapper : indexWrapperList) {	
 			
 			hasExceededConditionIndex = (wrapper.pipe_condition_index >= wrapper.cdm_limit_total);
 			hasExceededConsequenceIndex = (wrapper.pipe_consequence_index >= wrapper.cqm_limit_total -1);
@@ -380,6 +382,8 @@ public class Application extends Controller {
 			}
 
 		}
+		
+//		System.out.println(indexWrapperList.size() + " " + conditionPipeLengthInspected);
 		
 		// then fill the 'to the point' pipeIndexSummary and display on page
 		pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);

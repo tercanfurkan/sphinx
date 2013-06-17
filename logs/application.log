@@ -1,219 +1,48 @@
-2013-06-17 08:20:41,039 - [INFO] - from play in main 
+2013-06-17 09:28:40,076 - [INFO] - from play in main 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2013-06-17 08:20:56,876 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:29:16,410 - [INFO] - from play in New I/O worker #1 
 datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
 
-2013-06-17 08:20:57,121 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:29:16,630 - [INFO] - from play in New I/O worker #1 
 database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
 
-2013-06-17 08:21:00,092 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:29:18,956 - [INFO] - from play in New I/O worker #1 
 Application started (Dev)
 
-2013-06-17 08:22:05,540 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:30:06,733 - [INFO] - from play in New I/O worker #3 
 datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
 
-2013-06-17 08:22:05,679 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:30:06,872 - [INFO] - from play in New I/O worker #3 
 database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
 
-2013-06-17 08:22:07,042 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:30:08,411 - [INFO] - from play in New I/O worker #3 
 Application started (Dev)
 
-2013-06-17 08:22:27,360 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:30:53,733 - [INFO] - from play in New I/O worker #3 
 datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
 
-2013-06-17 08:22:27,514 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:30:53,876 - [INFO] - from play in New I/O worker #3 
 database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
 
-2013-06-17 08:22:29,436 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:30:55,159 - [INFO] - from play in New I/O worker #3 
 Application started (Dev)
 
-2013-06-17 08:23:07,833 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:31:52,212 - [INFO] - from play in New I/O worker #5 
 datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
 
-2013-06-17 08:23:08,028 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:31:52,356 - [INFO] - from play in New I/O worker #5 
 database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
 
-2013-06-17 08:23:09,249 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:31:53,569 - [INFO] - from play in New I/O worker #5 
 Application started (Dev)
 
-2013-06-17 08:23:35,712 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:34:20,966 - [INFO] - from play in New I/O worker #6 
 datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
 
-2013-06-17 08:23:35,854 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:34:21,111 - [INFO] - from play in New I/O worker #6 
 database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
 
-2013-06-17 08:23:36,991 - [INFO] - from play in New I/O worker #1 
-Application started (Dev)
-
-2013-06-17 08:24:06,185 - [INFO] - from play in New I/O worker #1 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:24:06,339 - [INFO] - from play in New I/O worker #1 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:24:07,445 - [INFO] - from play in New I/O worker #1 
-Application started (Dev)
-
-2013-06-17 08:39:16,065 - [INFO] - from play in New I/O worker #7 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:39:16,250 - [INFO] - from play in New I/O worker #7 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:39:17,886 - [INFO] - from play in New I/O worker #7 
-Application started (Dev)
-
-2013-06-17 08:40:49,306 - [INFO] - from play in New I/O worker #13 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:40:49,456 - [INFO] - from play in New I/O worker #13 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:40:51,325 - [INFO] - from play in New I/O worker #13 
-Application started (Dev)
-
-2013-06-17 08:47:22,011 - [INFO] - from play in New I/O worker #3 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:47:22,156 - [INFO] - from play in New I/O worker #3 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:47:23,252 - [INFO] - from play in New I/O worker #3 
-Application started (Dev)
-
-2013-06-17 08:50:31,482 - [INFO] - from play in New I/O worker #9 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:50:31,636 - [INFO] - from play in New I/O worker #9 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:50:32,789 - [INFO] - from play in New I/O worker #9 
-Application started (Dev)
-
-2013-06-17 08:54:08,098 - [INFO] - from play in New I/O worker #15 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:54:08,254 - [INFO] - from play in New I/O worker #15 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:54:09,372 - [INFO] - from play in New I/O worker #15 
-Application started (Dev)
-
-2013-06-17 08:54:54,560 - [INFO] - from play in New I/O worker #15 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:54:54,754 - [INFO] - from play in New I/O worker #15 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:54:55,864 - [INFO] - from play in New I/O worker #15 
-Application started (Dev)
-
-2013-06-17 08:57:09,618 - [INFO] - from play in New I/O worker #5 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:57:09,790 - [INFO] - from play in New I/O worker #5 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:57:10,873 - [INFO] - from play in New I/O worker #5 
-Application started (Dev)
-
-2013-06-17 08:58:10,288 - [INFO] - from play in New I/O worker #5 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:58:10,431 - [INFO] - from play in New I/O worker #5 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:58:11,595 - [INFO] - from play in New I/O worker #5 
-Application started (Dev)
-
-2013-06-17 08:59:48,155 - [INFO] - from play in New I/O worker #5 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 08:59:48,294 - [INFO] - from play in New I/O worker #5 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 08:59:49,366 - [INFO] - from play in New I/O worker #5 
-Application started (Dev)
-
-2013-06-17 09:01:11,042 - [INFO] - from play in New I/O worker #5 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 09:01:11,195 - [INFO] - from play in New I/O worker #5 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 09:01:12,319 - [INFO] - from play in New I/O worker #5 
-Application started (Dev)
-
-2013-06-17 09:01:42,184 - [INFO] - from play in New I/O worker #5 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 09:01:42,326 - [INFO] - from play in New I/O worker #5 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 09:01:43,475 - [INFO] - from play in New I/O worker #5 
-Application started (Dev)
-
-2013-06-17 09:02:05,695 - [INFO] - from play in New I/O worker #5 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 09:02:05,838 - [INFO] - from play in New I/O worker #5 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 09:02:06,894 - [INFO] - from play in New I/O worker #5 
-Application started (Dev)
-
-2013-06-17 09:02:35,147 - [INFO] - from play in New I/O worker #5 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 09:02:35,287 - [INFO] - from play in New I/O worker #5 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 09:02:37,199 - [INFO] - from play in New I/O worker #5 
-Application started (Dev)
-
-2013-06-17 09:06:57,914 - [INFO] - from play in New I/O worker #11 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 09:06:58,064 - [INFO] - from play in New I/O worker #11 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 09:06:59,120 - [INFO] - from play in New I/O worker #11 
-Application started (Dev)
-
-2013-06-17 09:07:37,364 - [INFO] - from play in New I/O worker #11 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 09:07:37,504 - [INFO] - from play in New I/O worker #11 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 09:07:38,614 - [INFO] - from play in New I/O worker #11 
-Application started (Dev)
-
-2013-06-17 09:08:03,473 - [INFO] - from play in New I/O worker #11 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 09:08:03,615 - [INFO] - from play in New I/O worker #11 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 09:08:04,715 - [INFO] - from play in New I/O worker #11 
-Application started (Dev)
-
-2013-06-17 09:12:12,073 - [INFO] - from play in New I/O worker #1 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 09:12:12,222 - [INFO] - from play in New I/O worker #1 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 09:12:13,270 - [INFO] - from play in New I/O worker #1 
-Application started (Dev)
-
-2013-06-17 09:12:48,851 - [INFO] - from play in New I/O worker #1 
-datasource [postgres://postgres:EfeSus2012@t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8] bound to JNDI as DefaultDS
-
-2013-06-17 09:12:49,029 - [INFO] - from play in New I/O worker #1 
-database [default] connected at jdbc:postgresql://t20700-vir1.org.aalto.fi:5432/efesus1306?characterEncoding=utf8
-
-2013-06-17 09:12:50,109 - [INFO] - from play in New I/O worker #1 
+2013-06-17 09:34:22,331 - [INFO] - from play in New I/O worker #6 
 Application started (Dev)
 

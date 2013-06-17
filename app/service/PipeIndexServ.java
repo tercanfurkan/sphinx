@@ -113,6 +113,7 @@ public class PipeIndexServ {
 		retWrapper.cdm_overflow_m3_a = (view.ofAnnualOverFlow != null) ? view.ofAnnualOverFlow : 0F;
 		retWrapper.cdm_overflow_pipe_value = retWrapper.cdm_overflow_m3_a;
 		retWrapper.cdm_overflow_pipe_meter = retWrapper.cdm_overflow_pipe_value / meterLimit.overFlowLimit;
+		
 		retWrapper.cdm_industrial_ww_pipe_value = (view.pipeInIndustrialRoot) ? 1:0;
 		retWrapper.cdm_industrial_ww_pipe_meter = retWrapper.cdm_industrial_ww_pipe_value;
 		
@@ -121,7 +122,7 @@ public class PipeIndexServ {
 				+ retWrapper.cdm_flushing_pipe_meter
 				+ retWrapper.cdm_cctv_pipe_meter
 				+ retWrapper.cdm_cctv34_pipe_meter
-				+ retWrapper.cdm_blockage_pipe_meter
+				+ retWrapper.cdm_extrawater_pipe_meter
 				+ retWrapper.cdm_overflow_pipe_meter
 				+ retWrapper.cdm_industrial_ww_pipe_meter;
 		

@@ -68,7 +68,19 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 							<div class="controls">
 								@inputText( field = pipeIndex("wasteWaterLimit"), 
 								args = 'class -> "input-mini", 'type -> "text", '_label -> "", 'id -> "lWasteWater")
+								<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+								<style>#slider { margin: 10px; }	</style>
+								<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+								<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+								<div id="slider"></div>
 								<span class="help-inline">pipe diameter caution limit</span>
+								<script>
+								$( "#slider" ).slider();
+								$( "#slider" ).slider({min: 50});
+								$( "#slider" ).slider({max: 1000});
+								$( "#slider" ).slider({range: true});
+								$( "#slider" ).slider({values: [ 333, 686 ]});
+								</script>
 							</div>
 						</div>
 						<div class="control-group">

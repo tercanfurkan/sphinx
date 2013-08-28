@@ -42,6 +42,8 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 
 @main {
 
+
+
 <div class="adjustmentRow" class="row">
 	<h1 id="homeTitle">@Messages("pi.pipe.title")</h1>
 </div>
@@ -66,53 +68,133 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Pipe diameter (mm)</label>
 							<div class="controls">
-								@inputText( field = pipeIndex("wasteWaterLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "", 'id -> "lWasteWater")
-								<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-								<style>#slider { margin: 10px; }	</style>
-								<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-								<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-								<div id="slider"></div>
+								<div class="slider"></div>
 								<span class="help-inline">pipe diameter caution limit</span>
-								<script>
-								$( "#slider" ).slider();
-								$( "#slider" ).slider({min: 50});
-								$( "#slider" ).slider({max: 1000});
-								$( "#slider" ).slider({range: true});
-								$( "#slider" ).slider({values: [ 333, 686 ]});
-								</script>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lGroundWater">Ground water area (0..3)</label>						
 							<div class="controls">
-								@inputText( field = pipeIndex("groundWaterAreaLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "", 'id -> "lGroundWater")
+								<div class="slider"></div>
 								<span class="help-inline">0: not significant to 3: highly significant</span>
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Pipe type (0..4)</label>						
+							<label class="control-label" for="lWasteWater">Lateral gravity sewers</label>						
 							<div class="controls">
-								@inputText( field = pipeIndex("pipeTypeLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
-								<span class="help-inline">0: gravitation pipe, 1: collection sewer, 2: main sewer, 4: pressure pipe</span>					
+								<table class="table table-bordered">
+									<tbody>
+										<tr> 
+											<td class="controls span1 green">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1"> insignificant 
+												</label>
+											</td>
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2"> average
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2"> significant
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>				
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Collection sewers</label>						
+							<div class="controls">
+								<table class="table table-bordered">
+									<tbody>
+										<tr> 
+											<td class="controls span1 green">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1"> insignificant 
+												</label>
+											</td>
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2"> average
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2"> significant
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>				
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Gravity sewer mains</label>						
+							<div class="controls">
+								<table class="table table-bordered">
+									<tbody>
+										<tr> 
+											<td class="controls span1 green">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1"> insignificant 
+												</label>
+											</td>
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2"> average
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2"> significant
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>				
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Pressure sewers</label>						
+							<div class="controls">
+								<table class="table table-bordered">
+									<tbody>
+										<tr> 
+											<td class="controls span1 green">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1"> insignificant 
+												</label>
+											</td>
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2"> average
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2"> significant
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>				
 							</div>
 						</div>
 						
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Pipe type diameter (mm)</label>						
 							<div class="controls">
-								@inputText( field = pipeIndex("pipeTypeDiameterLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">pipe diameter caution limit for pipe type</span>					
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Relative floor area (m<sup>2</sup>/m)</label>											
 							<div class="controls">
-								@inputText( field = pipeIndex("floorAreaLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">floor area m<sup>2</sup>/ length of pipes</span>	
 							</div>
 						
@@ -120,16 +202,14 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Road classification (1..4)</label>						
 							<div class="controls">
-								@inputText( field = pipeIndex("roadClassLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">1:Regional main street 1, 2:Regional main street 2, 3:Local main street, 4:Collector street</span>	
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Beach distance (m)</label>						
 							<div class="controls">
-								@inputText( field = pipeIndex("ofBeachDistanceLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">distance between the areal overflow structure and the nearest beach</span>	
 							</div>
 						</div>
@@ -148,48 +228,42 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Blockages</label>						
 						<div class="controls">
-								@inputText( field = pipeIndex("blockageLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">total number of blockage events of a pipe</span>	
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Flushing events</label>						
 						<div class="controls">
-								@inputText( field = pipeIndex("flushingLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">total number of flushing events of a pipe</span>
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Extra Water (%)</label>						
 						<div class="controls">
-								@inputText( field = pipeIndex("extraWaterLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">wastewater flow / (0.8 x water consumption)</span>
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">CCTV defects</label>						
 						<div class="controls">
-								@inputText( field = pipeIndex("cctvLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">sum of all CCTV inspection defects (1 to 4) of a pipe</span>
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">CCTV major defects</label>					
 						<div class="controls">
-								@inputText( field = pipeIndex("cctv34Limit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">sum of CCTV inspection defects 3 and 4 of a pipe</span>
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Over flow (m<sup>3</sup>/year)</label>					
 						<div class="controls">
-								@inputText( field = pipeIndex("overFlowLimit"), 
-								args = 'class -> "input-mini", 'type -> "text", '_label -> "")
+								<div class="slider"></div>
 								<span class="help-inline">annual overflow (m<sup>3</sup>) of the area</span>
 						</div>
 						</div>
@@ -241,6 +315,20 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 <div class="actions">
 	<a href="@routes.Application.sendFile()" class="btn">Export index results</a>
 </div>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<style>
+	.slider { margin: 10px; }	
+</style>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<script>
+	$( ".slider" ).slider();
+	$( ".slider" ).slider({min: 50});
+	$( ".slider" ).slider({max: 1000});
+	$( ".slider" ).slider({range: true});
+	$( ".slider" ).slider({values: [ 333, 686 ]});
+</script>
 
 
 }

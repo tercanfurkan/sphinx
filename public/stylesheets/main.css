@@ -148,3 +148,22 @@ table.computers .header a {
 .italic {
 	font-style: italic
 }
+
+.green {
+	background: #8EE690;
+	opacity: 0.9;
+}
+
+.yellow {
+	background: #F7EF77;
+	opacity: 0.9;
+}
+
+.red {
+	background: #FC5D5D;
+	opacity: 0.9;
+}
+
+.middle {
+	horizontal-align: middle;
+}

@@ -64,18 +64,23 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						<div class="control-group">
 							<label class="control-label bold-label">Set limit values for consequence meters</label>
 						</div>
-
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Pipe diameter (mm)</label>
 							<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:25</span>
+								    <span id="max">max:1000</span>
+								</div>
 								<span class="help-inline">pipe diameter caution limit</span>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lGroundWater">Ground water area (0..3)</label>						
 							<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:0</span>
+								    <span id="max">max:3</span>
+								</div>
 								<span class="help-inline">0: not significant to 3: highly significant</span>
 							</div>
 						</div>
@@ -183,18 +188,13 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 								</table>				
 							</div>
 						</div>
-						
-						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Pipe type diameter (mm)</label>						
-							<div class="controls">
-								<div class="slider"></div>
-								<span class="help-inline">pipe diameter caution limit for pipe type</span>					
-							</div>
-						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Relative floor area (m<sup>2</sup>/m)</label>											
 							<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:0</span>
+								    <span id="max">max:50.6</span>
+								</div>
 								<span class="help-inline">floor area m<sup>2</sup>/ length of pipes</span>	
 							</div>
 						
@@ -202,14 +202,20 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Road classification (1..4)</label>						
 							<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:4</span>
+								    <span id="max">max:1</span>
+								</div>
 								<span class="help-inline">1:Regional main street 1, 2:Regional main street 2, 3:Local main street, 4:Collector street</span>	
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Beach distance (m)</label>						
 							<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:</span>
+								    <span id="max">max:0</span>
+								</div>
 								<span class="help-inline">distance between the areal overflow structure and the nearest beach</span>	
 							</div>
 						</div>
@@ -228,42 +234,60 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Blockages</label>						
 						<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:0</span>
+								    <span id="max">max:4</span>
+								</div>
 								<span class="help-inline">total number of blockage events of a pipe</span>	
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Flushing events</label>						
 						<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:0</span>
+								    <span id="max">max:17</span>
+								</div>
 								<span class="help-inline">total number of flushing events of a pipe</span>
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Extra Water (%)</label>						
 						<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:0.2</span>
+								    <span id="max">max:18.8</span>
+								</div>
 								<span class="help-inline">wastewater flow / (0.8 x water consumption)</span>
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">CCTV defects</label>						
 						<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:0</span>
+								    <span id="max">max:34</span>
+								</div>
 								<span class="help-inline">sum of all CCTV inspection defects (1 to 4) of a pipe</span>
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">CCTV major defects</label>					
 						<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:0</span>
+								    <span id="max">max:26</span>
+								</div>
 								<span class="help-inline">sum of CCTV inspection defects 3 and 4 of a pipe</span>
 						</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Over flow (m<sup>3</sup>/year)</label>					
 						<div class="controls">
-								<div class="slider"></div>
+								<div class="slider">
+									<span id="min">min:0</span>
+								    <span id="max">max:100</span>
+								</div>
 								<span class="help-inline">annual overflow (m<sup>3</sup>) of the area</span>
 						</div>
 						</div>
@@ -317,7 +341,12 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 </div>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 <style>
-	.slider { margin: 10px; }	
+.slider{ position: relative}
+.slider span { position: absolute; top: -5px}
+#min { left: 2px; font-size: 12px; font-weight: bold}
+#max { right: 2px; font-size: 12px; font-weight: bold}
+#accordion2 {font-weight:bold;}
+#homeTitle {font-weight: bold;}
 </style>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>

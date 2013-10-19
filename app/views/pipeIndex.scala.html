@@ -113,23 +113,18 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 									<tbody>
 										<tr> 
 											<td class="controls span1 green">
-												<label class="radio inline middle">
+												<label class="radio inline">
 												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
-												</label>
-											</td>
-											<td class="controls span1">
-												<label class="radio inline middle">
-												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox2" value="option2">
 												</label>
 											</td>											
 											<td class="controls span1 yellow">
 												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
 												</label>
 											</td>
 											<td class="controls span1 red">
 												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
 												</label>
 											</td>
 										</tr>
@@ -255,13 +250,13 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Small Pressure Sewer Pipes diameter < 100mm</label>						
+							<label class="control-label" for="lWasteWater">Small pressure sewers</label>						
 							<div class="controls">
 								<table class="table table-bordered">
 									<tbody>
 										<tr> 
 											<td class="controls span1 green">
-												<label class="radio inline middle">
+												<label class="radio inline">
 												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
 												</label>
 											</td>
@@ -316,12 +311,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 												<label class="radio inline middle">
 												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
 												</label>
-											</td>
-											<td class="controls span1">
-												<label class="radio inline middle">
-												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox2" value="option2">
-												</label>
-											</td>											
+											</td>										
 											<td class="controls span1 yellow">
 												<label class="radio inline">
 												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
@@ -340,8 +330,6 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Beach distance (m)</label>						
 							<div class="controls">
-								<div class="charts" id="chartdiv" style="height:400px;width:300px; "></div>
-								<span class="spans" id="info1">Info1</span>
 								<span class="amount"></span>
 								<div class="slider range-slide">	
 									<div class="slide" value="66,133" min="0" max="200">
@@ -624,7 +612,7 @@ $(document).ready(function(){
 	    	max:  parseInt($(this).attr('max')),
 	    	range: true,
 	    	slide: function(event, ui) {
-				$(this).parent().siblings('span.amount').html("min: " + ui.values[0] + " - " + ui.values[1] + " max");
+				$(this).parent().siblings('span.amount').html("min limit: " + ui.values[0] + " - max limit: " + ui.values[1]);
 				//doUpdate();
 				ticks = [ui.values[0], ui.values[1]];
 				optionsObj = {
@@ -653,7 +641,7 @@ $(document).ready(function(){
 	    	}
 		});
 		
-		rangeSpan.html("min: " + $(this).slider("values", 0) + " - " + $(this).slider("values", 1) + " max");
+		rangeSpan.html("min limit: " + $(this).slider("values", 0) + " - max limit: " + $(this).slider("values", 1));
 		//doUpdate();
 	});
 	/////////////////////

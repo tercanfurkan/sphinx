@@ -67,6 +67,9 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Pipe diameter (mm)</label>
 							<div class="controls">
+								<div class="charts" id="chartdiv" style="height:400px;width:300px; "></div>
+								<!--<span class="spans" id="info1">Info1</span>-->
+								<button id="info1" type="button">Show</button>
 								<span class="amount"></span>
 								<div class="slider range-slide">
 									<div class="slide" value="333,686" min="25" max="1000">
@@ -223,6 +226,8 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Beach distance (m)</label>						
 							<div class="controls">
+								<div class="charts" id="chartdiv" style="height:400px;width:300px; "></div>
+								<span class="spans" id="info1">Info1</span>
 								<span class="amount"></span>
 								<div class="slider range-slide">	
 									<div class="slide" value="66,133" min="0" max="200">
@@ -371,7 +376,11 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 <div class="actions">
 	<a href="@routes.Application.sendFile()" class="btn">Export index results</a>
 </div>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">-->
+<!--<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/jquery.aristo.css")">-->
+<!--<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/xcharts.css")">-->
+<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/jquery.jqplot.css")">
+<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/jquery-ui-1.10.3.custom.css")">
 <style>
 .ui-slider { 
 	position: relative;
@@ -383,6 +392,11 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
     position:absolute;
     height:100%;
 }
+a.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+}
 .slider span { position: absolute; top: -5px}
 .ui-slider-range { background: #F2FA0A; }
 #idmini { width: 50 px; text-align: center}
@@ -392,10 +406,86 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 #accordion2 {font-weight:bold;}
 #homeTitle {font-weight: bold;}
 </style>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+<!--<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
+<script src="@routes.Assets.at("javascripts/jquery-1.10.2.js")"></script>
+<script src="@routes.Assets.at("javascripts/jquery-ui-1.10.3.custom.js")"></script>
+<script src="@routes.Assets.at("javascripts/jquery.jqplot.js")"></script>
+<script src="@routes.Assets.at("javascripts/jqplot.barRenderer.js")"></script>
+<script src="@routes.Assets.at("javascripts/jqplot.categoryAxisRenderer.js")"></script>
+<!--[if IE]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+<!--<script src="@routes.Assets.at("javascripts/jquery.flot.min.js")"></script>-->
+<!--<script src="@routes.Assets.at("javascripts/Chart.js")"></script>-->
+<!--<script src="@routes.Assets.at("javascripts/d3.v3.js")"></script>-->
+<!--<script src="@routes.Assets.at("javascripts/xcharts.js")"></script>-->
 <script>
-$(document).ready(function(){
+$(document).ready(function(){	
+	//
+	// Drawing a bar chart
+	//
+	$.jqplot.config.enablePlugins = true;
+	var s1 = [2, 6, 7, 10];
+	var ticks = [1, 3, 5, 11];
+	
+	optionsObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticks
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot1 = $.jqplot('chartdiv', [s1], optionsObj);
+	
+	// Click event
+	$('#chartdiv').bind('jqplotDataClick', 
+		function (ev, seriesIndex, pointIndex, data) {
+			$('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+		}
+	);
+	/////////////////////
+	
+	//
+	//Popup/hide the bar charts
+	//
+	function deselect() {
+		$(".charts").slideFadeToggle(function() { 
+			$("#info1").removeClass("selected");
+		});    
+	}	
+	
+    $("#info1").on('click', function() {
+        if($(this).hasClass("selected")) {
+            $("#info1").html('Show');
+			deselect();               
+        } else {
+            $(this).addClass("selected");
+            $(".charts").slideFadeToggle(function() { 
+                $("#info1").focus();
+				$("#info1").html('Hide');
+            });
+        }
+        return false;
+    });	
+	
+	$.fn.slideFadeToggle = function(easing, callback) {
+		return this.animate({ opacity: 'toggle', height: 'toggle' }, "fast", easing, callback);
+	};
+
+	// Hide bar charts in the beginning
+	deselect();	
+	//////////////////////
+	
+	//
+	// Slider handling
+	//
 	$(".range-slide div.slide").each(function() {
 		values = $(this).attr('value').split(',');
 	    firstVal = values[0];
@@ -422,12 +512,37 @@ $(document).ready(function(){
 	    	slide: function(event, ui) {
 				$(this).parent().siblings('span.amount').html("" + ui.values[0] + " - " + ui.values[1]);
 				//doUpdate();
+				ticks = [ui.values[0], ui.values[1]];
+				optionsObj = {
+					// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+					animate: !$.jqplot.use_excanvas,
+					seriesDefaults:{
+						renderer:$.jqplot.BarRenderer,
+						pointLabels: { show: true }
+					},
+					axes: {
+						xaxis: {
+							renderer: $.jqplot.CategoryAxisRenderer,
+							ticks: ticks
+						}
+					},
+					highlighter: { show: false }
+				}		
+				plot1.replot(optionsObj);
+				//plot1 = $.jqplot('chartdiv', ticks, optionsObj);
+				//plot1.axes = {
+				//	xaxis: {
+				//		renderer: $.jqplot.CategoryAxisRenderer,
+				//		ticks: ticks
+				//	}
+				//}
 	    	}
 		});
 		
 		rangeSpan.html("" + $(this).slider("values", 0) + " - " + $(this).slider("values", 1));
 		//doUpdate();
 	});
+	/////////////////////
 });
 </script>
 }				

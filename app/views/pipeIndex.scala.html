@@ -562,7 +562,7 @@ $(document).ready(function(){
 	    	max:  parseInt($(this).attr('max')),
 	    	range: true,
 	    	slide: function(event, ui) {
-				$(this).parent().siblings('span.amount').html("" + ui.values[0] + " - " + ui.values[1]);
+				$(this).parent().siblings('span.amount').html("min: " + ui.values[0] + " - " + ui.values[1] + " max");
 				//doUpdate();
 				ticks = [ui.values[0], ui.values[1]];
 				optionsObj = {
@@ -591,7 +591,7 @@ $(document).ready(function(){
 	    	}
 		});
 		
-		rangeSpan.html("" + $(this).slider("values", 0) + " - " + $(this).slider("values", 1));
+		rangeSpan.html("min: " + $(this).slider("values", 0) + " - " + $(this).slider("values", 1) + " max");
 		//doUpdate();
 	});
 	/////////////////////

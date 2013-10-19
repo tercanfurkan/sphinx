@@ -65,35 +65,6 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 							<label class="control-label bold-label">Set limit values for consequence meters</label>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Pipe diameter (mm)</label>
-							<div class="controls">
-								<div class="charts" id="chartdiv" style="height:400px;width:300px; "></div>
-								<!--<span class="spans" id="info1">Info1</span>-->
-								<button id="info1" type="button">Show</button>
-								<span class="amount"></span>
-								<div class="slider range-slide">
-									<div class="slide" value="333,686" min="25" max="1000">
-										<span id="min">min:25</span>
-								    	<span id="max">max:1000</span>
-								    </div>
-								</div>
-								<span class="help-inline">pipe diameter caution limit</span>	
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="lGroundWater">Ground water area (0..3)</label>						
-							<div class="controls">
-								<span class="amount"></span>
-								<div class="slider range-slide">	
-									<div class="slide" value="1,2" min="0" max="3">
-										<span id="min">min:0</span>
-								    	<span id="max">max:3</span>								    
-									</div>
-								</div>								
-								<span class="help-inline">0: not significant to 3: highly significant</span>
-							</div>
-						</div>
-						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Color explanations: </label>						
 							<div class="controls">
 								<table class="table table-bordered">
@@ -118,7 +89,67 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 									</tbody>
 								</table>				
 							</div>
+						</div>							
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Pipe diameter (mm)</label>
+							<div class="controls">
+								<div class="charts" id="chartdiv" style="height:400px;width:300px; "></div>
+								<!--<span class="spans" id="info1">Info1</span>-->
+								<button id="info1" type="button">Show</button>
+								<span class="amount"></span>
+								<div class="slider range-slide">
+									<div class="slide" value="333,686" min="25" max="1000">
+										<span id="min">min:25</span>
+								    	<span id="max">max:1000</span>
+								    </div>
+								</div>
+								<span class="help-inline">pipe diameter caution limit</span>	
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Ground water area (0..3)</label>						
+							<div class="controls">
+								<table class="table table-bordered">
+									<tbody>
+										<tr> 
+											<td class="controls span1 green">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+												</label>
+											</td>
+											<td class="controls span1">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox2" value="option2">
+												</label>
+											</td>											
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>				
+							</div>
 						</div>						
+						<!--<div class="control-group">
+							<label class="control-label" for="lGroundWater">Ground water area (0..3)</label>						
+							<div class="controls">
+								<span class="amount"></span>
+								<div class="slider range-slide">	
+									<div class="slide" value="1,2" min="0" max="3">
+										<span id="min">min:0</span>
+								    	<span id="max">max:3</span>								    
+									</div>
+								</div>								
+								<span class="help-inline">0: not significant to 3: highly significant</span>
+							</div>
+						</div>-->					
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Lateral gravity sewers</label>						
 							<div class="controls">
@@ -262,7 +293,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 								<span class="help-inline">floor area m<sup>2</sup>/ length of pipes</span>	
 							</div>
 						</div>
-						<div class="control-group">
+						<!--<div class="control-group">
 							<label class="control-label" for="lWasteWater">Road classification (1..4)</label>						
 							<div class="controls">
 								<span class="amount"></span>
@@ -274,7 +305,38 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 								</div>								
 								<span class="help-inline">1:Regional main street 1, 2:Regional main street 2, 3:Local main street, 4:Collector street</span>	
 							</div>
-						</div>
+						</div>-->
+						<div class="control-group">
+							<label class="control-label" for="lWasteWater">Road classification (1..4)</label>						
+							<div class="controls">
+								<table class="table table-bordered">
+									<tbody>
+										<tr> 
+											<td class="controls span1 green">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+												</label>
+											</td>
+											<td class="controls span1">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox2" value="option2">
+												</label>
+											</td>											
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>				
+							</div>
+						</div>								
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Beach distance (m)</label>						
 							<div class="controls">

@@ -732,4 +732,17 @@ public class Component {
 		
 		return (int) doubleVal;
 	}
+	
+	public static long getPipeCountAccordingToDiameter(int minValue, int maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.componentDetail.diameterValue) FROM Component c" + 
+		" WHERE c.componentDetail.diameterValue >= :cMin" + 
+		" and c.componentDetail.diameterValue < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}	
 }

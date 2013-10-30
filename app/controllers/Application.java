@@ -388,8 +388,19 @@ public class Application extends Controller {
 		// then fill the 'to the point' pipeIndexSummary and display on page
 		pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
 
+		List<Long> diameterArray = new ArrayList<Long>();
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(0, 101));
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(101, 201));
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(201, 301));
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(301, 401));
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(401, 501));
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(501, 601));
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(601, 701));
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(701, 801));
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(801, 901));
+		diameterArray.add(Component.getPipeCountAccordingToDiameter(901, 1001));
 		pipeIndexForm = pipeIndexForm.fill(pipeIndexFields);
-		return ok(pipeIndex.render(pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));
+		return ok(views.html.pipeIndex.render(pipeIndexForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI, diameterArray));
 	}
 	
 	public static Result sendFile() {

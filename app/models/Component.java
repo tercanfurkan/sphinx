@@ -733,11 +733,94 @@ public class Component {
 		return (int) doubleVal;
 	}
 	
-	public static long getPipeCountAccordingToDiameter(int minValue, int maxValue) {
+	public static long getPipeCountDistributionsAccordingToDiameter(int minValue, int maxValue) {
 		
 		String queryStr = "SELECT COUNT(c.componentDetail.diameterValue) FROM Component c" + 
 		" WHERE c.componentDetail.diameterValue >= :cMin" + 
 		" and c.componentDetail.diameterValue < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}
+
+	public static long getPipeCountDistributionsAccordingToGroundWaterArea(int minValue, int maxValue) {
+		
+		//String queryStr = "SELECT COUNT(c.groundWaterArea.classificationValue) FROM Component c" + 
+		//" WHERE c.groundWaterArea.classificationValue >= :cMin" + 
+		//" and c.groundWaterArea.classificationValue < :cMax";
+		String queryStr = "SELECT COUNT(c) FROM Component c" + 
+		" WHERE c.groundWaterArea.classificationValue >= :cMin" + 
+		" and c.groundWaterArea.classificationValue < :cMax";		
+		//String queryStr = "SELECT COUNT(c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe) FROM Component c" + 
+		//" WHERE c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe >= :cMin" + 
+		//" and c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe < :cMax";		
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}	
+	
+	public static long getPipeCountDistributionsAccordingToRelativeFloorAreaMeters(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.componentDetail.sensitivityIndex.relativeFloorAreaMeter.valueOfPipe) FROM Component c" + 
+		" WHERE c.componentDetail.sensitivityIndex.relativeFloorAreaMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.sensitivityIndex.relativeFloorAreaMeter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}
+
+	public static long getPipeCountDistributionsAccordingToRoadClassification(int minValue, int maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.roadClassification) FROM Component c" + 
+		" WHERE c.roadClassification >= :cMin" + 
+		" and c.roadClassification < :cMax";	
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}	
+
+	public static long getPipeCountDistributionsAccordingToBeachDistance(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.ofDistanceToBeach) FROM Component c WHERE c.ofDistanceToBeach >= :cMin" + 
+		" and c.ofDistanceToBeach < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}
+
+	public static long getPipeCountDistributionsAccordingToBlockages(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.componentDetail.conditionIndex.blockageMeter.valueOfPipe) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.blockageMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.blockageMeter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}
+	
+	public static long getPipeCountDistributionsAccordingToFlushingEvents(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.componentDetail.conditionIndex.flushingEventMeter.valueOfPipe) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.flushingEventMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.flushingEventMeter.valueOfPipe < :cMax";
 		Query query = JPA.em().createQuery(queryStr);
 		query.setParameter("cMin", minValue);
 		query.setParameter("cMax", maxValue);

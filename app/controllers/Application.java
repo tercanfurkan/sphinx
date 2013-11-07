@@ -389,18 +389,61 @@ public class Application extends Controller {
 		pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
 
 		List<Long> diameterArray = new ArrayList<Long>();
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(0, 101));
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(101, 201));
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(201, 301));
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(301, 401));
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(401, 501));
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(501, 601));
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(601, 701));
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(701, 801));
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(801, 901));
-		diameterArray.add(Component.getPipeCountAccordingToDiameter(901, 1001));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(0, 101));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(101, 201));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(201, 301));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(301, 401));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(401, 501));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(501, 601));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(601, 701));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(701, 801));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(801, 901));
+		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(901, 1001));
+
+		List<Long> groundWaterArray = new ArrayList<Long>();
+		groundWaterArray.add(Component.getPipeCountDistributionsAccordingToBeachDistance(0, 1));
+		groundWaterArray.add(Component.getPipeCountDistributionsAccordingToBeachDistance(1, 2));
+		groundWaterArray.add(Component.getPipeCountDistributionsAccordingToBeachDistance(2, 3));
+		groundWaterArray.add(Component.getPipeCountDistributionsAccordingToBeachDistance(3, 4));
+		
+		List<Long> areaArray = new ArrayList<Long>();
+		areaArray.add(Component.getPipeCountDistributionsAccordingToRelativeFloorAreaMeters(0, 11));
+		areaArray.add(Component.getPipeCountDistributionsAccordingToRelativeFloorAreaMeters(11, 21));
+		areaArray.add(Component.getPipeCountDistributionsAccordingToRelativeFloorAreaMeters(21, 31));
+		areaArray.add(Component.getPipeCountDistributionsAccordingToRelativeFloorAreaMeters(31, 41));
+		areaArray.add(Component.getPipeCountDistributionsAccordingToRelativeFloorAreaMeters(41, 51));		
+
+		List<Long> roadclassArray = new ArrayList<Long>();
+		roadclassArray.add(Component.getPipeCountDistributionsAccordingToRoadClassification(1, 2));
+		roadclassArray.add(Component.getPipeCountDistributionsAccordingToRoadClassification(2, 3));
+		roadclassArray.add(Component.getPipeCountDistributionsAccordingToRoadClassification(3, 4));
+		roadclassArray.add(Component.getPipeCountDistributionsAccordingToRoadClassification(4, 5));
+		
+		List<Long> beachArray = new ArrayList<Long>();
+		beachArray.add(Component.getPipeCountDistributionsAccordingToBeachDistance(0, 101));
+		beachArray.add(Component.getPipeCountDistributionsAccordingToBeachDistance(101, 201));
+		beachArray.add(Component.getPipeCountDistributionsAccordingToBeachDistance(201, 301));
+		beachArray.add(Component.getPipeCountDistributionsAccordingToBeachDistance(301, 401));
+		beachArray.add(Component.getPipeCountDistributionsAccordingToBeachDistance(401, 501));	
+		
+		List<Long> blockageArray = new ArrayList<Long>();
+		blockageArray.add(Component.getPipeCountDistributionsAccordingToBlockages(0, 1));
+		blockageArray.add(Component.getPipeCountDistributionsAccordingToBlockages(1, 2));
+		blockageArray.add(Component.getPipeCountDistributionsAccordingToBlockages(2, 3));
+		blockageArray.add(Component.getPipeCountDistributionsAccordingToBlockages(3, 4));
+		blockageArray.add(Component.getPipeCountDistributionsAccordingToBlockages(4, 5));		
+
+		List<Long> flushingEventArray = new ArrayList<Long>();
+		flushingEventArray.add(Component.getPipeCountDistributionsAccordingToFlushingEvents(0, 4));
+		flushingEventArray.add(Component.getPipeCountDistributionsAccordingToFlushingEvents(4, 8));
+		flushingEventArray.add(Component.getPipeCountDistributionsAccordingToFlushingEvents(8, 12));
+		flushingEventArray.add(Component.getPipeCountDistributionsAccordingToFlushingEvents(12, 16));
+		flushingEventArray.add(Component.getPipeCountDistributionsAccordingToFlushingEvents(16, 20));		
+		
 		pipeIndexForm = pipeIndexForm.fill(pipeIndexFields);
-		return ok(views.html.pipeIndex.render(pipeIndexForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI, diameterArray));
+		return ok(views.html.pipeIndex.render(pipeIndexForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI, 
+												diameterArray, groundWaterArray, areaArray, roadclassArray, 
+												beachArray, blockageArray, flushingEventArray));
 	}
 	
 	public static Result sendFile() {

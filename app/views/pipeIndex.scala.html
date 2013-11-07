@@ -1,5 +1,8 @@
 @(pipeIndex: Form[models.form.PipeIndex], currentSortBy: String, currentOrder: String,
-pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, diameterArray: List[Long])
+pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, 
+diameterArray: List[Long], groundWaterArray: List[Long], areaArray: List[Long], 
+roadclassArray: List[Long], beachArray: List[Long], blockageArray: List[Long],
+flushingEventArray: List[Long])
 
 @import helper._
 
@@ -93,9 +96,8 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, diameterAr
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Pipe diameter (mm)</label>
 							<div class="controls">
-								<div class="charts" id="chartdiv"></div>
-								<!--<span class="spans" id="info1">Info1</span> style="height:400px;width:300px; " -->
-								<button id="info1" type="button">Show</button>
+								<div class="chartsdiameter" id="chartdiameter"></div>
+								<button class="info" id="info1" type="button">Show</button>
 								<span class="amount"></span>
 								<div class="slider range-slide">
 									<div class="slide" value="333,686" min="25" max="1000">
@@ -109,6 +111,9 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, diameterAr
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Ground water area (0..3)</label>						
 							<div class="controls">
+								<div class="chartsgroundwaterarea" id="chartgroundwaterarea"></div>
+								<button class="info" id="info4" type="button">Show</button>							
+								<span>Ground Water Array: @groundWaterArray</span>
 								<table class="table table-bordered">
 									<tbody>
 										<tr> 
@@ -278,6 +283,8 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, diameterAr
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Relative floor area (m<sup>2</sup>/m)</label>											
 							<div class="controls">
+								<div class="chartsarea" id="chartarea"></div>
+								<button class="info" id="info2" type="button">Show</button>							
 								<span class="amount"></span>
 								<div class="slider range-slide">
 									<div class="slide" value="16,33" min="0" max="51">
@@ -287,7 +294,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, diameterAr
 								</div>							
 								<span class="help-inline">floor area m<sup>2</sup>/ length of pipes</span>	
 							</div>
-						</div>
+						</div>						
 						<!--<div class="control-group">
 							<label class="control-label" for="lWasteWater">Road classification (1..4)</label>						
 							<div class="controls">
@@ -304,6 +311,9 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, diameterAr
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Road classification (1..4)</label>						
 							<div class="controls">
+								<div class="chartsroadclassification" id="chartroadclassification"></div>
+								<button class="info" id="info5" type="button">Show</button>								
+								<span>RC array: @roadclassArray</span>
 								<table class="table table-bordered">
 									<tbody>
 										<tr> 
@@ -330,6 +340,9 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, diameterAr
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Beach distance (m)</label>						
 							<div class="controls">
+								<div class="chartsbeach" id="chartbeach"></div>
+								<button class="info" id="info3" type="button">Show</button>
+								<span>Beach array: @beachArray</span>								
 								<span class="amount"></span>
 								<div class="slider range-slide">	
 									<div class="slide" value="66,133" min="0" max="200">
@@ -355,6 +368,9 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, diameterAr
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Blockages</label>						
 							<div class="controls">
+								<div class="chartsblockage" id="chartblockage"></div>
+								<button class="info" id="info6" type="button">Show</button>								
+								<span>Blockages: @blockageArray</span>								
 								<span class="amount"></span>
 								<div class="slider range-slide">	
 									<div class="slide" value="1,3" min="0" max="4">
@@ -368,6 +384,9 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, diameterAr
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Flushing events</label>						
 							<div class="controls">
+								<div class="chartsflushing" id="chartflushing"></div>
+								<button class="info" id="info7" type="button">Show</button>								
+								<span>FEA: @flushingEventArray</span>
 								<span class="amount"></span>
 								<div class="slider range-slide">	
 									<div class="slide" value="5,10" min="0" max="17">
@@ -526,14 +545,14 @@ $(document).ready(function(){
 	// Drawing a bar chart
 	//
 	$.jqplot.config.enablePlugins = true;
-	var s1 = new Array(); 
+	var sdiameter = new Array(); 
 	i = 0;
 	@for(s <- diameterArray) {
-		s1[i] = @s;
+		sdiameter[i] = @s;
 		i++;
 	}
-	var ticks = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-	optionsObj = {
+	var ticksDiameter = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+	diameterObj = {
 		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
 		animate: !$.jqplot.use_excanvas,
 		seriesDefaults:{
@@ -543,50 +562,320 @@ $(document).ready(function(){
 		axes: {
 			xaxis: {
 				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticks
+				ticks: ticksDiameter
 			}
 		},
 		highlighter: { show: false }
 	}
-	plot1 = $.jqplot('chartdiv', [s1], optionsObj);
+	plot1 = $.jqplot('chartdiameter', [sdiameter], diameterObj);
 	
 	// Click event
-	$('#chartdiv').bind('jqplotDataClick', 
-		function (ev, seriesIndex, pointIndex, data) {
+	//$('#chartdiameter').bind('jqplotDataClick', 
+	//	function (ev, seriesIndex, pointIndex, data) {
 			//$('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
-		}
-	);
+	//	}
+	//);
 	/////////////////////
+	
+	var sgroundwaterarea = new Array(); 
+	i = 0;
+	@for(s <- groundWaterArray) {
+		sgroundwaterarea[i] = @s;
+		i++;
+	}
+	var ticksGroundWater = [0, 1, 2, 3];
+	groundWaterObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksGroundWater
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot2 = $.jqplot('chartgroundwaterarea', [sgroundwaterarea], groundWaterObj);	
+	
+	var sarea = new Array(); 
+	i = 0;
+	@for(s <- areaArray) {
+		sarea[i] = @s;
+		i++;
+	}
+	var ticksArea = ["0-10", "10-20", "20-30", "30-40", "40-50"];
+	areaObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksArea
+			}
+		},
+		highlighter: { show: false }
+	}	
+	plot3 = $.jqplot('chartarea', [sarea], areaObj);	
+
+	var sroadclass = new Array();
+	i = 0;
+	@for(s <- roadclassArray) {
+		sroadclass[i] = @s;
+		i++;
+	}
+	var ticksBeach = [1, 2, 3, 4];
+	roadclassObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksBeach
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot5 = $.jqplot('chartroadclassification', [sroadclass], roadclassObj);
+	
+	var sbeach = new Array();
+	i = 0;
+	@for(s <- beachArray) {
+		sbeach[i] = @s;
+		i++;
+	}
+	var ticksBeach = ["0-100", "100-200", "200-300", "300-400", "400-500"];
+	beachObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksBeach
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot4 = $.jqplot('chartbeach', [sbeach], beachObj);
+
+	var sblockage = new Array();
+	i = 0;
+	@for(s <- blockageArray) {
+		sblockage[i] = @s;
+		i++;
+	}
+	var ticksBlockage = [0, 1, 2, 3, 4];
+	blockageObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksBlockage
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot6 = $.jqplot('chartblockage', [sblockage], blockageObj);
+
+	var sflush = new Array();
+	i = 0;
+	@for(s <- flushingEventArray) {
+		sflush[i] = @s;
+		i++;
+	}
+	var ticksFlush = ["0-3", "4-7", "8-11", "12-15", "16-19"];
+	flushingObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksFlush
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot7 = $.jqplot('chartflushing', [sflush], flushingObj);
 	
 	//
 	//Popup/hide the bar charts
 	//
-	function deselect() {
-		$(".charts").slideFadeToggle(function() { 
+	function deselectDiameter() {
+		$(".chartsdiameter").slideFadeToggle(function() {
 			$("#info1").removeClass("selected");
-		});    
+		});		
+	}
+
+	function deselectGroundWater() {
+		$(".chartsgroundwaterarea").slideFadeToggle(function() {
+			$("#info4").removeClass("selected");
+		});		
 	}	
 	
-    $("#info1").on('click', function() {
-        if($(this).hasClass("selected")) {
-            $("#info1").html('Show');
-			deselect();               
+	function deselectArea() {
+		$(".chartsarea").slideFadeToggle(function() {
+			$("#info2").removeClass("selected");
+		});	
+	}	
+
+	function deselectRoadClassification() {
+		$(".chartsroadclassification").slideFadeToggle(function() {
+			$("#info5").removeClass("selected");
+		});	
+	}		
+	
+	function deselectBeach() {
+		$(".chartsbeach").slideFadeToggle(function() {
+			$("#info3").removeClass("selected");
+		});	
+	}	
+
+	function deselectBlockage() {
+		$(".chartsblockage").slideFadeToggle(function() {
+			$("#info6").removeClass("selected");
+		});	
+	}	
+
+	function deselectFlushing() {
+		$(".chartsflushing").slideFadeToggle(function() {
+			$("#info7").removeClass("selected");
+		});	
+	}	
+	
+	$("#info1").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info1").html('Show');
+			deselectDiameter();               
         } else {
             $(this).addClass("selected");
-            $(".charts").slideFadeToggle(function() { 
-                $("#info1").focus();
+			$(".chartsdiameter").slideFadeToggle(function() { 
+				$("#info1").focus();
 				$("#info1").html('Hide');
-            });
-        }
-        return false;
-    });	
+			});
+		}
+		return false;
+	});
+
+	$("#info4").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info4").html('Show');
+			deselectGroundWater();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsgroundwaterarea").slideFadeToggle(function() { 
+				$("#info4").focus();
+				$("#info4").html('Hide');
+			});
+		}
+		return false;
+	});
+	
+	$("#info2").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info2").html('Show');
+			deselectArea();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsarea").slideFadeToggle(function() { 
+				$("#info2").focus();
+				$("#info2").html('Hide');
+			});
+		}
+		return false;
+	});	
+	
+	$("#info5").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info5").html('Show');
+			deselectArea();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsroadclassification").slideFadeToggle(function() { 
+				$("#info5").focus();
+				$("#info5").html('Hide');
+			});
+		}
+		return false;
+	});	
+	
+	$("#info3").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info3").html('Show');
+			deselectBeach();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsbeach").slideFadeToggle(function() { 
+				$("#info3").focus();
+				$("#info3").html('Hide');
+			});
+		}
+		return false;
+	});	
+
+	$("#info6").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info6").html('Show');
+			deselectBlockage();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsblockage").slideFadeToggle(function() { 
+				$("#info6").focus();
+				$("#info6").html('Hide');
+			});
+		}
+		return false;
+	});	
+
+	$("#info7").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info7").html('Show');
+			deselectFlushing();               
+        } else {
+			$(this).addClass("selected");
+			$(".chartsflushing").slideFadeToggle(function() { 
+				$("#info7").focus();
+				$("#info7").html('Hide');
+			});
+		}
+		return false;
+	});	
 	
 	$.fn.slideFadeToggle = function(easing, callback) {
 		return this.animate({ opacity: 'toggle', height: 'toggle' }, "fast", easing, callback);
 	};
-
+	
 	// Hide bar charts in the beginning
-	deselect();	
+	deselectDiameter();
+	deselectGroundWater();
+	deselectArea();
+	deselectBeach();
+	deselectRoadClassification();
+	deselectBlockage();
+	deselectFlushing();
 	//////////////////////
 	
 	//
@@ -635,7 +924,7 @@ $(document).ready(function(){
 				//	highlighter: { show: false }
 				//}		
 				//plot1.replot(optionsObj);
-				//plot1 = $.jqplot('chartdiv', ticks, optionsObj);
+				//plot1 = $.jqplot('chartdiameter', ticks, optionsObj);
 				//plot1.axes = {
 				//	xaxis: {
 				//		renderer: $.jqplot.CategoryAxisRenderer,

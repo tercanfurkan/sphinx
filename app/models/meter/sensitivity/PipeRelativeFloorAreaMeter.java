@@ -22,7 +22,7 @@ public class PipeRelativeFloorAreaMeter extends AbstractPipeMeter {
 	public Float pipeLength;
 	public Long floorArea;
 	public Float totalPipeLengthInFloorArea;
-	
+
 	@Override
 	public String toString() {
 		String retVal = super.toString();

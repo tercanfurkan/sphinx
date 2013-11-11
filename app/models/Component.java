@@ -827,5 +827,57 @@ public class Component {
 		long retVal = (long) query.getSingleResult();
 		
 		return retVal;
+	}
+
+	public static long getPipeCountDistributionsAccordingToExtraWaterPercentage(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.componentDetail.conditionIndex.extraWaterMeter.valueOfPipe) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.extraWaterMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.extraWaterMeter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}
+
+	public static long getPipeCountDistributionsAccordingToCCTVDefects(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.componentDetail.conditionIndex.cctvTotalMeter.valueOfPipe) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.cctvTotalMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.cctvTotalMeter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}
+
+	public static long getPipeCountDistributionsAccordingToCCTVMajorDefects(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.componentDetail.conditionIndex.cctv34Meter.valueOfPipe) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.cctv34Meter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.cctv34Meter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
+	}
+	
+	public static long getPipeCountDistributionsAccordingAnnualOverFlow(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT COUNT(c.annualOverFlow) FROM Component c" + 
+		" WHERE c.annualOverFlow >= :cMin" + 
+		" and c.annualOverFlow < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		long retVal = (long) query.getSingleResult();
+		
+		return retVal;
 	}	
 }

@@ -2,7 +2,8 @@
 pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI, 
 diameterArray: List[Long], groundWaterArray: List[Long], areaArray: List[Long], 
 roadclassArray: List[Long], beachArray: List[Long], blockageArray: List[Long],
-flushingEventArray: List[Long])
+flushingEventArray: List[Long], extraWaterArray: List[Long], cctvDefectsArray: List[Long],
+cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 
 @import helper._
 
@@ -149,137 +150,145 @@ flushingEventArray: List[Long])
 								</div>								
 								<span class="help-inline">0: not significant to 3: highly significant</span>
 							</div>
-						</div>-->					
+						</div>-->
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Lateral gravity sewers</label>						
+							<label class="control-label" for="lWasteWater">Show/Hide Sewers</label>
 							<div class="controls">
-								<table class="table table-bordered">
-									<tbody>
-										<tr> 
-											<td class="controls span1 green">
-												<label class="radio inline middle">
-												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
-												</label>
-											</td>
-											<td class="controls span1 yellow">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
-												</label>
-											</td>
-											<td class="controls span1 red">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
-												</label>
-											</td>
-										</tr>
-									</tbody>
-								</table>				
+								<button class="info" id="info0" type="button">Show</button>
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Collection sewers</label>						
-							<div class="controls">
-								<table class="table table-bordered">
-									<tbody>
-										<tr> 
-											<td class="controls span1 green">
-												<label class="radio inline middle">
-												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
-												</label>
-											</td>
-											<td class="controls span1 yellow">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
-												</label>
-											</td>
-											<td class="controls span1 red">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
-												</label>
-											</td>
-										</tr>
-									</tbody>
-								</table>				
+						<div class="sewer-group">
+							<div class="control-group">
+								<label class="control-label" for="lWasteWater">Lateral gravity sewers</label>						
+								<div class="controls">
+									<table class="table table-bordered">
+										<tbody>
+											<tr> 
+												<td class="controls span1 green">
+													<label class="radio inline middle">
+													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													</label>
+												</td>
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
+													</label>
+												</td>
+											</tr>
+										</tbody>
+									</table>				
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="lWasteWater">Collection sewers</label>						
+								<div class="controls">
+									<table class="table table-bordered">
+										<tbody>
+											<tr> 
+												<td class="controls span1 green">
+													<label class="radio inline middle">
+													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													</label>
+												</td>
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
+													</label>
+												</td>
+											</tr>
+										</tbody>
+									</table>				
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="lWasteWater">Gravity sewer mains</label>						
+								<div class="controls">
+									<table class="table table-bordered">
+										<tbody>
+											<tr> 
+												<td class="controls span1 green">
+													<label class="radio inline middle">
+													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													</label>
+												</td>
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
+													</label>
+												</td>
+											</tr>
+										</tbody>
+									</table>				
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="lWasteWater">Pressure sewers</label>						
+								<div class="controls">
+									<table class="table table-bordered">
+										<tbody>
+											<tr> 
+												<td class="controls span1 green">
+													<label class="radio inline middle">
+													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													</label>
+												</td>
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
+													</label>
+												</td>
+											</tr>
+										</tbody>
+									</table>				
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="lWasteWater">Small pressure sewers</label>						
+								<div class="controls">
+									<table class="table table-bordered">
+										<tbody>
+											<tr> 
+												<td class="controls span1 green">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													</label>
+												</td>
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
+													</label>
+												</td>
+											</tr>
+										</tbody>
+									</table>				
+								</div>
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Gravity sewer mains</label>						
-							<div class="controls">
-								<table class="table table-bordered">
-									<tbody>
-										<tr> 
-											<td class="controls span1 green">
-												<label class="radio inline middle">
-												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
-												</label>
-											</td>
-											<td class="controls span1 yellow">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
-												</label>
-											</td>
-											<td class="controls span1 red">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
-												</label>
-											</td>
-										</tr>
-									</tbody>
-								</table>				
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Pressure sewers</label>						
-							<div class="controls">
-								<table class="table table-bordered">
-									<tbody>
-										<tr> 
-											<td class="controls span1 green">
-												<label class="radio inline middle">
-												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
-												</label>
-											</td>
-											<td class="controls span1 yellow">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
-												</label>
-											</td>
-											<td class="controls span1 red">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
-												</label>
-											</td>
-										</tr>
-									</tbody>
-								</table>				
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Small pressure sewers</label>						
-							<div class="controls">
-								<table class="table table-bordered">
-									<tbody>
-										<tr> 
-											<td class="controls span1 green">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
-												</label>
-											</td>
-											<td class="controls span1 yellow">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
-												</label>
-											</td>
-											<td class="controls span1 red">
-												<label class="radio inline">
-												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
-												</label>
-											</td>
-										</tr>
-									</tbody>
-								</table>				
-							</div>
-						</div>						
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Relative floor area (m<sup>2</sup>/m)</label>											
 							<div class="controls">
@@ -400,6 +409,9 @@ flushingEventArray: List[Long])
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Extra Water (%)</label>						
 							<div class="controls">
+								<div class="chartsextrawater" id="chartextrawater"></div>
+								<button class="info" id="info8" type="button">Show</button>															
+								<span>Extra Water Array: @extraWaterArray</span>
 								<span class="amount"></span>
 								<div class="slider range-slide">	
 									<div class="slide" value="6,12" min="0" max="19">
@@ -413,6 +425,9 @@ flushingEventArray: List[Long])
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">CCTV defects</label>						
 							<div class="controls">
+								<div class="chartsCCTVdefects" id="chartCCTVdefects"></div>
+								<button class="info" id="info9" type="button">Show</button>							
+								<span>CCTV array: @cctvDefectsArray</span>
 								<span class="amount"></span>
 								<div class="slider range-slide">	
 									<div class="slide" value="11,22" min="0" max="34">
@@ -426,6 +441,9 @@ flushingEventArray: List[Long])
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">CCTV major defects</label>					
 							<div class="controls">
+								<div class="chartsCCTVmajordefects" id="chartCCTVmajordefects"></div>
+								<button class="info" id="info10" type="button">Show</button							
+								<span>CCTV MD array: @cctvMajorDefectsArray</span>
 								<span class="amount"></span>
 								<div class="slider range-slide">	
 									<div class="slide" value="8,17" min="0" max="26">
@@ -439,6 +457,7 @@ flushingEventArray: List[Long])
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Over flow (m<sup>3</sup>/year)</label>					
 							<div class="controls">
+								<span>Ovefflow array: @annualOverFlowArray</span>	
 								<span class="amount"></span>
 								<div class="slider range-slide">	
 									<div class="slide" value="33,66" min="0" max="100">
@@ -720,10 +739,91 @@ $(document).ready(function(){
 		highlighter: { show: false }
 	}
 	plot7 = $.jqplot('chartflushing', [sflush], flushingObj);
+
+	var swater = new Array();
+	i = 0;
+	@for(s <- extraWaterArray) {
+		swater[i] = @s;
+		i++;
+	}
+	var ticksExtraWarer = ["0-3", "4-7", "8-11", "12-15", "16-19"];
+	extraWaterObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksExtraWarer
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot8 = $.jqplot('chartextrawater', [swater], extraWaterObj);
+
+	var scctv = new Array();
+	i = 0;
+	@for(s <- cctvDefectsArray) {
+		scctv[i] = @s;
+		i++;
+	}
+	var ticksCCTV = ["0-5", "6-10", "11-15", "16-20", "21-25", "26-30", "31-35"];
+	CCTVdefectsObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksCCTV
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot9 = $.jqplot('chartCCTVdefects', [scctv], CCTVdefectsObj);
+
+	var scctvmajor = new Array();
+	i = 0;
+	@for(s <- cctvMajorDefectsArray) {
+		scctvmajor[i] = @s;
+		i++;
+	}
+	var ticksCCTVmajor = ["0-5", "6-10", "11-15", "16-20", "21-25", "26-30"];
+	CCTVmajordefectsObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksCCTVmajor
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot10 = $.jqplot('chartCCTVmajordefects', [scctvmajor], CCTVmajordefectsObj);
+
+	//
+	//Popup/hide the sewers
+	//		
+	function deselectSewers() {
+		$(".sewer-group").slideFadeToggle(function() {
+			$("#info0").removeClass("selected");
+		});		
+	}
 	
 	//
 	//Popup/hide the bar charts
-	//
+	//	
 	function deselectDiameter() {
 		$(".chartsdiameter").slideFadeToggle(function() {
 			$("#info1").removeClass("selected");
@@ -765,7 +865,45 @@ $(document).ready(function(){
 			$("#info7").removeClass("selected");
 		});	
 	}	
+
+	function deselectExtraWater() {
+		$(".chartsextrawater").slideFadeToggle(function() {
+			$("#info8").removeClass("selected");
+		});	
+	}		
 	
+	function deselectCCTVdefects() {
+		$(".chartsCCTVdefects").slideFadeToggle(function() {
+			$("#info9").removeClass("selected");
+		});	
+	}
+ 
+	function deselectCCTVmajordefects() {
+		$(".chartsCCTVmajordefects").slideFadeToggle(function() {
+			$("#info10").removeClass("selected");
+		});	
+	} 
+ 
+	//
+	// Show/hide Sewers
+	//
+ 	$("#info0").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info0").html('Show');
+			deselectSewers();               
+        } else {
+			$(this).addClass("selected");
+			$(".sewer-group").slideFadeToggle(function() { 
+				$("#info0").focus();
+				$("#info0").html('Hide');
+			});
+		}
+		return false;
+	});	
+ 
+	//
+	// Show/hide Bar Charts
+	//
 	$("#info1").on('click', function() {
 		if($(this).hasClass("selected")) {
 			$("#info1").html('Show');
@@ -863,6 +1001,48 @@ $(document).ready(function(){
 		}
 		return false;
 	});	
+
+	$("#info8").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info8").html('Show');
+			deselectExtraWater();               
+        } else {
+			$(this).addClass("selected");
+			$(".chartsextrawater").slideFadeToggle(function() { 
+				$("#info8").focus();
+				$("#info8").html('Hide');
+			});
+		}
+		return false;
+	});	
+
+	$("#info9").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info9").html('Show');
+			deselectCCTVdefects();               
+        } else {
+			$(this).addClass("selected");
+			$(".chartsCCTVdefects").slideFadeToggle(function() { 
+				$("#info9").focus();
+				$("#info9").html('Hide');
+			});
+		}
+		return false;
+	});	
+	
+	$("#info10").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info10").html('Show');
+			deselectCCTVmajordefects();               
+        } else {
+			$(this).addClass("selected");
+			$(".chartsCCTVmajordefects").slideFadeToggle(function() { 
+				$("#info10").focus();
+				$("#info10").html('Hide');
+			});
+		}
+		return false;
+	});	
 	
 	$.fn.slideFadeToggle = function(easing, callback) {
 		return this.animate({ opacity: 'toggle', height: 'toggle' }, "fast", easing, callback);
@@ -876,6 +1056,10 @@ $(document).ready(function(){
 	deselectRoadClassification();
 	deselectBlockage();
 	deselectFlushing();
+	deselectExtraWater();
+	deselectCCTVdefects();	
+	deselectCCTVmajordefects();
+	deselectSewers();
 	//////////////////////
 	
 	//

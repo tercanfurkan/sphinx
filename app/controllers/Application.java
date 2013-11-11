@@ -439,11 +439,43 @@ public class Application extends Controller {
 		flushingEventArray.add(Component.getPipeCountDistributionsAccordingToFlushingEvents(8, 12));
 		flushingEventArray.add(Component.getPipeCountDistributionsAccordingToFlushingEvents(12, 16));
 		flushingEventArray.add(Component.getPipeCountDistributionsAccordingToFlushingEvents(16, 20));		
+
+		List<Long> extraWaterArray = new ArrayList<Long>();
+		extraWaterArray.add(Component.getPipeCountDistributionsAccordingToExtraWaterPercentage(0, 4));
+		extraWaterArray.add(Component.getPipeCountDistributionsAccordingToExtraWaterPercentage(4, 8));
+		extraWaterArray.add(Component.getPipeCountDistributionsAccordingToExtraWaterPercentage(8, 12));
+		extraWaterArray.add(Component.getPipeCountDistributionsAccordingToExtraWaterPercentage(12, 16));
+		extraWaterArray.add(Component.getPipeCountDistributionsAccordingToExtraWaterPercentage(16, 20));		
+
+		List<Long> cctvDefectsArray = new ArrayList<Long>();
+		cctvDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVDefects(0, 6));
+		cctvDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVDefects(5, 11));
+		cctvDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVDefects(11, 16));
+		cctvDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVDefects(16, 21));
+		cctvDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVDefects(21, 26));
+		cctvDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVDefects(26, 31));
+		cctvDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVDefects(31, 36));		
+
+		List<Long> cctvMajorDefectsArray = new ArrayList<Long>();
+		cctvMajorDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVMajorDefects(0, 6));
+		cctvMajorDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVMajorDefects(5, 11));
+		cctvMajorDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVMajorDefects(11, 16));
+		cctvMajorDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVMajorDefects(16, 21));
+		cctvMajorDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVMajorDefects(21, 26));
+		cctvMajorDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVMajorDefects(26, 31));	
+
+		List<Long> annualOverFlowArray = new ArrayList<Long>();
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(0, 21));
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(21, 41));
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(41, 61));
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(61, 81));
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(81, 101));		
 		
 		pipeIndexForm = pipeIndexForm.fill(pipeIndexFields);
 		return ok(views.html.pipeIndex.render(pipeIndexForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI, 
-												diameterArray, groundWaterArray, areaArray, roadclassArray, 
-												beachArray, blockageArray, flushingEventArray));
+											  diameterArray, groundWaterArray, areaArray, roadclassArray, 
+											  beachArray, blockageArray, flushingEventArray, extraWaterArray,
+											  cctvDefectsArray, cctvMajorDefectsArray, annualOverFlowArray));
 	}
 	
 	public static Result sendFile() {

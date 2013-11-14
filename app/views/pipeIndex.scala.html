@@ -99,14 +99,14 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsdiameter" id="chartdiameter"></div>
 								<button class="info" id="info1" type="button">Show</button>
-								<span class="amount"></span>
-								<div class="slider range-slide">
+								<span class="amount chartsdiameter"></span>
+								<div class="slider range-slide chartsdiameter">
 									<div class="slide" value="333,686" min="25" max="1000">
 										<span id="min">min:25</span>
 								    	<span id="max">max:1000</span>
 								    </div>
 								</div>
-								<span class="help-inline">pipe diameter caution limit</span>	
+								<span class="help-inline chartsdiameter">pipe diameter caution limit</span>	
 							</div>
 						</div>
 						<div class="control-group">
@@ -114,10 +114,13 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsgroundwaterarea" id="chartgroundwaterarea"></div>
 								<button class="info" id="info4" type="button">Show</button>							
-								<span>Ground Water Array: @groundWaterArray</span>
-								<table class="table table-bordered">
+								<span class="chartsgroundwaterarea">Ground Water Array: @groundWaterArray</span>
+								<table class="table table-bordered chartsgroundwaterarea">
 									<tbody>
-										<tr> 
+										<tr>
+											<td class="controls span1">
+												<span>3 Important gwa</span>
+											</td>	
 											<td class="controls span1 green">
 												<label class="radio inline">
 												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
@@ -134,6 +137,46 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 												</label>
 											</td>
 										</tr>
+										<tr>
+											<td class="controls span1">
+												<span>2 Fittable gwa</span>
+											</td>											
+											<td class="controls span1 green">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+												</label>
+											</td>											
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="controls span1">
+												<span>1 Other gwa</span>
+											</td>											
+											<td class="controls span1 green">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+												</label>
+											</td>											
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+												</label>
+											</td>
+										</tr>									
 									</tbody>
 								</table>				
 							</div>
@@ -152,10 +195,10 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							</div>
 						</div>-->
 						<div class="control-group">
-							<label class="control-label" for="lWasteWater">Show/Hide Sewers</label>
-							<div class="controls">
+							<label class="control-label" for="lWasteWater" id="info0">Show Sewers</label>
+							<!--<div class="controls">
 								<button class="info" id="info0" type="button">Show</button>
-							</div>
+							</div>-->
 						</div>
 						<div class="sewer-group">
 							<div class="control-group">
@@ -294,14 +337,14 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsarea" id="chartarea"></div>
 								<button class="info" id="info2" type="button">Show</button>							
-								<span class="amount"></span>
-								<div class="slider range-slide">
+								<span class="amount chartsarea"></span>
+								<div class="slider range-slide chartsarea">
 									<div class="slide" value="16,33" min="0" max="51">
 										<span id="min">min:0</span>
 								    	<span id="max">max:50.6</span>								    
 									</div>
 								</div>							
-								<span class="help-inline">floor area m<sup>2</sup>/ length of pipes</span>	
+								<span class="help-inline chartsarea">floor area m<sup>2</sup>/ length of pipes</span>	
 							</div>
 						</div>						
 						<!--<div class="control-group">
@@ -322,10 +365,13 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsroadclassification" id="chartroadclassification"></div>
 								<button class="info" id="info5" type="button">Show</button>								
-								<span>RC array: @roadclassArray</span>
-								<table class="table table-bordered">
+								<span class="chartsroadclassification">RC array: @roadclassArray</span>
+								<table class="table table-bordered chartsroadclassification">
 									<tbody>
-										<tr> 
+										<tr>
+											<td class="controls span1">
+												<span>1. Regional main street</span>
+											</td>										
 											<td class="controls span1 green">
 												<label class="radio inline middle">
 												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
@@ -342,6 +388,66 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 												</label>
 											</td>
 										</tr>
+										<tr>
+											<td class="controls span1">
+												<span>2. Regional main street</span>
+											</td>										
+											<td class="controls span1 green">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+												</label>
+											</td>										
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="controls span1">
+												<span>3. Local main street</span>
+											</td>										
+											<td class="controls span1 green">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+												</label>
+											</td>										
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="controls span1">
+												<span>4. Collector street</span>
+											</td>										
+											<td class="controls span1 green">
+												<label class="radio inline middle">
+												  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+												</label>
+											</td>										
+											<td class="controls span1 yellow">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+												</label>
+											</td>
+											<td class="controls span1 red">
+												<label class="radio inline">
+												  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+												</label>
+											</td>
+										</tr>										
 									</tbody>
 								</table>				
 							</div>
@@ -351,15 +457,15 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsbeach" id="chartbeach"></div>
 								<button class="info" id="info3" type="button">Show</button>
-								<span>Beach array: @beachArray</span>								
-								<span class="amount"></span>
-								<div class="slider range-slide">	
+								<span class="chartsbeach">Beach array: @beachArray</span>								
+								<span class="amount chartsbeach"></span>
+								<div class="slider range-slide chartsbeach">	
 									<div class="slide" value="66,133" min="0" max="200">
 										<span id="min">min:</span>
 								    	<span id="max">max:200</span>								    
 									</div>
 								</div>										
-								<span class="help-inline">distance between the areal overflow structure and the nearest beach</span>	
+								<span class="help-inline chartsbeach">distance between the areal overflow structure and the nearest beach</span>	
 							</div>
 						</div>
 
@@ -379,15 +485,15 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsblockage" id="chartblockage"></div>
 								<button class="info" id="info6" type="button">Show</button>								
-								<span>Blockages: @blockageArray</span>								
-								<span class="amount"></span>
-								<div class="slider range-slide">	
+								<span class="chartsblockage">Blockages: @blockageArray</span>								
+								<span class="amount chartsblockage"></span>
+								<div class="slider range-slide chartsblockage">	
 									<div class="slide" value="1,3" min="0" max="4">
 										<span id="min">min:0</span>
 								    	<span id="max">max:4</span>								    
 									</div>
 								</div>									
-								<span class="help-inline">total number of blockage events of a pipe</span>	
+								<span class="help-inline chartsblockage">total number of blockage events of a pipe</span>	
 							</div>
 						</div>
 						<div class="control-group">
@@ -395,15 +501,15 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsflushing" id="chartflushing"></div>
 								<button class="info" id="info7" type="button">Show</button>								
-								<span>FEA: @flushingEventArray</span>
-								<span class="amount"></span>
-								<div class="slider range-slide">	
+								<span class="chartsflushing">FEA: @flushingEventArray</span>
+								<span class="amount chartsflushing"></span>
+								<div class="slider range-slide chartsflushing">	
 									<div class="slide" value="5,10" min="0" max="17">
 										<span id="min">min:0</span>
 								    	<span id="max">max:17</span>								    
 									</div>
 								</div>	
-								<span class="help-inline">total number of flushing events of a pipe</span>
+								<span class="help-inline chartsflushing">total number of flushing events of a pipe</span>
 							</div>
 						</div>
 						<div class="control-group">
@@ -411,15 +517,15 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsextrawater" id="chartextrawater"></div>
 								<button class="info" id="info8" type="button">Show</button>															
-								<span>Extra Water Array: @extraWaterArray</span>
-								<span class="amount"></span>
-								<div class="slider range-slide">	
+								<span class="chartsextrawater">Extra Water Array: @extraWaterArray</span>
+								<span class="amount chartsextrawater"></span>
+								<div class="slider range-slide chartsextrawater">	
 									<div class="slide" value="6,12" min="0" max="19">
 										<span id="min">min:0</span>
 								    	<span id="max">max:18.8</span>								    
 									</div>
 								</div>	
-								<span class="help-inline">wastewater flow / (0.8 x water consumption)</span>
+								<span class="help-inline chartsextrawater">wastewater flow / (0.8 x water consumption)</span>
 							</div>
 						</div>
 						<div class="control-group">
@@ -427,45 +533,47 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsCCTVdefects" id="chartCCTVdefects"></div>
 								<button class="info" id="info9" type="button">Show</button>							
-								<span>CCTV array: @cctvDefectsArray</span>
-								<span class="amount"></span>
-								<div class="slider range-slide">	
+								<span class="chartsCCTVdefects">CCTV array: @cctvDefectsArray</span>
+								<span class="amount chartsCCTVdefects"></span>
+								<div class="slider range-slide chartsCCTVdefects">	
 									<div class="slide" value="11,22" min="0" max="34">
 										<span id="min">min:0</span>
 								    	<span id="max">max:34</span>								    
 									</div>
 								</div>	
-								<span class="help-inline">sum of all CCTV inspection defects (1 to 4) of a pipe</span>
+								<span class="help-inline chartsCCTVdefects">sum of all CCTV inspection defects (1 to 4) of a pipe</span>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">CCTV major defects</label>					
 							<div class="controls">
 								<div class="chartsCCTVmajordefects" id="chartCCTVmajordefects"></div>
-								<button class="info" id="info10" type="button">Show</button							
-								<span>CCTV MD array: @cctvMajorDefectsArray</span>
-								<span class="amount"></span>
-								<div class="slider range-slide">	
+								<button class="info" id="info10" type="button">Show</button>							
+								<span class="chartsCCTVmajordefects">CCTV MD array: @cctvMajorDefectsArray</span>
+								<span class="amount chartsCCTVmajordefects"></span>
+								<div class="slider range-slide chartsCCTVmajordefects">	
 									<div class="slide" value="8,17" min="0" max="26">
 										<span id="min">min:0</span>
 								    	<span id="max">max:26</span>								    
 									</div>
 								</div>	
-								<span class="help-inline">sum of CCTV inspection defects 3 and 4 of a pipe</span>
+								<span class="help-inline chartsCCTVmajordefects">sum of CCTV inspection defects 3 and 4 of a pipe</span>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="lWasteWater">Over flow (m<sup>3</sup>/year)</label>					
 							<div class="controls">
-								<span>Ovefflow array: @annualOverFlowArray</span>	
-								<span class="amount"></span>
-								<div class="slider range-slide">	
+								<div class="chartsAnnualOverflow" id="chartAnnualOverflow"></div>
+								<button class="info" id="info11" type="button">Show</button>
+								<span class="chartsAnnualOverflow">Overflow array: @annualOverFlowArray</span>	
+								<span class="amount chartsAnnualOverflow"></span>
+								<div class="slider range-slide chartsAnnualOverflow">	
 									<div class="slide" value="33,66" min="0" max="100">
 										<span id="min">min:0</span>
 								    	<span id="max">max:100</span>								    
 									</div>
 								</div>	
-								<span class="help-inline">annual overflow (m<sup>3</sup>) of the area</span>
+								<span class="help-inline chartsAnnualOverflow">annual overflow (m<sup>3</sup>) of the area</span>
 							</div>
 						</div>
 
@@ -545,6 +653,10 @@ a.selected {
 #max { right: 2px; font-size: 12px; font-weight: bold}
 #accordion2 {font-weight:bold;}
 #homeTitle {font-weight: bold;}
+.control-label:hover{
+   background-color:#FF0000;
+   #background-image: url(../images/divbg.png);
+}
 </style>
 <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
 <!--<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
@@ -889,13 +1001,13 @@ $(document).ready(function(){
 	//
  	$("#info0").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info0").html('Show');
+			$("#info0").html('Show Sewers');
 			deselectSewers();               
         } else {
 			$(this).addClass("selected");
 			$(".sewer-group").slideFadeToggle(function() { 
 				$("#info0").focus();
-				$("#info0").html('Hide');
+				$("#info0").html('Hide Sewers');
 			});
 		}
 		return false;
@@ -949,7 +1061,7 @@ $(document).ready(function(){
 	$("#info5").on('click', function() {
 		if($(this).hasClass("selected")) {
 			$("#info5").html('Show');
-			deselectArea();               
+			deselectRoadClassification();               
         } else {
             $(this).addClass("selected");
 			$(".chartsroadclassification").slideFadeToggle(function() { 
@@ -1052,8 +1164,8 @@ $(document).ready(function(){
 	deselectDiameter();
 	deselectGroundWater();
 	deselectArea();
+	deselectRoadClassification();	
 	deselectBeach();
-	deselectRoadClassification();
 	deselectBlockage();
 	deselectFlushing();
 	deselectExtraWater();

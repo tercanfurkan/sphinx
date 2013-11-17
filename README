@@ -8,3 +8,5 @@ This is your new Play 2.0 application
 git rm --cached project/Build.scala
 git rm --cached project/build.properties
 git rm --cached plugins.sbt
+git commit -am 'cached build files'
+git pull

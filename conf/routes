@@ -16,6 +16,7 @@ POST    /import                  controllers.Application.upload()
 GET     /psareas                  controllers.Application.psareas(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "", we:Int ?= 25, wcctv:Int ?= 25, wo:Int ?= 25, ws:Int ?= 25)
 GET     /pipesensindex            controllers.Application.pipeSensitivityIndex(p:Int ?= 0, s ?= "indexValue", o ?= "desc", f ?= "", lww:Int ?= 500, lgw:Int ?= 1, lpp:Int ?= 1, lfa:Int ?= 20, lrc:Int ?= 3)
 GET 	/pipeIndex					controllers.Application.pipeIndex(p:Int ?= 0, s ?= "pipe_consequence_index", o ?= "desc")
+GET 	/indexResults					controllers.Application.indexResults(p:Int ?= 0, s ?= "pipe_consequence_index", o ?= "desc")
 GET 	/export					controllers.Application.sendFile()
 
 # Add component

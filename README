@@ -1,4 +1,12 @@
 This is your new Play 2.0 application
 =====================================
 
-This file will be packaged with your application, when using `play dist`.
+-- Make build related files out of repo index -- 
+ 
+- execute following lines -
+
+git rm --cached project/Build.scala
+git rm --cached project/build.properties
+git rm --cached plugins.sbt
+git commit -am 'cached build files'
+git pull

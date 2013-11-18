@@ -325,28 +325,16 @@ public class Application extends Controller {
 	 * 
 	 */
 	@Transactional(readOnly = true)
-	public static Result pipeIndex(int page, String sortBy, String order) {
-		
-		Form<PipeIndex> pipeIndexForm = play.data.Form.form(PipeIndex.class);
+	public static Result indexResults(int page, String sortBy, String order) {
 		PipeIndex pipeIndexDefault = new PipeIndex();
-		PipeIndex pipeIndexFields = pipeIndexForm.bindFromRequest().get();	
-		pipeIndexFields.sortBy = sortBy;
-		pipeIndexFields.order = order;
 		
 		if (pipeIndexWrapperViewList == null) {
 			System.out.println("--- pipeIndexWrapperViewList is now NULL! both pipeIndexWrapperViewList and indexWrapperList will be FILLED");
 			pipeIndexWrapperViewList = PipeIndexWrapperView.getPipeIndexWrapperViewList();
-			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
+			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexDefault);
 		}
-//		else if (!pipeIndexFields.equals(pipeIndexDefault)) {
-//			System.out.println("--- pipeIndexFields is now not equal to DEFAULT! indexWrapperList will be FILLED");
-//			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
-//		}
-//		if (indexWrapperList == null  || indexWrapperList.size() == 0) {
-//			System.out.println("--- indexWrapperList was NULL and will be FILLED!");
-//			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
-//		}
-		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexFields);
+		
+		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexDefault);
 
 		
 		// fill the 'to the point' pipeIndexResult of each pipe
@@ -363,7 +351,6 @@ public class Application extends Controller {
 		Float consequencePipeLengthNotInspected = 0.000F; // length of not inspected pipes exceed consequence index limit
 		Float conditionAndConsequencePipeLength = 0.000F; // length of pipes that exceed condition and consequence index limit
 		
-//		System.out.println(indexWrapperList.size() + " " + conditionPipeLengthInspected);
 		for(PipeIndexWrapper wrapper : indexWrapperList) {	
 			
 			hasExceededConditionIndex = (wrapper.pipe_condition_index >= wrapper.cdm_limit_total);
@@ -383,11 +370,19 @@ public class Application extends Controller {
 
 		}
 		
-//		System.out.println(indexWrapperList.size() + " " + conditionPipeLengthInspected);
-		
-		// then fill the 'to the point' pipeIndexSummary and display on page
 		pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
 
+
+		return ok(views.html.indexResults.render(sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
+	}
+	
+	/**
+	 * Display pipe sensitivity and condition meters and indexes.
+	 * 
+	 */
+	@Transactional(readOnly = true)
+	public static Result pipeIndex(int page, String sortBy, String order) {
+        
 		List<Long> diameterArray = new ArrayList<Long>();
 		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(0, 101));
 		diameterArray.add(Component.getPipeCountDistributionsAccordingToDiameter(101, 201));
@@ -470,10 +465,8 @@ public class Application extends Controller {
 		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(41, 61));
 		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(61, 81));
 		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(81, 101));		
-		
-		pipeIndexForm = pipeIndexForm.fill(pipeIndexFields);
-		return ok(views.html.pipeIndex.render(pipeIndexForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI, 
-											  diameterArray, groundWaterArray, areaArray, roadclassArray, 
+
+		return ok(views.html.pipeIndex.render(sortBy, order, diameterArray, groundWaterArray, areaArray, roadclassArray, 
 											  beachArray, blockageArray, flushingEventArray, extraWaterArray,
 											  cctvDefectsArray, cctvMajorDefectsArray, annualOverFlowArray));
 	}

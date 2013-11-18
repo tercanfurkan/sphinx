@@ -1,0 +1,88 @@
+@(currentSortBy: String, currentOrder: String,
+pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.Application.pipeIndex(newPage, sortBy, order)
+    
+}
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@main {
+
+<div class="adjustmentRow" class="row">
+	<h1 id="homeTitle">@Messages("pi.pipe.title")</h1>
+</div>
+
+<h5 id="homeTitle">Index Calculation Summary</h5>
+	<table class="table table-bordered table-hover">
+		<tbody>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.allIndexPipeLength")</td>
+				<td class="controls span2">386.5 km</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionAndConsequenceIndexPipeLength")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.conditionAndConsequencePipeLength * 100) / 100) km</td>
+			</tr>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexLimit")</td>
+				<td class="controls span2">@pipeIndexSummary.consequenceLimit</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexLimit")</td>
+				<td class="controls span2">@pipeIndexSummary.conditionLimit / 5.0 (unispected)</td>
+			</tr>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexPipeLength")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.consequenceIndexPipeLength * 10) / 10) km</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexPipeLength")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.conditionIndexPipeLength * 10) / 10) km</td>
+			</tr>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexPipeLengthInspected")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.consequenceIndexPipeLengthInspected * 10) / 10) km</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexPipeLengthInspected")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.conditionIndexPipeLengthInspected * 10) / 10) km</td>
+			</tr>
+			<tr>
+				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexPipeLengthNotInspected")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.consequenceIndexPipeLengthNotInspected * 10) / 10) km</td>
+				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexPipeLengthNotInspected")</td>
+				<td class="controls span2">@((math rint pipeIndexSummary.conditionIndexPipeLengthNotInspected * 10) / 10) km</td>
+			</tr>
+		</tbody>
+	</table>
+<div class="actions">
+	<a href="@routes.Application.sendFile()" class="btn">Export index results</a>
+</div>
+
+}				

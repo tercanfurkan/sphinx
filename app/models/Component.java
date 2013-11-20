@@ -745,7 +745,7 @@ public class Component {
 		
 		return retVal;
 	}
-
+	
 	public static long getPipeCountDistributionsAccordingToGroundWaterArea(int minValue, int maxValue) {
 		
 		//String queryStr = "SELECT COUNT(c.groundWaterArea.classificationValue) FROM Component c" + 
@@ -868,7 +868,7 @@ public class Component {
 		return retVal;
 	}
 	
-	public static long getPipeCountDistributionsAccordingAnnualOverFlow(float minValue, float maxValue) {
+	public static long getPipeCountDistributionsAccordingToAnnualOverFlow(float minValue, float maxValue) {
 		
 		String queryStr = "SELECT COUNT(c.annualOverFlow) FROM Component c" + 
 		" WHERE c.annualOverFlow >= :cMin" + 
@@ -879,5 +879,18 @@ public class Component {
 		long retVal = (long) query.getSingleResult();
 		
 		return retVal;
-	}	
+	}
+	
+	public static Double getPipeLenghtsAccordingToDiameter(int minValue, int maxValue) {
+		
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
+		" WHERE c.componentDetail.diameterValue >= :cMin" + 
+		" and c.componentDetail.diameterValue < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}		
 }

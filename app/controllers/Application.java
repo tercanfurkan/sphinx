@@ -464,18 +464,30 @@ public class Application extends Controller {
 		cctvMajorDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVMajorDefects(21, 26));
 		cctvMajorDefectsArray.add(Component.getPipeCountDistributionsAccordingToCCTVMajorDefects(26, 31));	
 
-		List<Long> annualOverFlowArray = new ArrayList<Long>();
-		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(0, 21));
-		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(21, 41));
-		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(41, 61));
-		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(61, 81));
-		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingAnnualOverFlow(81, 101));		
+		/*List<Long> annualOverFlowArray = new ArrayList<Long>();
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingToAnnualOverFlow(0, 21));
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingToAnnualOverFlow(21, 41));
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingToAnnualOverFlow(41, 61));
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingToAnnualOverFlow(61, 81));
+		annualOverFlowArray.add(Component.getPipeCountDistributionsAccordingToAnnualOverFlow(81, 101));*/		
+				
+		List<Double> diameterLengthArray = new ArrayList<Double>();
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(0, 101));
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(101, 201));
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(201, 301));
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(301, 401));
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(401, 501));
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(501, 601));
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(601, 701));
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(701, 801));
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(801, 901));
+		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(901, 1001));
 		
 		pipeIndexForm = pipeIndexForm.fill(pipeIndexFields);
 		return ok(views.html.pipeIndex.render(pipeIndexForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI, 
 											  diameterArray, groundWaterArray, areaArray, roadclassArray, 
 											  beachArray, blockageArray, flushingEventArray, extraWaterArray,
-											  cctvDefectsArray, cctvMajorDefectsArray, annualOverFlowArray));
+											  cctvDefectsArray, cctvMajorDefectsArray, diameterLengthArray));
 	}
 	
 	public static Result sendFile() {

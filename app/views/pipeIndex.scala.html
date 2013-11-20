@@ -3,7 +3,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI,
 diameterArray: List[Long], groundWaterArray: List[Long], areaArray: List[Long], 
 roadclassArray: List[Long], beachArray: List[Long], blockageArray: List[Long],
 flushingEventArray: List[Long], extraWaterArray: List[Long], cctvDefectsArray: List[Long],
-cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
+cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 
 @import helper._
 
@@ -46,8 +46,6 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 
 @main {
 
-
-
 <div class="adjustmentRow" class="row">
 	<h1 id="homeTitle">@Messages("pi.pipe.title")</h1>
 </div>
@@ -76,6 +74,7 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 									<div class="chartsdiameter" id="chartdiameter"></div>
 									<!--<button class="info" id="info1" type="button">Show</button>-->
 									<span class="amount chartsdiameter"></span>
+									<!--<span class="chartsdiameter">Length of pipes: @diameterLengthArray</span>-->
 									<div class="slider range-slide chartsdiameter">
 										<div class="slide" value="333,686" min="25" max="1000">
 											<span id="min">min:25</span>
@@ -211,7 +210,7 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 						<div class="control-group">						
 							<fieldset class="efesus-border">				
 								<div class="control-group">
-									<label class="control-label clickable" for="lWasteWater" id="info0">Show Sewers</label>
+									<label class="control-label clickable" for="lWasteWater" id="info0">Sewer type</label>
 								</div>
 								<div class="sewer-group">						
 									<div class="control-group">
@@ -559,7 +558,6 @@ cctvMajorDefectsArray: List[Long], annualOverFlowArray: List[Long])
 							<div class="controls">
 								<div class="chartsAnnualOverflow" id="chartAnnualOverflow"></div>
 								<button class="info" id="info11" type="button">Show</button>
-								<span class="chartsAnnualOverflow">Overflow array: @annualOverFlowArray</span>	
 								<span class="amount chartsAnnualOverflow"></span>
 								<div class="slider range-slide chartsAnnualOverflow">	
 									<div class="slide" value="33,66" min="0" max="100">
@@ -1040,13 +1038,13 @@ $(document).ready(function(){
 	//
  	$("#info0").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info0").html('Show Sewers');
+			$("#info0").html('Sewer type');
 			deselectSewers();               
         } else {
 			$(this).addClass("selected");
 			$(".sewer-group").slideFadeToggle(function() { 
 				$("#info0").focus();
-				$("#info0").html('Hide Sewers');			
+				$("#info0").html('Hide sewer type');			
 			});
 		}
 		return false;

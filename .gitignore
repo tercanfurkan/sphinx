@@ -1,9 +1,13 @@
 logs/*
+logs/
 bin/*
 project
+project/build.properties
+project/Build.scala
+project/plugins.sbt
 project/project
 project/target
-target
+target/
 tmp
 .history
 dist

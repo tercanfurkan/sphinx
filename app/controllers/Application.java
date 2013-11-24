@@ -471,8 +471,7 @@ public class Application extends Controller {
 		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(801, 901));
 		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(901, 1001));
 		
-		pipeIndexForm = pipeIndexForm.fill(pipeIndexFields);
-		return ok(views.html.pipeIndex.render(pipeIndexForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI, 
+		return ok(views.html.pipeIndex.render(sortBy, order, 
 											  diameterArray, groundWaterArray, areaArray, roadclassArray, 
 											  beachArray, blockageArray, flushingEventArray, extraWaterArray,
 											  cctvDefectsArray, cctvMajorDefectsArray, diameterLengthArray));

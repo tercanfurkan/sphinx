@@ -892,5 +892,127 @@ public class Component {
 		Double retVal = (Double) query.getSingleResult();
 		
 		return retVal;
-	}		
+	}
+	
+	public static Double getPipeLenghtsAccordingToRelativeFloorAreaMeters(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
+		" WHERE c.componentDetail.sensitivityIndex.relativeFloorAreaMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.sensitivityIndex.relativeFloorAreaMeter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}	
+	
+	public static Double getPipeLengthsAccordingToBeachDistance(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c WHERE c.ofDistanceToBeach >= :cMin" + 
+		" and c.ofDistanceToBeach < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}
+	
+	public static Double getPipeLengthsAccordingToGroundWaterArea(int minValue, int maxValue) {
+		
+		//String queryStr = "SELECT COUNT(c.groundWaterArea.classificationValue) FROM Component c" + 
+		//" WHERE c.groundWaterArea.classificationValue >= :cMin" + 
+		//" and c.groundWaterArea.classificationValue < :cMax";
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
+		" WHERE c.groundWaterArea.classificationValue >= :cMin" + 
+		" and c.groundWaterArea.classificationValue < :cMax";		
+		//String queryStr = "SELECT COUNT(c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe) FROM Component c" + 
+		//" WHERE c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe >= :cMin" + 
+		//" and c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe < :cMax";		
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}
+
+	public static Double getPipeLengthsAccordingToRoadClassification(int minValue, int maxValue) {
+		
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
+		" WHERE c.roadClassification >= :cMin" + 
+		" and c.roadClassification < :cMax";	
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}
+
+	public static Double getPipeLengthsAccordingToBlockages(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.blockageMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.blockageMeter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}
+	
+	public static Double getPipeLengthsAccordingToFlushingEvents(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.flushingEventMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.flushingEventMeter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}	
+
+	public static Double getPipeLengthsAccordingToExtraWaterPercentage(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.extraWaterMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.extraWaterMeter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}
+
+	public static Double getPipeLengthsAccordingToCCTVDefects(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.cctvTotalMeter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.cctvTotalMeter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}
+
+	public static Double getPipeLengthsAccordingToCCTVMajorDefects(float minValue, float maxValue) {
+		
+		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
+		" WHERE c.componentDetail.conditionIndex.cctv34Meter.valueOfPipe >= :cMin" + 
+		" and c.componentDetail.conditionIndex.cctv34Meter.valueOfPipe < :cMax";
+		Query query = JPA.em().createQuery(queryStr);
+		query.setParameter("cMin", minValue);
+		query.setParameter("cMax", maxValue);
+		Double retVal = (Double) query.getSingleResult();
+		
+		return retVal;
+	}	
 }

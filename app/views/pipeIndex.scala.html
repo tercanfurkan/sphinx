@@ -1,8 +1,8 @@
 @(currentSortBy: String, currentOrder: String,
-diameterArray: List[Long], groundWaterArray: List[Long], areaArray: List[Long], 
-roadclassArray: List[Long], beachArray: List[Long], blockageArray: List[Long],
-flushingEventArray: List[Long], extraWaterArray: List[Long], cctvDefectsArray: List[Long],
-cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
+diameterLengthArray: List[Double], groundWaterLengthArray: List[Double], areaLengthArray: List[Double], 
+roadclassLengthArray: List[Double], beachLengthArray: List[Double], blockageLengthArray: List[Double],
+flushingEventLengthArray: List[Double], extraWaterLengthArray: List[Double], cctvDefectsLengthArray: List[Double],
+cctvMajorDefectsLengthArray: List[Double])
 
 @import helper._
 
@@ -73,7 +73,7 @@ cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 									<div class="chartsdiameter" id="chartdiameter"></div>
 									<!--<button class="info" id="info1" type="button">Show</button>-->
 									<span class="amount chartsdiameter"></span>
-									<!--<span class="chartsdiameter">Length of pipes: @diameterLengthArray</span>-->
+									<!--<span class="chartsdiameter" id="diameterLengthArrays">Length of pipes: @diameterLengthArray</span>-->
 									<div class="slider range-slide chartsdiameter">
 										<div class="slide" value="333,686" min="25" max="1000">
 											<span id="min">min:25</span>
@@ -107,7 +107,7 @@ cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 								<div class="controls">
 									<div class="chartsbeach" id="chartbeach"></div>
 									<!--<button class="info" id="info3" type="button">Show</button>-->
-									<!--<span class="chartsbeach">Beach array: @beachArray</span>-->								
+									<span class="chartsbeach" id="beachLengthArrays">Beach array: @beachLengthArray</span>								
 									<span class="amount chartsbeach"></span>
 									<div class="slider range-slide chartsbeach">	
 										<div class="slide" value="66,133" min="0" max="200">
@@ -125,7 +125,7 @@ cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 								<div class="controls">
 									<div class="chartsgroundwaterarea" id="chartgroundwaterarea"></div>
 									<!--<button class="info" id="info4" type="button">Show</button>-->							
-									<!--<span class="chartsgroundwaterarea">Ground Water Array: @groundWaterArray</span>-->
+									<!--<span class="chartsgroundwaterarea">Ground Water Array: @groundWaterLengthArray</span>-->
 									<table class="table table-bordered chartsgroundwaterarea">
 										<tbody>
 											<tr>
@@ -364,7 +364,7 @@ cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 								<div class="controls">
 									<div class="chartsroadclassification" id="chartroadclassification"></div>
 									<!--<button class="info" id="info5" type="button">Show</button>-->
-									<!--<span class="chartsroadclassification">RC array: @roadclassArray</span>-->
+									<!--<span class="chartsroadclassification">RC array: @roadclassLengthArray</span>-->
 									<table class="table table-bordered chartsroadclassification">
 										<tbody>
 											<tr>
@@ -468,7 +468,7 @@ cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 								<div class="controls">
 									<div class="chartsblockage" id="chartblockage"></div>
 									<!--<button class="info" id="info6" type="button">Show</button>-->								
-									<!--<span class="chartsblockage">Blockages: @blockageArray</span>-->
+									<!--<span class="chartsblockage">Blockages: @blockageLengthArray</span>-->
 									<span class="amount chartsblockage"></span>
 									<div class="slider range-slide chartsblockage">	
 										<div class="slide" value="1,3" min="0" max="4">
@@ -486,7 +486,7 @@ cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 								<div class="controls">
 									<div class="chartsflushing" id="chartflushing"></div>
 									<!--<button class="info" id="info7" type="button">Show</button>-->
-									<!--<span class="chartsflushing">FEA: @flushingEventArray</span>-->
+									<!--<span class="chartsflushing">FEA: @flushingEventLengthArray</span>-->
 									<span class="amount chartsflushing"></span>
 									<div class="slider range-slide chartsflushing">	
 										<div class="slide" value="5,10" min="0" max="17">
@@ -504,7 +504,7 @@ cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 								<div class="controls">
 									<div class="chartsextrawater" id="chartextrawater"></div>
 									<!--<button class="info" id="info8" type="button">Show</button>-->
-									<!--<span class="chartsextrawater">Extra Water Array: @extraWaterArray</span>-->
+									<!--<span class="chartsextrawater">Extra Water Array: @extraWaterLengthArray</span>-->
 									<span class="amount chartsextrawater"></span>
 									<div class="slider range-slide chartsextrawater">	
 										<div class="slide" value="6,12" min="0" max="19">
@@ -522,7 +522,7 @@ cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 								<div class="controls">
 									<div class="chartsCCTVdefects" id="chartCCTVdefects"></div>
 									<!--<button class="info" id="info9" type="button">Show</button>-->
-									<!--<span class="chartsCCTVdefects">CCTV array: @cctvDefectsArray</span>-->
+									<!--<span class="chartsCCTVdefects">CCTV array: @cctvDefectsLengthArray</span>-->
 									<span class="amount chartsCCTVdefects"></span>
 									<div class="slider range-slide chartsCCTVdefects">	
 										<div class="slide" value="11,22" min="0" max="34">
@@ -540,7 +540,7 @@ cctvMajorDefectsArray: List[Long], diameterLengthArray: List[Double])
 								<div class="controls">
 									<div class="chartsCCTVmajordefects" id="chartCCTVmajordefects"></div>
 									<!--<button class="info" id="info10" type="button">Show</button>-->
-									<!--<span class="chartsCCTVmajordefects">CCTV MD array: @cctvMajorDefectsArray</span>-->
+									<!--<span class="chartsCCTVmajordefects">CCTV MD array: @cctvMajorDefectsLengthArray</span>-->
 									<span class="amount chartsCCTVmajordefects"></span>
 									<div class="slider range-slide chartsCCTVmajordefects">	
 										<div class="slide" value="8,17" min="0" max="26">
@@ -675,11 +675,17 @@ $(document).ready(function(){
 	//
 	$.jqplot.config.enablePlugins = true;
 	var sdiameter = new Array(); 
-	i = 0;
-	@for(s <- diameterArray) {
-		sdiameter[i] = @s;
+	var i = 0;
+	var number;
+	@for(s <- diameterLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sdiameter[i] = Math.round(number / 1000);
+		else
+			sdiameter[i] = 0;
 		i++;
 	}
+	//$('#diameterLengthArrays').html("SDLA: " + sdiameter); // debug
 	var ticksDiameter = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 	diameterObj = {
 		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
@@ -708,8 +714,12 @@ $(document).ready(function(){
 	
 	var sgroundwaterarea = new Array(); 
 	i = 0;
-	@for(s <- groundWaterArray) {
-		sgroundwaterarea[i] = @s;
+	@for(s <- groundWaterLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sgroundwaterarea[i] = Math.round(number / 1000);
+		else
+			sgroundwaterarea[i] = 0;	
 		i++;
 	}
 	var ticksGroundWater = [0, 1, 2, 3];
@@ -732,8 +742,12 @@ $(document).ready(function(){
 	
 	var sarea = new Array(); 
 	i = 0;
-	@for(s <- areaArray) {
-		sarea[i] = @s;
+	@for(s <- areaLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sarea[i] = Math.round(number / 1000);
+		else
+			sarea[i] = 0;
 		i++;
 	}
 	var ticksArea = ["0-10", "10-20", "20-30", "30-40", "40-50"];
@@ -756,8 +770,12 @@ $(document).ready(function(){
 
 	var sroadclass = new Array();
 	i = 0;
-	@for(s <- roadclassArray) {
-		sroadclass[i] = @s;
+	@for(s <- roadclassLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sroadclass[i] = Math.round(number / 1000);
+		else
+			sroadclass[i] = 0;
 		i++;
 	}
 	var ticksBeach = [1, 2, 3, 4];
@@ -780,10 +798,15 @@ $(document).ready(function(){
 	
 	var sbeach = new Array();
 	i = 0;
-	@for(s <- beachArray) {
-		sbeach[i] = @s;
+	@for(s <- beachLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sbeach[i] = Math.round(number / 1000);
+		else
+			sbeach[i] = 0;
 		i++;
-	}
+	}	
+	$('#beachLengthArrays').html("debug: " + sbeach); // debug	
 	var ticksBeach = ["0-100", "100-200", "200-300", "300-400", "400-500"];
 	beachObj = {
 		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
@@ -804,8 +827,12 @@ $(document).ready(function(){
 
 	var sblockage = new Array();
 	i = 0;
-	@for(s <- blockageArray) {
-		sblockage[i] = @s;
+	@for(s <- blockageLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sblockage[i] = Math.round(number / 1000);
+		else
+			sblockage[i] = 0;
 		i++;
 	}
 	var ticksBlockage = [0, 1, 2, 3, 4];
@@ -828,8 +855,12 @@ $(document).ready(function(){
 
 	var sflush = new Array();
 	i = 0;
-	@for(s <- flushingEventArray) {
-		sflush[i] = @s;
+	@for(s <- flushingEventLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sflush[i] = Math.round(number / 1000);
+		else
+			sflush[i] = 0;
 		i++;
 	}
 	var ticksFlush = ["0-3", "4-7", "8-11", "12-15", "16-19"];
@@ -852,8 +883,12 @@ $(document).ready(function(){
 
 	var swater = new Array();
 	i = 0;
-	@for(s <- extraWaterArray) {
-		swater[i] = @s;
+	@for(s <- extraWaterLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			swater[i] = Math.round(number / 1000);
+		else
+			swater[i] = 0;
 		i++;
 	}
 	var ticksExtraWarer = ["0-3", "4-7", "8-11", "12-15", "16-19"];
@@ -876,8 +911,12 @@ $(document).ready(function(){
 
 	var scctv = new Array();
 	i = 0;
-	@for(s <- cctvDefectsArray) {
-		scctv[i] = @s;
+	@for(s <- cctvDefectsLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			scctv[i] = Math.round(number / 1000);
+		else
+			scctv[i] = 0;
 		i++;
 	}
 	var ticksCCTV = ["0-5", "6-10", "11-15", "16-20", "21-25", "26-30", "31-35"];
@@ -900,8 +939,12 @@ $(document).ready(function(){
 
 	var scctvmajor = new Array();
 	i = 0;
-	@for(s <- cctvMajorDefectsArray) {
-		scctvmajor[i] = @s;
+	@for(s <- cctvMajorDefectsLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			scctvmajor[i] = Math.round(number / 1000);
+		else
+			scctvmajor[i] = 0;
 		i++;
 	}
 	var ticksCCTVmajor = ["0-5", "6-10", "11-15", "16-20", "21-25", "26-30"];

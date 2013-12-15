@@ -375,13 +375,13 @@ public class Application extends Controller {
 
 		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);
 		MeterLimitVal meterLimitValFields = meterLimitValForm.bindFromRequest().get();
-
+		meterLimitValForm = meterLimitValForm.fill(meterLimitValFields);
+		System.out.println(meterLimitValFields.diameterMin);
+		
 		// then fill the 'to the point' pipeIndexSummary and display on page
 		//pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
-		meterLimitValForm = meterLimitValForm.fill(meterLimitValFields);
-		//return ok(pipeIndex.render(pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));		
 		
-		System.out.println(meterLimitValForm);		
+		//return ok(pipeIndex.render(pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));				
 
 		return ok(views.html.indexResults.render(meterLimitValForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
 	}
@@ -469,7 +469,9 @@ public class Application extends Controller {
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(21, 26));
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(26, 31));	
 				
-		return ok(views.html.pipeIndex.render(sortBy, order,
+		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);		
+		
+		return ok(views.html.pipeIndex.render(meterLimitValForm, sortBy, order,
 											  diameterLengthArray, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
 											  beachLengthArray, blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
 											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray));

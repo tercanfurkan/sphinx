@@ -1,4 +1,5 @@
-@(currentSortBy: String, currentOrder: String,
+@(meterLimitValForm: Form[models.form.MeterLimitVal],
+currentSortBy: String, currentOrder: String,
 diameterLengthArray: List[Double], groundWaterLengthArray: List[Double], areaLengthArray: List[Double], 
 roadclassLengthArray: List[Double], beachLengthArray: List[Double], blockageLengthArray: List[Double],
 flushingEventLengthArray: List[Double], extraWaterLengthArray: List[Double], cctvDefectsLengthArray: List[Double],
@@ -75,7 +76,7 @@ cctvMajorDefectsLengthArray: List[Double])
 									<span class="amount chartsdiameter"></span>
 									<!--<span class="chartsdiameter" id="diameterLengthArrays">Length of pipes: @diameterLengthArray</span>-->
 									<div class="slider range-slide chartsdiameter">
-										<div class="slide" value="333,686" min="25" max="1000">
+										<div class="slide" value="333,686" id="diameterslider" min="25" max="1000">
 											<span id="min">min:25</span>
 											<span id="max">max:1000</span>
 										</div>
@@ -83,7 +84,7 @@ cctvMajorDefectsLengthArray: List[Double])
 									<span class="help-inline chartsdiameter">pipe diameter caution limit</span>	
 								</div>
 							</fieldset>	
-						</div>	
+						</div>						
 						<div class="control-group">
 							<fieldset class="efesus-border">						
 								<label class="control-label clickable" for="lWasteWater" id="info2">Relative floor area (m<sup>2</sup>/m)</label>											
@@ -106,8 +107,8 @@ cctvMajorDefectsLengthArray: List[Double])
 								<label class="control-label clickable" for="lWasteWater" id="info3">Beach distance (m)</label>						
 								<div class="controls">
 									<div class="chartsbeach" id="chartbeach"></div>
-									<!--<button class="info" id="info3" type="button">Show</button>-->
-									<span class="chartsbeach" id="beachLengthArrays">Beach array: @beachLengthArray</span>								
+									<!--<button class="info" id="info3" type="button">Show</button>
+									<span class="chartsbeach" id="beachLengthArrays">Beach array: @beachLengthArray</span>-->
 									<span class="amount chartsbeach"></span>
 									<div class="slider range-slide chartsbeach">	
 										<div class="slide" value="66,133" min="0" max="200">
@@ -804,7 +805,7 @@ $(document).ready(function(){
 			sbeach[i] = 0;
 		i++;
 	}	
-	$('#beachLengthArrays').html("debug: " + sbeach); // debug	
+	//$('#beachLengthArrays').html("debug: " + sbeach); // debug	
 	var ticksBeach = ["0-100", "100-200", "200-300", "300-400", "400-500"];
 	beachObj = {
 		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
@@ -1215,6 +1216,13 @@ $(document).ready(function(){
 	//
 	// Slider handling
 	//
+	
+	//$("#sliderdiameter").on('slide', function(event, ui) {
+		//(@meterLimitValForm("diameterMin")) = ui.values[0];
+		//(@meterLimitValForm("diameterMax")) = ui.values[1];
+		//alert("I am an alert box!");
+	//});
+	
 	$(".range-slide div.slide").each(function() {
 		values = $(this).attr('value').split(',');
 	    firstVal = values[0];
@@ -1241,6 +1249,8 @@ $(document).ready(function(){
 	    	range: true,
 	    	slide: function(event, ui) {
 				$(this).parent().siblings('span.amount').html("min limit: " + ui.values[0] + " - max limit: " + ui.values[1]);
+				//@meterLimitValForm.("diameterMin") = ui.values[0];
+				//@meterLimitValForm("diameterMin") = 1;
 				//updateColors(ui.values);
 				//doUpdate($(this));
 				//ticks = [ui.values[0], ui.values[1]];

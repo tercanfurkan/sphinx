@@ -610,8 +610,8 @@ cctvMajorDefectsLengthArray: List[Double])
 .ui-slider { 
 	position: relative;
 	text-align: left; 
-	//background: #F84831;
-	background: #1AF230;
+	//background: #F84831; // red
+	background: #1AF230; // green
 }
 //.ui-slider .ui-slider-handle {
 //	background: green;
@@ -627,8 +627,6 @@ a.selected {
 }
 .slider span { background: yelllow; position: absolute; top: -5px}
 .ui-slider-range { background: #F2FA0A; }
-#idmini { width: 50 px; text-align: center}
-#idmaxi { width: 50px; text-align: center}
 #min { left: 2px; font-size: 12px; font-weight: bold}
 #max { right: 2px; font-size: 12px; font-weight: bold}
 #accordion2 {font-weight:bold;}
@@ -1214,7 +1212,6 @@ $(document).ready(function(){
 	deselectCCTVmajordefects();
 	deselectSewers();
 	//////////////////////
-	
 	//
 	// Slider handling
 	//
@@ -1226,14 +1223,14 @@ $(document).ready(function(){
 		var colors = ["#00ff00", "f7ff00", "#ff0000"];		
 	    
 		// Update colors
-		var doUpdate = function(event, ui) {
-			$("this .slide-back").remove();
-			$($(".slide a").get().reverse()).each(function(i) {
-				var bg = '#1AF230';
-				if(i == 3) {
-					bg = 'F84831';
+		var doUpdate = function(objectspor) {
+			$("div.slide .slide-back").remove();
+			$($("div.slide a").get().reverse()).each(function(i) {
+				var bg = '#0f0'; // green
+				if(i == 1) {
+					bg = '#0ff'; // light blue
 				}
-				$(".slide").append($('<div></div>').addClass('slide-back').width($(this).position().left - 5).css('background', bg));
+				$("div.slide").append($('<div></div>').addClass('slide-back').width($(this).position().left - 5).css('background', bg));
 			});
 		};	
 		
@@ -1244,8 +1241,8 @@ $(document).ready(function(){
 	    	range: true,
 	    	slide: function(event, ui) {
 				$(this).parent().siblings('span.amount').html("min limit: " + ui.values[0] + " - max limit: " + ui.values[1]);
-				updateColors(ui.values);
-				//doUpdate();
+				//updateColors(ui.values);
+				//doUpdate($(this));
 				//ticks = [ui.values[0], ui.values[1]];
 				//optionsObj = {
 					// Only animate if we're not using excanvas (not in IE 7 or IE 8)..

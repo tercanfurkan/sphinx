@@ -1,7 +1,7 @@
 package models.form;
 
 public class MeterLimitVal {
-	
+
 	public MeterLimitVal() {
 		// Slider min max default values
 		this.diameterMin = 333;
@@ -57,4 +57,87 @@ public class MeterLimitVal {
 	//public float wasteWaterLimit; -> not in use yet (12.12.2013)
 	//public float pipeTypeLimit; <-> ??
 	//public boolean isInspected;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(diameterMin);
+		result = prime * result + Float.floatToIntBits(diameterMax);
+		result = prime * result + Float.floatToIntBits(floorAreaMin);
+		result = prime * result + Float.floatToIntBits(floorAreaMax);
+		result = prime * result + Float.floatToIntBits(beachDistanceMin);
+		result = prime * result + Float.floatToIntBits(beachDistanceMax);
+		result = prime * result + Float.floatToIntBits(blockageMin);
+		result = prime * result + Float.floatToIntBits(blockageMax);
+		result = prime * result + Float.floatToIntBits(flushingMin);
+		result = prime * result + Float.floatToIntBits(flushingMax);
+		result = prime * result + Float.floatToIntBits(extraWaterMin);
+		result = prime * result + Float.floatToIntBits(extraWaterMax);
+		result = prime * result + Float.floatToIntBits(cctvMin);
+		result = prime * result + Float.floatToIntBits(cctvMax);
+		result = prime * result + Float.floatToIntBits(cctv34Min);
+		result = prime * result + Float.floatToIntBits(cctv34Max);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MeterLimitVal other = (MeterLimitVal) obj;
+		if (Float.floatToIntBits(diameterMin) != Float
+				.floatToIntBits(other.diameterMin))
+			return false;
+		if (Float.floatToIntBits(diameterMax) != Float
+				.floatToIntBits(other.diameterMax))
+			return false;
+		if (Float.floatToIntBits(floorAreaMin) != Float
+				.floatToIntBits(other.floorAreaMin))
+			return false;
+		if (Float.floatToIntBits(floorAreaMax) != Float
+				.floatToIntBits(other.floorAreaMax))
+			return false;		
+		if (Float.floatToIntBits(beachDistanceMin) != Float
+				.floatToIntBits(other.beachDistanceMin))
+			return false;
+		if (Float.floatToIntBits(beachDistanceMax) != Float
+				.floatToIntBits(other.beachDistanceMax))
+			return false;
+		if (Float.floatToIntBits(blockageMin) != Float
+				.floatToIntBits(other.blockageMin))
+			return false;
+		if (Float.floatToIntBits(blockageMax) != Float
+				.floatToIntBits(other.blockageMax))
+			return false;
+		if (Float.floatToIntBits(flushingMin) != Float
+				.floatToIntBits(other.flushingMin))
+			return false;
+		if (Float.floatToIntBits(flushingMax) != Float
+				.floatToIntBits(other.flushingMax))
+			return false;
+		if (Float.floatToIntBits(extraWaterMin) != Float
+				.floatToIntBits(other.extraWaterMin))
+			return false;
+		if (Float.floatToIntBits(extraWaterMax) != Float
+				.floatToIntBits(other.extraWaterMax))
+			return false;
+		if (Float.floatToIntBits(cctvMin) != Float
+				.floatToIntBits(other.cctvMin))
+			return false;
+		if (Float.floatToIntBits(cctvMax) != Float
+				.floatToIntBits(other.cctvMax))
+			return false;
+		if (Float.floatToIntBits(cctv34Min) != Float
+				.floatToIntBits(other.cctv34Min))
+			return false;
+		if (Float.floatToIntBits(cctv34Max) != Float
+				.floatToIntBits(other.cctv34Max))
+			return false;			
+		return true;
+	}	
+	
 }

@@ -15,6 +15,7 @@ import models.PipeIndexResult;
 import models.Component.AreaAndMeters;
 import models.Component.AreaMeterList;
 import models.form.PipeIndex;
+import models.form.MeterLimitVal;
 import models.meter.sensitivity.PipeSensitivityIndex;
 import models.meter.sensitivity.PipeSensitivityIndex.SensitivityIndexPage;
 import models.wrapper.PipeIndexSummary;
@@ -372,8 +373,17 @@ public class Application extends Controller {
 		
 		pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
 
+		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);
+		MeterLimitVal meterLimitValFields = meterLimitValForm.bindFromRequest().get();
 
-		return ok(views.html.indexResults.render(sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
+		// then fill the 'to the point' pipeIndexSummary and display on page
+		//pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
+		meterLimitValForm = meterLimitValForm.fill(meterLimitValFields);
+		//return ok(pipeIndex.render(pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));		
+		
+		System.out.println(meterLimitValForm);		
+
+		return ok(views.html.indexResults.render(meterLimitValForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
 	}
 	
 	/**
@@ -458,7 +468,7 @@ public class Application extends Controller {
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(16, 21));
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(21, 26));
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(26, 31));	
-		
+				
 		return ok(views.html.pipeIndex.render(sortBy, order,
 											  diameterLengthArray, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
 											  beachLengthArray, blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,

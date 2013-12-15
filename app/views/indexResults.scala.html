@@ -1,4 +1,5 @@
-@(currentSortBy: String, currentOrder: String,
+@(meterLimitValForm: Form[models.form.MeterLimitVal],
+currentSortBy: String, currentOrder: String,
 pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 
 @import helper._
@@ -59,7 +60,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexLimit")</td>
 				<td class="controls span2">@pipeIndexSummary.consequenceLimit</td>
 				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexLimit")</td>
-				<td class="controls span2">@pipeIndexSummary.conditionLimit / 5.0 (unispected)</td>
+				<td class="controls span2">@pipeIndexSummary.conditionLimit / 5.0 (uninspected)</td>
 			</tr>
 			<tr>
 				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexPipeLength")</td>

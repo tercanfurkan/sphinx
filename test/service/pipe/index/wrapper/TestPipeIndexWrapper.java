@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import models.form.MeterLimitVal;
 import models.form.PipeIndex;
 import models.wrapper.PipeIndexWrapper;
 import models.wrapper.PipeIndexWrapperView;
@@ -24,7 +25,7 @@ public class TestPipeIndexWrapper {
 						
 						List<PipeIndexWrapper> indexWrapperList = null;;
 						List<PipeIndexWrapperView> pipeIndexWrapperViewList = null;
-						PipeIndex pipeIndexDefault = new PipeIndex();
+						MeterLimitVal pipeIndexDefault = new MeterLimitVal();
 						
 						pipeIndexWrapperViewList = PipeIndexWrapperView.getPipeIndexWrapperViewList();
 						indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexDefault);

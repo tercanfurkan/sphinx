@@ -8,12 +8,11 @@ import java.util.List;
 
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
-
-
 import models.Component;
 import models.PipeIndexResult;
 import models.Component.AreaAndMeters;
 import models.Component.AreaMeterList;
+import models.form.MeterLimitVal;
 import models.form.PipeIndex;
 import models.form.MeterLimitVal;
 import models.meter.sensitivity.PipeSensitivityIndex;
@@ -31,7 +30,6 @@ import service.PipeIndexServ;
 import service.PipeSensitivityIndexServ;
 import service.export.WritePipeIndexAsXLS;
 import util.MathUtilSphinx;
-
 import views.html.*;
 
 public class Application extends Controller {
@@ -327,22 +325,22 @@ public class Application extends Controller {
 	 */
 	@Transactional(readOnly = true)
 	public static Result indexResults(int page, String sortBy, String order) {
-		PipeIndex pipeIndexDefault = new PipeIndex();
+		MeterLimitVal meterLimitVal = new MeterLimitVal();
 		
 		if (pipeIndexWrapperViewList == null) {
 			System.out.println("--- pipeIndexWrapperViewList is now NULL! both pipeIndexWrapperViewList and indexWrapperList will be FILLED");
 			pipeIndexWrapperViewList = PipeIndexWrapperView.getPipeIndexWrapperViewList();
-			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexDefault);
+			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitVal);
 		}
 		
-		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, pipeIndexDefault);
+		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitVal);
 
 		
 		// fill the 'to the point' pipeIndexResult of each pipe
 		// then fill the 'to the point' pipeIndexSummary and display on page
 		PipeIndexSummary pipeIndexSummary = null; // pass this object to render
-		Float conditionIndexLimit = 7.00F; // this is hardcoded. It is 5 and 3 for non inspected pipes
-		Float consequenceIndexLimit = 6.00F;
+		Float conditionIndexLimit = 5F; // this is hardcoded. It is 5 and 3 for non inspected pipes
+		Float consequenceIndexLimit = 2F;
 		boolean hasExceededConditionIndex = false;
 		boolean hasExceededConsequenceIndex = false;
 		boolean hasExceededConditionAndConsequenceIndex = false;
@@ -383,7 +381,7 @@ public class Application extends Controller {
 		
 		//return ok(pipeIndex.render(pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));				
 
-		return ok(views.html.indexResults.render(meterLimitValForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
+		return ok(views.html.indexResults.render(sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
 	}
 	
 	/**

@@ -65,12 +65,12 @@ cctvMajorDefectsLengthArray: List[Double])
 						</div>
 						<div class="control-group">
 							<label class="control-label bold-label">Set limit values for consequence meters</label>
-						</div>										
+						</div>
 						<div class="control-group">
-							<fieldset class="efesus-border">
-								<!--<legend class="efesus-border">aaa</legend>-->	
-								<label class="control-label clickable" for="lWasteWater" id="info1">Pipe diameter (mm)</label>
-								<div class="controls">								
+							<fieldset class="efesus-border clickable">
+								<!--<legend class="efesus-border">aaa</legend>-->
+								<a><label class="control-label clickable" for="lWasteWater" id="info1">Pipe diameter (mm)</label></a>
+								<div class="controls">
 									<div class="chartsdiameter" id="chartdiameter"></div>
 									<!--<button class="info" id="info1" type="button">Show</button>-->
 									<span class="amount chartsdiameter"></span>
@@ -83,11 +83,11 @@ cctvMajorDefectsLengthArray: List[Double])
 									</div>
 									<span class="help-inline chartsdiameter">pipe diameter caution limit</span>	
 								</div>
-							</fieldset>	
-						</div>						
+							</fieldset>
+						</div>
 						<div class="control-group">
-							<fieldset class="efesus-border">						
-								<label class="control-label clickable" for="lWasteWater" id="info2">Relative floor area (m<sup>2</sup>/m)</label>											
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info2">Relative floor area (m<sup>2</sup>/m)</label></a>
 								<div class="controls">
 									<div class="chartsarea" id="chartarea"></div>
 									<!--<button class="info" id="info2" type="button">Show</button>-->
@@ -103,8 +103,8 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>	
 						<div class="control-group">
-							<fieldset class="efesus-border">
-								<label class="control-label clickable" for="lWasteWater" id="info3">Beach distance (m)</label>						
+							<fieldset class="efesus-border clickable">
+								<a><label class="control-label clickable" for="lWasteWater" id="info3">Beach distance (m)</label></a>
 								<div class="controls">
 									<div class="chartsbeach" id="chartbeach"></div>
 									<!--<button class="info" id="info3" type="button">Show</button>
@@ -121,8 +121,8 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>						
 						<div class="control-group">
-							<fieldset class="efesus-border">						
-								<label class="control-label clickable" for="lWasteWater" id="info4">Ground water area (0..3)</label>						
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info4">Ground water area (0..3)</label></a>
 								<div class="controls">
 									<div class="chartsgroundwaterarea" id="chartgroundwaterarea"></div>
 									<!--<button class="info" id="info4" type="button">Show</button>-->							
@@ -193,24 +193,11 @@ cctvMajorDefectsLengthArray: List[Double])
 									</table>				
 								</div>
 							</fieldset>	
-						</div>						
-						<!--<div class="control-group">
-							<label class="control-label" for="lGroundWater">Ground water area (0..3)</label>						
-							<div class="controls">
-								<span class="amount"></span>
-								<div class="slider range-slide">	
-									<div class="slide" value="1,2" min="0" max="3">
-										<span id="min">min:0</span>
-								    	<span id="max">max:3</span>								    
-									</div>
-								</div>								
-								<span class="help-inline">0: not significant to 3: highly significant</span>
-							</div>
-						</div> -->										
+						</div>															
 						<div class="control-group">						
-							<fieldset class="efesus-border">				
+							<fieldset class="efesus-border clickable">				
 								<div class="control-group">
-									<label class="control-label clickable" for="lWasteWater" id="info0">Sewer type</label>
+									<a><label class="control-label clickable" for="lWasteWater" id="info0">Sewer type</label></a>
 								</div>
 								<div class="sewer-group">						
 									<div class="control-group">
@@ -346,22 +333,9 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>						
-						<!--<div class="control-group">
-							<label class="control-label" for="lWasteWater">Road classification (1..4)</label>						
-							<div class="controls">
-								<span class="amount"></span>
-								<div class="slider range-slide">	
-									<div class="slide" value="1,3" min="4" max="1">
-										<span id="min">min:4</span>
-								    	<span id="max">max:1</span>								    
-									</div>
-								</div>								
-								<span class="help-inline">1:Regional main street 1, 2:Regional main street 2, 3:Local main street, 4:Collector street</span>	
-							</div>
-						</div>-->
 						<div class="control-group">
-							<fieldset class="efesus-border">						
-								<label class="control-label clickable" for="lWasteWater" id="info5">Road classification (1..4)</label>						
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info5">Road classification (1..4)</label></a>
 								<div class="controls">
 									<div class="chartsroadclassification" id="chartroadclassification"></div>
 									<!--<button class="info" id="info5" type="button">Show</button>-->
@@ -464,8 +438,8 @@ cctvMajorDefectsLengthArray: List[Double])
 						</div>
 
 						<div class="control-group">
-							<fieldset class="efesus-border">
-								<label class="control-label clickable" for="lWasteWater" id="info6">Blockages</label>						
+							<fieldset class="efesus-border clickable">
+								<a><label class="control-label clickable" for="lWasteWater" id="info6">Blockages</label></a>
 								<div class="controls">
 									<div class="chartsblockage" id="chartblockage"></div>
 									<!--<button class="info" id="info6" type="button">Show</button>-->								
@@ -482,8 +456,8 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group">
-							<fieldset class="efesus-border">
-								<label class="control-label clickable" for="lWasteWater" id="info7">Flushing events</label>						
+							<fieldset class="efesus-border clickable">
+								<a><label class="control-label clickable" for="lWasteWater" id="info7">Flushing events</label></a>
 								<div class="controls">
 									<div class="chartsflushing" id="chartflushing"></div>
 									<!--<button class="info" id="info7" type="button">Show</button>-->
@@ -500,8 +474,8 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group">
-							<fieldset class="efesus-border">						
-								<label class="control-label clickable" for="lWasteWater" id="info8">Extra Water (%)</label>						
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info8">Extra Water (%)</label></a>
 								<div class="controls">
 									<div class="chartsextrawater" id="chartextrawater"></div>
 									<!--<button class="info" id="info8" type="button">Show</button>-->
@@ -518,8 +492,8 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group">
-							<fieldset class="efesus-border">
-								<label class="control-label clickable" for="lWasteWater" id="info9">CCTV defects</label>						
+							<fieldset class="efesus-border clickable">
+								<a><label class="control-label clickable" for="lWasteWater" id="info9">CCTV defects</label></a>
 								<div class="controls">
 									<div class="chartsCCTVdefects" id="chartCCTVdefects"></div>
 									<!--<button class="info" id="info9" type="button">Show</button>-->
@@ -536,8 +510,8 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group">
-							<fieldset class="efesus-border">
-								<label class="control-label clickable" for="lWasteWater" id="info10">CCTV major defects</label>					
+							<fieldset class="efesus-border clickable">
+								<a><label class="control-label clickable" for="lWasteWater" id="info10">CCTV major defects</label></a>
 								<div class="controls">
 									<div class="chartsCCTVmajordefects" id="chartCCTVmajordefects"></div>
 									<!--<button class="info" id="info10" type="button">Show</button>-->
@@ -553,21 +527,6 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>	
 						</div>
-						<!--<div class="control-group">
-							<label class="control-label clickable" for="lWasteWater">Over flow (m<sup>3</sup>/year)</label>					
-							<div class="controls">
-								<div class="chartsAnnualOverflow" id="chartAnnualOverflow"></div>
-								<button class="info" id="info11" type="button">Show</button>
-								<span class="amount chartsAnnualOverflow"></span>
-								<div class="slider range-slide chartsAnnualOverflow">	
-									<div class="slide" value="33,66" min="0" max="100">
-										<span id="min">min:0</span>
-								    	<span id="max">max:100</span>								    
-									</div>
-								</div>	
-								<span class="help-inline chartsAnnualOverflow">annual overflow (m<sup>3</sup>) of the area</span>
-							</div>
-						</div>-->
 					</div>
 
 				</div>				

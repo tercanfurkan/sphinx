@@ -3,9 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
-import util.MathUtilSphinx;
 import models.form.MeterLimitVal;
-import models.form.PipeIndex;
 import models.wrapper.PipeIndexWrapper;
 import models.wrapper.PipeIndexWrapperView;
 
@@ -18,19 +16,19 @@ public class PipeIndexServ {
 		List<PipeIndexWrapper> retValList = new ArrayList<PipeIndexWrapper>();
 		for (PipeIndexWrapperView view : viewList) {
 			retWrapper = new PipeIndexWrapper();
+			retWrapper.diameter_mm = view.pipeDiameter.intValue();
+			retWrapper.pipe_class = view.pipeClassName;
 			calculatePipeConditionIndex(view, meterLimitVal);
 			calculatePipeConsequenceIndex(view, meterLimitVal);
 			retWrapper.pipe_id = view.pipeId;
 			retWrapper.pipe_identifier = view.pipeName;
 			retWrapper.pipe_length_m = view.pipeLength;
-			retWrapper.diameter_mm = view.pipeDiameter.intValue();
 			retWrapper.pipe_datasource_code = view.pipeCode;
 			retWrapper.cdm_extrawater_total_consumption_m3_a = view.psAnnualConsumption;
 			retWrapper.cdm_extrawater_total_flow_m3_a = view.psFlowSum;
 			retWrapper.cqm_floor_area = view.totalFloorArea;
 			retWrapper.cqm_floor_area_total_pipe_length = view.allPipeLengthFloorArea;
 			retWrapper.cqm_wastewater_flow_annual_flow_m3 = view.psAnnualConsumption;
-			retWrapper.pipe_class = view.pipeClassName;
 			retWrapper.owner_ps_area = view.psName;
 			retWrapper.material = view.pipeMaterial;
 			
@@ -56,15 +54,36 @@ public class PipeIndexServ {
 		retWrapper.cqm_wastewater_flow_max_limit = meterLimitVal.diameterMax;
 		
 		//radiobutton vals
-//		retWrapper.cqm_groundwater_area_pipe_value = (float) view.pipeGroundWaterAreaClassification;
-//		retWrapper.cqm_groundwater_area_pipe_meter = retWrapper.cqm_groundwater_area_pipe_value / meterLimit.groundWaterAreaLimit;
-//		retWrapper.cqm_groundwater_area_limit = meterLimit.groundWaterAreaLimit;
+		retWrapper.cqm_groundwater_area_pipe_value = (float) view.pipeGroundWaterAreaClassification;
+		if (retWrapper.cqm_groundwater_area_pipe_value == 3F)
+			retWrapper.cqm_groundwater_area_pipe_meter = meterLimitVal.gwaImportantVal;
+		else if (retWrapper.cqm_groundwater_area_pipe_value == 2F)
+			retWrapper.cqm_groundwater_area_pipe_meter = meterLimitVal.gwaSuitableVal;
+		else if (retWrapper.cqm_groundwater_area_pipe_value == 1F)
+			retWrapper.cqm_groundwater_area_pipe_meter = meterLimitVal.gwaOtherVal;
+		else
+			retWrapper.cqm_groundwater_area_pipe_meter = 0F;
 		
 		//radiobutton vals
-//		retWrapper.cqm_pipe_type_value = view.pipeTypeValue;
-//		retWrapper.cqm_pipe_type_meter = (retWrapper.cqm_pipe_type_value * view.pipeDiameter) / (meterLimit.pipeTypeLimit * meterLimit.pipeTypeDiameterLimit);
-//		retWrapper.cqm_pipe_type_limit = meterLimit.pipeTypeLimit;
-//		retWrapper.cqm_pipe_type_diameter_limit = meterLimit.pipeTypeDiameterLimit;
+		retWrapper.cqm_pipe_type_value = view.pipeTypeValue;
+		if (retWrapper.pipe_class.startsWith("Paine")) {
+			if (retWrapper.diameter_mm < 100) //small pressure
+				retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypeSmallPressureVal;
+			else //pressure
+				retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypePressure;
+		}
+		else if (retWrapper.pipe_class.startsWith("Päävi")) {
+			//gravity sewer main
+			retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypeGravetyVal;
+		}
+		else if (retWrapper.pipe_class.startsWith("Kerä")) {
+			//collection sewers 
+			retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypeCollectionVal;
+		}
+		else {
+			//Syöksyputki - lateral gravity sewers
+			retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypeLateralVal;
+		}
 		
 		//slider vals floor area
 		retWrapper.cqm_floor_area_pipe_value = (view.allPipeLengthFloorArea == 0F) ? 0F : (float) view.totalFloorArea / view.allPipeLengthFloorArea;
@@ -78,14 +97,17 @@ public class PipeIndexServ {
 		retWrapper.cqm_floor_area_pipe_max_limit = meterLimitVal.floorAreaMax;
 		
 		//radiobutton vals
-//		retWrapper.cqm_road_class_pipe_value = (float) view.pipeRoadClassification;
-//		retWrapper.cqm_road_class_pipe_meter = (retWrapper.cqm_road_class_pipe_value != 0) ? (meterLimit.roadClassLimit / retWrapper.cqm_road_class_pipe_value) : 0F;
-//		retWrapper.cqm_road_class_limit = meterLimit.roadClassLimit;
+		retWrapper.cqm_road_class_pipe_value = (float) view.pipeRoadClassification;
+		if (retWrapper.cqm_road_class_pipe_value == 4F)
+			retWrapper.cqm_road_class_pipe_meter = meterLimitVal.roadCollectorVal;
+		else if (retWrapper.cqm_road_class_pipe_value == 3F)
+			retWrapper.cqm_road_class_pipe_meter = meterLimitVal.roadLocalMainVal;
+		else if (retWrapper.cqm_road_class_pipe_value == 2F)
+			retWrapper.cqm_road_class_pipe_meter = meterLimitVal.roadRegionalMain2Val;
+		else
+			retWrapper.cqm_road_class_pipe_meter = meterLimitVal.roadRegionalMain1Val;
 		
-		//radiobutton vals
-//		retWrapper.cqm_beach_distance_limit = meterLimit.ofBeachDistanceLimit;
-//		retWrapper.cqm_beach_distance_pipe_meter = (retWrapper.cqm_beach_distance_pipe_value != 0F) ? (retWrapper.cqm_beach_distance_limit / retWrapper.cqm_beach_distance_pipe_value) : 0F;
-
+		//slider beach distance
 		retWrapper.cqm_beach_distance_pipe_value = view.ofDistanceToBeach;
 		if (retWrapper.cqm_beach_distance_pipe_value < meterLimitVal.beachDistanceMin)
 			retWrapper.cqm_beach_distance_pipe_meter = 0F;
@@ -97,14 +119,13 @@ public class PipeIndexServ {
 		retWrapper.cqm_beach_distance_pipe_max_limit = meterLimitVal.beachDistanceMax;
 		
 		retWrapper.pipe_consequence_index = retWrapper.cqm_wastewater_flow_pipe_meter
-//				+ retWrapper.cqm_groundwater_area_pipe_meter
-//				+ retWrapper.cqm_pipe_type_meter
-//				+ retWrapper.cqm_road_class_pipe_meter
-//				+ retWrapper.cqm_beach_distance_pipe_meter
+				+ retWrapper.cqm_groundwater_area_pipe_meter
+				+ retWrapper.cqm_pipe_type_meter
+				+ retWrapper.cqm_road_class_pipe_meter
+				+ retWrapper.cqm_beach_distance_pipe_meter
 				+ retWrapper.cqm_floor_area_pipe_meter;
 		
-//		retWrapper.cqm_limit_total = 6F;
-		retWrapper.cqm_limit_total = 2F;
+		retWrapper.cqm_limit_total = 6F;
 	}
 	
 	public static void calculatePipeConditionIndex(PipeIndexWrapperView view, MeterLimitVal meterLimitVal) {

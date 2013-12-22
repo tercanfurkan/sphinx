@@ -31,10 +31,10 @@ public class MeterLimitVal {
 		//how is small pressure pipe identified for instance: pipeDiameter < x meter ?
 		this.pipeTypeSmallPressureVal = 1;
 		
-		this.regionalMain1Val = 2;
-		this.regionalMain2Val = 1;
-		this.localMainVal = 1;
-		this.collectorVal = 0;
+		this.roadRegionalMain1Val = 2;
+		this.roadRegionalMain2Val = 1;
+		this.roadLocalMainVal = 1;
+		this.roadCollectorVal = 0;
 	}
 
 	// Slider min max values
@@ -56,19 +56,19 @@ public class MeterLimitVal {
 	public float cctv34Max;
 	
 	// Radio button min max values
-	public int gwaImportantVal;
-	public int gwaSuitableVal;
-	public int gwaOtherVal;
+	public float gwaImportantVal;
+	public float gwaSuitableVal;
+	public float gwaOtherVal;
 	
-	public int pipeTypeLateralVal;
-	public int pipeTypeCollectionVal;
-	public int pipeTypeGravetyVal; 
-	public int pipeTypePressure; 
+	public float pipeTypeLateralVal;
+	public float pipeTypeCollectionVal;
+	public float pipeTypeGravetyVal; 
+	public float pipeTypePressure; 
 	//how is small pressure pipe identified for instance: pipeDiameter < x meter ?
-	public int pipeTypeSmallPressureVal;
+	public float pipeTypeSmallPressureVal;
 	
-	public int regionalMain1Val;
-	public int regionalMain2Val;
-	public int localMainVal;
-	public int collectorVal;
+	public float roadRegionalMain1Val;
+	public float roadRegionalMain2Val;
+	public float roadLocalMainVal;
+	public float roadCollectorVal;
 }

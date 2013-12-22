@@ -71,6 +71,4 @@ public class MeterLimitVal {
 	public int regionalMain2Val;
 	public int localMainVal;
 	public int collectorVal;
-
-	
 }

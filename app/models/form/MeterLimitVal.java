@@ -20,30 +20,21 @@ public class MeterLimitVal {
 		this.cctv34Min = 8;
 		this.cctv34Max = 17;
 		
-		//Define values for meters using radio buttons
-		//importantGroundWaterAreaVal = 0/1/2 ?
-		//suitableGroundWaterAreaVal = 0/1/2 ?
-		//otherGroundWaterAreaVal = 0/1/2 ?
+		this.gwaImportantVal = 2;
+		this.gwaSuitableVal = 1;
+		this.gwaOtherVal = 0;
 		
-		//lateralPipeVal = 0/1/2 ?
-		//collectionPipeVal = 0/1/2 ?
-		//gravetyPipeVal = 0/1/2 ?
-		//pressurePipeVal = 0/1/2 
-		//smallPressurePipeVal = 0/1/2 ? and how is small pressure pipe identified for instance: pipeDiameter < x meter ?
+		this.pipeTypeLateralVal = 0;
+		this.pipeTypeCollectionVal = 0;
+		this.pipeTypeGravetyVal = 1; 
+		this.pipeTypePressure = 2; 
+		//how is small pressure pipe identified for instance: pipeDiameter < x meter ?
+		this.pipeTypeSmallPressureVal = 1;
 		
-		//regionalMain1Val = 0/1/2 ?
-		//regionalMain2Val = 0/1/2 ?
-		//localMainVal = 0/1/2 ?
-		//collectorVal = 0/1/2 ?
-		
-		
-		// Radio button min max default values
-		this.groundWaterAreaMin = 1;
-		this.groundWaterAreaMax = 2;
-		this.roadClassMin = 2;
-		this.roadClassMax = 3;
-		
-		// Sewer types? Lateral gravity sewers, Collection sewers, Gravity sewer mains, Pressure sewers, Small pressure sewers?????
+		this.regionalMain1Val = 2;
+		this.regionalMain2Val = 1;
+		this.localMainVal = 1;
+		this.collectorVal = 0;
 	}
 
 	// Slider min max values
@@ -65,95 +56,21 @@ public class MeterLimitVal {
 	public float cctv34Max;
 	
 	// Radio button min max values
-	public float groundWaterAreaMin;
-	public float groundWaterAreaMax;
-	public float roadClassMin;
-	public float roadClassMax;
+	public int gwaImportantVal;
+	public int gwaSuitableVal;
+	public int gwaOtherVal;
 	
-	//public float wasteWaterLimit; -> not in use yet (12.12.2013)
-	//public float pipeTypeLimit; <-> ??
-	//public boolean isInspected;
+	public int pipeTypeLateralVal;
+	public int pipeTypeCollectionVal;
+	public int pipeTypeGravetyVal; 
+	public int pipeTypePressure; 
+	//how is small pressure pipe identified for instance: pipeDiameter < x meter ?
+	public int pipeTypeSmallPressureVal;
+	
+	public int regionalMain1Val;
+	public int regionalMain2Val;
+	public int localMainVal;
+	public int collectorVal;
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Float.floatToIntBits(diameterMin);
-		result = prime * result + Float.floatToIntBits(diameterMax);
-		result = prime * result + Float.floatToIntBits(floorAreaMin);
-		result = prime * result + Float.floatToIntBits(floorAreaMax);
-		result = prime * result + Float.floatToIntBits(beachDistanceMin);
-		result = prime * result + Float.floatToIntBits(beachDistanceMax);
-		result = prime * result + Float.floatToIntBits(blockageMin);
-		result = prime * result + Float.floatToIntBits(blockageMax);
-		result = prime * result + Float.floatToIntBits(flushingMin);
-		result = prime * result + Float.floatToIntBits(flushingMax);
-		result = prime * result + Float.floatToIntBits(extraWaterMin);
-		result = prime * result + Float.floatToIntBits(extraWaterMax);
-		result = prime * result + Float.floatToIntBits(cctvMin);
-		result = prime * result + Float.floatToIntBits(cctvMax);
-		result = prime * result + Float.floatToIntBits(cctv34Min);
-		result = prime * result + Float.floatToIntBits(cctv34Max);
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MeterLimitVal other = (MeterLimitVal) obj;
-		if (Float.floatToIntBits(diameterMin) != Float
-				.floatToIntBits(other.diameterMin))
-			return false;
-		if (Float.floatToIntBits(diameterMax) != Float
-				.floatToIntBits(other.diameterMax))
-			return false;
-		if (Float.floatToIntBits(floorAreaMin) != Float
-				.floatToIntBits(other.floorAreaMin))
-			return false;
-		if (Float.floatToIntBits(floorAreaMax) != Float
-				.floatToIntBits(other.floorAreaMax))
-			return false;		
-		if (Float.floatToIntBits(beachDistanceMin) != Float
-				.floatToIntBits(other.beachDistanceMin))
-			return false;
-		if (Float.floatToIntBits(beachDistanceMax) != Float
-				.floatToIntBits(other.beachDistanceMax))
-			return false;
-		if (Float.floatToIntBits(blockageMin) != Float
-				.floatToIntBits(other.blockageMin))
-			return false;
-		if (Float.floatToIntBits(blockageMax) != Float
-				.floatToIntBits(other.blockageMax))
-			return false;
-		if (Float.floatToIntBits(flushingMin) != Float
-				.floatToIntBits(other.flushingMin))
-			return false;
-		if (Float.floatToIntBits(flushingMax) != Float
-				.floatToIntBits(other.flushingMax))
-			return false;
-		if (Float.floatToIntBits(extraWaterMin) != Float
-				.floatToIntBits(other.extraWaterMin))
-			return false;
-		if (Float.floatToIntBits(extraWaterMax) != Float
-				.floatToIntBits(other.extraWaterMax))
-			return false;
-		if (Float.floatToIntBits(cctvMin) != Float
-				.floatToIntBits(other.cctvMin))
-			return false;
-		if (Float.floatToIntBits(cctvMax) != Float
-				.floatToIntBits(other.cctvMax))
-			return false;
-		if (Float.floatToIntBits(cctv34Min) != Float
-				.floatToIntBits(other.cctv34Min))
-			return false;
-		if (Float.floatToIntBits(cctv34Max) != Float
-				.floatToIntBits(other.cctv34Max))
-			return false;			
-		return true;
-	}	
 	
 }

@@ -7,35 +7,35 @@ import java.util.Collections;
 import java.util.List;
 
 import jxl.write.WriteException;
-import jxl.write.biff.RowsExceededException;
 import models.Component;
-import models.PipeIndexResult;
 import models.Component.AreaAndMeters;
 import models.Component.AreaMeterList;
-import models.form.MeterLimitVal;
-import models.form.PipeIndex;
 import models.form.MeterLimitVal;
 import models.meter.sensitivity.PipeSensitivityIndex;
 import models.meter.sensitivity.PipeSensitivityIndex.SensitivityIndexPage;
 import models.wrapper.PipeIndexSummary;
 import models.wrapper.PipeIndexWrapper;
 import models.wrapper.PipeIndexWrapperView;
-import models.wrapper.PipeIndexWrapper.PipeIndexWrapperPage;
 import play.data.Form;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
 import service.PipeIndexServ;
-import service.PipeSensitivityIndexServ;
 import service.export.WritePipeIndexAsXLS;
 import util.MathUtilSphinx;
 import views.html.*;
 
 public class Application extends Controller {
 	
-	static List<PipeIndexWrapper> indexWrapperList = null;;
+	static List<PipeIndexWrapper> indexWrapperList = null;
+	static List<PipeIndexWrapper> badConditionIndexWrapperList = new ArrayList<PipeIndexWrapper>();
+	static List<PipeIndexWrapper> badConsequenceIndexWrapperList = new ArrayList<PipeIndexWrapper>();
+	static List<PipeIndexWrapper> otherIndexWrapperList = new ArrayList<PipeIndexWrapper>();
 	static List<PipeIndexWrapperView> pipeIndexWrapperViewList = null;
+	
+	private static final int CONDITION_INDEX_EXCEED_LIMIT = 8;
+	private static final int CONSEQUENCE_INDEX_EXCEED_LIMIT = 8;
 
 	/**
 	 * This result directly redirect to application home.
@@ -350,11 +350,26 @@ public class Application extends Controller {
 		Float consequencePipeLengthNotInspected = 0.000F; // length of not inspected pipes exceed consequence index limit
 		Float conditionAndConsequencePipeLength = 0.000F; // length of pipes that exceed condition and consequence index limit
 		
+		badConditionIndexWrapperList.clear();
+		badConsequenceIndexWrapperList.clear();
+		otherIndexWrapperList.clear();
+		
 		for(PipeIndexWrapper wrapper : indexWrapperList) {	
 			
-			hasExceededConditionIndex = (wrapper.pipe_condition_index >= wrapper.cdm_limit_total);
-			hasExceededConsequenceIndex = (wrapper.pipe_consequence_index >= wrapper.cqm_limit_total -1);
-			hasExceededConditionAndConsequenceIndex = (hasExceededConditionIndex && hasExceededConsequenceIndex);
+			if (wrapper.pipe_condition_index >= CONDITION_INDEX_EXCEED_LIMIT) {
+				hasExceededConditionIndex = true;
+				badConditionIndexWrapperList.add(wrapper);
+			}
+			
+			if (wrapper.pipe_consequence_index >= CONSEQUENCE_INDEX_EXCEED_LIMIT) {
+				hasExceededConsequenceIndex = true;
+				badConsequenceIndexWrapperList.add(wrapper);
+			}
+			
+			if (hasExceededConditionIndex && hasExceededConsequenceIndex)
+				hasExceededConditionAndConsequenceIndex = true;
+			else if (wrapper.pipe_condition_index < CONDITION_INDEX_EXCEED_LIMIT && wrapper.pipe_consequence_index < CONSEQUENCE_INDEX_EXCEED_LIMIT)
+				otherIndexWrapperList.add(wrapper);
 			
 			if (hasExceededConditionAndConsequenceIndex) conditionAndConsequencePipeLength += wrapper.pipe_length_m;
 			
@@ -473,6 +488,10 @@ public class Application extends Controller {
 											  diameterLengthArray, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
 											  beachLengthArray, blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
 											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray));
+	}
+	
+	private void resolvePipeIndexWrapper(PipeIndexWrapper wrapper) {
+			
 	}
 	
 	public static Result sendFile() {

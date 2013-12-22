@@ -8,13 +8,12 @@ import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.Query;
-
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import models.Component;
 import models.ComponentType;
 import models.form.PipeIndex;
-
 import play.db.jpa.JPA;
 
 @Entity
@@ -35,52 +34,97 @@ public class PipeIndexWrapper {
 	public String material;
 //	public String model;
 	public String owner_ps_area;
-	public Float cqm_pipe_type_limit;
+	
+//	public Float cqm_pipe_type_limit;
 	public Float cqm_pipe_type_diameter_limit;
 	public Integer cqm_pipe_type_value;
 	public Float cqm_pipe_type_meter;
-	public Float cqm_wastewater_flow_limit;
+	
+//	public Float cqm_wastewater_flow_limit;
+	@Transient
+	public Float cqm_wastewater_flow_min_limit;
+	@Transient
+	public Float cqm_wastewater_flow_max_limit;
 	public Float cqm_wastewater_flow_annual_flow_m3;
 	public Float cqm_wastewater_flow_pipe_value;
 	public Float cqm_wastewater_flow_pipe_meter;
-	public Float cqm_groundwater_area_limit;
+	
+//	public Float cqm_groundwater_area_limit;
 	public Float cqm_groundwater_area_pipe_value;
 	public Float cqm_groundwater_area_pipe_meter;
-	public Float cqm_floor_area_limit;
+	
+//	public Float cqm_floor_area_limit;
+	@Transient
+	public Float cqm_floor_area_pipe_min_limit;
+	@Transient
+	public Float cqm_floor_area_pipe_max_limit;
 	public Long cqm_floor_area;
 	public Float cqm_floor_area_total_pipe_length;
 	public Float cqm_floor_area_pipe_value;
 	public Float cqm_floor_area_pipe_meter;
-	public Float cqm_road_class_limit;
+	
+//	public Float cqm_road_class_limit;
 	public Float cqm_road_class_pipe_value;
 	public Float cqm_road_class_pipe_meter;
-	public Float cqm_beach_distance_limit;
+	
+//	public Float cqm_beach_distance_limit;
+	@Transient
+	public Float cqm_beach_distance_pipe_min_limit;
+	@Transient
+	public Float cqm_beach_distance_pipe_max_limit;
 	public Float cqm_beach_distance_pipe_value;
 	public Float cqm_beach_distance_pipe_meter;
-	public Float cdm_blockage_limit;
+	
+//	public Float cdm_blockage_limit;
+	@Transient
+	public Float cdm_blockage_min_limit;
+	@Transient
+	public Float cdm_blockage_max_limit;
 	public Float cdm_blockage_pipe_value;
 	public Float cdm_blockage_pipe_meter;
-	public Float cdm_flushing_limit;
+	
+//	public Float cdm_flushing_limit;
+	@Transient
+	public Float cdm_flushing_min_limit;
+	@Transient
+	public Float cdm_flushing_max_limit;
 	public Float cdm_flushing_pipe_value;
 	public Float cdm_flushing_pipe_meter;
-	public Float cdm_cctv_limit;
+	
+//	public Float cdm_cctv_limit;
+	@Transient
+	public Float cdm_cctv_min_limit;
+	@Transient
+	public Float cdm_cctv_max_limit;
 	public int inspected;
 	public Float cdm_cctv_pipe_value;
 	public Float cdm_cctv_pipe_meter;
-	public Float cdm_cctv34_limit;
+	
+//	public Float cdm_cctv34_limit;
+	@Transient
+	public Float cdm_cctv34_min_limit;
+	@Transient
+	public Float cdm_cctv34_max_limit;
 	public Float cdm_cctv34_pipe_value;
 	public Float cdm_cctv34_pipe_meter;
-	public Float cdm_extrawater_percentange_limit;
+	
+//	public Float cdm_extrawater_percentange_limit;
+	@Transient
+	public Float cdm_extrawater_percentange_min_limit;
+	@Transient
+	public Float cdm_extrawater_percentange_max_limit;
 	public Float cdm_extrawater_total_flow_m3_a;
 	public Float cdm_extrawater_total_consumption_m3_a;
 	public Float cdm_extrawater_pipe_value;
 	public Float cdm_extrawater_pipe_meter;
-	public Float cdm_overflow_limit;
-	public Float cdm_overflow_m3_a;
-	public Float cdm_overflow_pipe_value;
-	public Float cdm_overflow_pipe_meter;
-	public int cdm_industrial_ww_pipe_value;
-	public int cdm_industrial_ww_pipe_meter;
+	
+//	public Float cdm_overflow_limit;
+//	public Float cdm_overflow_m3_a;
+//	public Float cdm_overflow_pipe_value;
+//	public Float cdm_overflow_pipe_meter;
+//	public int cdm_industrial_ww_pipe_value;
+//	public int cdm_industrial_ww_pipe_meter;
+	
 	public Float cdm_limit_total;
 	public Float pipe_condition_index;
 	public Float cqm_limit_total;

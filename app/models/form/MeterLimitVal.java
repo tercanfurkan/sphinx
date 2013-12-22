@@ -3,13 +3,12 @@ package models.form;
 public class MeterLimitVal {
 
 	public MeterLimitVal() {
-		// Slider min max default values
+		// Define min/max values for meters using the slider bar
 		this.diameterMin = 333;
 		this.diameterMax = 686;
 		this.floorAreaMin = 16;
 		this.floorAreaMax = 33;
 		this.beachDistanceMin = 66;
-		this.beachDistanceMax = 133;
 		this.blockageMin = 1;
 		this.blockageMax = 3;
 		this.flushingMin = 5;
@@ -20,6 +19,23 @@ public class MeterLimitVal {
 		this.cctvMax = 22;
 		this.cctv34Min = 8;
 		this.cctv34Max = 17;
+		
+		//Define values for meters using radio buttons
+		//importantGroundWaterAreaVal = 0/1/2 ?
+		//suitableGroundWaterAreaVal = 0/1/2 ?
+		//otherGroundWaterAreaVal = 0/1/2 ?
+		
+		//lateralPipeVal = 0/1/2 ?
+		//collectionPipeVal = 0/1/2 ?
+		//gravetyPipeVal = 0/1/2 ?
+		//pressurePipeVal = 0/1/2 
+		//smallPressurePipeVal = 0/1/2 ? and how is small pressure pipe identified for instance: pipeDiameter < x meter ?
+		
+		//regionalMain1Val = 0/1/2 ?
+		//regionalMain2Val = 0/1/2 ?
+		//localMainVal = 0/1/2 ?
+		//collectorVal = 0/1/2 ?
+		
 		
 		// Radio button min max default values
 		this.groundWaterAreaMin = 1;

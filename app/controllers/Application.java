@@ -381,7 +381,7 @@ public class Application extends Controller {
 		
 		System.out.println(meterLimitValForm);		
 
-		return ok(views.html.indexResults.render(meterLimitValForm, sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
+		return ok(views.html.indexResults.render(sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
 	}
 	
 	/**

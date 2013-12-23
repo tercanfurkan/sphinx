@@ -4,29 +4,29 @@ public class MeterLimitVal {
 
 	public MeterLimitVal() {
 		// Define min/max values for meters using the slider bar
-		this.diameterMin = 333;
-		this.diameterMax = 686;
-		this.floorAreaMin = 16;
-		this.floorAreaMax = 33;
+		this.diameterMin = 400;
+		this.diameterMax = 600;
+		this.floorAreaMin = 15;
+		this.floorAreaMax = 35;
 		this.beachDistanceMin = 66;
 		this.blockageMin = 1;
 		this.blockageMax = 3;
-		this.flushingMin = 5;
-		this.flushingMax = 10;
-		this.extraWaterMin = 6;
+		this.flushingMin = 4;
+		this.flushingMax = 8;
+		this.extraWaterMin = 8;
 		this.extraWaterMax = 12;
-		this.cctvMin = 11;
-		this.cctvMax = 22;
-		this.cctv34Min = 8;
-		this.cctv34Max = 17;
+		this.cctvMin = 8;
+		this.cctvMax = 11;
+		this.cctv34Min = 6;
+		this.cctv34Max = 9;
 		
 		this.gwaImportantVal = 2;
-		this.gwaSuitableVal = 1;
-		this.gwaOtherVal = 0;
+		this.gwaSuitableVal = 2;
+		this.gwaOtherVal = 2;
 		
 		this.pipeTypeLateralVal = 0;
-		this.pipeTypeCollectionVal = 0;
-		this.pipeTypeGravetyVal = 1; 
+		this.pipeTypeCollectionVal = 1;
+		this.pipeTypeGravetyVal = 2; 
 		this.pipeTypePressure = 2; 
 		//how is small pressure pipe identified for instance: pipeDiameter < x meter ?
 		this.pipeTypeSmallPressureVal = 1;
@@ -34,7 +34,7 @@ public class MeterLimitVal {
 		this.roadRegionalMain1Val = 2;
 		this.roadRegionalMain2Val = 1;
 		this.roadLocalMainVal = 1;
-		this.roadCollectorVal = 0;
+		this.roadCollectorVal = 1;
 	}
 
 	// Slider min max values

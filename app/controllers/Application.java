@@ -34,7 +34,7 @@ public class Application extends Controller {
 	static List<PipeIndexWrapper> otherIndexWrapperList = new ArrayList<PipeIndexWrapper>();
 	static List<PipeIndexWrapperView> pipeIndexWrapperViewList = null;
 	
-	private static final int CONDITION_INDEX_EXCEED_LIMIT = 8;
+	private static final int CONDITION_INDEX_EXCEED_LIMIT = 6;
 	private static final int CONSEQUENCE_INDEX_EXCEED_LIMIT = 8;
 
 	/**

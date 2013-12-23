@@ -67,7 +67,7 @@ public class PipeIndexServ {
 		//radiobutton vals
 		retWrapper.cqm_pipe_type_value = view.pipeTypeValue;
 		if (retWrapper.pipe_class.startsWith("Paine")) {
-			if (retWrapper.diameter_mm < 100) //small pressure
+			if (retWrapper.diameter_mm < 200) //small pressure
 				retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypeSmallPressureVal;
 			else //pressure
 				retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypePressure;
@@ -82,7 +82,7 @@ public class PipeIndexServ {
 		}
 		else {
 			//Syöksyputki - lateral gravity sewers
-			retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypeLateralVal;
+			retWrapper.cqm_pipe_type_meter = 0F;
 		}
 		
 		//slider vals floor area

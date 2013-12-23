@@ -111,9 +111,9 @@ cctvMajorDefectsLengthArray: List[Double])
 									<span class="chartsbeach" id="beachLengthArrays">Beach array: @beachLengthArray</span>-->
 									<span class="amount chartsbeach"></span>
 									<div class="slider range-slide chartsbeach">	
-										<div class="slide" value="66,133" min="0" max="200">
-											<span id="min">min:</span>
-											<span id="max">max:200</span>								    
+										<div class="slide" value="100,200" min="0" max="500">
+											<span id="min">min:0</span>
+											<span id="max">max:500</span>								    
 										</div>
 									</div>										
 									<span class="help-inline chartsbeach">distance between the areal overflow structure and the nearest beach</span>	
@@ -765,7 +765,7 @@ $(document).ready(function(){
 		i++;
 	}	
 	//$('#beachLengthArrays').html("debug: " + sbeach); // debug	
-	var ticksBeach = ["0-100", "100-200", "200-300", "300-400", "400-500"];
+	var ticksBeach = ["0-500", ">500"];
 	beachObj = {
 		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
 		animate: !$.jqplot.use_excanvas,

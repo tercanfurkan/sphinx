@@ -8,7 +8,8 @@ public class MeterLimitVal {
 		this.diameterMax = 600;
 		this.floorAreaMin = 15;
 		this.floorAreaMax = 35;
-		this.beachDistanceMin = 66;
+		this.beachDistanceMin = 100;
+		this.beachDistanceMax = 200;
 		this.blockageMin = 1;
 		this.blockageMax = 3;
 		this.flushingMin = 4;

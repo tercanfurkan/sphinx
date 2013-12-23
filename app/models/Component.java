@@ -908,9 +908,9 @@ public class Component {
 	}	
 	
 	public static Double getPipeLengthsAccordingToBeachDistance(float minValue, float maxValue) {
-		
-		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c WHERE c.ofDistanceToBeach >= :cMin" + 
-		" and c.ofDistanceToBeach < :cMax";
+
+		String queryStr = "SELECT SUM(child.componentDetail.length_3d) FROM Component child WHERE child.ownerComponent.ofDistanceToBeach >= :cMin" + 
+		" and child.ownerComponent.ofDistanceToBeach < :cMax";
 		Query query = JPA.em().createQuery(queryStr);
 		query.setParameter("cMin", minValue);
 		query.setParameter("cMax", maxValue);

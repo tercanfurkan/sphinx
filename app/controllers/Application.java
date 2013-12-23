@@ -426,11 +426,8 @@ public class Application extends Controller {
 		areaLengthArray.add(Component.getPipeLenghtsAccordingToRelativeFloorAreaMeters(41, 51));		
 
 		List<Double> beachLengthArray = new ArrayList<Double>();
-		beachLengthArray.add(Component.getPipeLengthsAccordingToBeachDistance(0, 101));
-		beachLengthArray.add(Component.getPipeLengthsAccordingToBeachDistance(101, 201));
-		beachLengthArray.add(Component.getPipeLengthsAccordingToBeachDistance(201, 301));
-		beachLengthArray.add(Component.getPipeLengthsAccordingToBeachDistance(301, 401));
-		beachLengthArray.add(Component.getPipeLengthsAccordingToBeachDistance(401, 501));	
+		beachLengthArray.add(Component.getPipeLengthsAccordingToBeachDistance(1, 499));
+		beachLengthArray.add(Component.getPipeLengthsAccordingToBeachDistance(500, 501));
 
 		List<Double> groundWaterLengthArray = new ArrayList<Double>();
 		groundWaterLengthArray.add(Component.getPipeLengthsAccordingToGroundWaterArea(0, 1));

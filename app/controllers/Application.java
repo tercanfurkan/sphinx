@@ -490,14 +490,10 @@ public class Application extends Controller {
 											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray));
 	}
 	
-	private void resolvePipeIndexWrapper(PipeIndexWrapper wrapper) {
-			
-	}
-	
 	public static Result sendFile() {
 		File file = null;
 		try {
-			file = WritePipeIndexAsXLS.writePipeIndexAsXLS("Pipe Index Results", indexWrapperList);
+			file = WritePipeIndexAsXLS.writePipeIndexAsXLS("Pipe Index Results", badConditionIndexWrapperList, badConsequenceIndexWrapperList, otherIndexWrapperList);
 		} catch (WriteException | IOException | IllegalArgumentException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			System.out.println("------SOMETHING BAD HAPPENED");

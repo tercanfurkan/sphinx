@@ -90,7 +90,7 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group">
 							<label class="control-label bold-label">Set limit values for consequence meters</label>
 						</div>
-						<div class="control-group">
+						<div class="control-group" title="Set the yellow and red limit values which define how Sphinx should categorize pipes based on their diameter: Määritä, kuinka Sphinx-ohjelma luokittelee putket (luokitus: vihreä-keltainen-punainen) putken halkaisijan perusteella.">
 							<fieldset class="efesus-border clickable">
 								<!--<legend class="efesus-border">aaa</legend>-->
 								<a><label class="control-label clickable" for="lWasteWater" id="info1">Pipe diameter (mm)</label></a>
@@ -109,7 +109,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group">
+						<div class="control-group" title="Set the yellow and red limit values which define the category of a pipe based on how densely built the area is where it is located: Määritä raja-arvot eri luokille putken ympäristön kerrosalan perusteella.">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info2">Relative floor area (m<sup>2</sup>/m)</label></a>
 								<div class="controls">
@@ -144,7 +144,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>						
-						<div class="control-group">
+						<div class="control-group" title="Define the category (green-yellow-red) that a pipe belongs to based on the groundwater area type it is located in (if any): Määritä, kuinka putket luokitellaan (vihreä-keltainen-punainen) sen perusteella, millaisella pohjavesialueella putki sijaitsee (jos millään).">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info4">Ground water area (0..3)</label></a>
 								<div class="controls">
@@ -218,7 +218,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>	
 						</div>															
-						<div class="control-group">						
+						<div class="control-group" title="Define the category (green-yellow-red) that a pipe belongs to based on its type: Määritä, mihin luokkaan eri putkityypit kuuluvat.">
 							<fieldset class="efesus-border clickable">				
 								<div class="control-group">
 									<a><label class="control-label clickable" for="lWasteWater" id="info0">Sewer type</label></a>
@@ -357,7 +357,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>						
-						<div class="control-group">
+						<div class="control-group" title="Define the category (green-yellow-red) that a pipe belongs to based on what kind of road it is located in (if any). (Also pipes which are near a road are included here): Määritä, kuinka putket luokitellaan sen perusteella, millaisen tien alla putki sijaitsee (jos minkään). (Myös teiden läheisyydessä olevat putket on huomioitu tässä.)">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info5">Road classification (1..4)</label></a>
 								<div class="controls">
@@ -461,7 +461,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							<label class="control-label bold-label">Set limit values for condition meters</label>
 						</div>
 
-						<div class="control-group">
+						<div class="control-group" title="Set the yellow and red limit values for the number of blockages per pipe: Määritä raja-arvot eri luokille putkessa olleiden tukosten kokonaismäärän perusteella.">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info6">Blockages</label></a>
 								<div class="controls">
@@ -479,7 +479,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group">
+						<div class="control-group" title="Set the yellow and red limit values for the number of flushing events per pipe: Määritä raja-arvot eri luokille putkelle tehtyjen huuhteluiden kokonaismäärän perusteella.">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info7">Flushing events</label></a>
 								<div class="controls">
@@ -497,7 +497,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group">
+						<div class="control-group" title="Set the yellow and red limit values for the level of inflow and infiltration: Vuotoveden määrä: määritä eri luokkien raja-arvot.">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info8">Extra Water (%)</label></a>
 								<div class="controls">
@@ -515,7 +515,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group">
+						<div class="control-group" title="Define the red and yellow limits for the total CCTV inspection score per pipe: Viemärikuvauksessa havaittujen vikojen kokonaissumma: määritä eri luokkien raja-arvot.">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info9">CCTV defects</label></a>
 								<div class="controls">
@@ -533,7 +533,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group">
+						<div class="control-group" title="Define the red and yellow limits for the sum of CCTV inspection scores of severe faults (per pipe). Faults with a score 3 or 4 are considered severe. Viemärikuvauksessa havaittujen vakavien vikojen (viat 3 ja 4) kokonaissumma: määritä eri luokkien raja-arvot.">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info10">CCTV major defects</label></a>
 								<div class="controls">

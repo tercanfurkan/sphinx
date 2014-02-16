@@ -81,7 +81,7 @@ public class PipeIndexServ {
 			retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypeCollectionVal;
 		}
 		else {
-			//Syöksyputki - lateral gravity sewers
+			//Syöksyputki - lateral gravity sewers TODO: This sewer type does not exist in the db.
 			retWrapper.cqm_pipe_type_meter = 0F;
 		}
 		

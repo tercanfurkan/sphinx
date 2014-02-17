@@ -1,0 +1,118 @@
+# Messages
+
+components.list.title={0,choice,0#No components|1#One component|1<{0,number,integer} component} found
+
+meters.list.title={0,choice,0#No meter results|1#One meter result|1<{0,number,integer} meter results} found
+
+ps.list.title={0,choice,0#No pumping stations|1#One pumping station|1<{0,number,integer} pumping stations} found
+pipe.list.title={0,choice,0#No pipes|1#One pipe|1<{0,number,integer} pipes} found
+manhole.list.title={0,choice,0#No manholes|1#One manhole|1<{0,number,integer} manholes} found
+
+pi.pipe.title=INDEX CALCULATION
+
+main.appname=Sphinx - EfeSus Database
+main.login=Login
+main.home=Home
+main.about=About
+main.contact=Contact
+main.assets=SEWER ASSETS
+main.stations=Pumping stations
+main.pipes=Pipes
+main.manholes=Manholes
+main.indexcalculation=INDEX CALCULATION
+
+filter.box=Filter by component name...
+filter.button=Filter by name
+
+componentz.name=Component name
+componentz.owner=Data source
+componentz.type=Component type
+
+menu.previous=Previous
+menu.next=Next
+
+display=Displaying
+
+color.explanation=Color explanations:
+color.least=Least significant
+color.avg=Average
+color.most=Significant
+
+consequence.index=CONSEQUENCE INDEX
+consequence.limit=Set limit values for consequence criteria
+
+consequence.diameter=Pipe diameter (mm)
+consequence.hide.diameter=Hide pipe diameter
+consequence.diameter.limit=pipe diameter caution limit
+
+consequence.floor=Floor area
+consequence.hide.floor=Hide relative floor area
+consequence.floor.area=floor area associated with pipe
+
+consequence.beach=Beach distance (m)
+consequence.hide.beach=Hide beach distance
+consequence.beach.distance=distance between the areal overflow structure and the nearest beach
+
+consequence.gwa=Ground water area (0..3)
+consequence.hide.gwa=Hide ground water area
+consequence.gwa.important=Important gwa
+consequence.gwa.suitable=Suitable gwa
+consequence.gwa.other=Other gwa
+
+consequence.sewertype=Sewer type
+consequence.hide.sewertype=Hide sewer type
+consequence.lateral=Lateral gravity sewers
+consequence.collection=Collection sewers
+consequence.gravity=Gravity sewer mains
+consequence.pressure=Pressure sewers
+consequence.smallpressure=Small pressure sewers
+
+consequence.roadcls=Road classification (1..4)
+consequence.hide.roadcls=Hide road classification
+consequence.regional=Regional main street
+consequence.local=Local main street
+consequence.collector=Collector street
+
+condition.index=CONDITION INDEX
+condition.limit=Set limit values for condition criteria
+
+condition.blockages=Blockages
+condition.hide.blockages=Hide blockages
+condition.number=total number of blockage events of a pipe
+
+condition.flush=Flushing events
+condition.hide.flush=Hide flushing events
+condition.number.flushing=total number of flushing events of a pipe
+
+condition.flowfiltr=Inflow and infiltration (%)
+condition.hide.flowfiltr=Hide inflow and infiltration
+condition.flowfiltr.info=wastewater flow / (0.8 x water consumption)
+
+condition.cctv=CCTV defects
+condition.hide.cctv=Hide CCTV defects
+condition.sum.cctv=sum of all CCTV inspection defects (1 to 4) of a pipe
+
+condition.cctvmajor=CCTV major defects
+condition.hide.cctvmajor=Hide CCTV major defects
+condition.sum.cctvmajor=sum of CCTV inspection defects 3 and 4 of a pipe
+
+min.limit=min limit
+max.limit=max limit
+
+calculate.index=Calculate index
+
+index.summary=Index Calculation Summary
+
+pipeIndex.summary.conditionIndexLimit=Condition index limit :  
+pipeIndex.summary.consequenceIndexLimit=Consequence index limit : 
+pipeIndex.summary.allIndexPipeLength=Length of all pipes :
+pipeIndex.summary.conditionIndexPipeLengthInspected=Length of inspected pipes exceeding condition index limit : 
+pipeIndex.summary.conditionIndexPipeLengthNotInspected=Length of uninspected pipes exceeding condition index limit : 
+pipeIndex.summary.conditionIndexPipeLength=Length of all pipes exceeding condition index limit : 
+
+pipeIndex.summary.consequenceIndexPipeLengthInspected=Length of inspected pipes exceeding consequence index limit : 
+pipeIndex.summary.consequenceIndexPipeLengthNotInspected=Length of uninspected pipes exceeding consequence index limit : 
+pipeIndex.summary.consequenceIndexPipeLength=Length of all pipes exceeding consequence index limit : 
+pipeIndex.summary.conditionAndConsequenceIndexPipeLength=Length of all pipes exceeding both consequence and condition index limit :
+
+export.results=Export index resuls

@@ -41,8 +41,8 @@
     <div id="actions">
         
         <form action="@link(0, "name")" method="GET">
-            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by component name...">
-            <input type="submit" id="searchsubmit" value="Filter by name" class="btn btn-primary">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="@Messages("filter.box")">
+            <input type="submit" id="searchsubmit" value="@Messages("filter.button")" class="btn btn-primary">
         </form>
         
 <!--         <a class="btn btn-success" id="add" href="@routes.Application.create()">Add a new component</a> -->
@@ -61,7 +61,8 @@
             <thead>
                 <tr>
                     @header("name", "Component name")
-                    @header("owner", "Owner")
+					<!-- "@Messages("componentz.name")") -->
+                    @header("owner", "Data source")
                     @header("component_type.type_name.name", "Component type")
                 </tr>
             </thead>
@@ -95,23 +96,23 @@
             <ul>
                 @if(currentPage.hasPrev) {
                     <li class="prev">
-                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; @Messages("menu.previous")</a>
                     </li>
                 } else {
                     <li class="prev disabled">
-                        <a>&larr; Previous</a>
+                        <a>&larr; @Messages("menu.previous")</a>
                     </li>
                 }
                 <li class="current">
-                    <a>Displaying @currentPage.getDisplayXtoYofZ</a>
+                    <a>@Messages("display") @currentPage.getDisplayXtoYofZ</a>
                 </li>
                 @if(currentPage.hasNext) {
                     <li class="next">
-                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
+                        <a href="@link(currentPage.getPageIndex + 1, null)">@Messages("menu.next") &rarr;</a>
                     </li>
                 } else {
                     <li class="next disabled">
-                        <a>Next &rarr;</a>
+                        <a>@Messages("menu.next") &rarr;</a>
                     </li>
                 }
             </ul>

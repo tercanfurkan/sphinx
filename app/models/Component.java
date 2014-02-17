@@ -425,7 +425,7 @@ public class Component {
 	 *            Filter applied on the name column
 	 */
 	public static Page page(int page, int pageSize, String sortBy,
-			String order, String filter) {
+			String order, String filter, String currentLanguage) {
 		sortBy = "number";
 		if (page < 1)
 			page = 1;
@@ -443,11 +443,11 @@ public class Component {
 				.setParameter(1, "%" + filter.toLowerCase() + "%")
 				.setFirstResult((page - 1) * pageSize).setMaxResults(pageSize)
 				.getResultList();
-		return new Page(data, total, page, pageSize);
+		return new Page(data, total, page, pageSize, currentLanguage);
 	}
 
 	public static Page pagePipes(int page, int pageSize, String sortBy,
-			String order, String filter) {
+			String order, String filter, String currentLanguage) {
 		sortBy = "number";
 		if (page < 1)
 			page = 1;
@@ -465,11 +465,11 @@ public class Component {
 				.setParameter(1, "%" + filter.toLowerCase() + "%")
 				.setFirstResult((page - 1) * pageSize).setMaxResults(pageSize)
 				.getResultList();
-		return new Page(data, total, page, pageSize);
+		return new Page(data, total, page, pageSize, currentLanguage);
 	}
 
 	public static Page pageManholes(int page, int pageSize, String sortBy,
-			String order, String filter) {
+			String order, String filter, String currentLanguage) {
 		sortBy = "number";
 		if (page < 1)
 			page = 1;
@@ -487,7 +487,7 @@ public class Component {
 				.setParameter(1, "%" + filter.toLowerCase() + "%")
 				.setFirstResult((page - 1) * pageSize).setMaxResults(pageSize)
 				.getResultList();
-		return new Page(data, total, page, pageSize);
+		return new Page(data, total, page, pageSize, currentLanguage);
 	}
 
 	public static ComponentList componentList(Long componentTypeId) {
@@ -515,12 +515,14 @@ public class Component {
 		private final long totalRowCount;
 		private final int pageIndex;
 		private final List<Component> list;
+		private final String currentLanguage;
 
-		public Page(List<Component> data, long total, int page, int pageSize) {
+		public Page(List<Component> data, long total, int page, int pageSize, String currentLanguage) {
 			this.list = data;
 			this.totalRowCount = total;
 			this.pageIndex = page;
 			this.pageSize = pageSize;
+			this.currentLanguage = currentLanguage;
 		}
 
 		public long getTotalRowCount() {
@@ -546,7 +548,10 @@ public class Component {
 		public String getDisplayXtoYofZ() {
 			int start = ((pageIndex - 1) * pageSize + 1);
 			int end = start + Math.min(pageSize, list.size()) - 1;
-			return start + " to " + end + " of " + totalRowCount;
+			if (currentLanguage.equals("fi"))
+				return start + " sta " + end + " een " + "(" + totalRowCount + ")";
+			else
+				return start + " to " + end + " of " + totalRowCount;
 		}
 
 	}

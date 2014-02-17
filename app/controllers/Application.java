@@ -25,6 +25,9 @@ import service.PipeIndexServ;
 import service.export.WritePipeIndexAsXLS;
 import util.MathUtilSphinx;
 import views.html.*;
+import play.i18n.Messages;
+import play.api.i18n.Lang;
+import play.Logger;
 
 public class Application extends Controller {
 	
@@ -36,7 +39,8 @@ public class Application extends Controller {
 	
 	private static final int CONDITION_INDEX_EXCEED_LIMIT = 6;
 	private static final int CONSEQUENCE_INDEX_EXCEED_LIMIT = 8;
-
+	private static String currentLanguage = "en";
+	
 	/**
 	 * This result directly redirect to application home.
 	 */
@@ -163,6 +167,9 @@ public class Application extends Controller {
 		Collections.sort(toSortList, MathUtilSphinx.comparatorExtraWater);
 
 		aml.setList(toSortList);
+				
+		change("fi");
+				
 		return ok(psareas.render(aml, sortBy, order, filter, wExtra, wCCTV,
 				wOperational, wSensitivity));
 	}
@@ -182,7 +189,7 @@ public class Application extends Controller {
 	@Transactional(readOnly = true)
 	public static Result list(int page, String sortBy, String order,
 			String filter) {
-		return ok(list.render(Component.page(page, 10, sortBy, order, filter),
+		return ok(list.render(Component.page(page, 10, sortBy, order, filter, currentLanguage),
 				sortBy, order, filter));
 	}
 
@@ -257,15 +264,18 @@ public class Application extends Controller {
 	public static Result listPipes(int page, String sortBy, String order,
 			String filter) {
 		return ok(listPipes.render(
-				Component.pagePipes(page, 10, sortBy, order, filter), sortBy,
+				Component.pagePipes(page, 10, sortBy, order, filter, currentLanguage), sortBy,
 				order, filter));
 	}
 
 	@Transactional(readOnly = true)
 	public static Result listManholes(int page, String sortBy, String order,
 			String filter) {
+		
+		change("en");
+		
 		return ok(listManholes.render(
-				Component.pageManholes(page, 10, sortBy, order, filter),
+				Component.pageManholes(page, 10, sortBy, order, filter, currentLanguage),
 				sortBy, order, filter));
 	}
 
@@ -499,6 +509,24 @@ public class Application extends Controller {
 		
 		response().setContentType("application/x-download");  
 		response().setHeader("Content-disposition","attachment; filename=Pipe Index Results.xls");
-		  return ok(file);
-		}
+		  return ok(file);	
+	}
+	
+	public static Result change(String langCode) {
+		//Logger.info(Messages.get(new Lang(Lang.forCode("fi")), "welcome"));
+		Lang en = new Lang("en","GB");
+		play.i18n.Lang en_lang = new play.i18n.Lang(en);
+
+		Lang fi = new Lang("fi", "FI");
+		play.i18n.Lang fi_lang = new play.i18n.Lang(fi);
+
+		currentLanguage = langCode;
+		changeLang(langCode);
+		Logger.info(langCode);
+		Logger.info(Messages.get("pi.pipe.title"));
+		Logger.info(Messages.get(en_lang, "pi.pipe.title"));
+		Logger.info(Messages.get(fi_lang, "pi.pipe.title"));		
+    	//return ok(index.render("welcome"));
+		return GO_HOME;
+    }	
 }

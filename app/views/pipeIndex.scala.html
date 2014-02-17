@@ -58,23 +58,23 @@ cctvMajorDefectsLengthArray: List[Double])
 					data-parent="#accordion2" href="#collapseOne"></a>
 			</div>
 			<center>
-				<span>Color explanations: </span>
+				<span>@Messages("color.explanation")</span>
 				<table width=600 height=50>
 					<tbody>
 						<tr> 
 							<td bgcolor="#72E680" width=200>
 								<label class="radio inline middle">
-								  <span> least significant </span>
+								  <span> @Messages("color.least") </span>
 								</label>
 							</td>
 							<td bgcolor="#F4F45B" width=200>
 								<label class="radio inline">
-								  <span> average </span>
+								  <span> @Messages("color.avg") </span>
 								</label>
 							</td>
 							<td bgcolor="#F45B5B" width=200>
 								<label class="radio inline">
-								  <span> significant </span>
+								  <span> @Messages("color.most") </span>
 								</label>
 							</td>
 						</tr>
@@ -85,15 +85,15 @@ cctvMajorDefectsLengthArray: List[Double])
 				<div class="accordion-inner">				
 					<div class="controls span6" id="sensitivity-div">													
 						<div class="control-group">
-							<label class="control-label bold-label">CONSEQUENCE INDEX</label>
+							<label class="control-label bold-label">@Messages("consequence.index")</label>
 						</div>
 						<div class="control-group">
-							<label class="control-label bold-label">Set limit values for consequence meters</label>
+							<label class="control-label bold-label">@Messages("consequence.limit")</label>
 						</div>
 						<div class="control-group" title="Set the yellow and red limit values which define how Sphinx should categorize pipes based on their diameter: Määritä, kuinka Sphinx-ohjelma luokittelee putket (luokitus: vihreä-keltainen-punainen) putken halkaisijan perusteella.">
 							<fieldset class="efesus-border clickable">
 								<!--<legend class="efesus-border">aaa</legend>-->
-								<a><label class="control-label clickable" for="lWasteWater" id="info1">Pipe diameter (mm)</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info1">@Messages("consequence.diameter")</label></a>
 								<div class="controls">
 									<div class="chartsdiameter" id="chartdiameter"></div>
 									<!--<button class="info" id="info1" type="button">Show</button>-->
@@ -105,13 +105,13 @@ cctvMajorDefectsLengthArray: List[Double])
 											<span id="max">max:1000</span>
 										</div>
 									</div>
-									<span class="help-inline chartsdiameter">pipe diameter caution limit</span>	
+									<span class="help-inline chartsdiameter">@Messages("consequence.diameter.limit")</span>	
 								</div>
 							</fieldset>
 						</div>
 						<div class="control-group" title="Set the yellow and red limit values which define the category of a pipe based on how densely built the area is where it is located: Määritä raja-arvot eri luokille putken ympäristön kerrosalan perusteella.">
 							<fieldset class="efesus-border clickable">						
-								<a><label class="control-label clickable" for="lWasteWater" id="info2">Relative floor area (m<sup>2</sup>/m)</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info2">@Messages("consequence.floor") (m<sup>2</sup>/m)</label></a>
 								<div class="controls">
 									<div class="chartsarea" id="chartarea"></div>
 									<!--<button class="info" id="info2" type="button">Show</button>-->
@@ -122,31 +122,31 @@ cctvMajorDefectsLengthArray: List[Double])
 											<span id="max">max:50.6</span>								    
 										</div>
 									</div>							
-									<span class="help-inline chartsarea">floor area m<sup>2</sup>/ length of pipes</span>	
+									<span class="help-inline chartsarea">@Messages("consequence.floor.area")</span>	
 								</div>
 							</fieldset>
 						</div>	
 						<div class="control-group">
 							<fieldset class="efesus-border clickable">
-								<a><label class="control-label clickable" for="lWasteWater" id="info3">Beach distance (m)</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info3">@Messages("consequence.beach")</label></a>
 								<div class="controls">
 									<div class="chartsbeach" id="chartbeach"></div>
 									<!--<button class="info" id="info3" type="button">Show</button>
 									<span class="chartsbeach" id="beachLengthArrays">Beach array: @beachLengthArray</span>-->
 									<span class="amount chartsbeach"></span>
 									<div class="slider range-slide chartsbeach">	
-										<div class="slide" value="100,200" min="0" max="500">
+										<div class="slide" value="166,333" min="0" max="500">
 											<span id="min">min:0</span>
 											<span id="max">max:500</span>								    
 										</div>
 									</div>										
-									<span class="help-inline chartsbeach">distance between the areal overflow structure and the nearest beach</span>	
+									<span class="help-inline chartsbeach">@Messages("consequence.beach.distance")</span>	
 								</div>
 							</fieldset>
 						</div>						
 						<div class="control-group" title="Define the category (green-yellow-red) that a pipe belongs to based on the groundwater area type it is located in (if any): Määritä, kuinka putket luokitellaan (vihreä-keltainen-punainen) sen perusteella, millaisella pohjavesialueella putki sijaitsee (jos millään).">
 							<fieldset class="efesus-border clickable">						
-								<a><label class="control-label clickable" for="lWasteWater" id="info4">Ground water area (0..3)</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info4">@Messages("consequence.gwa")</label></a>
 								<div class="controls">
 									<div class="chartsgroundwaterarea" id="chartgroundwaterarea"></div>
 									<!--<button class="info" id="info4" type="button">Show</button>-->							
@@ -155,7 +155,7 @@ cctvMajorDefectsLengthArray: List[Double])
 										<tbody>
 											<tr>
 												<td class="controls span1">
-													<span>3 Important gwa</span>
+													<span>3 @Messages("consequence.gwa.important")</span>
 												</td>	
 												<td class="controls span1 green">
 													<label class="radio inline">
@@ -175,7 +175,7 @@ cctvMajorDefectsLengthArray: List[Double])
 											</tr>
 											<tr>
 												<td class="controls span1">
-													<span>2 Suitable gwa</span>
+													<span>2 @Messages("consequence.gwa.suitable")</span>
 												</td>											
 												<td class="controls span1 green">
 													<label class="radio inline">
@@ -195,7 +195,7 @@ cctvMajorDefectsLengthArray: List[Double])
 											</tr>
 											<tr>
 												<td class="controls span1">
-													<span>1 Other gwa</span>
+													<span>1 @Messages("consequence.gwa.other")</span>
 												</td>											
 												<td class="controls span1 green">
 													<label class="radio inline">
@@ -221,11 +221,11 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group" title="Define the category (green-yellow-red) that a pipe belongs to based on its type: Määritä, mihin luokkaan eri putkityypit kuuluvat.">
 							<fieldset class="efesus-border clickable">				
 								<div class="control-group">
-									<a><label class="control-label clickable" for="lWasteWater" id="info0">Sewer type</label></a>
+									<a><label class="control-label clickable" for="lWasteWater" id="info0">@Messages("consequence.sewertype")</label></a>
 								</div>
 								<div class="sewer-group">						
 									<div class="control-group">
-										<label class="control-label" for="lWasteWater">Lateral gravity sewers</label>						
+										<label class="control-label" for="lWasteWater">@Messages("consequence.collection")</label>						
 										<div class="controls">
 											<table class="table table-bordered">
 												<tbody>
@@ -251,7 +251,7 @@ cctvMajorDefectsLengthArray: List[Double])
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label" for="lWasteWater">Collection sewers</label>						
+										<label class="control-label" for="lWasteWater">@Messages("consequence.gravity")</label>						
 										<div class="controls">
 											<table class="table table-bordered">
 												<tbody>
@@ -277,7 +277,7 @@ cctvMajorDefectsLengthArray: List[Double])
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label" for="lWasteWater">Gravity sewer mains</label>						
+										<label class="control-label" for="lWasteWater">@Messages("consequence.pressure")</label>						
 										<div class="controls">
 											<table class="table table-bordered">
 												<tbody>
@@ -303,33 +303,7 @@ cctvMajorDefectsLengthArray: List[Double])
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label" for="lWasteWater">Pressure sewers</label>						
-										<div class="controls">
-											<table class="table table-bordered">
-												<tbody>
-													<tr> 
-														<td class="controls span1 green">
-															<label class="radio inline middle">
-															  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
-															</label>
-														</td>
-														<td class="controls span1 yellow">
-															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
-															</label>
-														</td>
-														<td class="controls span1 red">
-															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
-															</label>
-														</td>
-													</tr>
-												</tbody>
-											</table>				
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label" for="lWasteWater">Small pressure sewers</label>						
+										<label class="control-label" for="lWasteWater">@Messages("consequence.smallpressure")</label>						
 										<div class="controls">
 											<table class="table table-bordered">
 												<tbody>
@@ -359,7 +333,7 @@ cctvMajorDefectsLengthArray: List[Double])
 						</div>						
 						<div class="control-group" title="Define the category (green-yellow-red) that a pipe belongs to based on what kind of road it is located in (if any). (Also pipes which are near a road are included here): Määritä, kuinka putket luokitellaan sen perusteella, millaisen tien alla putki sijaitsee (jos minkään). (Myös teiden läheisyydessä olevat putket on huomioitu tässä.)">
 							<fieldset class="efesus-border clickable">						
-								<a><label class="control-label clickable" for="lWasteWater" id="info5">Road classification (1..4)</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info5">@Messages("consequence.roadcls")</label></a>
 								<div class="controls">
 									<div class="chartsroadclassification" id="chartroadclassification"></div>
 									<!--<button class="info" id="info5" type="button">Show</button>-->
@@ -368,7 +342,7 @@ cctvMajorDefectsLengthArray: List[Double])
 										<tbody>
 											<tr>
 												<td class="controls span1">
-													<span>1. Regional main street</span>
+													<span>1. @Messages("consequence.regional")</span>
 												</td>										
 												<td class="controls span1 green">
 													<label class="radio inline middle">
@@ -388,7 +362,7 @@ cctvMajorDefectsLengthArray: List[Double])
 											</tr>
 											<tr>
 												<td class="controls span1">
-													<span>2. Regional main street</span>
+													<span>2. @Messages("consequence.regional")</span>
 												</td>										
 												<td class="controls span1 green">
 													<label class="radio inline middle">
@@ -408,7 +382,7 @@ cctvMajorDefectsLengthArray: List[Double])
 											</tr>
 											<tr>
 												<td class="controls span1">
-													<span>3. Local main street</span>
+													<span>3. @Messages("consequence.local")</span>
 												</td>										
 												<td class="controls span1 green">
 													<label class="radio inline middle">
@@ -428,7 +402,7 @@ cctvMajorDefectsLengthArray: List[Double])
 											</tr>
 											<tr>
 												<td class="controls span1">
-													<span>4. Collector street</span>
+													<span>4. @Messages("consequence.collector")</span>
 												</td>										
 												<td class="controls span1 green">
 													<label class="radio inline middle">
@@ -455,15 +429,15 @@ cctvMajorDefectsLengthArray: List[Double])
 					<div class="controls span6">
 						
 						<div class="control-group">
-							<label class="control-label bold-label">CONDITION INDEX</label>
+							<label class="control-label bold-label">@Messages("condition.index")</label>
 						</div>
 						<div class="control-group">
-							<label class="control-label bold-label">Set limit values for condition meters</label>
+							<label class="control-label bold-label">@Messages("condition.limit")</label>
 						</div>
 
 						<div class="control-group" title="Set the yellow and red limit values for the number of blockages per pipe: Määritä raja-arvot eri luokille putkessa olleiden tukosten kokonaismäärän perusteella.">
 							<fieldset class="efesus-border clickable">
-								<a><label class="control-label clickable" for="lWasteWater" id="info6">Blockages</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info6">@Messages("condition.blockages")</label></a>
 								<div class="controls">
 									<div class="chartsblockage" id="chartblockage"></div>
 									<!--<button class="info" id="info6" type="button">Show</button>-->								
@@ -475,13 +449,13 @@ cctvMajorDefectsLengthArray: List[Double])
 											<span id="max">max:4</span>								    
 										</div>
 									</div>									
-									<span class="help-inline chartsblockage">total number of blockage events of a pipe</span>
+									<span class="help-inline chartsblockage">@Messages("condition.number")</span>
 								</div>
 							</fieldset>
 						</div>
 						<div class="control-group" title="Set the yellow and red limit values for the number of flushing events per pipe: Määritä raja-arvot eri luokille putkelle tehtyjen huuhteluiden kokonaismäärän perusteella.">
 							<fieldset class="efesus-border clickable">
-								<a><label class="control-label clickable" for="lWasteWater" id="info7">Flushing events</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info7">@Messages("condition.flush")</label></a>
 								<div class="controls">
 									<div class="chartsflushing" id="chartflushing"></div>
 									<!--<button class="info" id="info7" type="button">Show</button>-->
@@ -493,13 +467,13 @@ cctvMajorDefectsLengthArray: List[Double])
 											<span id="max">max:17</span>								    
 										</div>
 									</div>	
-									<span class="help-inline chartsflushing">total number of flushing events of a pipe</span>
+									<span class="help-inline chartsflushing">@Messages("condition.number.flushing")</span>
 								</div>
 							</fieldset>
 						</div>
 						<div class="control-group" title="Set the yellow and red limit values for the level of inflow and infiltration: Vuotoveden määrä: määritä eri luokkien raja-arvot.">
 							<fieldset class="efesus-border clickable">						
-								<a><label class="control-label clickable" for="lWasteWater" id="info8">Extra Water (%)</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info8">@Messages("condition.flowfiltr")</label></a>
 								<div class="controls">
 									<div class="chartsextrawater" id="chartextrawater"></div>
 									<!--<button class="info" id="info8" type="button">Show</button>-->
@@ -511,13 +485,13 @@ cctvMajorDefectsLengthArray: List[Double])
 											<span id="max">max:18.8</span>								    
 										</div>
 									</div>	
-									<span class="help-inline chartsextrawater">wastewater flow / (0.8 x water consumption)</span>
+									<span class="help-inline chartsextrawater">@Messages("condition.flowfiltr.info")</span>
 								</div>
 							</fieldset>
 						</div>
 						<div class="control-group" title="Define the red and yellow limits for the total CCTV inspection score per pipe: Viemärikuvauksessa havaittujen vikojen kokonaissumma: määritä eri luokkien raja-arvot.">
 							<fieldset class="efesus-border clickable">
-								<a><label class="control-label clickable" for="lWasteWater" id="info9">CCTV defects</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info9">@Messages("condition.cctv")</label></a>
 								<div class="controls">
 									<div class="chartsCCTVdefects" id="chartCCTVdefects"></div>
 									<!--<button class="info" id="info9" type="button">Show</button>-->
@@ -529,13 +503,13 @@ cctvMajorDefectsLengthArray: List[Double])
 											<span id="max">max:34</span>								    
 										</div>
 									</div>	
-									<span class="help-inline chartsCCTVdefects">sum of all CCTV inspection defects (1 to 4) of a pipe</span>
+									<span class="help-inline chartsCCTVdefects">@Messages("condition.sum.cctv")</span>
 								</div>
 							</fieldset>
 						</div>
 						<div class="control-group" title="Define the red and yellow limits for the sum of CCTV inspection scores of severe faults (per pipe). Faults with a score 3 or 4 are considered severe. Viemärikuvauksessa havaittujen vakavien vikojen (viat 3 ja 4) kokonaissumma: määritä eri luokkien raja-arvot.">
 							<fieldset class="efesus-border clickable">
-								<a><label class="control-label clickable" for="lWasteWater" id="info10">CCTV major defects</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info10">@Messages("condition.cctvmajor")</label></a>
 								<div class="controls">
 									<div class="chartsCCTVmajordefects" id="chartCCTVmajordefects"></div>
 									<!--<button class="info" id="info10" type="button">Show</button>-->
@@ -556,7 +530,7 @@ cctvMajorDefectsLengthArray: List[Double])
 			</div>						
 		</div>
 		<input type="submit" id="searchsubmit"
-			value="Calculate index" class="btn btn-primary">
+			value="@Messages("calculate.index")" class="btn btn-primary">
 	</form>
 
 </div>
@@ -999,13 +973,13 @@ $(document).ready(function(){
 	//
  	$("#info0").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info0").html('Sewer type');
+			$("#info0").html('@Messages("consequence.sewertype")');
 			deselectSewers();               
         } else {
 			$(this).addClass("selected");
 			$(".sewer-group").slideFadeToggle(function() { 
 				$("#info0").focus();
-				$("#info0").html('Hide sewer type');			
+				$("#info0").html('@Messages("consequence.hide.sewertype")');
 			});
 		}
 		return false;
@@ -1016,13 +990,13 @@ $(document).ready(function(){
 	//
 	$("#info1").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info1").html('Pipe diameter (mm)');
+			$("#info1").html('@Messages("consequence.diameter")');
 			deselectDiameter();               
         } else {
             $(this).addClass("selected");
 			$(".chartsdiameter").slideFadeToggle(function() { 
 				$("#info1").focus();
-				$("#info1").html('Hide pipe diameter');
+				$("#info1").html('@Messages("consequence.hide.diameter")');
 			});
 		}
 		return false;
@@ -1030,13 +1004,13 @@ $(document).ready(function(){
 
 	$("#info4").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info4").html('Ground water area (0..3)');
+			$("#info4").html('@Messages("consequence.gwa")');
 			deselectGroundWater();               
         } else {
             $(this).addClass("selected");
 			$(".chartsgroundwaterarea").slideFadeToggle(function() { 
 				$("#info4").focus();
-				$("#info4").html('Hide ground water area');
+				$("#info4").html('@Messages("consequence.hide.gwa")');
 			});
 		}
 		return false;
@@ -1044,13 +1018,13 @@ $(document).ready(function(){
 	
 	$("#info2").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info2").html('Relative floor area (m<sup>2</sup>/m)');
+			$("#info2").html('@Messages("consequence.floor") (m<sup>2</sup>/m)');
 			deselectArea();               
         } else {
             $(this).addClass("selected");
 			$(".chartsarea").slideFadeToggle(function() { 
 				$("#info2").focus();
-				$("#info2").html('Hide relative floor area');
+				$("#info2").html('@Messages("consequence.hide.floor")');
 			});
 		}
 		return false;
@@ -1058,13 +1032,13 @@ $(document).ready(function(){
 	
 	$("#info5").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info5").html('Road classification (1..4)');
+			$("#info5").html('@Messages("consequence.roadcls")');
 			deselectRoadClassification();               
         } else {
             $(this).addClass("selected");
 			$(".chartsroadclassification").slideFadeToggle(function() { 
 				$("#info5").focus();
-				$("#info5").html('Hide road classification');
+				$("#info5").html('@Messages("consequence.hide.roadcls")');
 			});
 		}
 		return false;
@@ -1072,13 +1046,13 @@ $(document).ready(function(){
 	
 	$("#info3").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info3").html('Beach distance (m)');
+			$("#info3").html('@Messages("consequence.beach")');
 			deselectBeach();               
         } else {
             $(this).addClass("selected");
 			$(".chartsbeach").slideFadeToggle(function() { 
 				$("#info3").focus();
-				$("#info3").html('Hide beach distance');
+				$("#info3").html('@Messages("consequence.hide.beach")');
 			});
 		}
 		return false;
@@ -1086,13 +1060,13 @@ $(document).ready(function(){
 
 	$("#info6").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info6").html('Blockages');
+			$("#info6").html('@Messages("condition.blockages")');
 			deselectBlockage();               
         } else {
             $(this).addClass("selected");
 			$(".chartsblockage").slideFadeToggle(function() { 
 				$("#info6").focus();
-				$("#info6").html('Hide blockages');
+				$("#info6").html('@Messages("condition.hide.blockages")');
 			});
 		}
 		return false;
@@ -1100,13 +1074,13 @@ $(document).ready(function(){
 
 	$("#info7").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info7").html('Flushing events');
+			$("#info7").html('@Messages("condition.flush")');
 			deselectFlushing();               
         } else {
 			$(this).addClass("selected");
 			$(".chartsflushing").slideFadeToggle(function() { 
 				$("#info7").focus();
-				$("#info7").html('Hide flushing events');
+				$("#info7").html('@Messages("condition.number.flushing")');
 			});
 		}
 		return false;
@@ -1114,13 +1088,13 @@ $(document).ready(function(){
 
 	$("#info8").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info8").html('Extra Water (%)');
+			$("#info8").html('@Messages("condition.flowfiltr")');
 			deselectExtraWater();               
         } else {
 			$(this).addClass("selected");
 			$(".chartsextrawater").slideFadeToggle(function() { 
 				$("#info8").focus();
-				$("#info8").html('Hide extra water');
+				$("#info8").html('@Messages("condition.hide.flowfiltr")');
 			});
 		}
 		return false;
@@ -1128,13 +1102,13 @@ $(document).ready(function(){
 
 	$("#info9").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info9").html('CCTV defects');
+			$("#info9").html('@Messages("condition.cctv")');
 			deselectCCTVdefects();               
         } else {
 			$(this).addClass("selected");
 			$(".chartsCCTVdefects").slideFadeToggle(function() { 
 				$("#info9").focus();
-				$("#info9").html('Hide CCTV defects');
+				$("#info9").html('@Messages("condition.hide.cctv")');
 			});
 		}
 		return false;
@@ -1206,7 +1180,7 @@ $(document).ready(function(){
 	    	max:  parseInt($(this).attr('max')),
 	    	range: true,
 	    	slide: function(event, ui) {
-				$(this).parent().siblings('span.amount').html("min limit: " + ui.values[0] + " - max limit: " + ui.values[1]);
+				$(this).parent().siblings('span.amount').html("@Messages("min.limit"): " + ui.values[0] + " - @Messages("max.limit"): " + ui.values[1]);
 				//@meterLimitValForm.("diameterMin") = ui.values[0];
 				//@meterLimitValForm("diameterMin") = 1;
 				//updateColors(ui.values);
@@ -1252,7 +1226,7 @@ $(document).ready(function(){
 				$(this).css('background-image', css);
 		}		
 		
-		rangeSpan.html("min limit: " + $(this).slider("values", 0) + " - max limit: " + $(this).slider("values", 1));
+		rangeSpan.html("@Messages("min.limit"): " + $(this).slider("values", 0) + " - @Messages("max.limit"): " + $(this).slider("values", 1));
 		//doUpdate();
 	});
 	/////////////////////

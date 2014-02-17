@@ -46,7 +46,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 	<h1 id="homeTitle">@Messages("pi.pipe.title")</h1>
 </div>
 
-<h5 id="homeTitle">Index Calculation Summary</h5>
+<h5 id="homeTitle">@Messages("index.summary")</h5>
 	<table class="table table-bordered table-hover">
 		<tbody>
 			<tr>
@@ -67,7 +67,7 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexPipeLength")</td>
 				<td class="controls span2">@((math rint pipeIndexSummary.conditionIndexPipeLength * 10) / 10) km</td>
 			</tr>
-			<tr>
+			<!--<tr>
 				<td class="controls span4">@Messages("pipeIndex.summary.consequenceIndexPipeLengthInspected")</td>
 				<td class="controls span2">@((math rint pipeIndexSummary.consequenceIndexPipeLengthInspected * 10) / 10) km</td>
 				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexPipeLengthInspected")</td>
@@ -78,11 +78,11 @@ pipeIndexSummary: models.wrapper.PipeIndexSummary.PipeIndexSummaryUI)
 				<td class="controls span2">@((math rint pipeIndexSummary.consequenceIndexPipeLengthNotInspected * 10) / 10) km</td>
 				<td class="controls span4">@Messages("pipeIndex.summary.conditionIndexPipeLengthNotInspected")</td>
 				<td class="controls span2">@((math rint pipeIndexSummary.conditionIndexPipeLengthNotInspected * 10) / 10) km</td>
-			</tr>
+			</tr>-->
 		</tbody>
 	</table>
 <div class="actions">
-	<a href="@routes.Application.sendFile()" class="btn">Export index results</a>
+	<a href="@routes.Application.sendFile()" class="btn">@Messages("export.results")</a>
 </div>
 
 }				

@@ -34,16 +34,17 @@ body {
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="@routes.Application.index()">Sphinx
-					&mdash; EfeSus Database</a>
+				</a> <a class="brand" href="@routes.Application.index()">@Messages("main.appname")</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
-						login <a href="#" class="navbar-link"></a>
+						@Messages("main.login")<a href="#" class="navbar-link"></a>
 					</p>
 					<ul class="nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#contact">Contact</a></li>
+						<li class="active"><a href="#">@Messages("main.home")</a></li>
+						<li><a href="#about">@Messages("main.about")</a></li>
+						<li><a href="#contact">@Messages("main.contact")</a></li>
+						<li><a href="@routes.Application.change("en")">En</a></li>
+						<li><a href="@routes.Application.change("fi")">Fi</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -56,13 +57,13 @@ body {
 			<div class="span2">
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
-						<li class="nav-header">Sewer Assets</li>
-						<li><a href="@routes.Application.index()">Pumping stations</a></li>
-						<li><a href="@routes.Application.listPipes()#">Pipes</a></li>
-						<li><a href="@routes.Application.listManholes()#">Manholes</a></li>
-						<li class="nav-header">Index Calculation</li>
-						<li><a href="@routes.Application.pipeIndex()">Pipes</a></li>
-						<li><a href="@routes.Application.psareas()">Pumping stations</a></li>
+						<li class="nav-header">@Messages("main.assets")</li>
+						<li><a href="@routes.Application.index()">@Messages("main.stations")</a></li>
+						<li><a href="@routes.Application.listPipes()#">@Messages("main.pipes")</a></li>
+						<li><a href="@routes.Application.listManholes()#">@Messages("main.manholes")</a></li>
+						<li class="nav-header">@Messages("main.indexcalculation")</li>
+						<li><a href="@routes.Application.pipeIndex()">@Messages("main.pipes")</a></li>
+						<li><a href="@routes.Application.psareas()">@Messages("main.stations")</a></li>
 					</ul>
 				</div>
 				<!--/.well -->

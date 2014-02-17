@@ -521,7 +521,7 @@ cctvMajorDefectsLengthArray: List[Double])
 											<span id="max">max:26</span>								    
 										</div>
 									</div>	
-									<span class="help-inline chartsCCTVmajordefects">sum of CCTV inspection defects 3 and 4 of a pipe</span>
+									<span class="help-inline chartsCCTVmajordefects">@Messages("condition.sum.cctvmajor")</span>
 								</div>
 							</fieldset>	
 						</div>
@@ -1116,13 +1116,13 @@ $(document).ready(function(){
 	
 	$("#info10").on('click', function() {
 		if($(this).hasClass("selected")) {
-			$("#info10").html('CCTV major defects');
+			$("#info10").html('@Messages("condition.cctvmajor")');
 			deselectCCTVmajordefects();               
         } else {
 			$(this).addClass("selected");
 			$(".chartsCCTVmajordefects").slideFadeToggle(function() { 
 				$("#info10").focus();
-				$("#info10").html('Hide CCTV major defects');
+				$("#info10").html('@Messages("condition.hide.cctvmajor")');
 			});
 		}
 		return false;

@@ -67,7 +67,7 @@ public class PipeIndexServ {
 		//radiobutton vals
 		retWrapper.cqm_pipe_type_value = view.pipeTypeValue;
 		if (retWrapper.pipe_class.startsWith("Paine")) {
-			if (retWrapper.diameter_mm < 200) //small pressure
+			if (retWrapper.diameter_mm < 100) //small pressure
 				retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypeSmallPressureVal;
 			else //pressure
 				retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypePressure;
@@ -81,7 +81,7 @@ public class PipeIndexServ {
 			retWrapper.cqm_pipe_type_meter = meterLimitVal.pipeTypeCollectionVal;
 		}
 		else {
-			//Syöksyputki - lateral gravity sewers
+			//Syöksyputki - lateral gravity sewers TODO: This sewer type does not exist in the db.
 			retWrapper.cqm_pipe_type_meter = 0F;
 		}
 		

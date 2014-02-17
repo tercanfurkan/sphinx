@@ -25,7 +25,6 @@ public class MeterLimitVal {
 		this.gwaSuitableVal = 2;
 		this.gwaOtherVal = 2;
 		
-		this.pipeTypeLateralVal = 0;
 		this.pipeTypeCollectionVal = 1;
 		this.pipeTypeGravetyVal = 2; 
 		this.pipeTypePressure = 2; 

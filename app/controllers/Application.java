@@ -27,7 +27,7 @@ import util.MathUtilSphinx;
 import views.html.*;
 import play.i18n.Messages;
 import play.api.i18n.Lang;
-import play.Logger;
+//import play.Logger; 
 
 public class Application extends Controller {
 	
@@ -522,10 +522,10 @@ public class Application extends Controller {
 
 		currentLanguage = langCode;
 		changeLang(langCode);
-		Logger.info(langCode);
-		Logger.info(Messages.get("pi.pipe.title"));
-		Logger.info(Messages.get(en_lang, "pi.pipe.title"));
-		Logger.info(Messages.get(fi_lang, "pi.pipe.title"));		
+		//Logger.info(langCode);
+		//Logger.info(Messages.get("pi.pipe.title"));
+		//Logger.info(Messages.get(en_lang, "pi.pipe.title"));
+		//Logger.info(Messages.get(fi_lang, "pi.pipe.title"));		
     	//return ok(index.render("welcome"));
 		return GO_HOME;
     }	

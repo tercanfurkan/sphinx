@@ -90,7 +90,7 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group">
 							<label class="control-label bold-label">@Messages("consequence.limit")</label>
 						</div>
-						<div class="control-group" title="Set the yellow and red limit values which define how Sphinx should categorize pipes based on their diameter: Määritä, kuinka Sphinx-ohjelma luokittelee putket (luokitus: vihreä-keltainen-punainen) putken halkaisijan perusteella.">
+						<div class="control-group" title="@Messages("consequence.diameter.explanation")">
 							<fieldset class="efesus-border clickable">
 								<!--<legend class="efesus-border">aaa</legend>-->
 								<a><label class="control-label clickable" for="lWasteWater" id="info1">@Messages("consequence.diameter")</label></a>
@@ -109,7 +109,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="Set the yellow and red limit values which define the category of a pipe based on how densely built the area is where it is located: Määritä raja-arvot eri luokille putken ympäristön kerrosalan perusteella.">
+						<div class="control-group" title="@Messages("consequence.floor.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info2">@Messages("consequence.floor") (m<sup>2</sup>/m)</label></a>
 								<div class="controls">
@@ -144,7 +144,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>						
-						<div class="control-group" title="Define the category (green-yellow-red) that a pipe belongs to based on the groundwater area type it is located in (if any): Määritä, kuinka putket luokitellaan (vihreä-keltainen-punainen) sen perusteella, millaisella pohjavesialueella putki sijaitsee (jos millään).">
+						<div class="control-group" title="@Messages("consequence.gwa.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info4">@Messages("consequence.gwa")</label></a>
 								<div class="controls">
@@ -218,7 +218,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>	
 						</div>															
-						<div class="control-group" title="Define the category (green-yellow-red) that a pipe belongs to based on its type: Määritä, mihin luokkaan eri putkityypit kuuluvat.">
+						<div class="control-group" title="@Messages("consequence.sewer.explanation")">
 							<fieldset class="efesus-border clickable">				
 								<div class="control-group">
 									<a><label class="control-label clickable" for="lWasteWater" id="info0">@Messages("consequence.sewertype")</label></a>
@@ -331,7 +331,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>						
-						<div class="control-group" title="Define the category (green-yellow-red) that a pipe belongs to based on what kind of road it is located in (if any). (Also pipes which are near a road are included here): Määritä, kuinka putket luokitellaan sen perusteella, millaisen tien alla putki sijaitsee (jos minkään). (Myös teiden läheisyydessä olevat putket on huomioitu tässä.)">
+						<div class="control-group" title="@Messages("consequence.roadcls.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info5">@Messages("consequence.roadcls")</label></a>
 								<div class="controls">
@@ -435,7 +435,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							<label class="control-label bold-label">@Messages("condition.limit")</label>
 						</div>
 
-						<div class="control-group" title="Set the yellow and red limit values for the number of blockages per pipe: Määritä raja-arvot eri luokille putkessa olleiden tukosten kokonaismäärän perusteella.">
+						<div class="control-group" title="@Messages("condition.blockages.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info6">@Messages("condition.blockages")</label></a>
 								<div class="controls">
@@ -453,7 +453,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="Set the yellow and red limit values for the number of flushing events per pipe: Määritä raja-arvot eri luokille putkelle tehtyjen huuhteluiden kokonaismäärän perusteella.">
+						<div class="control-group" title="@Messages("condition.flush.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info7">@Messages("condition.flush")</label></a>
 								<div class="controls">
@@ -471,7 +471,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="Set the yellow and red limit values for the level of inflow and infiltration: Vuotoveden määrä: määritä eri luokkien raja-arvot.">
+						<div class="control-group" title="@Messages("condition.flowfiltr.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info8">@Messages("condition.flowfiltr")</label></a>
 								<div class="controls">
@@ -489,7 +489,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="Define the red and yellow limits for the total CCTV inspection score per pipe: Viemärikuvauksessa havaittujen vikojen kokonaissumma: määritä eri luokkien raja-arvot.">
+						<div class="control-group" title="@Messages("condition.cctv.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info9">@Messages("condition.cctv")</label></a>
 								<div class="controls">
@@ -507,7 +507,7 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="Define the red and yellow limits for the sum of CCTV inspection scores of severe faults (per pipe). Faults with a score 3 or 4 are considered severe. Viemärikuvauksessa havaittujen vakavien vikojen (viat 3 ja 4) kokonaissumma: määritä eri luokkien raja-arvot.">
+						<div class="control-group" title="@Messages("condition.cctvmajor.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info10">@Messages("condition.cctvmajor")</label></a>
 								<div class="controls">

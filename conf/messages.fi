@@ -42,10 +42,12 @@ consequence.index=SEURAUSINDEKSI
 consequence.limit=Aseta raja-arvot seurausten arvioinnissa k‰ytett‰ville kriteereille
 
 consequence.diameter=Putken halkaisija (mm)
+consequence.diameter.explanation=M‰‰rit‰, kuinka Sphinx-ohjelma luokittelee putket (luokitus: vihre‰-keltainen-punainen) putken halkaisijan perusteella.
 consequence.hide.diameter=Piilota putken halkaisija
 consequence.diameter.limit=putken halkaisijan raja-arvo
 
 consequence.floor=Kerrosala
+consequence.floor.explanation=M‰‰rit‰ raja-arvot eri luokille putken ymp‰ristˆn kerrosalan perusteella.
 consequence.hide.floor=Piilota kerrosala
 consequence.floor.area=putkeen liittyv‰ kerrosala
 
@@ -54,12 +56,14 @@ consequence.hide.beach=Piilota et‰isyys
 consequence.beach.distance=alueellisen ylivuotorakenteen ja l‰himm‰n uimarannan v‰linen et‰isyys
 
 consequence.gwa=Pohjavesialue (0..3)
+consequence.gwa.explanation=M‰‰rit‰, kuinka putket luokitellaan (vihre‰-keltainen-punainen) sen perusteella, millaisella pohjavesialueella putki sijaitsee (jos mill‰‰n).
 consequence.hide.gwa=Piilota pohjavesialue
 consequence.gwa.important=T‰rke‰ pohjavesialue
 consequence.gwa.suitable=Vedenottoon soveltuva pohjavesialue
 consequence.gwa.other=Muu pohjavesialue
 
 consequence.sewertype=Viem‰rin tyyppi
+consequence.sewer.explanation=M‰‰rit‰, mihin luokkaan eri putkityypit kuuluvat.
 consequence.hide.sewertype=Piilota viem‰rin tyyppi
 consequence.lateral=Paikalliset viettoviem‰rit
 consequence.collection=Kokoojaviem‰rit
@@ -68,6 +72,7 @@ consequence.pressure=Paineviem‰rit
 consequence.smallpressure=Pienet paine viem‰rit
 
 consequence.roadcls=Tien luokitus (1..4)
+consequence.roadcls.explanation=M‰‰rit‰, kuinka putket luokitellaan sen perusteella, millaisen tien alla putki sijaitsee (jos mink‰‰n). (Myˆs teiden l‰heisyydess‰ olevat putket on huomioitu t‰ss‰.)
 consequence.hide.roadcls=Piilota tien luokitus
 consequence.regional=Seudullinen p‰‰katu
 consequence.local=Alueellinen p‰‰katu
@@ -77,22 +82,27 @@ condition.index=KUNTOINDEKSI
 condition.limit=Aseta raja-arvot kunnon arvioinnissa k‰ytett‰ville kriteereille
 
 condition.blockages=Tukokset
+condition.blockages.explanation=M‰‰rit‰ raja-arvot eri luokille putkessa olleiden tukosten kokonaism‰‰r‰n perusteella.
 condition.hide.blockages=Piilota tukokset
 condition.number=putken tukosten kokonaism‰‰r‰
 
 condition.flush=Huuhtelut
+condition.flush.explanation=M‰‰rit‰ raja-arvot eri luokille putkelle tehtyjen huuhteluiden kokonaism‰‰r‰n perusteella.
 condition.hide.flush=Piilota huuhtelut
 condition.number.flushing=putken huuhteluiden kokonaism‰‰r‰
 
 condition.flowfiltr=Vuotovesi (%)
+condition.flowfiltr.explanation=Vuotoveden m‰‰r‰: m‰‰rit‰ eri luokkien raja-arvot.
 condition.hide.flowfiltr=Piilota vuotovesi
 condition.flowfiltr.info=j‰tevesivirtaama / (0.8 x veden kulutus)
 
 condition.cctv=Viem‰rikuvauksessa havaitut viat
+condition.cctv.explanation=Viem‰rikuvauksessa havaittujen vikojen kokonaissumma: m‰‰rit‰ eri luokkien raja-arvot.
 condition.hide.cctv=Piilota viem‰rikuvauksessa havaitut viat
 condition.sum.cctv=putken kaikkien viem‰rikuvauksissa havaittujen vikojen (1 - 4) summa
 
 condition.cctvmajor=Merkitt‰v‰t viem‰rikuvauksessa havaitut viat
+condition.cctvmajor.explanation=Viem‰rikuvauksessa havaittujen vakavien vikojen (viat 3 ja 4) kokonaissumma: m‰‰rit‰ eri luokkien raja-arvot.
 condition.hide.cctvmajor=Piilota merkitt‰v‰t viem‰rikuvauksessa havaitut viat
 condition.sum.cctvmajor=putken viem‰rikuvauksissa havaittujen merkitt‰vien vikojen (3 ja 4) summa
 

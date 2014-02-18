@@ -42,10 +42,12 @@ consequence.index=CONSEQUENCE INDEX
 consequence.limit=Set limit values for consequence criteria
 
 consequence.diameter=Pipe diameter (mm)
+consequence.diameter.explanation=Set the yellow and red limit values which define how Sphinx should categorize pipes based on their diameter.
 consequence.hide.diameter=Hide pipe diameter
 consequence.diameter.limit=pipe diameter caution limit
 
 consequence.floor=Floor area
+consequence.floor.explanation=Set the yellow and red limit values which define the category of a pipe based on how densely built the area is where it is located.
 consequence.hide.floor=Hide relative floor area
 consequence.floor.area=floor area associated with pipe
 
@@ -54,12 +56,14 @@ consequence.hide.beach=Hide beach distance
 consequence.beach.distance=distance between the areal overflow structure and the nearest beach
 
 consequence.gwa=Ground water area (0..3)
+consequence.gwa.explanation=Define the category (green-yellow-red) that a pipe belongs to based on the groundwater area type it is located in (if any).
 consequence.hide.gwa=Hide ground water area
 consequence.gwa.important=Important gwa
 consequence.gwa.suitable=Suitable gwa
 consequence.gwa.other=Other gwa
 
 consequence.sewertype=Sewer type
+consequence.sewer.explanation=Define the category (green-yellow-red) that a pipe belongs to based on its type.
 consequence.hide.sewertype=Hide sewer type
 consequence.lateral=Lateral gravity sewers
 consequence.collection=Collection sewers
@@ -68,6 +72,7 @@ consequence.pressure=Pressure sewers
 consequence.smallpressure=Small pressure sewers
 
 consequence.roadcls=Road classification (1..4)
+consequence.roadcls.explanation=Define the category (green-yellow-red) that a pipe belongs to based on what kind of road it is located in (if any). (Also pipes which are near a road are included here).
 consequence.hide.roadcls=Hide road classification
 consequence.regional=Regional main street
 consequence.local=Local main street
@@ -77,22 +82,27 @@ condition.index=CONDITION INDEX
 condition.limit=Set limit values for condition criteria
 
 condition.blockages=Blockages
+condition.blockages.explanation=Set the yellow and red limit values for the number of blockages per pipe.
 condition.hide.blockages=Hide blockages
 condition.number=total number of blockage events of a pipe
 
 condition.flush=Flushing events
+condition.flush.explanation=Set the yellow and red limit values for the number of flushing events per pipe.
 condition.hide.flush=Hide flushing events
 condition.number.flushing=total number of flushing events of a pipe
 
 condition.flowfiltr=Inflow and infiltration (%)
+condition.flowfiltr.explanation=Set the yellow and red limit values for the level of inflow and infiltration.
 condition.hide.flowfiltr=Hide inflow and infiltration
 condition.flowfiltr.info=wastewater flow / (0.8 x water consumption)
 
 condition.cctv=CCTV defects
+condition.cctv.explanation=Define the red and yellow limits for the total CCTV inspection score per pipe.
 condition.hide.cctv=Hide CCTV defects
 condition.sum.cctv=sum of all CCTV inspection defects (1 to 4) of a pipe
 
 condition.cctvmajor=CCTV major defects
+condition.cctvmajor.explanation=Define the red and yellow limits for the sum of CCTV inspection scores of severe faults (per pipe). Faults with a score 3 or 4 are considered severe.
 condition.hide.cctvmajor=Hide CCTV major defects
 condition.sum.cctvmajor=sum of CCTV inspection defects 3 and 4 of a pipe
 

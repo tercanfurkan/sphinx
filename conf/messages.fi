@@ -8,7 +8,7 @@ ps.list.title={0,choice,0#Ei pumppaamoa|1#Yksi pumppaamo|1<{0,number,integer} pu
 pipe.list.title={0,choice,0#Ei putkea|1#Yksi putki|1<{0,number,integer} putkea} löytynyt
 manhole.list.title={0,choice,0#Ei viemärikaivoa|1#Yksi viemärikaivo|1<{0,number,integer} viemärikaivoa} löytynyt
 
-pi.pipe.title=INDEKSIN LASKENTA
+pi.pipe.title=Riskianalyysi
 
 main.appname=Sphinx - EfeSus Tietokanta
 main.login=Kirjaudu
@@ -19,7 +19,7 @@ main.assets=VERKOSTON KOMPONENTIT
 main.stations=Pumppaamot
 main.pipes=Putket
 main.manholes=Viemärikaivot
-main.indexcalculation=INDEKSIN LASKENTA
+main.indexcalculation=Riskianalyysi
 
 filter.box=Suodata komponentin nimellä...
 filter.button=Suodata nimellä
@@ -38,7 +38,7 @@ color.least=Vähiten tärkeä
 color.avg=Melko tärkeä
 color.most=Erittäin tärkeä
 
-consequence.index=SEURAUSINDEKSI
+consequence.index=SEURAUKSET
 consequence.limit=Aseta raja-arvot seurausten arvioinnissa käytettäville kriteereille
 
 consequence.diameter=Putken halkaisija (mm)
@@ -78,7 +78,7 @@ consequence.regional=Seudullinen pääkatu
 consequence.local=Alueellinen pääkatu
 consequence.collector=Kokoojakatu
 
-condition.index=KUNTOINDEKSI
+condition.index=KUNTO
 condition.limit=Aseta raja-arvot kunnon arvioinnissa käytettäville kriteereille
 
 condition.blockages=Tukokset
@@ -109,20 +109,20 @@ condition.sum.cctvmajor=putken viemärikuvauksissa havaittujen merkittävien vikoj
 min.limit=min raja
 max.limit=max raja
 
-calculate.index=Laske indeksin arvo
+calculate.index=Laske
 
 index.summary=Yhteenveto laskennan tuloksista
 
-pipeIndex.summary.conditionIndexLimit=Kuntoindeksin raja-arvo :  
-pipeIndex.summary.consequenceIndexLimit=Seurausindeksin raja-arvo : 
+pipeIndex.summary.conditionIndexLimit=Kunnon raja-arvo :  
+pipeIndex.summary.consequenceIndexLimit=Seurausten raja-arvo : 
 pipeIndex.summary.allIndexPipeLength=Putkien yhteispituus :
 pipeIndex.summary.conditionIndexPipeLengthInspected=Length of inspected pipes exceeding condition index limit : 
 pipeIndex.summary.conditionIndexPipeLengthNotInspected=Length of uninspected pipes exceeding condition index limit : 
-pipeIndex.summary.conditionIndexPipeLength=Kuntoindeksin raja-arvon ylittävävien putkien yhteispituus : 
+pipeIndex.summary.conditionIndexPipeLength=Kunnon raja-arvon ylittävävien putkien yhteispituus : 
 
 pipeIndex.summary.consequenceIndexPipeLengthInspected=Length of inspected pipes exceeding consequence index limit : 
 pipeIndex.summary.consequenceIndexPipeLengthNotInspected=Length of uninspected pipes exceeding consequence index limit : 
-pipeIndex.summary.consequenceIndexPipeLength=Seurausindeksin raja-arvon ylittävien putkien yhteispituus : 
-pipeIndex.summary.conditionAndConsequenceIndexPipeLength=Sekä seuraus- että kuntoindeksin raja-arvot ylittävien putkien yhteispituus :
+pipeIndex.summary.consequenceIndexPipeLength=Seurauksien raja-arvon ylittävien putkien yhteispituus : 
+pipeIndex.summary.conditionAndConsequenceIndexPipeLength=Sekä seuraus- että kunnon raja-arvot ylittävien putkien yhteispituus :
 
 export.results=Siirrä laskennan tulokset 

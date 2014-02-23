@@ -4,7 +4,9 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-GET     /                           controllers.Application.change(langcode ?= "en")
+
+# Internationalization
+GET     /changelang                 controllers.Application.change(langcode:String ?= "en")
 
 # Computers list (look at the default values for pagination parameters)
 GET     /pumpingstations                  controllers.Application.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")

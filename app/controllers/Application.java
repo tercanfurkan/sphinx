@@ -27,7 +27,6 @@ import util.MathUtilSphinx;
 import views.html.*;
 import play.i18n.Messages;
 import play.api.i18n.Lang;
-//import play.Logger; 
 
 public class Application extends Controller {
 	
@@ -168,8 +167,6 @@ public class Application extends Controller {
 
 		aml.setList(toSortList);
 				
-		change("fi");
-				
 		return ok(psareas.render(aml, sortBy, order, filter, wExtra, wCCTV,
 				wOperational, wSensitivity));
 	}
@@ -271,8 +268,6 @@ public class Application extends Controller {
 	@Transactional(readOnly = true)
 	public static Result listManholes(int page, String sortBy, String order,
 			String filter) {
-		
-		change("en");
 		
 		return ok(listManholes.render(
 				Component.pageManholes(page, 10, sortBy, order, filter, currentLanguage),
@@ -513,20 +508,8 @@ public class Application extends Controller {
 	}
 	
 	public static Result change(String langCode) {
-		//Logger.info(Messages.get(new Lang(Lang.forCode("fi")), "welcome"));
-		Lang en = new Lang("en","GB");
-		play.i18n.Lang en_lang = new play.i18n.Lang(en);
-
-		Lang fi = new Lang("fi", "FI");
-		play.i18n.Lang fi_lang = new play.i18n.Lang(fi);
-
 		currentLanguage = langCode;
 		changeLang(langCode);
-		//Logger.info(langCode);
-		//Logger.info(Messages.get("pi.pipe.title"));
-		//Logger.info(Messages.get(en_lang, "pi.pipe.title"));
-		//Logger.info(Messages.get(fi_lang, "pi.pipe.title"));		
-    	//return ok(index.render("welcome"));
 		return GO_HOME;
     }	
 }

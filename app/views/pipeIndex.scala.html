@@ -89,8 +89,7 @@ cctvMajorDefectsLengthArray: List[Double])
 						</div>
 						<div class="control-group span7" title="@Messages("red.criteria.explanation")">
 							<p>
-								<label for="amountred">@Messages("red.criteria.amount")</label>
-								<input type="text" id="amountred" style="border:0; color:#f6931f; font-weight:bold;">
+								<span id="amountred"></span>
 							</p>
 							<div class="control-group" id="amountredslider"></div>
 						</div>
@@ -99,8 +98,7 @@ cctvMajorDefectsLengthArray: List[Double])
 						</div>
 						<div class="control-group span7" title="@Messages("yellow.criteria.explanation")">
 							<p>
-								<label for="amountred">@Messages("yellow.criteria.amount")</label>
-								<input type="text" id="amountyellow" style="border:0; color:#f6931f; font-weight:bold;">
+								<span id="amountyellow"></span>
 							</p>
 							<div class="control-group" id="amountyellowslider"></div>
 						</div>						
@@ -1225,10 +1223,10 @@ $(document).ready(function(){
       max: 10,
       value: 5,
       slide: function( event, ui ) {
-        $( "#amountred" ).val( ui.value );
+        $( "#amountred" ).html( "@Messages("red.criteria.amount")" + " " + ui.value );
       }
     });
-    $( "#amountred" ).val( $( "#amountredslider" ).slider( "value" ) );
+    $( "#amountred" ).html( "@Messages("red.criteria.amount")" + " " + $( "#amountredslider" ).slider( "value" ) );
 
 	$( "#amountyellowslider" ).slider({
       range: "max",
@@ -1236,10 +1234,10 @@ $(document).ready(function(){
       max: 10,
       value: 5,
       slide: function( event, ui ) {
-        $( "#amountyellow" ).val( ui.value );
+        $( "#amountyellow" ).html( "@Messages("yellow.criteria.amount")" + " " + ui.value );
       }
     });
-    $( "#amountyellow" ).val( $( "#amountyellowslider" ).slider( "value" ) );
+    $( "#amountyellow" ).html( "@Messages("yellow.criteria.amount")" + " " + $( "#amountyellowslider" ).slider( "value" ) );
 	
 	$(".range-slide div.slide").each(function() {
 		values = $(this).attr('value').split(',');

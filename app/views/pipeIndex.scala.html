@@ -83,17 +83,36 @@ cctvMajorDefectsLengthArray: List[Double])
 			</center>					
 			<div id="collapseOne" class="accordion-body collapse in">			
 				<div class="accordion-inner">				
-					<div class="controls span6" id="sensitivity-div">													
-						<div class="control-group">
+					<div class="controls span9" id="sensitivity-div">													
+						<div class="control-group span4">
 							<label class="control-label bold-label">@Messages("consequence.index")</label>
 						</div>
-						<div class="control-group">
+						<div class="control-group span7" title="@Messages("red.criteria.explanation")">
+							<p>
+								<label for="amountred">@Messages("red.criteria.amount")</label>
+								<input type="text" id="amountred" style="border:0; color:#f6931f; font-weight:bold;">
+							</p>
+							<div class="control-group" id="amountredslider"></div>
+						</div>
+						<div class="control-group span4">
 							<label class="control-label bold-label">@Messages("consequence.limit")</label>
 						</div>
-						<div class="control-group" title="@Messages("consequence.diameter.explanation")">
+						<div class="control-group span7" title="@Messages("yellow.criteria.explanation")">
+							<p>
+								<label for="amountred">@Messages("yellow.criteria.amount")</label>
+								<input type="text" id="amountyellow" style="border:0; color:#f6931f; font-weight:bold;">
+							</p>
+							<div class="control-group" id="amountyellowslider"></div>
+						</div>						
+						<div class="control-group span9" title="@Messages("consequence.diameter.explanation")">
 							<fieldset class="efesus-border clickable">
 								<!--<legend class="efesus-border">aaa</legend>-->
 								<a><label class="control-label clickable" for="lWasteWater" id="info1">@Messages("consequence.diameter")</label></a>
+								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+								</div>
 								<div class="controls">
 									<div class="chartsdiameter" id="chartdiameter"></div>
 									<!--<button class="info" id="info1" type="button">Show</button>-->
@@ -103,15 +122,20 @@ cctvMajorDefectsLengthArray: List[Double])
 										<div class="slide" value="333,686" id="diameterslider" min="25" max="1000">
 											<span id="min">min:25</span>
 											<span id="max">max:1000</span>
-										</div>
+										</div>									
 									</div>
 									<span class="help-inline chartsdiameter">@Messages("consequence.diameter.limit")</span>	
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="@Messages("consequence.floor.explanation")">
+						<div class="control-group span9" title="@Messages("consequence.floor.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info2">@Messages("consequence.floor") (m<sup>2</sup>/m)</label></a>
+								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+								</div>								
 								<div class="controls">
 									<div class="chartsarea" id="chartarea"></div>
 									<!--<button class="info" id="info2" type="button">Show</button>-->
@@ -126,9 +150,9 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>	
-						<div class="control-group">
+						<div class="control-group span9">
 							<fieldset class="efesus-border clickable">
-								<a><label class="control-label clickable" for="lWasteWater" id="info3">@Messages("consequence.beach")</label></a>
+								<a><label class="control-label clickable" for="lWasteWater" id="info3">@Messages("consequence.beach")</label></a>							
 								<div class="controls">
 									<div class="chartsbeach" id="chartbeach"></div>
 									<!--<button class="info" id="info3" type="button">Show</button>
@@ -144,9 +168,14 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>						
-						<div class="control-group" title="@Messages("consequence.gwa.explanation")">
+						<div class="control-group span9" title="@Messages("consequence.gwa.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info4">@Messages("consequence.gwa")</label></a>
+								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+								</div>								
 								<div class="controls">
 									<div class="chartsgroundwaterarea" id="chartgroundwaterarea"></div>
 									<!--<button class="info" id="info4" type="button">Show</button>-->							
@@ -218,10 +247,15 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>	
 						</div>															
-						<div class="control-group" title="@Messages("consequence.sewer.explanation")">
+						<div class="control-group span9" title="@Messages("consequence.sewer.explanation")">
 							<fieldset class="efesus-border clickable">				
 								<div class="control-group">
 									<a><label class="control-label clickable" for="lWasteWater" id="info0">@Messages("consequence.sewertype")</label></a>
+									<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+									<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+									  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+									  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+									</div>								
 								</div>
 								<div class="sewer-group">						
 									<div class="control-group">
@@ -331,9 +365,14 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>						
-						<div class="control-group" title="@Messages("consequence.roadcls.explanation")">
+						<div class="control-group span9" title="@Messages("consequence.roadcls.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info5">@Messages("consequence.roadcls")</label></a>
+								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+								</div>								
 								<div class="controls">
 									<div class="chartsroadclassification" id="chartroadclassification"></div>
 									<!--<button class="info" id="info5" type="button">Show</button>-->
@@ -426,18 +465,23 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>								
 					</div>
-					<div class="controls span6">
+					<div class="controls span9">
 						
-						<div class="control-group">
+						<div class="control-group span9">
 							<label class="control-label bold-label">@Messages("condition.index")</label>
 						</div>
-						<div class="control-group">
+						<div class="control-group span9">
 							<label class="control-label bold-label">@Messages("condition.limit")</label>
 						</div>
 
-						<div class="control-group" title="@Messages("condition.blockages.explanation")">
+						<div class="control-group span9" title="@Messages("condition.blockages.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info6">@Messages("condition.blockages")</label></a>
+								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+								</div>								
 								<div class="controls">
 									<div class="chartsblockage" id="chartblockage"></div>
 									<!--<button class="info" id="info6" type="button">Show</button>-->								
@@ -453,9 +497,14 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="@Messages("condition.flush.explanation")">
+						<div class="control-group span9" title="@Messages("condition.flush.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info7">@Messages("condition.flush")</label></a>
+								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+								</div>								
 								<div class="controls">
 									<div class="chartsflushing" id="chartflushing"></div>
 									<!--<button class="info" id="info7" type="button">Show</button>-->
@@ -471,9 +520,14 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="@Messages("condition.flowfiltr.explanation")">
+						<div class="control-group span9" title="@Messages("condition.flowfiltr.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info8">@Messages("condition.flowfiltr")</label></a>
+								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+								</div>								
 								<div class="controls">
 									<div class="chartsextrawater" id="chartextrawater"></div>
 									<!--<button class="info" id="info8" type="button">Show</button>-->
@@ -489,9 +543,14 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="@Messages("condition.cctv.explanation")">
+						<div class="control-group span9" title="@Messages("condition.cctv.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info9">@Messages("condition.cctv")</label></a>
+								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+								</div>
 								<div class="controls">
 									<div class="chartsCCTVdefects" id="chartCCTVdefects"></div>
 									<!--<button class="info" id="info9" type="button">Show</button>-->
@@ -507,9 +566,14 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group" title="@Messages("condition.cctvmajor.explanation")">
+						<div class="control-group span9" title="@Messages("condition.cctvmajor.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info10">@Messages("condition.cctvmajor")</label></a>
+								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
+								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
+								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
+								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
+								</div>
 								<div class="controls">
 									<div class="chartsCCTVmajordefects" id="chartCCTVmajordefects"></div>
 									<!--<button class="info" id="info10" type="button">Show</button>-->
@@ -542,9 +606,9 @@ cctvMajorDefectsLengthArray: List[Double])
 <style>
 .ui-slider { 
 	position: relative;
-	text-align: left; 
+	text-align: left;
+	//background: #1AF230; // green
 	//background: #F84831; // red
-	background: #1AF230; // green
 }
 //.ui-slider .ui-slider-handle {
 //	background: green;
@@ -1154,6 +1218,28 @@ $(document).ready(function(){
 		//(@meterLimitValForm("diameterMax")) = ui.values[1];
 		//alert("I am an alert box!");
 	//});
+	
+	$( "#amountredslider" ).slider({
+      range: "max",
+      min: 1,
+      max: 10,
+      value: 5,
+      slide: function( event, ui ) {
+        $( "#amountred" ).val( ui.value );
+      }
+    });
+    $( "#amountred" ).val( $( "#amountredslider" ).slider( "value" ) );
+
+	$( "#amountyellowslider" ).slider({
+      range: "max",
+      min: 1,
+      max: 10,
+      value: 5,
+      slide: function( event, ui ) {
+        $( "#amountyellow" ).val( ui.value );
+      }
+    });
+    $( "#amountyellow" ).val( $( "#amountyellowslider" ).slider( "value" ) );
 	
 	$(".range-slide div.slide").each(function() {
 		values = $(this).attr('value').split(',');

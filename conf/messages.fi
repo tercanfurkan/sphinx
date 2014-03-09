@@ -41,6 +41,16 @@ color.most=Eritt‰in t‰rke‰
 consequence.index=SEURAUKSET
 consequence.limit=Aseta raja-arvot seurausten arvioinnissa k‰ytett‰ville kriteereille
 
+red.criteria.explanation=M‰‰rittele punaisien kriteerien m‰‰r‰, jolla putki p‰‰ttyy remontti listaan
+red.criteria.amount=Punaisten kriteerien m‰‰r‰:
+yellow.criteria.explanation=M‰‰rittele keltaisien kriteerien m‰‰r‰, jolla putki p‰‰ttyy remontti listaan
+yellow.criteria.amount=Keltaisten kriteerien m‰‰r‰:
+
+importance.explanation=Valitse laskentaan osallistuvat kriteerit
+importance.itself=Merkitys
+importance.yellow=Keltainen
+importance.red=Punainen
+
 consequence.diameter=Putken halkaisija (mm)
 consequence.diameter.explanation=M‰‰rit‰, kuinka Sphinx-ohjelma luokittelee putket (luokitus: vihre‰-keltainen-punainen) putken halkaisijan perusteella.
 consequence.hide.diameter=Piilota putken halkaisija

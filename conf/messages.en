@@ -41,6 +41,16 @@ color.most=Significant
 consequence.index=CONSEQUENCE INDEX
 consequence.limit=Set limit values for consequence criteria
 
+red.criteria.explanation=Define amount of red criterias in order a pipe goes to renovation list
+red.criteria.amount=Number of red criterias:
+yellow.criteria.explanation=Define amount of yellow criterias in order a pipe goes to renovation list
+yellow.criteria.amount=Number of yellow criterias:
+
+importance.explanation=Select important criterias, which will take part in the calculation
+importance.itself=Importance
+importance.yellow=Yellow
+importance.red=Red
+
 consequence.diameter=Pipe diameter (mm)
 consequence.diameter.explanation=Set the yellow and red limit values which define how Sphinx should categorize pipes based on their diameter.
 consequence.hide.diameter=Hide pipe diameter

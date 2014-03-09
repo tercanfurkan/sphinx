@@ -186,8 +186,9 @@ public class Application extends Controller {
 	@Transactional(readOnly = true)
 	public static Result list(int page, String sortBy, String order,
 			String filter) {
+		response().setContentType("text/html; charset=utf-8");	
 		return ok(list.render(Component.page(page, 10, sortBy, order, filter, currentLanguage),
-				sortBy, order, filter));
+				sortBy, order, filter), "utf-8");
 	}
 
 	/**
@@ -486,10 +487,11 @@ public class Application extends Controller {
 				
 		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);		
 		
+		response().setContentType("text/html; charset=utf-8");
 		return ok(views.html.pipeIndex.render(meterLimitValForm, sortBy, order,
 											  diameterLengthArray, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
 											  beachLengthArray, blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
-											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray));
+											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray), "utf-8");
 	}
 	
 	public static Result sendFile() {

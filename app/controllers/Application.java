@@ -335,23 +335,18 @@ public class Application extends Controller {
 	 */
 	@Transactional(readOnly = true)
 	public static Result indexResults(int page, String sortBy, String order) {
-		MeterLimitVal meterLimitVal = new MeterLimitVal();
+		//MeterLimitVal meterLimitVal = new MeterLimitVal();
 		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);
 		MeterLimitVal meterLimitValFields = meterLimitValForm.bindFromRequest().get();
-		
-		System.out.println("Application:indexResults(..) > ");
-		
-		//System.out.println("meterLimitValues diameterMax > " + meterLimitValues.diameterMax);
 		
 		if (pipeIndexWrapperViewList == null) {
 			System.out.println("--- pipeIndexWrapperViewList is now NULL! both pipeIndexWrapperViewList and indexWrapperList will be FILLED");
 			pipeIndexWrapperViewList = PipeIndexWrapperView.getPipeIndexWrapperViewList();
-			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitVal);
+			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitValForm);
 		}
 		
-		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitVal);
+		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitValForm);
 
-		
 		// fill the 'to the point' pipeIndexResult of each pipe
 		// then fill the 'to the point' pipeIndexSummary and display on page
 		PipeIndexSummary pipeIndexSummary = null; // pass this object to render
@@ -433,26 +428,6 @@ public class Application extends Controller {
 		
 		final Map<String, String[]> values = request().body().asFormUrlEncoded();
 		System.out.println("Request map values > " + request().body().asText()/*values.toString()*/);
-
-		
-//		Component comp = Component.findById(id);
-//		Form<Component> componentForm = play.data.Form.form(Component.class);
-//		componentForm = componentForm.fill(comp);
-//		return ok(editForm.render(id, componentForm));
-
-		// Form<Component> componentForm = play.data.Form.form(Component.class).bindFromRequest();
-		// if (componentForm.hasErrors()) {
-			// return badRequest(editForm.render(id, componentForm));
-		// }
-		// componentForm.get().update(id);
-		// flash("success", "Component " + componentForm.get().name
-				// + " has been updated");
-
-				
-		// then fill the 'to the point' pipeIndexSummary and display on page
-		//pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
-		
-		//return ok(pipeIndex.render(pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));				
 
 		return ok(views.html.indexResults.render(sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
 	}
@@ -538,28 +513,9 @@ public class Application extends Controller {
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(26, 31));	
 				
 		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);	
-		MeterLimitValModel meterLimitValues = new MeterLimitValModel();
-		System.out.println("PipeIndex: meterLimitValues diameterMax > " + meterLimitValues.diameterMax);
-		Pager pager1 = new Pager();
-		
-//		Component comp = Component.findById(id);
-//		Form<Component> componentForm = play.data.Form.form(Component.class);
-//		componentForm = componentForm.fill(comp);
-//		return ok(editForm.render(id, componentForm));
-
-		// Form<Component> componentForm = play.data.Form.form(Component.class).bindFromRequest();
-		// if (componentForm.hasErrors()) {
-			// return badRequest(editForm.render(id, componentForm));
-		// }
-		// componentForm.get().update(id);
-		// flash("success", "Component " + componentForm.get().name
-				// + " has been updated");
-		
-		//Call call = routes.Application.indexResults(0, "pipe_consequence_index", "desc", pager1);
-		//System.out.println("Call URL > " + call.url());
 		
 		response().setContentType("text/html; charset=utf-8");
-		return ok(views.html.pipeIndex.render(pager1, meterLimitValues, meterLimitValForm, sortBy, order,
+		return ok(views.html.pipeIndex.render(meterLimitValForm, sortBy, order,
 											  diameterLengthArray, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
 											  beachLengthArray, blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
 											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray), "utf-8");

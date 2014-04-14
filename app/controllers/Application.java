@@ -340,10 +340,10 @@ public class Application extends Controller {
 		if (pipeIndexWrapperViewList == null) {
 			System.out.println("--- pipeIndexWrapperViewList is now NULL! both pipeIndexWrapperViewList and indexWrapperList will be FILLED");
 			pipeIndexWrapperViewList = PipeIndexWrapperView.getPipeIndexWrapperViewList();
-			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitValForm);
+			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitValFields);
 		}
 		
-		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitValForm);
+		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitValFields);
 
 		// fill the 'to the point' pipeIndexResult of each pipe
 		// then fill the 'to the point' pipeIndexSummary and display on page

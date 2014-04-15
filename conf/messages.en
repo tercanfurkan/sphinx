@@ -11,7 +11,7 @@ manhole.list.title={0,choice,0#No manholes|1#One manhole|1<{0,number,integer} ma
 pi.pipe.title=INDEX CALCULATION
 
 main.appname=Sphinx - EfeSus Database
-main.login=Login
+main.logout=Logout
 main.home=Home
 main.about=About
 main.contact=Contact

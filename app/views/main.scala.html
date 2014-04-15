@@ -37,7 +37,7 @@ body {
 				</a> <a class="brand" href="@routes.Application.index()">@Messages("main.appname")</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
-						@Messages("main.login")<a href="#" class="navbar-link"></a>
+						<a href="@routes.Application.logout()" class="navbar-link">@Messages("main.logout")</a>
 					</p>
 					<ul class="nav">
 						<li class="active"><a href="#">@Messages("main.home")</a></li>

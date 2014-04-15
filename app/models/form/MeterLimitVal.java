@@ -4,9 +4,10 @@ public class MeterLimitVal {
 
 	public MeterLimitVal() {
 		// Define min/max values for meters using the slider bar
+		this.agree = false;
 		this.diameterMin = 400;
 		this.diameterMax = 600;
-		this.floorAreaMin = 15;
+		this.floorAreaMin = 15;  
 		this.floorAreaMax = 35;
 		this.beachDistanceMin = 100;
 		this.beachDistanceMax = 200;
@@ -25,6 +26,7 @@ public class MeterLimitVal {
 		this.gwaSuitableVal = 2;
 		this.gwaOtherVal = 2;
 		
+		this.pipeTypeLateralVal = 1;
 		this.pipeTypeCollectionVal = 1;
 		this.pipeTypeGravetyVal = 2; 
 		this.pipeTypePressure = 2; 
@@ -38,6 +40,7 @@ public class MeterLimitVal {
 	}
 
 	// Slider min max values
+	public boolean agree;
 	public float diameterMin;
 	public float diameterMax;
 	public float floorAreaMin;
@@ -70,5 +73,5 @@ public class MeterLimitVal {
 	public float roadRegionalMain1Val;
 	public float roadRegionalMain2Val;
 	public float roadLocalMainVal;
-	public float roadCollectorVal;
+	public float roadCollectorVal;	
 }

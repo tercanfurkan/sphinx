@@ -51,7 +51,7 @@ cctvMajorDefectsLengthArray: List[Double])
 </div>
 
 <div class="accordion" id="accordion2">
-	<form class="form-horizontal" action="@routes.Application.indexResults(0)" method="GET">
+	<form class="form-horizontal" action="@routes.Application.indexResults(0, "pipe_consequence_index", "desc")" method="GET">
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse"
@@ -87,34 +87,24 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group span4">
 							<label class="control-label bold-label">@Messages("consequence.index")</label>
 						</div>
-						<div class="control-group span7" title="@Messages("red.criteria.explanation")">
-							<p>
-								<span id="amountred"></span>
-							</p>
-							<div class="control-group" id="amountredslider"></div>
-						</div>
 						<div class="control-group span4">
 							<label class="control-label bold-label">@Messages("consequence.limit")</label>
-						</div>
-						<div class="control-group span7" title="@Messages("yellow.criteria.explanation")">
-							<p>
-								<span id="amountyellow"></span>
-							</p>
-							<div class="control-group" id="amountyellowslider"></div>
 						</div>						
 						<div class="control-group span9" title="@Messages("consequence.diameter.explanation")">
 							<fieldset class="efesus-border clickable">
 								<!--<legend class="efesus-border">aaa</legend>-->
 								<a><label class="control-label clickable" for="lWasteWater" id="info1">@Messages("consequence.diameter")</label></a>
-								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-								</div>
+								@checkbox(
+									meterLimitValForm("agree"), 
+									'_label -> None, '_text -> "You agree the Terms and conditions",
+									'_showConstraints -> false
+								)
 								<div class="controls">
 									<div class="chartsdiameter" id="chartdiameter"></div>
 									<!--<button class="info" id="info1" type="button">Show</button>-->
 									<span class="amount chartsdiameter"></span>
+									<input type="hidden" class="hiddenInputMin" name="diameterMin" value="@meterLimitValForm.data.get("diameterMin")">								  
+									<input type="hidden" class="hiddenInputMax" name="diameterMax" value="@meterLimitValForm.data.get("diameterMax")">								  									
 									<!--<span class="chartsdiameter" id="diameterLengthArrays">Length of pipes: @diameterLengthArray</span>-->
 									<div class="slider range-slide chartsdiameter">
 										<div class="slide" value="333,686" id="diameterslider" min="25" max="1000">
@@ -129,15 +119,12 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group span9" title="@Messages("consequence.floor.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info2">@Messages("consequence.floor") (m<sup>2</sup>/m)</label></a>
-								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-								</div>								
 								<div class="controls">
 									<div class="chartsarea" id="chartarea"></div>
 									<!--<button class="info" id="info2" type="button">Show</button>-->
 									<span class="amount chartsarea"></span>
+									<input type="hidden" class="hiddenInputMin" name="floorAreaMin" value="@meterLimitValForm.data.get("floorAreaMin")">								  
+									<input type="hidden" class="hiddenInputMax" name="floorAreaMax" value="@meterLimitValForm.data.get("floorAreaMax")">								  									
 									<div class="slider range-slide chartsarea">
 										<div class="slide" value="16,33" min="0" max="51">
 											<span id="min">min:0</span>
@@ -169,11 +156,6 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group span9" title="@Messages("consequence.gwa.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info4">@Messages("consequence.gwa")</label></a>
-								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-								</div>								
 								<div class="controls">
 									<div class="chartsgroundwaterarea" id="chartgroundwaterarea"></div>
 									<!--<button class="info" id="info4" type="button">Show</button>-->							
@@ -186,17 +168,29 @@ cctvMajorDefectsLengthArray: List[Double])
 												</td>	
 												<td class="controls span1 green">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="@meterLimitValForm.data.get("gwaImportantVal")">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("gwaImportantVal"),
+														  options = options("0"->""),
+														  '_label -> "")
 													</label>
 												</td>											
 												<td class="controls span1 yellow">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox2" value="@meterLimitValForm.data.get("gwaSuitableVal")">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("gwaImportantVal"),
+														  options = options("1"->""),
+														  '_label -> "")
 													</label>
 												</td>
 												<td class="controls span1 red">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="@meterLimitValForm.data.get("gwaOtherVal")">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("gwaImportantVal"),
+														  options = options("2"->""),
+														  '_label -> "")
 													</label>
 												</td>
 											</tr>
@@ -206,17 +200,29 @@ cctvMajorDefectsLengthArray: List[Double])
 												</td>											
 												<td class="controls span1 green">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("gwaSuitableVal"),
+														  options = options("0"->""),
+														  '_label -> "")													  
 													</label>
 												</td>											
 												<td class="controls span1 yellow">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("gwaSuitableVal"),
+														  options = options("1"->""),
+														  '_label -> "")													  
 													</label>
 												</td>
 												<td class="controls span1 red">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("gwaSuitableVal"),
+														  options = options("2"->""),
+														  '_label -> "")													  
 													</label>
 												</td>
 											</tr>
@@ -226,17 +232,29 @@ cctvMajorDefectsLengthArray: List[Double])
 												</td>											
 												<td class="controls span1 green">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("gwaOtherVal"),
+														  options = options("0"->""),
+														  '_label -> "")													  
 													</label>
 												</td>											
 												<td class="controls span1 yellow">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("gwaOtherVal"),
+														  options = options("1"->""),
+														  '_label -> "")													  													  
 													</label>
 												</td>
 												<td class="controls span1 red">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("gwaOtherVal"),
+														  options = options("2"->""),
+														  '_label -> "")													  													  
 													</label>
 												</td>
 											</tr>									
@@ -249,11 +267,6 @@ cctvMajorDefectsLengthArray: List[Double])
 							<fieldset class="efesus-border clickable">				
 								<div class="control-group">
 									<a><label class="control-label clickable" for="lWasteWater" id="info0">@Messages("consequence.sewertype")</label></a>
-									<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-									<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-									  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-									  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-									</div>								
 								</div>
 								<div class="sewer-group">						
 									<div class="control-group">
@@ -264,17 +277,29 @@ cctvMajorDefectsLengthArray: List[Double])
 													<tr> 
 														<td class="controls span1 green">
 															<label class="radio inline middle">
-															  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+															  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypeCollectionVal"),
+																  options = options("0"->""),
+																  '_label -> "")
 															</label>
 														</td>
 														<td class="controls span1 yellow">
 															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+															  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypeCollectionVal"),
+																  options = options("1"->""),
+																  '_label -> "")															  
 															</label>
 														</td>
 														<td class="controls span1 red">
 															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
+															  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypeCollectionVal"),
+																  options = options("2"->""),
+																  '_label -> "")															  
 															</label>
 														</td>
 													</tr>
@@ -290,17 +315,29 @@ cctvMajorDefectsLengthArray: List[Double])
 													<tr> 
 														<td class="controls span1 green">
 															<label class="radio inline middle">
-															  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+															  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypeGravetyVal"),
+																  options = options("0"->""),
+																  '_label -> "")															  
 															</label>
 														</td>
 														<td class="controls span1 yellow">
 															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+															  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypeGravetyVal"),
+																  options = options("1"->""),
+																  '_label -> "")															  
 															</label>
 														</td>
 														<td class="controls span1 red">
 															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
+															  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypeGravetyVal"),
+																  options = options("2"->""),
+																  '_label -> "")															  
 															</label>
 														</td>
 													</tr>
@@ -316,17 +353,29 @@ cctvMajorDefectsLengthArray: List[Double])
 													<tr> 
 														<td class="controls span1 green">
 															<label class="radio inline middle">
-															  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+															  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypePressure"),
+																  options = options("0"->""),
+																  '_label -> "")															  
 															</label>
 														</td>
 														<td class="controls span1 yellow">
 															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+															  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypePressure"),
+																  options = options("1"->""),
+																  '_label -> "")															  															  
 															</label>
 														</td>
 														<td class="controls span1 red">
 															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
+															  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypePressure"),
+																  options = options("2"->""),
+																  '_label -> "")															  															  
 															</label>
 														</td>
 													</tr>
@@ -342,17 +391,29 @@ cctvMajorDefectsLengthArray: List[Double])
 													<tr> 
 														<td class="controls span1 green">
 															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+															  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypeSmallPressureVal"),
+																  options = options("0"->""),
+																  '_label -> "")															  															  
 															</label>
 														</td>
 														<td class="controls span1 yellow">
 															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">
+															  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox2" value="option2">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypeSmallPressureVal"),
+																  options = options("1"->""),
+																  '_label -> "")															  
 															</label>
 														</td>
 														<td class="controls span1 red">
 															<label class="radio inline">
-															  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">
+															  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option2">-->
+															  @inputRadioGroup(
+																  meterLimitValForm("pipeTypeSmallPressureVal"),
+																  options = options("2"->""),
+																  '_label -> "")															  
 															</label>
 														</td>
 													</tr>
@@ -366,11 +427,6 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group span9" title="@Messages("consequence.roadcls.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info5">@Messages("consequence.roadcls")</label></a>
-								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-								</div>								
 								<div class="controls">
 									<div class="chartsroadclassification" id="chartroadclassification"></div>
 									<!--<button class="info" id="info5" type="button">Show</button>-->
@@ -383,17 +439,29 @@ cctvMajorDefectsLengthArray: List[Double])
 												</td>										
 												<td class="controls span1 green">
 													<label class="radio inline middle">
-													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadRegionalMain1Val"),
+														  options = options("0"->""),
+														  '_label -> "")															  													  
 													</label>
 												</td>										
 												<td class="controls span1 yellow">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadRegionalMain1Val"),
+														  options = options("1"->""),
+														  '_label -> "")															  													  													  
 													</label>
 												</td>
 												<td class="controls span1 red">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadRegionalMain1Val"),
+														  options = options("2"->""),
+														  '_label -> "")															  													  													  
 													</label>
 												</td>
 											</tr>
@@ -403,17 +471,29 @@ cctvMajorDefectsLengthArray: List[Double])
 												</td>										
 												<td class="controls span1 green">
 													<label class="radio inline middle">
-													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadRegionalMain2Val"),
+														  options = options("0"->""),
+														  '_label -> "")															  													  													  
 													</label>
 												</td>										
 												<td class="controls span1 yellow">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadRegionalMain2Val"),
+														  options = options("1"->""),
+														  '_label -> "")															  													  													  													  
 													</label>
 												</td>
 												<td class="controls span1 red">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadRegionalMain2Val"),
+														  options = options("2"->""),
+														  '_label -> "")															  													  													  													  
 													</label>
 												</td>
 											</tr>
@@ -423,17 +503,29 @@ cctvMajorDefectsLengthArray: List[Double])
 												</td>										
 												<td class="controls span1 green">
 													<label class="radio inline middle">
-													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadLocalMainVal"),
+														  options = options("0"->""),
+														  '_label -> "")															  
 													</label>
 												</td>										
 												<td class="controls span1 yellow">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadLocalMainVal"),
+														  options = options("1"->""),
+														  '_label -> "")															  													  
 													</label>
 												</td>
 												<td class="controls span1 red">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadLocalMainVal"),
+														  options = options("2"->""),
+														  '_label -> "")													  
 													</label>
 												</td>
 											</tr>
@@ -443,17 +535,29 @@ cctvMajorDefectsLengthArray: List[Double])
 												</td>										
 												<td class="controls span1 green">
 													<label class="radio inline middle">
-													  <input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">
+													  <!--<input type="radio" name="optionsRadios" class="middle" id="inlineCheckbox1" value="option1">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadCollectorVal"),
+														  options = options("0"->""),
+														  '_label -> "")													  
 													</label>
 												</td>										
 												<td class="controls span1 yellow">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox3" value="option3">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadCollectorVal"),
+														  options = options("1"->""),
+														  '_label -> "")													  													  
 													</label>
 												</td>
 												<td class="controls span1 red">
 													<label class="radio inline">
-													  <input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">
+													  <!--<input type="radio" name="optionsRadios" id="inlineCheckbox4" value="option4">-->
+													  @inputRadioGroup(
+														  meterLimitValForm("roadCollectorVal"),
+														  options = options("2"->""),
+														  '_label -> "")													  													  
 													</label>
 												</td>
 											</tr>										
@@ -475,16 +579,13 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group span9" title="@Messages("condition.blockages.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info6">@Messages("condition.blockages")</label></a>
-								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-								</div>								
 								<div class="controls">
 									<div class="chartsblockage" id="chartblockage"></div>
 									<!--<button class="info" id="info6" type="button">Show</button>-->								
 									<!--<span class="chartsblockage">Blockages: @blockageLengthArray</span>-->
 									<span class="amount chartsblockage"></span>
+									<input type="hidden" class="hiddenInputMin" name="blockageMin" value="@meterLimitValForm.data.get("blockageMin")">								  
+									<input type="hidden" class="hiddenInputMax" name="blockageMax" value="@meterLimitValForm.data.get("blockageMax")">								  																		
 									<div class="slider range-slide chartsblockage">	
 										<div class="slide" value="1,3" min="0" max="4">
 											<span id="min">min:0</span>
@@ -498,16 +599,13 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group span9" title="@Messages("condition.flush.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info7">@Messages("condition.flush")</label></a>
-								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-								</div>								
 								<div class="controls">
 									<div class="chartsflushing" id="chartflushing"></div>
 									<!--<button class="info" id="info7" type="button">Show</button>-->
 									<!--<span class="chartsflushing">FEA: @flushingEventLengthArray</span>-->
 									<span class="amount chartsflushing"></span>
+									<input type="hidden" class="hiddenInputMin" name="flushingMin" value="@meterLimitValForm.data.get("flushingMin")">								  
+									<input type="hidden" class="hiddenInputMax" name="flushingMax" value="@meterLimitValForm.data.get("flushingMax")">								  																		
 									<div class="slider range-slide chartsflushing">	
 										<div class="slide" value="5,10" min="0" max="17">
 											<span id="min">min:0</span>
@@ -521,16 +619,13 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group span9" title="@Messages("condition.flowfiltr.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info8">@Messages("condition.flowfiltr")</label></a>
-								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-								</div>								
 								<div class="controls">
 									<div class="chartsextrawater" id="chartextrawater"></div>
 									<!--<button class="info" id="info8" type="button">Show</button>-->
 									<!--<span class="chartsextrawater">Extra Water Array: @extraWaterLengthArray</span>-->
 									<span class="amount chartsextrawater"></span>
+									<input type="hidden" class="hiddenInputMin" name="extraWaterMin" value="@meterLimitValForm.data.get("extraWaterMin")">								  
+									<input type="hidden" class="hiddenInputMax" name="extraWaterMax" value="@meterLimitValForm.data.get("extraWaterMax")">								  																		
 									<div class="slider range-slide chartsextrawater">	
 										<div class="slide" value="6,12" min="0" max="19">
 											<span id="min">min:0</span>
@@ -544,16 +639,13 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group span9" title="@Messages("condition.cctv.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info9">@Messages("condition.cctv")</label></a>
-								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-								</div>
 								<div class="controls">
 									<div class="chartsCCTVdefects" id="chartCCTVdefects"></div>
 									<!--<button class="info" id="info9" type="button">Show</button>-->
 									<!--<span class="chartsCCTVdefects">CCTV array: @cctvDefectsLengthArray</span>-->
 									<span class="amount chartsCCTVdefects"></span>
+									<input type="hidden" class="hiddenInputMin" name="cctvMin" value="@meterLimitValForm.data.get("cctvMin")">								  
+									<input type="hidden" class="hiddenInputMax" name="cctvMax" value="@meterLimitValForm.data.get("cctvMax")">								  																		
 									<div class="slider range-slide chartsCCTVdefects">	
 										<div class="slide" value="11,22" min="0" max="34">
 											<span id="min">min:0</span>
@@ -567,16 +659,13 @@ cctvMajorDefectsLengthArray: List[Double])
 						<div class="control-group span9" title="@Messages("condition.cctvmajor.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info10">@Messages("condition.cctvmajor")</label></a>
-								<span class="label label-success" title="@Messages("importance.explanation")">@Messages("importance.itself")</span>
-								<div class="btn-group" data-toggle="buttons-checkbox" title="@Messages("importance.explanation")">
-								  <button type="button" class="btn btn-warning">@Messages("importance.yellow")</button>
-								  <button type="button" class="btn btn-danger">@Messages("importance.red")</button>
-								</div>
 								<div class="controls">
 									<div class="chartsCCTVmajordefects" id="chartCCTVmajordefects"></div>
 									<!--<button class="info" id="info10" type="button">Show</button>-->
 									<!--<span class="chartsCCTVmajordefects">CCTV MD array: @cctvMajorDefectsLengthArray</span>-->
 									<span class="amount chartsCCTVmajordefects"></span>
+									<input type="hidden" class="hiddenInputMin" name="cctv34Min" value="@meterLimitValForm.data.get("cctv34Min")">								  
+									<input type="hidden" class="hiddenInputMax" name="cctv34Max" value="@meterLimitValForm.data.get("cctv34Max")">								  																		
 									<div class="slider range-slide chartsCCTVmajordefects">	
 										<div class="slide" value="8,17" min="0" max="26">
 											<span id="min">min:0</span>
@@ -661,7 +750,7 @@ legend.efesus-border {
 <!--<script src="@routes.Assets.at("javascripts/Chart.js")"></script>-->
 <!--<script src="@routes.Assets.at("javascripts/d3.v3.js")"></script>-->
 <!--<script src="@routes.Assets.at("javascripts/xcharts.js")"></script>-->
-<script>
+<script type="text/javascript" charset="utf-8">
 $(document).ready(function(){	
 	//
 	// Drawing a bar chart
@@ -1206,16 +1295,11 @@ $(document).ready(function(){
 	deselectCCTVdefects();	
 	deselectCCTVmajordefects();
 	deselectSewers();
+	
 	//////////////////////
 	//
 	// Slider handling
 	//
-	
-	//$("#sliderdiameter").on('slide', function(event, ui) {
-		//(@meterLimitValForm("diameterMin")) = ui.values[0];
-		//(@meterLimitValForm("diameterMax")) = ui.values[1];
-		//alert("I am an alert box!");
-	//});
 	
 	$( "#amountredslider" ).slider({
       range: "max",
@@ -1265,8 +1349,10 @@ $(document).ready(function(){
 	    	range: true,
 	    	slide: function(event, ui) {
 				$(this).parent().siblings('span.amount').html("@Messages("min.limit"): " + ui.values[0] + " - @Messages("max.limit"): " + ui.values[1]);
-				//@meterLimitValForm.("diameterMin") = ui.values[0];
-				//@meterLimitValForm("diameterMin") = 1;
+				//$("#diameterMinId").val(ui.values[0]);
+				//$("#diameterMaxId").val(ui.values[1]);
+				$(this).parent().siblings('input.hiddenInputMin').val(ui.values[0]);
+				$(this).parent().siblings('input.hiddenInputMax').val(ui.values[1]);
 				//updateColors(ui.values);
 				//doUpdate($(this));
 				//ticks = [ui.values[0], ui.values[1]];
@@ -1311,6 +1397,8 @@ $(document).ready(function(){
 		}		
 		
 		rangeSpan.html("@Messages("min.limit"): " + $(this).slider("values", 0) + " - @Messages("max.limit"): " + $(this).slider("values", 1));
+		$(this).parent().siblings('input.hiddenInputMin').val($(this).slider("values", 0));
+		$(this).parent().siblings('input.hiddenInputMax').val($(this).slider("values", 1));		
 		//doUpdate();
 	});
 	/////////////////////

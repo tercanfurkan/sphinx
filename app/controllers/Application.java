@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import jxl.write.WriteException;
 import models.Component;
@@ -30,6 +31,9 @@ import views.html.*;
 import play.*;
 import play.data.*;
 import static play.data.Form.*;
+import play.i18n.Messages;
+import play.api.i18n.Lang;
+import play.mvc.Call;
 
 public class Application extends Controller {
 	
@@ -344,17 +348,18 @@ public class Application extends Controller {
 	 */
 	@Transactional(readOnly = true)
 	public static Result indexResults(int page, String sortBy, String order) {
-		MeterLimitVal meterLimitVal = new MeterLimitVal();
+		//MeterLimitVal meterLimitVal = new MeterLimitVal();
+		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);
+		MeterLimitVal meterLimitValFields = meterLimitValForm.bindFromRequest().get();
 		
 		if (pipeIndexWrapperViewList == null) {
 			System.out.println("--- pipeIndexWrapperViewList is now NULL! both pipeIndexWrapperViewList and indexWrapperList will be FILLED");
 			pipeIndexWrapperViewList = PipeIndexWrapperView.getPipeIndexWrapperViewList();
-			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitVal);
+			indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitValFields);
 		}
 		
-		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitVal);
+		indexWrapperList = PipeIndexServ.calculatePipeIndex(pipeIndexWrapperViewList, meterLimitValFields);
 
-		
 		// fill the 'to the point' pipeIndexResult of each pipe
 		// then fill the 'to the point' pipeIndexSummary and display on page
 		PipeIndexSummary pipeIndexSummary = null; // pass this object to render
@@ -405,15 +410,37 @@ public class Application extends Controller {
 		
 		pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
 
-		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);
-		MeterLimitVal meterLimitValFields = meterLimitValForm.bindFromRequest().get();
-		meterLimitValForm = meterLimitValForm.fill(meterLimitValFields);
-		System.out.println(meterLimitValFields.diameterMin);
+		//meterLimitValForm = meterLimitValForm.fill(meterLimitValFields);
+		System.out.println("MeterLimitValForm diameterMin > " + meterLimitValFields.diameterMin);
+		System.out.println("MeterLimitValForm diameterMax > " + meterLimitValFields.diameterMax);
+		System.out.println("MeterLimitValForm floorAreaMin > " + meterLimitValFields.floorAreaMin);
+		System.out.println("MeterLimitValForm floorAreaMax > " + meterLimitValFields.floorAreaMax);		
+		System.out.println("MeterLimitValForm gwaImportantVal > " + meterLimitValFields.gwaImportantVal);
+		System.out.println("MeterLimitValForm gwaSuitableVal > " + meterLimitValFields.gwaSuitableVal);
+		System.out.println("MeterLimitValForm gwaOtherVal > " + meterLimitValFields.gwaOtherVal);		
+//		System.out.println("MeterLimitValForm agree > " + meterLimitValFields.agree);
+		System.out.println("MeterLimitValForm pipeTypeCollectionVal > " + meterLimitValFields.pipeTypeCollectionVal);
+		System.out.println("MeterLimitValForm pipeTypeGravetyVal > " + meterLimitValFields.pipeTypeGravetyVal);
+		System.out.println("MeterLimitValForm pipeTypePressure > " + meterLimitValFields.pipeTypePressure);
+		System.out.println("MeterLimitValForm pipeTypeSmallPressureVal > " + meterLimitValFields.pipeTypeSmallPressureVal);		
+		System.out.println("MeterLimitValForm roadRegionalMain1Val > " + meterLimitValFields.roadRegionalMain1Val);
+		System.out.println("MeterLimitValForm roadRegionalMain2Val > " + meterLimitValFields.roadRegionalMain2Val);
+		System.out.println("MeterLimitValForm roadLocalMainVal > " + meterLimitValFields.roadLocalMainVal);
+		System.out.println("MeterLimitValForm roadCollectorVal > " + meterLimitValFields.roadCollectorVal);		
 		
-		// then fill the 'to the point' pipeIndexSummary and display on page
-		//pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
+		System.out.println("MeterLimitValForm  blockageMin > " + meterLimitValFields.blockageMin);
+		System.out.println("MeterLimitValForm  blockageMax > " + meterLimitValFields.blockageMax);
+		System.out.println("MeterLimitValForm  flushingMin > " + meterLimitValFields.flushingMin);
+		System.out.println("MeterLimitValForm  flushingMax > " + meterLimitValFields.flushingMax);
+		System.out.println("MeterLimitValForm  extraWaterMin > " + meterLimitValFields.extraWaterMin);
+		System.out.println("MeterLimitValForm  extraWaterMin > " + meterLimitValFields.extraWaterMax);
+		System.out.println("MeterLimitValForm  cctvMin > " + meterLimitValFields.cctvMin);
+		System.out.println("MeterLimitValForm  cctvMax > " + meterLimitValFields.cctvMax);
+		System.out.println("MeterLimitValForm  cctv34Min > " + meterLimitValFields.cctv34Min);
+		System.out.println("MeterLimitValForm  cctv34Max > " + meterLimitValFields.cctv34Max);		
 		
-		//return ok(pipeIndex.render(pipeIndexForm, sortBy, order,pipeIndexSummary.pipeIndexSummaryUI));				
+		final Map<String, String[]> values = request().body().asFormUrlEncoded();
+		System.out.println("Request map values > " + request().body().asText()/*values.toString()*/);
 
 		return ok(views.html.indexResults.render(sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));
 	}
@@ -499,7 +526,7 @@ public class Application extends Controller {
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(21, 26));
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(26, 31));	
 				
-		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);		
+		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);	
 		
 		response().setContentType("text/html; charset=utf-8");
 		return ok(views.html.pipeIndex.render(meterLimitValForm, sortBy, order,

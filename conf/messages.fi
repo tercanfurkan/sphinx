@@ -1,50 +1,50 @@
 # Messages
 
-components.list.title={0,choice,0#Ei komponenttia|1#Yksi komponentti|1<{0,number,integer} komponenttia} löytynyt
+components.list.title={0,choice,0#Ei komponenttia|1#Yksi komponentti|1<{0,number,integer} komponenttia} lÃ¶ytynyt
 
-meters.list.title={0,choice,0#Ei metri tulosta|1#Yksi metri tulos|1<{0,number,integer} metri tulosta} löytynyt
+meters.list.title={0,choice,0#Ei metri tulosta|1#Yksi metri tulos|1<{0,number,integer} metri tulosta} lÃ¶ytynyt
 
-ps.list.title={0,choice,0#Ei pumppaamoa|1#Yksi pumppaamo|1<{0,number,integer} pumppaamoa} löytynyt
-pipe.list.title={0,choice,0#Ei putkea|1#Yksi putki|1<{0,number,integer} putkea} löytynyt
-manhole.list.title={0,choice,0#Ei viemärikaivoa|1#Yksi viemärikaivo|1<{0,number,integer} viemärikaivoa} löytynyt
+ps.list.title={0,choice,0#Ei pumppaamoa|1#Yksi pumppaamo|1<{0,number,integer} pumppaamoa} lÃ¶ytynyt
+pipe.list.title={0,choice,0#Ei putkea|1#Yksi putki|1<{0,number,integer} putkea} lÃ¶ytynyt
+manhole.list.title={0,choice,0#Ei viemÃ¤rikaivoa|1#Yksi viemÃ¤rikaivo|1<{0,number,integer} viemÃ¤rikaivoa} lÃ¶ytynyt
 
 pi.pipe.title=Riskianalyysi
 
 main.appname=Sphinx - EfeSus Tietokanta
 main.login=Kirjaudu
 main.home=Koti
-main.about=Tietoa Sphinxistä
+main.about=Tietoa SphinxistÃ¤
 main.contact=Yhteystiedot
 main.assets=VERKOSTON KOMPONENTIT
 main.stations=Pumppaamot
 main.pipes=Putket
-main.manholes=Viemärikaivot
+main.manholes=ViemÃ¤rikaivot
 main.indexcalculation=Riskianalyysi
 
-filter.box=Suodata komponentin nimellä...
-filter.button=Suodata nimellä
+filter.box=Suodata komponentin nimellÃ¤...
+filter.button=Suodata nimellÃ¤
 
 componentz.name=Komponentin nimi
-componentz.owner=Tiedon lähde
+componentz.owner=Tiedon lÃ¤hde
 componentz.type=Komponentin tyyppi
 
 menu.previous=Edellinen
 menu.next=Seuraava
 
-display=Näytetään
+display=NÃ¤ytetÃ¤Ã¤n
 
-color.explanation=Värien selitykset:
-color.least=Vähiten tärkeä
-color.avg=Melko tärkeä
-color.most=Erittäin tärkeä
+color.explanation=VÃ¤rien selitykset:
+color.least=VÃ¤hiten tÃ¤rkeÃ¤
+color.avg=Melko tÃ¤rkeÃ¤
+color.most=ErittÃ¤in tÃ¤rkeÃ¤
 
 consequence.index=SEURAUKSET
-consequence.limit=Aseta raja-arvot seurausten arvioinnissa käytettäville kriteereille
+consequence.limit=Aseta raja-arvot seurausten arvioinnissa kÃ¤ytettÃ¤ville kriteereille
 
-red.criteria.explanation=Määrittele punaisien kriteerien määrä, jolla putki päättyy remontti listaan
-red.criteria.amount=Punaisten kriteerien määrä:
-yellow.criteria.explanation=Määrittele keltaisien kriteerien määrä, jolla putki päättyy remontti listaan
-yellow.criteria.amount=Keltaisten kriteerien määrä:
+red.criteria.explanation=MÃ¤Ã¤rittele punaisien kriteerien mÃ¤Ã¤rÃ¤, jolla putki pÃ¤Ã¤ttyy remontti listaan
+red.criteria.amount=Punaisten kriteerien mÃ¤Ã¤rÃ¤:
+yellow.criteria.explanation=MÃ¤Ã¤rittele keltaisien kriteerien mÃ¤Ã¤rÃ¤, jolla putki pÃ¤Ã¤ttyy remontti listaan
+yellow.criteria.amount=Keltaisten kriteerien mÃ¤Ã¤rÃ¤:
 
 importance.explanation=Valitse laskentaan osallistuvat kriteerit
 importance.itself=Merkitys
@@ -52,69 +52,69 @@ importance.yellow=Keltainen
 importance.red=Punainen
 
 consequence.diameter=Putken halkaisija (mm)
-consequence.diameter.explanation=Määritä, kuinka Sphinx-ohjelma luokittelee putket (luokitus: vihreä-keltainen-punainen) putken halkaisijan perusteella.
+consequence.diameter.explanation=MÃ¤Ã¤ritÃ¤, kuinka Sphinx-ohjelma luokittelee putket (luokitus: vihreÃ¤-keltainen-punainen) putken halkaisijan perusteella.
 consequence.hide.diameter=Piilota putken halkaisija
 consequence.diameter.limit=putken halkaisijan raja-arvo
 
 consequence.floor=Kerrosala
-consequence.floor.explanation=Määritä raja-arvot eri luokille putken ympäristön kerrosalan perusteella.
+consequence.floor.explanation=MÃ¤Ã¤ritÃ¤ raja-arvot eri luokille putken ympÃ¤ristÃ¶n kerrosalan perusteella.
 consequence.hide.floor=Piilota kerrosala
-consequence.floor.area=putkeen liittyvä kerrosala
+consequence.floor.area=putkeen liittyvÃ¤ kerrosala
 
-consequence.beach=Etäisyys uimarantaan (m)
-consequence.hide.beach=Piilota etäisyys
-consequence.beach.distance=alueellisen ylivuotorakenteen ja lähimmän uimarannan välinen etäisyys
+consequence.beach=EtÃ¤isyys uimarantaan (m)
+consequence.hide.beach=Piilota etÃ¤isyys
+consequence.beach.distance=alueellisen ylivuotorakenteen ja lÃ¤himmÃ¤n uimarannan vÃ¤linen etÃ¤isyys
 
 consequence.gwa=Pohjavesialue (0..3)
-consequence.gwa.explanation=Määritä, kuinka putket luokitellaan (vihreä-keltainen-punainen) sen perusteella, millaisella pohjavesialueella putki sijaitsee (jos millään).
+consequence.gwa.explanation=MÃ¤Ã¤ritÃ¤, kuinka putket luokitellaan (vihreÃ¤-keltainen-punainen) sen perusteella, millaisella pohjavesialueella putki sijaitsee (jos millÃ¤Ã¤n).
 consequence.hide.gwa=Piilota pohjavesialue
-consequence.gwa.important=Tärkeä pohjavesialue
+consequence.gwa.important=TÃ¤rkeÃ¤ pohjavesialue
 consequence.gwa.suitable=Vedenottoon soveltuva pohjavesialue
 consequence.gwa.other=Muu pohjavesialue
 
-consequence.sewertype=Viemärin tyyppi
-consequence.sewer.explanation=Määritä, mihin luokkaan eri putkityypit kuuluvat.
-consequence.hide.sewertype=Piilota viemärin tyyppi
-consequence.lateral=Paikalliset viettoviemärit
-consequence.collection=Kokoojaviemärit
-consequence.gravity=Pääviemärit (vietolla)
-consequence.pressure=Paineviemärit
-consequence.smallpressure=Pienet paine viemärit
+consequence.sewertype=ViemÃ¤rin tyyppi
+consequence.sewer.explanation=MÃ¤Ã¤ritÃ¤, mihin luokkaan eri putkityypit kuuluvat.
+consequence.hide.sewertype=Piilota viemÃ¤rin tyyppi
+consequence.lateral=Paikalliset viettoviemÃ¤rit
+consequence.collection=KokoojaviemÃ¤rit
+consequence.gravity=PÃ¤Ã¤viemÃ¤rit (vietolla)
+consequence.pressure=PaineviemÃ¤rit
+consequence.smallpressure=Pienet paine viemÃ¤rit
 
 consequence.roadcls=Tien luokitus (1..4)
-consequence.roadcls.explanation=Määritä, kuinka putket luokitellaan sen perusteella, millaisen tien alla putki sijaitsee (jos minkään). (Myös teiden läheisyydessä olevat putket on huomioitu tässä.)
+consequence.roadcls.explanation=MÃ¤Ã¤ritÃ¤, kuinka putket luokitellaan sen perusteella, millaisen tien alla putki sijaitsee (jos minkÃ¤Ã¤n). (MyÃ¶s teiden lÃ¤heisyydessÃ¤ olevat putket on huomioitu tÃ¤ssÃ¤.)
 consequence.hide.roadcls=Piilota tien luokitus
-consequence.regional=Seudullinen pääkatu
-consequence.local=Alueellinen pääkatu
+consequence.regional=Seudullinen pÃ¤Ã¤katu
+consequence.local=Alueellinen pÃ¤Ã¤katu
 consequence.collector=Kokoojakatu
 
 condition.index=KUNTO
-condition.limit=Aseta raja-arvot kunnon arvioinnissa käytettäville kriteereille
+condition.limit=Aseta raja-arvot kunnon arvioinnissa kÃ¤ytettÃ¤ville kriteereille
 
 condition.blockages=Tukokset
-condition.blockages.explanation=Määritä raja-arvot eri luokille putkessa olleiden tukosten kokonaismäärän perusteella.
+condition.blockages.explanation=MÃ¤Ã¤ritÃ¤ raja-arvot eri luokille putkessa olleiden tukosten kokonaismÃ¤Ã¤rÃ¤n perusteella.
 condition.hide.blockages=Piilota tukokset
-condition.number=putken tukosten kokonaismäärä
+condition.number=putken tukosten kokonaismÃ¤Ã¤rÃ¤
 
 condition.flush=Huuhtelut
-condition.flush.explanation=Määritä raja-arvot eri luokille putkelle tehtyjen huuhteluiden kokonaismäärän perusteella.
+condition.flush.explanation=MÃ¤Ã¤ritÃ¤ raja-arvot eri luokille putkelle tehtyjen huuhteluiden kokonaismÃ¤Ã¤rÃ¤n perusteella.
 condition.hide.flush=Piilota huuhtelut
-condition.number.flushing=putken huuhteluiden kokonaismäärä
+condition.number.flushing=putken huuhteluiden kokonaismÃ¤Ã¤rÃ¤
 
 condition.flowfiltr=Vuotovesi (%)
-condition.flowfiltr.explanation=Vuotoveden määrä: määritä eri luokkien raja-arvot.
+condition.flowfiltr.explanation=Vuotoveden mÃ¤Ã¤rÃ¤: mÃ¤Ã¤ritÃ¤ eri luokkien raja-arvot.
 condition.hide.flowfiltr=Piilota vuotovesi
-condition.flowfiltr.info=jätevesivirtaama / (0.8 x veden kulutus)
+condition.flowfiltr.info=jÃ¤tevesivirtaama / (0.8 x veden kulutus)
 
-condition.cctv=Viemärikuvauksessa havaitut viat
-condition.cctv.explanation=Viemärikuvauksessa havaittujen vikojen kokonaissumma: määritä eri luokkien raja-arvot.
-condition.hide.cctv=Piilota viemärikuvauksessa havaitut viat
-condition.sum.cctv=putken kaikkien viemärikuvauksissa havaittujen vikojen (1 - 4) summa
+condition.cctv=ViemÃ¤rikuvauksessa havaitut viat
+condition.cctv.explanation=ViemÃ¤rikuvauksessa havaittujen vikojen kokonaissumma: mÃ¤Ã¤ritÃ¤ eri luokkien raja-arvot.
+condition.hide.cctv=Piilota viemÃ¤rikuvauksessa havaitut viat
+condition.sum.cctv=putken kaikkien viemÃ¤rikuvauksissa havaittujen vikojen (1 - 4) summa
 
-condition.cctvmajor=Merkittävät viemärikuvauksessa havaitut viat
-condition.cctvmajor.explanation=Viemärikuvauksessa havaittujen vakavien vikojen (viat 3 ja 4) kokonaissumma: määritä eri luokkien raja-arvot.
-condition.hide.cctvmajor=Piilota merkittävät viemärikuvauksessa havaitut viat
-condition.sum.cctvmajor=putken viemärikuvauksissa havaittujen merkittävien vikojen (3 ja 4) summa
+condition.cctvmajor=MerkittÃ¤vÃ¤t viemÃ¤rikuvauksessa havaitut viat
+condition.cctvmajor.explanation=ViemÃ¤rikuvauksessa havaittujen vakavien vikojen (viat 3 ja 4) kokonaissumma: mÃ¤Ã¤ritÃ¤ eri luokkien raja-arvot.
+condition.hide.cctvmajor=Piilota merkittÃ¤vÃ¤t viemÃ¤rikuvauksessa havaitut viat
+condition.sum.cctvmajor=putken viemÃ¤rikuvauksissa havaittujen merkittÃ¤vien vikojen (3 ja 4) summa
 
 min.limit=min raja
 max.limit=max raja
@@ -128,11 +128,11 @@ pipeIndex.summary.consequenceIndexLimit=Seurausten raja-arvo :
 pipeIndex.summary.allIndexPipeLength=Putkien yhteispituus :
 pipeIndex.summary.conditionIndexPipeLengthInspected=Length of inspected pipes exceeding condition index limit : 
 pipeIndex.summary.conditionIndexPipeLengthNotInspected=Length of uninspected pipes exceeding condition index limit : 
-pipeIndex.summary.conditionIndexPipeLength=Kunnon raja-arvon ylittävävien putkien yhteispituus : 
+pipeIndex.summary.conditionIndexPipeLength=Kunnon raja-arvon ylittÃ¤vÃ¤vien putkien yhteispituus : 
 
 pipeIndex.summary.consequenceIndexPipeLengthInspected=Length of inspected pipes exceeding consequence index limit : 
 pipeIndex.summary.consequenceIndexPipeLengthNotInspected=Length of uninspected pipes exceeding consequence index limit : 
-pipeIndex.summary.consequenceIndexPipeLength=Seurauksien raja-arvon ylittävien putkien yhteispituus : 
-pipeIndex.summary.conditionAndConsequenceIndexPipeLength=Sekä seuraus- että kunnon raja-arvot ylittävien putkien yhteispituus :
+pipeIndex.summary.consequenceIndexPipeLength=Seurauksien raja-arvon ylittÃ¤vien putkien yhteispituus : 
+pipeIndex.summary.conditionAndConsequenceIndexPipeLength=SekÃ¤ seuraus- ettÃ¤ kunnon raja-arvot ylittÃ¤vien putkien yhteispituus :
 
-export.results=Siirrä laskennan tulokset 
+export.results=SiirrÃ¤ laskennan tulokset 

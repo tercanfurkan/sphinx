@@ -3,8 +3,37 @@ package models.form;
 public class MeterLimitVal {
 
 	public MeterLimitVal() {
+
+		this.isPipeDiameterImportant = 0;
+		this.isFloorAreaImportant = 0;
+		
+		this.isGwaImportant = 0;
+		
+		this.isImportantGwaImportant = false;
+		this.isSuitableGwaImportant = false;
+		this.isOtherGwaImportant = false;
+		
+		this.isSewerTypeImportant = 0;
+		
+		this.isPipeTypeCollectionImportant = false;
+		this.isPipeTypeGravityImportant = false;
+		this.isPipeTypePressureImportant = false;
+		this.isPipeTypeSmallPressureImportant = false;	
+		
+		this.isRoadTypeImportant = 0;
+		
+		this.isRoadRegionalMain1Important = false;
+		this.isRoadRegionalMain2Important = false;
+		this.isRoadLocalMainImportant = false;
+		this.isRoadCollectorImportant = false;
+		
+		this.isBlockageImportant = 0;
+		this.isFlushingImportant = 0;	
+		this.isInflowAndInfiltrationImportant = 0;
+		this.isCCTVDefectsImportant = 0;
+		this.isCCTVMajorDefectsImportant = 0;	
+	
 		// Define min/max values for meters using the slider bar
-		this.agree = false;
 		this.diameterMin = 400;
 		this.diameterMax = 600;
 		this.floorAreaMin = 15;  
@@ -39,8 +68,37 @@ public class MeterLimitVal {
 		this.roadCollectorVal = 1;
 	}
 
-	// Slider min max values
-	public boolean agree;
+	// Criteria importance
+	public float isPipeDiameterImportant;
+	public float isFloorAreaImportant;
+	
+	public float isGwaImportant;
+	
+	public boolean isImportantGwaImportant;
+	public boolean isSuitableGwaImportant;
+	public boolean isOtherGwaImportant;
+	
+	public float isSewerTypeImportant;
+	
+	public boolean isPipeTypeCollectionImportant;
+	public boolean isPipeTypeGravityImportant;
+	public boolean isPipeTypePressureImportant;
+	public boolean isPipeTypeSmallPressureImportant;	
+	
+	public float isRoadTypeImportant;
+	
+	public boolean isRoadRegionalMain1Important;
+	public boolean isRoadRegionalMain2Important;
+	public boolean isRoadLocalMainImportant;
+	public boolean isRoadCollectorImportant;
+	
+	public float isBlockageImportant;
+	public float isFlushingImportant;	
+	public float isInflowAndInfiltrationImportant;
+	public float isCCTVDefectsImportant;
+	public float isCCTVMajorDefectsImportant;	
+	
+	// Slider min max values	
 	public float diameterMin;
 	public float diameterMax;
 	public float floorAreaMin;
@@ -73,5 +131,8 @@ public class MeterLimitVal {
 	public float roadRegionalMain1Val;
 	public float roadRegionalMain2Val;
 	public float roadLocalMainVal;
-	public float roadCollectorVal;	
+	public float roadCollectorVal;
+
+	public float amountOfConsequenceRed;
+	public float amountOfConditionRed;
 }

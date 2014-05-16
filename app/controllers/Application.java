@@ -411,18 +411,31 @@ public class Application extends Controller {
 		pipeIndexSummary = new PipeIndexSummary(conditionIndexLimit, consequenceIndexLimit, conditionPipeLengthInspected, conditionPipeLengthNotInspected, consequencePipeLengthInspected, consequencePipeLengthNotInspected, conditionAndConsequencePipeLength);
 
 		//meterLimitValForm = meterLimitValForm.fill(meterLimitValFields);
+		System.out.println("MeterLimitValForm isPipeDiameterImportant > " + meterLimitValFields.isPipeDiameterImportant);
+		System.out.println("MeterLimitValForm isFloorAreaImportant > " + meterLimitValFields.isFloorAreaImportant);	
+		System.out.println("MeterLimitValForm isGwaImportant > " + meterLimitValFields.isGwaImportant);					
+		System.out.println("MeterLimitValForm isSewerTypeImportant > " + meterLimitValFields.isSewerTypeImportant);
+		System.out.println("MeterLimitValForm isRoadTypeImportant > " + meterLimitValFields.isRoadTypeImportant);
+		System.out.println("MeterLimitValForm isBlockageImportant > " + meterLimitValFields.isBlockageImportant);
+		System.out.println("MeterLimitValForm isFlushingImportant > " + meterLimitValFields.isFlushingImportant);
+		System.out.println("MeterLimitValForm isInflowAndInfiltrationImportant > " + meterLimitValFields.isInflowAndInfiltrationImportant);
+		System.out.println("MeterLimitValForm isCCTVDefectsImportant > " + meterLimitValFields.isCCTVDefectsImportant);
+		System.out.println("MeterLimitValForm isCCTVMajorDefectsImportant > " + meterLimitValFields.isCCTVMajorDefectsImportant);		
+
 		System.out.println("MeterLimitValForm diameterMin > " + meterLimitValFields.diameterMin);
 		System.out.println("MeterLimitValForm diameterMax > " + meterLimitValFields.diameterMax);
 		System.out.println("MeterLimitValForm floorAreaMin > " + meterLimitValFields.floorAreaMin);
 		System.out.println("MeterLimitValForm floorAreaMax > " + meterLimitValFields.floorAreaMax);		
+
 		System.out.println("MeterLimitValForm gwaImportantVal > " + meterLimitValFields.gwaImportantVal);
 		System.out.println("MeterLimitValForm gwaSuitableVal > " + meterLimitValFields.gwaSuitableVal);
-		System.out.println("MeterLimitValForm gwaOtherVal > " + meterLimitValFields.gwaOtherVal);		
-//		System.out.println("MeterLimitValForm agree > " + meterLimitValFields.agree);
+		System.out.println("MeterLimitValForm gwaOtherVal > " + meterLimitValFields.gwaOtherVal);
+				
 		System.out.println("MeterLimitValForm pipeTypeCollectionVal > " + meterLimitValFields.pipeTypeCollectionVal);
 		System.out.println("MeterLimitValForm pipeTypeGravetyVal > " + meterLimitValFields.pipeTypeGravetyVal);
 		System.out.println("MeterLimitValForm pipeTypePressure > " + meterLimitValFields.pipeTypePressure);
 		System.out.println("MeterLimitValForm pipeTypeSmallPressureVal > " + meterLimitValFields.pipeTypeSmallPressureVal);		
+		
 		System.out.println("MeterLimitValForm roadRegionalMain1Val > " + meterLimitValFields.roadRegionalMain1Val);
 		System.out.println("MeterLimitValForm roadRegionalMain2Val > " + meterLimitValFields.roadRegionalMain2Val);
 		System.out.println("MeterLimitValForm roadLocalMainVal > " + meterLimitValFields.roadLocalMainVal);

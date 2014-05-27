@@ -452,6 +452,11 @@ public class Application extends Controller {
 		System.out.println("MeterLimitValForm  cctv34Min > " + meterLimitValFields.cctv34Min);
 		System.out.println("MeterLimitValForm  cctv34Max > " + meterLimitValFields.cctv34Max);		
 		
+		System.out.println("MeterLimitValForm  amountOfConsequenceRed > " + meterLimitValFields.amountOfConsequenceRed);
+		System.out.println("MeterLimitValForm  amountOfConditionRed > " + meterLimitValFields.amountOfConditionRed);
+		System.out.println("MeterLimitValForm  amountOfConsequenceYellow > " + meterLimitValFields.amountOfConsequenceYellow);
+		System.out.println("MeterLimitValForm  amountOfConditionYellow > " + meterLimitValFields.amountOfConditionYellow);		
+		
 		final Map<String, String[]> values = request().body().asFormUrlEncoded();
 		System.out.println("Request map values > " + request().body().asText()/*values.toString()*/);
 

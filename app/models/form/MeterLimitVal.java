@@ -66,6 +66,11 @@ public class MeterLimitVal {
 		this.roadRegionalMain2Val = 1;
 		this.roadLocalMainVal = 1;
 		this.roadCollectorVal = 1;
+		
+		this.amountOfConsequenceRed = 0;
+		this.amountOfConditionRed = 0;
+		this.amountOfConsequenceYellow = 0;
+		this.amountOfConditionYellow = 0;		
 	}
 
 	// Criteria importance
@@ -135,4 +140,7 @@ public class MeterLimitVal {
 
 	public float amountOfConsequenceRed;
 	public float amountOfConditionRed;
+	public float amountOfConsequenceYellow;
+	public float amountOfConditionYellow;
+
 }

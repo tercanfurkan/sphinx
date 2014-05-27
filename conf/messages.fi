@@ -48,8 +48,6 @@ yellow.criteria.amount=Keltaisten kriteerien määrä:
 
 importance.explanation=Valitse laskentaan osallistuvat kriteerit
 importance.itself=Merkitys
-importance.yellow=Keltainen
-importance.red=Punainen
 
 consequence.diameter=Putken halkaisija (mm)
 consequence.diameter.explanation=Määritä, kuinka Sphinx-ohjelma luokittelee putket (luokitus: vihreä-keltainen-punainen) putken halkaisijan perusteella.
@@ -88,6 +86,11 @@ consequence.regional=Seudullinen pääkatu
 consequence.local=Alueellinen pääkatu
 consequence.collector=Kokoojakatu
 
+consequence.red1=Tärkeistä kriteereistä
+consequence.red2=pitää olla punaisia, jotta putki päätyy kuntotutkittaviin.
+consequence.yellow1=Ja lisäksi muista kriteereistä
+consequence.yellow2=pitää olla keltaisia, jotta putki päätyy kuntotutkittaviin.
+
 condition.index=KUNTO
 condition.limit=Aseta raja-arvot kunnon arvioinnissa käytettäville kriteereille
 
@@ -115,6 +118,11 @@ condition.cctvmajor=Merkittävät viemärikuvauksessa havaitut viat
 condition.cctvmajor.explanation=Viemärikuvauksessa havaittujen vakavien vikojen (viat 3 ja 4) kokonaissumma: määritä eri luokkien raja-arvot.
 condition.hide.cctvmajor=Piilota merkittävät viemärikuvauksessa havaitut viat
 condition.sum.cctvmajor=putken viemärikuvauksissa havaittujen merkittävien vikojen (3 ja 4) summa
+
+condition.red1=Tärkeistä kriteereistä
+condition.red2=pitää olla punaisia, jotta putki päätyy kuntotutkittaviin.
+condition.yellow1=Ja lisäksi muista kriteereistä
+condition.yellow2=pitää olla keltaisia, jotta putki päätyy kuntotutkittaviin.
 
 min.limit=min raja
 max.limit=max raja

@@ -111,8 +111,8 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>							
 						</div>
-						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="diameterCheckbox" name="diameterCheckbox" value="1">
+						<div class="control-group span2" title="@Messages("importance.explanation")">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="diameterCheckbox" name="diameterCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isPipeDiameterImportant" value="@meterLimitValForm.data.get("isPipeDiameterImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>						
@@ -136,7 +136,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="floorareaCheckbox" name="floorareaCheckbox" value="1">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="floorareaCheckbox" name="floorareaCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isFloorAreaImportant" value="@meterLimitValForm.data.get("isFloorAreaImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>											
@@ -269,7 +269,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>	
 						</div>
 						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="gwaCheckbox" name="gwaCheckbox" value="1">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="gwaCheckbox" name="gwaCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isGwaImportant" value="@meterLimitValForm.data.get("isGwaImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>												
@@ -435,7 +435,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="sewerTypeCheckbox" name="sewerTypeCheckbox" value="1">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="sewerTypeCheckbox" name="sewerTypeCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isSewerTypeImportant" value="@meterLimitValForm.data.get("isSewerTypeImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>							
@@ -582,23 +582,26 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="roadTypeCheckbox" name="roadTypeCheckbox" value="1">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="roadTypeCheckbox" name="roadTypeCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isRoadTypeImportant" value="@meterLimitValForm.data.get("isRoadTypeImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
-						</div>
-						<div class="control-group span11">
-							@inputText(meterLimitValForm("amountOfConsequenceRed"), '_label -> "Amount of Consequence Reds", 'placeholder -> "Amount of Reds of Consequences") <span id="ChangeMe">/NumberToChange</span>
+						</div>					
+						<div class="control-group span7">
+							@Messages("consequence.red1")<input type="text" name="amountOfConsequenceRed" class="span1" id="amountOfConsequenceRedId" value="0" maxlength="1" required>
+							<span id="ChangeMeConsRed">/x</span>@Messages("consequence.red2")
+							@Messages("consequence.yellow1")<input type="text" name="amountOfConsequenceYellow" class="span1" id="amountOfConsequenceYellowId" value="0" maxlength="1" required>
+							<span id="ChangeMeConsYellow">/x</span>@Messages("consequence.yellow2")
+							<input type="hidden" id="hiddenAmountOfConsequenceRed" name="amountsOfConsequenceRed" value="@meterLimitValForm.data.get("amountOfConsequenceRed")">							
+							<input type="hidden" id="hiddenAmountOfConsequenceYellow" name="amountsOfConsequenceYellow" value="@meterLimitValForm.data.get("amountOfConsequenceYellow")">							
 						</div>
 					</div>
 					<div class="controls span9">
-						
 						<div class="control-group span9">
 							<label class="control-label bold-label">@Messages("condition.index")</label>
 						</div>
 						<div class="control-group span9">
 							<label class="control-label bold-label">@Messages("condition.limit")</label>
 						</div>
-
 						<div class="control-group span9" title="@Messages("condition.blockages.explanation")">
 							<fieldset class="efesus-border clickable">
 								<a><label class="control-label clickable" for="lWasteWater" id="info6">@Messages("condition.blockages")</label></a>
@@ -620,7 +623,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="blockageCheckbox" name="blockageCheckbox" value="1">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="blockageCheckbox" name="blockageCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isBlockageImportant" value="@meterLimitValForm.data.get("isBlockageImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>							
@@ -645,7 +648,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="flushingCheckbox" name="flushingCheckbox" value="1">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="flushingCheckbox" name="flushingCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isFlushingImportant" value="@meterLimitValForm.data.get("isFlushingImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>													
@@ -670,7 +673,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="iiCheckbox" name="iiCheckbox" value="1">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="iiCheckbox" name="iiCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isInflowAndInfiltrationImportant" value="@meterLimitValForm.data.get("isInflowAndInfiltrationImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>							
@@ -695,7 +698,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="cctvCheckbox" name="cctvCheckbox" value="1">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="cctvCheckbox" name="cctvCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isCCTVDefectsImportant" value="@meterLimitValForm.data.get("isCCTVDefectsImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>						
@@ -720,10 +723,18 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>	
 						</div>
 						<div class="control-group span2">
-							<input type="checkbox" class="importanceCheckboxes" id="cctv34Checkbox" name="cctv34Checkbox" value="1">
+							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="cctv34Checkbox" name="cctv34Checkbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isCCTVMajorDefectsImportant" value="@meterLimitValForm.data.get("isCCTVMajorDefectsImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
-						</div>												
+						</div>
+						<div class="control-group span7">
+							@Messages("condition.red1")<input type="text" name="amountOfConditionRed" class="span1" id="amountOfConditionRedId" value="0" maxlength="1" required>
+							<span id="ChangeMeCondRed">/x</span>@Messages("condition.red2")
+							@Messages("condition.yellow1")<input type="text" name="amountOfConditionYellow" class="span1" id="amountOfConditionYellowId" value="0" maxlength="1" required>
+							<span id="ChangeMeCondYellow">/x</span>@Messages("condition.yellow2")
+							<input type="hidden" id="hiddenAmountOfConditionRed" name="amountsOfConditionRed" value="@meterLimitValForm.data.get("amountOfConditionRed")">
+							<input type="hidden" id="hiddenAmountOfConditionYellow" name="amountsOfConditionYellow" value="@meterLimitValForm.data.get("amountOfConditionYellow")">							
+						</div>						
 					</div>
 				</div>				
 			</div>						
@@ -742,8 +753,8 @@ cctvMajorDefectsLengthArray: List[Double])
 .ui-slider { 
 	position: relative;
 	text-align: left;
+	background: #F84831; // red
 	//background: #1AF230; // green
-	//background: #F84831; // red
 }
 //.ui-slider .ui-slider-handle {
 //	background: green;
@@ -1345,18 +1356,72 @@ $(document).ready(function(){
 	deselectSewers();
 
 	$(".hiddenInputCheckbox").val(0);
+	//#ChangeMe.html(yhyhy)
+	var amountOfConsequenceCheckedReds = 0;
+	var amountOfConditionCheckedReds = 0;
 	
-	$(".importanceCheckboxes").on('click', function() {
+	$(".importanceCheckboxesCons").on('click', function() {
 		$(this).siblings('input.hiddenInputCheckbox').val($(this).val());
-		$("#abc").html("yippie");
-		//$("#ipttext").val($(this).val());
+		//increase/decrease counter
+		if ($(this).is(':checked')) {
+			amountOfConsequenceCheckedReds++;
+		} else {
+			amountOfConsequenceCheckedReds--;
+		}
+		$("#ChangeMeConsRed").html("/" + amountOfConsequenceCheckedReds + " ");
+		var amountOfConsequenceCheckedYellows = 5 - amountOfConsequenceCheckedReds;
+		$("#ChangeMeConsYellow").html("/" + amountOfConsequenceCheckedYellows + " ");
 	});
+	
+	$(".importanceCheckboxesCond").on('click', function() {
+		$(this).siblings('input.hiddenInputCheckbox').val($(this).val());
+		//increase/decrease counter
+		if ($(this).is(':checked')) {
+			amountOfConditionCheckedReds++;
+		} else {
+			amountOfConditionCheckedReds--;
+		}
+		$("#ChangeMeCondRed").html("/" + amountOfConditionCheckedReds + " ");
+		var amountOfConditionCheckedYellows = 5 - amountOfConditionCheckedReds;
+		$("#ChangeMeCondYellow").html("/" + amountOfConditionCheckedYellows + " ");
+	});
+	
+	//@Messages("consequence.red1")<input type="edit" class="span1" id="amountOfConsequenceRed" type="text" placeholder="">
+	//<span id="ChangeMeConsRed">/NumberToChange</span>@Messages("consequence.red2")
+	//@Messages("consequence.yellow1")<input type="edit" class="span1" id="amountOfConsequenceYellow" type="text" placeholder="">
+	//<span id="ChangeMeConsYellow">/NumberToChange</span>@Messages("consequence.yellow2")
+	//<input type="hidden" class="hiddenAmountOfConsequenceRed" name="hiddenAmountOfConsequenceRed" value="@meterLimitValForm.data.get("amountOfConsequenceRed")">							
+	//<input type="hidden" class="hiddenAmountOfConsequenceYellow" name="hiddenAmountOfConsequenceYellow" value="@meterLimitValForm.data.get("amountOfConsequenceYellow")">		
+	
+	$("#amountOfConsequenceRedId").on('change', function() {
+		//$(this).siblings('input.hiddenAmountOfConsequenceRed').val($("#amountOfConsequenceRedId"));
+		$("#hiddenAmountOfConsequenceRed").val($("#amountOfConsequenceRedId").val());
+		$("#abc").html($("#hiddenAmountOfConsequenceRed").val());
+	});
+
+	$("#amountOfConsequenceYellowId").on('change', function() {
+		//$(this).siblings('input.hiddenAmountOfConsequenceYellow').val($("#amountOfConsequenceYellowId").val());
+		$("#hiddenAmountOfConsequenceYellow").val($("#amountOfConsequenceYellowId").val());
+		$("#abc").html($("#hiddenAmountOfConsequenceYellow").val());
+	});
+
+	$("#amountOfConditionRedId").on('change', function() {
+		//$(this).siblings('input.hiddenAmountOfConditionRed').val($("#amountOfConditionRedId").val());
+		$("#hiddenAmountOfConditionRed").val($("#amountOfConditionRedId").val());
+		$("#abc").html($("#hiddenAmountOfConditionRed").val());
+	});
+
+	$("#amountOfConditionYellowId").on('change', function() {
+		//$(this).siblings('input.hiddenAmountOfConditionYellow').val($("#amountOfConditionYellowId").val());
+		$("#hiddenAmountOfConditionYellow").val($("#amountOfConditionYellowId").val());
+		$("#abc").html($("#hiddenAmountOfConditionYellow").val());
+	});	
 	
 	//////////////////////
 	//
 	// Slider handling
 	//
-		
+
 	$(".range-slide div.slide").each(function() {
 		values = $(this).attr('value').split(',');
 	    firstVal = values[0];
@@ -1388,7 +1453,7 @@ $(document).ready(function(){
 				$(this).parent().siblings('input.hiddenInputMin').val(ui.values[0]);
 				$(this).parent().siblings('input.hiddenInputMax').val(ui.values[1]);
 				//updateColors(ui.values);
-				//doUpdate($(this));
+				doUpdate($(this));
 				//ticks = [ui.values[0], ui.values[1]];
 				//optionsObj = {
 					// Only animate if we're not using excanvas (not in IE 7 or IE 8)..

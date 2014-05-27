@@ -48,8 +48,6 @@ yellow.criteria.amount=Number of yellow criterias:
 
 importance.explanation=Select important criterias, which will take part in the calculation
 importance.itself=Importance
-importance.yellow=Yellow
-importance.red=Red
 
 consequence.diameter=Pipe diameter (mm)
 consequence.diameter.explanation=Set the yellow and red limit values which define how Sphinx should categorize pipes based on their diameter.
@@ -88,6 +86,11 @@ consequence.regional=Regional main street
 consequence.local=Local main street
 consequence.collector=Collector street
 
+consequence.red1=Out of
+consequence.red2=important criterias has to be red, so that the pipe is in inspection list. 
+consequence.yellow1=And out of
+consequence.yellow2=other criterias has to be yellow, so that the pipe is in inspection list.
+
 condition.index=CONDITION INDEX
 condition.limit=Set limit values for condition criteria
 
@@ -115,6 +118,11 @@ condition.cctvmajor=CCTV major defects
 condition.cctvmajor.explanation=Define the red and yellow limits for the sum of CCTV inspection scores of severe faults (per pipe). Faults with a score 3 or 4 are considered severe.
 condition.hide.cctvmajor=Hide CCTV major defects
 condition.sum.cctvmajor=sum of CCTV inspection defects 3 and 4 of a pipe
+
+condition.red1=Out of
+condition.red2=important criterias has to be red, so that the pipe is in inspection list. 
+condition.yellow1=And out of
+condition.yellow2=other criterias has to be yellow, so that the pipe is in inspection list.
 
 min.limit=min limit
 max.limit=max limit

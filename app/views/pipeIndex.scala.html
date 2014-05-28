@@ -101,7 +101,7 @@ cctvMajorDefectsLengthArray: List[Double])
 									<span class="amount chartsdiameter"></span>
 									<input type="hidden" class="hiddenInputMin" name="diameterMin" value="@meterLimitValForm.data.get("diameterMin")">								  
 									<input type="hidden" class="hiddenInputMax" name="diameterMax" value="@meterLimitValForm.data.get("diameterMax")">								  									
-									<span class="chartsdiameter" id="diameterLengthArrays">Length of pipes: @diameterLengthArray</span>
+									<!--<span class="chartsdiameter" id="diameterLengthArrays">Length of pipes: @diameterLengthArray</span>-->
 									<div class="slider range-slide chartsdiameter">
 										<div class="slide" value="333,686" id="diameterslider" min="25" max="1000">
 											<span id="min">min:25</span>
@@ -812,7 +812,7 @@ $(document).ready(function(){
 			sdiameter[i] = 0;
 		i++;
 	}
-	$('#diameterLengthArrays').html("SDLA: " + sdiameter); // debug
+	//$('#diameterLengthArrays').html("SDLA: " + sdiameter); // debug
 	var ticksDiameter = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 	diameterObj = {
 		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..

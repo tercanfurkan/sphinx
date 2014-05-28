@@ -57,7 +57,6 @@ public class Component {
 	public Integer roadClassification;
 	public Float annualOverFlow; //m3
 	public boolean inIndustrialRoot = false; //only for pipes at the moment. is true if pipe is in the  industrial waste water root
-	public Float ofDistanceToBeach;
 
 	@Transient
 	public Boolean selected;
@@ -753,15 +752,9 @@ public class Component {
 	
 	public static long getPipeCountDistributionsAccordingToGroundWaterArea(int minValue, int maxValue) {
 		
-		//String queryStr = "SELECT COUNT(c.groundWaterArea.classificationValue) FROM Component c" + 
-		//" WHERE c.groundWaterArea.classificationValue >= :cMin" + 
-		//" and c.groundWaterArea.classificationValue < :cMax";
 		String queryStr = "SELECT COUNT(c) FROM Component c" + 
 		" WHERE c.groundWaterArea.classificationValue >= :cMin" + 
-		" and c.groundWaterArea.classificationValue < :cMax";		
-		//String queryStr = "SELECT COUNT(c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe) FROM Component c" + 
-		//" WHERE c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe >= :cMin" + 
-		//" and c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe < :cMax";		
+		" and c.groundWaterArea.classificationValue < :cMax";			
 		Query query = JPA.em().createQuery(queryStr);
 		query.setParameter("cMin", minValue);
 		query.setParameter("cMax", maxValue);
@@ -795,18 +788,6 @@ public class Component {
 		
 		return retVal;
 	}	
-
-	public static long getPipeCountDistributionsAccordingToBeachDistance(float minValue, float maxValue) {
-		
-		String queryStr = "SELECT COUNT(c.ofDistanceToBeach) FROM Component c WHERE c.ofDistanceToBeach >= :cMin" + 
-		" and c.ofDistanceToBeach < :cMax";
-		Query query = JPA.em().createQuery(queryStr);
-		query.setParameter("cMin", minValue);
-		query.setParameter("cMax", maxValue);
-		long retVal = (long) query.getSingleResult();
-		
-		return retVal;
-	}
 
 	public static long getPipeCountDistributionsAccordingToBlockages(float minValue, float maxValue) {
 		
@@ -912,29 +893,11 @@ public class Component {
 		return retVal;
 	}	
 	
-	public static Double getPipeLengthsAccordingToBeachDistance(float minValue, float maxValue) {
-
-		String queryStr = "SELECT SUM(child.componentDetail.length_3d) FROM Component child WHERE child.ownerComponent.ofDistanceToBeach >= :cMin" + 
-		" and child.ownerComponent.ofDistanceToBeach < :cMax";
-		Query query = JPA.em().createQuery(queryStr);
-		query.setParameter("cMin", minValue);
-		query.setParameter("cMax", maxValue);
-		Double retVal = (Double) query.getSingleResult();
-		
-		return retVal;
-	}
-	
 	public static Double getPipeLengthsAccordingToGroundWaterArea(int minValue, int maxValue) {
 		
-		//String queryStr = "SELECT COUNT(c.groundWaterArea.classificationValue) FROM Component c" + 
-		//" WHERE c.groundWaterArea.classificationValue >= :cMin" + 
-		//" and c.groundWaterArea.classificationValue < :cMax";
 		String queryStr = "SELECT SUM(c.componentDetail.length_3d) FROM Component c" + 
 		" WHERE c.groundWaterArea.classificationValue >= :cMin" + 
 		" and c.groundWaterArea.classificationValue < :cMax";		
-		//String queryStr = "SELECT COUNT(c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe) FROM Component c" + 
-		//" WHERE c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe >= :cMin" + 
-		//" and c.componentDetail.sensitivityIndex.groundWaterAreaMeter.valueOfPipe < :cMax";		
 		Query query = JPA.em().createQuery(queryStr);
 		query.setParameter("cMin", minValue);
 		query.setParameter("cMax", maxValue);

@@ -38,8 +38,6 @@ public class MeterLimitVal {
 		this.diameterMax = 600;
 		this.floorAreaMin = 15;  
 		this.floorAreaMax = 35;
-		this.beachDistanceMin = 100;
-		this.beachDistanceMax = 200;
 		this.blockageMin = 1;
 		this.blockageMax = 3;
 		this.flushingMin = 4;
@@ -108,8 +106,6 @@ public class MeterLimitVal {
 	public float diameterMax;
 	public float floorAreaMin;
 	public float floorAreaMax;
-	public float beachDistanceMin;
-	public float beachDistanceMax;
 	public float blockageMin;
 	public float blockageMax;
 	public float flushingMin;

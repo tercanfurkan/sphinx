@@ -66,15 +66,7 @@ public class PipeIndexWrapper {
 //	public Float cqm_road_class_limit;
 	public Float cqm_road_class_pipe_value;
 	public Float cqm_road_class_pipe_meter;
-	
-//	public Float cqm_beach_distance_limit;
-	@Transient
-	public Float cqm_beach_distance_pipe_min_limit;
-	@Transient
-	public Float cqm_beach_distance_pipe_max_limit;
-	public Float cqm_beach_distance_pipe_value;
-	public Float cqm_beach_distance_pipe_meter;
-	
+		
 //	public Float cdm_blockage_limit;
 	@Transient
 	public Float cdm_blockage_min_limit;

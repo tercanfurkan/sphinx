@@ -107,22 +107,10 @@ public class PipeIndexServ {
 		else
 			retWrapper.cqm_road_class_pipe_meter = meterLimitVal.roadRegionalMain1Val;
 		
-		//slider beach distance
-		retWrapper.cqm_beach_distance_pipe_value = view.ofDistanceToBeach;
-		if (retWrapper.cqm_beach_distance_pipe_value < meterLimitVal.beachDistanceMin)
-			retWrapper.cqm_beach_distance_pipe_meter = 0F;
-		else if (retWrapper.cqm_beach_distance_pipe_value > meterLimitVal.beachDistanceMax)
-			retWrapper.cqm_beach_distance_pipe_meter = 2F;
-		else
-			retWrapper.cqm_beach_distance_pipe_meter = 1F;
-		retWrapper.cqm_beach_distance_pipe_min_limit = meterLimitVal.beachDistanceMin;
-		retWrapper.cqm_beach_distance_pipe_max_limit = meterLimitVal.beachDistanceMax;
-		
 		retWrapper.pipe_consequence_index = retWrapper.cqm_wastewater_flow_pipe_meter
 				+ retWrapper.cqm_groundwater_area_pipe_meter
 				+ retWrapper.cqm_pipe_type_meter
 				+ retWrapper.cqm_road_class_pipe_meter
-				+ retWrapper.cqm_beach_distance_pipe_meter
 				+ retWrapper.cqm_floor_area_pipe_meter;
 		
 		retWrapper.cqm_limit_total = 6F;

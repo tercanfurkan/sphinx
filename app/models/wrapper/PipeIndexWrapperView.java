@@ -31,7 +31,6 @@ public final class PipeIndexWrapperView {
 	public Integer pipeRoadClassification;
 	public boolean pipeInIndustrialRoot;
 	public Float ofAnnualOverFlow;
-	public Float ofDistanceToBeach;
 	public String pipeClassName;
 	public String pipeMaterial;
 	public int pipeInstallationYear;

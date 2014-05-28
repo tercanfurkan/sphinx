@@ -2,13 +2,13 @@
 
 <html>
     <head>
-        <title>Zentasks</title>
+        <title>@Messages("main.appname")</title>
     </head>
     <body>
         
         @helper.form(routes.Application.authenticate) {
             
-            <h1>Sign in</h1>
+            <h1>@Messages("main.signin")</h1>
             
             @if(form.hasGlobalErrors) { 
                 <p class="error">
@@ -23,13 +23,13 @@
             }
             
             <p>
-                <input type="username" name="username" placeholder="Username" value="@form("username").value">
+                <input type="username" name="username" placeholder="@Messages("main.username")" value="@form("username").value">
             </p>
             <p>
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" placeholder="@Messages("main.password")">
             </p>
             <p>
-                <button type="submit">Login</button>
+                <button type="submit">@Messages("main.login")</button>
             </p>
             
         }

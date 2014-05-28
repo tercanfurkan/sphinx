@@ -12,6 +12,10 @@ pi.pipe.title=Riskianalyysi
 
 main.appname=Sphinx - EfeSus Tietokanta
 main.login=Kirjaudu
+main.logout=Kirjaudu ulos
+main.signin=Kirjaudu sisään
+main.username=Käyttäjänimi
+main.password=Salasana
 main.home=Koti
 main.about=Tietoa Sphinxistä
 main.contact=Yhteystiedot

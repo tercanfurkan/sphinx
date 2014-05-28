@@ -547,7 +547,10 @@ public class Application extends Controller {
 	
 	public static Result logout() {
 	    session().clear();
-	    flash("success", "You've been logged out");
+		if (currentLanguage.equals("fi"))
+			flash("success", "Olet kirjautunut ulos");
+		else	
+			flash("success", "You've been logged out");
 	    return redirect(
 	        routes.Application.login()
 	    );

@@ -59,10 +59,6 @@ consequence.floor.explanation=Set the yellow and red limit values which define t
 consequence.hide.floor=Hide relative floor area
 consequence.floor.area=floor area associated with pipe
 
-consequence.beach=Beach distance (m)
-consequence.hide.beach=Hide beach distance
-consequence.beach.distance=distance between the areal overflow structure and the nearest beach
-
 consequence.gwa=Ground water area (0..3)
 consequence.gwa.explanation=Define the category (green-yellow-red) that a pipe belongs to based on the groundwater area type it is located in (if any).
 consequence.hide.gwa=Hide ground water area

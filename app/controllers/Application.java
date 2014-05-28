@@ -18,6 +18,7 @@ import models.user.User;
 import models.wrapper.PipeIndexSummary;
 import models.wrapper.PipeIndexWrapper;
 import models.wrapper.PipeIndexWrapperView;
+import models.DataLoader;
 import play.db.jpa.Transactional;
 import play.mvc.*;
 import play.mvc.Controller;
@@ -470,86 +471,25 @@ public class Application extends Controller {
 	@Transactional(readOnly = true)
 	@Security.Authenticated(Secured.class)
 	public static Result pipeIndex(int page, String sortBy, String order) {
-        										
-		List<Double> diameterLengthArray = new ArrayList<Double>();
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(0, 101));
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(101, 201));
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(201, 301));
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(301, 401));
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(401, 501));
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(501, 601));
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(601, 701));
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(701, 801));
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(801, 901));
-		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(901, 1001));
+        						
+		DataLoader loader = new DataLoader();
+		List<Double> diameterLengthArray = loader.loadDiameterData();
+		List<Double> diameterLengthArray2 = new ArrayList<Double>();
+		List<Double> areaLengthArray = loader.loadAreaLengthData();
+		List<Double> groundWaterLengthArray = loader.loadGroundWaterLengthData();
+		List<Double> roadclassLengthArray = loader.loadRoadClassLengthData();
+		List<Double> blockageLengthArray = loader.loadBlockageLengthData();
+		List<Double> flushingEventLengthArray = loader.loadFlushingEventLengthData();
+		List<Double> extraWaterLengthArray = loader.loadExtraWaterLengthData();
+		List<Double> cctvDefectsLengthArray = loader.loadCctvDefectsLengthData();
+		List<Double> cctvMajorDefectsLengthArray = loader.loadCctvMajorDefectsLengthData();
 		
-		List<Double> areaLengthArray = new ArrayList<Double>();
-		areaLengthArray.add(Component.getPipeLenghtsAccordingToRelativeFloorAreaMeters(0, 11));
-		areaLengthArray.add(Component.getPipeLenghtsAccordingToRelativeFloorAreaMeters(11, 21));
-		areaLengthArray.add(Component.getPipeLenghtsAccordingToRelativeFloorAreaMeters(21, 31));
-		areaLengthArray.add(Component.getPipeLenghtsAccordingToRelativeFloorAreaMeters(31, 41));
-		areaLengthArray.add(Component.getPipeLenghtsAccordingToRelativeFloorAreaMeters(41, 51));		
-
-		List<Double> beachLengthArray = new ArrayList<Double>();
-		beachLengthArray.add(Component.getPipeLengthsAccordingToBeachDistance(1, 499));
-		beachLengthArray.add(Component.getPipeLengthsAccordingToBeachDistance(500, 501));
-
-		List<Double> groundWaterLengthArray = new ArrayList<Double>();
-		groundWaterLengthArray.add(Component.getPipeLengthsAccordingToGroundWaterArea(0, 1));
-		groundWaterLengthArray.add(Component.getPipeLengthsAccordingToGroundWaterArea(1, 2));
-		groundWaterLengthArray.add(Component.getPipeLengthsAccordingToGroundWaterArea(2, 3));
-		groundWaterLengthArray.add(Component.getPipeLengthsAccordingToGroundWaterArea(3, 4));		
-
-		List<Double> roadclassLengthArray = new ArrayList<Double>();
-		roadclassLengthArray.add(Component.getPipeLengthsAccordingToRoadClassification(1, 2));
-		roadclassLengthArray.add(Component.getPipeLengthsAccordingToRoadClassification(2, 3));
-		roadclassLengthArray.add(Component.getPipeLengthsAccordingToRoadClassification(3, 4));
-		roadclassLengthArray.add(Component.getPipeLengthsAccordingToRoadClassification(4, 5));
-		
-		List<Double> blockageLengthArray = new ArrayList<Double>();
-		blockageLengthArray.add(Component.getPipeLengthsAccordingToBlockages(0, 1));
-		blockageLengthArray.add(Component.getPipeLengthsAccordingToBlockages(1, 2));
-		blockageLengthArray.add(Component.getPipeLengthsAccordingToBlockages(2, 3));
-		blockageLengthArray.add(Component.getPipeLengthsAccordingToBlockages(3, 4));
-		blockageLengthArray.add(Component.getPipeLengthsAccordingToBlockages(4, 5));		
-
-		List<Double> flushingEventLengthArray = new ArrayList<Double>();
-		flushingEventLengthArray.add(Component.getPipeLengthsAccordingToFlushingEvents(0, 4));
-		flushingEventLengthArray.add(Component.getPipeLengthsAccordingToFlushingEvents(4, 8));
-		flushingEventLengthArray.add(Component.getPipeLengthsAccordingToFlushingEvents(8, 12));
-		flushingEventLengthArray.add(Component.getPipeLengthsAccordingToFlushingEvents(12, 16));
-		flushingEventLengthArray.add(Component.getPipeLengthsAccordingToFlushingEvents(16, 20));	
-
-		List<Double> extraWaterLengthArray = new ArrayList<Double>();
-		extraWaterLengthArray.add(Component.getPipeLengthsAccordingToExtraWaterPercentage(0, 4));
-		extraWaterLengthArray.add(Component.getPipeLengthsAccordingToExtraWaterPercentage(4, 8));
-		extraWaterLengthArray.add(Component.getPipeLengthsAccordingToExtraWaterPercentage(8, 12));
-		extraWaterLengthArray.add(Component.getPipeLengthsAccordingToExtraWaterPercentage(12, 16));
-		extraWaterLengthArray.add(Component.getPipeLengthsAccordingToExtraWaterPercentage(16, 20));
-		
-		List<Double> cctvDefectsLengthArray = new ArrayList<Double>();
-		cctvDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVDefects(0, 6));
-		cctvDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVDefects(5, 11));
-		cctvDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVDefects(11, 16));
-		cctvDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVDefects(16, 21));
-		cctvDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVDefects(21, 26));
-		cctvDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVDefects(26, 31));
-		cctvDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVDefects(31, 36));
-
-		List<Double> cctvMajorDefectsLengthArray = new ArrayList<Double>();
-		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(0, 6));
-		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(5, 11));
-		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(11, 16));
-		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(16, 21));
-		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(21, 26));
-		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(26, 31));	
-				
 		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);	
 		
 		response().setContentType("text/html; charset=utf-8");
-		return ok(views.html.pipeIndex.render(meterLimitValForm, sortBy, order,
-											  diameterLengthArray, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
-											  beachLengthArray, blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
+		return ok(views.html.pipeIndex.render(loader, meterLimitValForm, sortBy, order,
+											  diameterLengthArray, diameterLengthArray2, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
+											  blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
 											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray), "utf-8");
 	}
 	

@@ -59,10 +59,6 @@ consequence.floor.explanation=Määritä raja-arvot eri luokille putken ympäris
 consequence.hide.floor=Piilota kerrosala
 consequence.floor.area=putkeen liittyvä kerrosala
 
-consequence.beach=Etäisyys uimarantaan (m)
-consequence.hide.beach=Piilota etäisyys
-consequence.beach.distance=alueellisen ylivuotorakenteen ja lähimmän uimarannan välinen etäisyys
-
 consequence.gwa=Pohjavesialue (0..3)
 consequence.gwa.explanation=Määritä, kuinka putket luokitellaan (vihreä-keltainen-punainen) sen perusteella, millaisella pohjavesialueella putki sijaitsee (jos millään).
 consequence.hide.gwa=Piilota pohjavesialue

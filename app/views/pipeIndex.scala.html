@@ -1,7 +1,8 @@
-@(meterLimitValForm: Form[models.form.MeterLimitVal],
+@(loader: models.DataLoader,
+meterLimitValForm: Form[models.form.MeterLimitVal],
 currentSortBy: String, currentOrder: String,
-diameterLengthArray: List[Double], groundWaterLengthArray: List[Double], areaLengthArray: List[Double], 
-roadclassLengthArray: List[Double], beachLengthArray: List[Double], blockageLengthArray: List[Double],
+diameterLengthArray: List[Double], diameterLengthArray2: List[Double], groundWaterLengthArray: List[Double], areaLengthArray: List[Double], 
+roadclassLengthArray: List[Double], blockageLengthArray: List[Double],
 flushingEventLengthArray: List[Double], extraWaterLengthArray: List[Double], cctvDefectsLengthArray: List[Double],
 cctvMajorDefectsLengthArray: List[Double])
 
@@ -100,7 +101,7 @@ cctvMajorDefectsLengthArray: List[Double])
 									<span class="amount chartsdiameter"></span>
 									<input type="hidden" class="hiddenInputMin" name="diameterMin" value="@meterLimitValForm.data.get("diameterMin")">								  
 									<input type="hidden" class="hiddenInputMax" name="diameterMax" value="@meterLimitValForm.data.get("diameterMax")">								  									
-									<!--<span class="chartsdiameter" id="diameterLengthArrays">Length of pipes: @diameterLengthArray</span>-->
+									<span class="chartsdiameter" id="diameterLengthArrays">Length of pipes: @diameterLengthArray</span>
 									<div class="slider range-slide chartsdiameter">
 										<div class="slide" value="333,686" id="diameterslider" min="25" max="1000">
 											<span id="min">min:25</span>
@@ -139,25 +140,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="floorareaCheckbox" name="floorareaCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isFloorAreaImportant" value="@meterLimitValForm.data.get("isFloorAreaImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
-						</div>											
-						<div class="control-group span9">
-							<fieldset class="efesus-border clickable">
-								<a><label class="control-label clickable" for="lWasteWater" id="info3">@Messages("consequence.beach")</label></a>							
-								<div class="controls">
-									<div class="chartsbeach" id="chartbeach"></div>
-									<!--<button class="info" id="info3" type="button">Show</button>
-									<span class="chartsbeach" id="beachLengthArrays">Beach array: @beachLengthArray</span>-->
-									<span class="amount chartsbeach"></span>
-									<div class="slider range-slide chartsbeach">	
-										<div class="slide" value="166,333" min="0" max="500">
-											<span id="min">min:0</span>
-											<span id="max">max:500</span>								    
-										</div>
-									</div>										
-									<span class="help-inline chartsbeach">@Messages("consequence.beach.distance")</span>	
-								</div>
-							</fieldset>
-						</div>						
+						</div>																
 						<div class="control-group span9" title="@Messages("consequence.gwa.explanation")">
 							<fieldset class="efesus-border clickable">						
 								<a><label class="control-label clickable" for="lWasteWater" id="info4">@Messages("consequence.gwa")</label></a>
@@ -812,12 +795,15 @@ legend.efesus-border {
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function(){	
 	//
-	// Drawing a bar chart
+	// Drawing bar charts
 	//
 	$.jqplot.config.enablePlugins = true;
+	
 	var sdiameter = new Array(); 
 	var i = 0;
 	var number;
+	//@diameterLengthArray2 = loader.loadDiameterData;
+	//$('#diameterLengthArrays').html("SDLA: " + diameterLengthArray); // debug
 	@for(s <- diameterLengthArray) {
 		number = Math.round(@s);
 		if (!isNaN(number))
@@ -826,7 +812,7 @@ $(document).ready(function(){
 			sdiameter[i] = 0;
 		i++;
 	}
-	//$('#diameterLengthArrays').html("SDLA: " + sdiameter); // debug
+	$('#diameterLengthArrays').html("SDLA: " + sdiameter); // debug
 	var ticksDiameter = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 	diameterObj = {
 		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
@@ -843,8 +829,7 @@ $(document).ready(function(){
 		},
 		highlighter: { show: false }
 	}
-	plot1 = $.jqplot('chartdiameter', [sdiameter], diameterObj);
-	
+	plot1 = $.jqplot('chartdiameter', [sdiameter], diameterObj);	
 	// Click event
 	//$('#chartdiameter').bind('jqplotDataClick', 
 	//	function (ev, seriesIndex, pointIndex, data) {
@@ -919,7 +904,7 @@ $(document).ready(function(){
 			sroadclass[i] = 0;
 		i++;
 	}
-	var ticksBeach = [1, 2, 3, 4];
+	var ticksRoadClass = [1, 2, 3, 4];
 	roadclassObj = {
 		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
 		animate: !$.jqplot.use_excanvas,
@@ -930,41 +915,12 @@ $(document).ready(function(){
 		axes: {
 			xaxis: {
 				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksBeach
+				ticks: ticksRoadClass
 			}
 		},
 		highlighter: { show: false }
 	}
 	plot5 = $.jqplot('chartroadclassification', [sroadclass], roadclassObj);
-	
-	var sbeach = new Array();
-	i = 0;
-	@for(s <- beachLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sbeach[i] = Math.round(number / 1000);
-		else
-			sbeach[i] = 0;
-		i++;
-	}	
-	//$('#beachLengthArrays').html("debug: " + sbeach); // debug	
-	var ticksBeach = ["0-500", ">500"];
-	beachObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksBeach
-			}
-		},
-		highlighter: { show: false }
-	}
-	plot4 = $.jqplot('chartbeach', [sbeach], beachObj);
 
 	var sblockage = new Array();
 	i = 0;
@@ -1141,12 +1097,6 @@ $(document).ready(function(){
 			$("#info5").removeClass("selected");
 		});	
 	}		
-	
-	function deselectBeach() {
-		$(".chartsbeach").slideFadeToggle(function() {
-			$("#info3").removeClass("selected");
-		});	
-	}	
 
 	function deselectBlockage() {
 		$(".chartsblockage").slideFadeToggle(function() {
@@ -1203,7 +1153,7 @@ $(document).ready(function(){
 			$("#info1").html('@Messages("consequence.diameter")');
 			deselectDiameter();               
         } else {
-            $(this).addClass("selected");
+			$(this).addClass("selected");			
 			$(".chartsdiameter").slideFadeToggle(function() { 
 				$("#info1").focus();
 				$("#info1").html('@Messages("consequence.hide.diameter")');
@@ -1249,20 +1199,6 @@ $(document).ready(function(){
 			$(".chartsroadclassification").slideFadeToggle(function() { 
 				$("#info5").focus();
 				$("#info5").html('@Messages("consequence.hide.roadcls")');
-			});
-		}
-		return false;
-	});	
-	
-	$("#info3").on('click', function() {
-		if($(this).hasClass("selected")) {
-			$("#info3").html('@Messages("consequence.beach")');
-			deselectBeach();               
-        } else {
-            $(this).addClass("selected");
-			$(".chartsbeach").slideFadeToggle(function() { 
-				$("#info3").focus();
-				$("#info3").html('@Messages("consequence.hide.beach")');
 			});
 		}
 		return false;
@@ -1347,7 +1283,6 @@ $(document).ready(function(){
 	deselectGroundWater();
 	deselectArea();
 	deselectRoadClassification();	
-	deselectBeach();
 	deselectBlockage();
 	deselectFlushing();
 	deselectExtraWater();
@@ -1396,25 +1331,25 @@ $(document).ready(function(){
 	$("#amountOfConsequenceRedId").on('change', function() {
 		//$(this).siblings('input.hiddenAmountOfConsequenceRed').val($("#amountOfConsequenceRedId"));
 		$("#hiddenAmountOfConsequenceRed").val($("#amountOfConsequenceRedId").val());
-		$("#abc").html($("#hiddenAmountOfConsequenceRed").val());
+		//$("#abc").html($("#hiddenAmountOfConsequenceRed").val());
 	});
 
 	$("#amountOfConsequenceYellowId").on('change', function() {
 		//$(this).siblings('input.hiddenAmountOfConsequenceYellow').val($("#amountOfConsequenceYellowId").val());
 		$("#hiddenAmountOfConsequenceYellow").val($("#amountOfConsequenceYellowId").val());
-		$("#abc").html($("#hiddenAmountOfConsequenceYellow").val());
+		//$("#abc").html($("#hiddenAmountOfConsequenceYellow").val());
 	});
 
 	$("#amountOfConditionRedId").on('change', function() {
 		//$(this).siblings('input.hiddenAmountOfConditionRed').val($("#amountOfConditionRedId").val());
 		$("#hiddenAmountOfConditionRed").val($("#amountOfConditionRedId").val());
-		$("#abc").html($("#hiddenAmountOfConditionRed").val());
+		//$("#abc").html($("#hiddenAmountOfConditionRed").val());
 	});
 
 	$("#amountOfConditionYellowId").on('change', function() {
 		//$(this).siblings('input.hiddenAmountOfConditionYellow').val($("#amountOfConditionYellowId").val());
 		$("#hiddenAmountOfConditionYellow").val($("#amountOfConditionYellowId").val());
-		$("#abc").html($("#hiddenAmountOfConditionYellow").val());
+		//$("#abc").html($("#hiddenAmountOfConditionYellow").val());
 	});	
 	
 	//////////////////////
@@ -1498,7 +1433,7 @@ $(document).ready(function(){
 		rangeSpan.html("@Messages("min.limit"): " + $(this).slider("values", 0) + " - @Messages("max.limit"): " + $(this).slider("values", 1));
 		$(this).parent().siblings('input.hiddenInputMin').val($(this).slider("values", 0));
 		$(this).parent().siblings('input.hiddenInputMax').val($(this).slider("values", 1));		
-		//doUpdate();
+		doUpdate();
 	});
 	/////////////////////
 });

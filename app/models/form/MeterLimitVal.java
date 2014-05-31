@@ -13,6 +13,8 @@ public class MeterLimitVal {
 		this.isSuitableGwaImportant = false;
 		this.isOtherGwaImportant = false;
 		
+		this.isUndoubledPipeImportant = false;
+		
 		this.isSewerTypeImportant = 0;
 		
 		this.isPipeTypeCollectionImportant = false;
@@ -53,6 +55,8 @@ public class MeterLimitVal {
 		this.gwaSuitableVal = 2;
 		this.gwaOtherVal = 2;
 		
+		this.undoubledPipeVal = 3;
+		
 		this.pipeTypeLateralVal = 1;
 		this.pipeTypeCollectionVal = 1;
 		this.pipeTypeGravetyVal = 2; 
@@ -80,6 +84,8 @@ public class MeterLimitVal {
 	public boolean isImportantGwaImportant;
 	public boolean isSuitableGwaImportant;
 	public boolean isOtherGwaImportant;
+	
+	public boolean isUndoubledPipeImportant;
 	
 	public float isSewerTypeImportant;
 	
@@ -121,6 +127,8 @@ public class MeterLimitVal {
 	public float gwaImportantVal;
 	public float gwaSuitableVal;
 	public float gwaOtherVal;
+	
+	public float undoubledPipeVal;
 	
 	public float pipeTypeLateralVal;
 	public float pipeTypeCollectionVal;

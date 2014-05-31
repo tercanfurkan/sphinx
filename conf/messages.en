@@ -144,3 +144,9 @@ pipeIndex.summary.consequenceIndexPipeLength=Length of all pipes exceeding conse
 pipeIndex.summary.conditionAndConsequenceIndexPipeLength=Length of all pipes exceeding both consequence and condition index limit :
 
 export.results=Export index resuls
+
+# TO BE TRANSLATED IN FI
+consequence.undoubled=Undoubled pipes
+consequence.hide.undoubled=Hide undoubled pipes
+consequence.importance=Importance
+consequence.undoubled.category=Select category

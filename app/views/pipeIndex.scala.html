@@ -90,7 +90,10 @@ cctvMajorDefectsLengthArray: List[Double])
 						</div>
 						<div class="control-group span4">
 							<label class="control-label bold-label">@Messages("consequence.limit")</label>
-						</div>					
+						</div>	
+						<div class="control-group span4">
+							<label class="control-label bold-label">@Messages("consequence.importance")</label>
+						</div>				
 						<div class="control-group span9" title="@Messages("consequence.diameter.explanation")">	
 							<fieldset class="efesus-border clickable">
 								<!--<legend class="efesus-border">aaa</legend>-->
@@ -113,7 +116,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>							
 						</div>
 						<div class="control-group span2" title="@Messages("importance.explanation")">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="diameterCheckbox" name="diameterCheckbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCons" id="diameterCheckbox" name="diameterCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isPipeDiameterImportant" value="@meterLimitValForm.data.get("isPipeDiameterImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>						
@@ -137,7 +140,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="floorareaCheckbox" name="floorareaCheckbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCons" id="floorareaCheckbox" name="floorareaCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isFloorAreaImportant" value="@meterLimitValForm.data.get("isFloorAreaImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>																
@@ -252,7 +255,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>	
 						</div>
 						<div class="control-group span2">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="gwaCheckbox" name="gwaCheckbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCons" id="gwaCheckbox" name="gwaCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isGwaImportant" value="@meterLimitValForm.data.get("isGwaImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>												
@@ -418,7 +421,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="sewerTypeCheckbox" name="sewerTypeCheckbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCons" id="sewerTypeCheckbox" name="sewerTypeCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isSewerTypeImportant" value="@meterLimitValForm.data.get("isSewerTypeImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>							
@@ -564,11 +567,66 @@ cctvMajorDefectsLengthArray: List[Double])
 								</div>
 							</fieldset>
 						</div>
+
 						<div class="control-group span2">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCons" id="roadTypeCheckbox" name="roadTypeCheckbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCons" id="roadTypeCheckbox" name="roadTypeCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isRoadTypeImportant" value="@meterLimitValForm.data.get("isRoadTypeImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
-						</div>					
+						</div>	
+
+<!-- UNDOUBLED PIPE METER START -->	
+
+						<div class="control-group span9" title="@Messages("consequence.undoubled.explanation")">
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info11">@Messages("consequence.undoubled")</label></a>
+								<div class="controls">
+									<div class="chartsundoubledpipe" id="chartundoubledpipe"></div>
+									<table class="table table-bordered chartsundoubledpipe">
+										<tbody>
+											<tr>
+												<td class="controls span1">
+													<span>@Messages("consequence.undoubled.category")</span>
+												</td>	
+												<td class="controls span1 green">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("0"->""),
+														  '_label -> "")
+													</label>
+												</td>											
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("1"->""),
+														  '_label -> "")
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("2"->""),
+														  '_label -> "")
+													</label>
+												</td>
+											</tr>									
+										</tbody>
+									</table>				
+								</div>
+							</fieldset>	
+						</div>
+						
+						<div class="control-group span2">
+							<input type="checkbox" class="importanceCheckboxesCons" id="undoubledCheckbox" name="undoubledCheckbox" value="1">
+							<input type="hidden" class="hiddenInputCheckbox" name="isUndoubledPipeImportant" value="@meterLimitValForm.data.get("isUndoubledPipeImportant")">
+						</div>	
+
+<!-- UNDOUBLED PIPE METER END -->	
+
+<!-- INDEX LIMIT SELECTION START -->	
+
 						<div class="control-group span7">
 							@Messages("consequence.red1")<input type="text" name="amountOfConsequenceRed" class="span1" id="amountOfConsequenceRedId" value="0" maxlength="1" required>
 							<span id="ChangeMeConsRed">/x</span>@Messages("consequence.red2")
@@ -577,7 +635,13 @@ cctvMajorDefectsLengthArray: List[Double])
 							<input type="hidden" id="hiddenAmountOfConsequenceRed" name="amountsOfConsequenceRed" value="@meterLimitValForm.data.get("amountOfConsequenceRed")">							
 							<input type="hidden" id="hiddenAmountOfConsequenceYellow" name="amountsOfConsequenceYellow" value="@meterLimitValForm.data.get("amountOfConsequenceYellow")">							
 						</div>
+
+<!-- INDEX LIMIT SELECTION END -->	
 					</div>
+
+<!-- CONSEQUENCE INDEX END -->	
+
+<!-- CONDITION INDEX START -->	
 					<div class="controls span9">
 						<div class="control-group span9">
 							<label class="control-label bold-label">@Messages("condition.index")</label>
@@ -606,7 +670,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="blockageCheckbox" name="blockageCheckbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCond" id="blockageCheckbox" name="blockageCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isBlockageImportant" value="@meterLimitValForm.data.get("isBlockageImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>							
@@ -631,7 +695,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="flushingCheckbox" name="flushingCheckbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCond" id="flushingCheckbox" name="flushingCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isFlushingImportant" value="@meterLimitValForm.data.get("isFlushingImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>													
@@ -656,7 +720,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="iiCheckbox" name="iiCheckbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCond" id="iiCheckbox" name="iiCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isInflowAndInfiltrationImportant" value="@meterLimitValForm.data.get("isInflowAndInfiltrationImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>							
@@ -681,7 +745,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>
 						</div>
 						<div class="control-group span2">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="cctvCheckbox" name="cctvCheckbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCond" id="cctvCheckbox" name="cctvCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isCCTVDefectsImportant" value="@meterLimitValForm.data.get("isCCTVDefectsImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>						
@@ -706,7 +770,7 @@ cctvMajorDefectsLengthArray: List[Double])
 							</fieldset>	
 						</div>
 						<div class="control-group span2">
-							<label>@Messages("importance.itself")</label><input type="checkbox" class="importanceCheckboxesCond" id="cctv34Checkbox" name="cctv34Checkbox" value="1">
+							<input type="checkbox" class="importanceCheckboxesCond" id="cctv34Checkbox" name="cctv34Checkbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isCCTVMajorDefectsImportant" value="@meterLimitValForm.data.get("isCCTVMajorDefectsImportant")">
 							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
 						</div>
@@ -864,6 +928,36 @@ $(document).ready(function(){
 		highlighter: { show: false }
 	}
 	plot2 = $.jqplot('chartgroundwaterarea', [sgroundwaterarea], groundWaterObj);	
+
+	/////////////////////
+	
+	var sundoubledpipe = new Array(); 
+	i = 0;
+	@for(s <- groundWaterLengthArray) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sundoubledpipe[i] = Math.round(number / 1000);
+		else
+			sundoubledpipe[i] = 0;	
+		i++;
+	}
+	var ticksUndoubledPipe = [0, 1, 2, 3];
+	undoubledPipeObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksUndoubledPipe
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot2 = $.jqplot('chartundoubledpipe', [sundoubledpipe], undoubledPipeObj);	
 	
 	var sarea = new Array(); 
 	i = 0;
@@ -1084,6 +1178,12 @@ $(document).ready(function(){
 			$("#info4").removeClass("selected");
 		});		
 	}	
+
+	function deselectUndoubledPipe() {
+		$(".chartsundoubledpipe").slideFadeToggle(function() {
+			$("#info11").removeClass("selected");
+		});		
+	}	
 	
 	function deselectArea() {
 		$(".chartsarea").slideFadeToggle(function() {
@@ -1170,6 +1270,20 @@ $(document).ready(function(){
 			$(".chartsgroundwaterarea").slideFadeToggle(function() { 
 				$("#info4").focus();
 				$("#info4").html('@Messages("consequence.hide.gwa")');
+			});
+		}
+		return false;
+	});
+
+	$("#info11").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info11").html('@Messages("consequence.undoubled")');
+			deselectUndoubledPipe();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsundoubledpipe").slideFadeToggle(function() { 
+				$("#info11").focus();
+				$("#info11").html('@Messages("consequence.hide.undoubled")');
 			});
 		}
 		return false;
@@ -1280,6 +1394,7 @@ $(document).ready(function(){
 	// Hide bar charts in the beginning
 	deselectDiameter();
 	deselectGroundWater();
+	deselectUndoubledPipe();
 	deselectArea();
 	deselectRoadClassification();	
 	deselectBlockage();

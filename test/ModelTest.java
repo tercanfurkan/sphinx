@@ -395,23 +395,23 @@ public class ModelTest {
 	}
 
 //	@Test
-	public void addNIS() {
-		running(fakeApplication(), new Runnable() {
-			public void run() {
-				JPA.withTransaction(new play.libs.F.Callback0() {
-					public void invoke() {
-
-						try {
-							ReadXLS.main(null);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
-	}
+//	public void addNIS() {
+//		running(fakeApplication(), new Runnable() {
+//			public void run() {
+//				JPA.withTransaction(new play.libs.F.Callback0() {
+//					public void invoke() {
+//
+//						try {
+//							ReadXLS.main(null);
+//						} catch (IOException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//					}
+//				});
+//			}
+//		});
+//	}
 
 	// @Test
 	// public void addFlushingEventsNIS() {
@@ -432,25 +432,25 @@ public class ModelTest {
 	// });
 	// }
 
-	// @Test
-	// public void addPipeRoadClassifications() {
-	// running(fakeApplication(), new Runnable() {
-	// public void run() {
-	// JPA.withTransaction(new play.libs.F.Callback0() {
-	// public void invoke() {
-	//
-	// try {
-	// ReadXLS test = new ReadXLS();
-	// test.savePipeClassification(null, 4);
-	// } catch (IOException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// }
-	// });
-	// }
-	// });
-	// }
+//	@Test
+//	public void addPipeRoadClassifications() {
+//		running(fakeApplication(), new Runnable() {
+//			public void run() {
+//				JPA.withTransaction(new play.libs.F.Callback0() {
+//					public void invoke() {
+//
+//						try {
+//							ReadXLS test = new ReadXLS();
+//							test.savePipeClassification(null, 4);
+//						} catch (IOException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//					}
+//				});
+//			}
+//		});
+//	}
 
 	// @Test
 	// public void addGroundWaterAreas() {

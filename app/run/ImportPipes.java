@@ -43,10 +43,10 @@ public class ImportPipes {
 			
 			Sheet sheet = w.getSheet("Putki");
 			Map<Integer, PropertyType> ptypeMap = new HashMap<Integer, PropertyType>();
-			ReadXLS.mapXlsColumns(sheet, ptypeMap);
-			ReadXLS.addComponentTypeAndSavePropertyTypeList(ptypeMap, ctype);
-			
-			ReadXLS.saveXlsRows(sheet, ctype, ptypeMap);
+//			ReadXLS.mapXlsColumns(sheet, ptypeMap);
+//			ReadXLS.addComponentTypeAndSavePropertyTypeList(ptypeMap, ctype);
+//			
+//			ReadXLS.saveXlsRows(sheet, ctype, ptypeMap);
 		} catch (BiffException e) {
 			e.printStackTrace();
 		}

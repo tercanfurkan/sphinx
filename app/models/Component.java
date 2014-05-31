@@ -51,6 +51,16 @@ public class Component {
 	public Boolean deleted;
 
 	public Boolean scope;
+	
+	public Boolean undoubled;
+	public Boolean closeToWaterwork;
+	public Boolean closeToNuuksioLake;
+	public Boolean underRailway;
+	public Boolean inProtectedArea;
+	public Boolean underWaterbody;
+	public Boolean underProtectedDitch;
+	public String operationalType;
+
 
 	public String owner;
 	

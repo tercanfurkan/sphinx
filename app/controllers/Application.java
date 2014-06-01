@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import jxl.write.WriteException;
 import models.Component;
@@ -27,15 +26,6 @@ import service.PipeIndexServ;
 import service.export.WritePipeIndexAsXLS;
 import util.MathUtilSphinx;
 import views.html.*;
-
-import play.*;
-import play.data.*;
-import static play.data.Form.*;
-import play.i18n.Messages;
-import play.api.i18n.Lang;
-import play.mvc.Call;
-import play.i18n.Messages;
-import play.api.i18n.Lang;
 
 public class Application extends Controller {
 	
@@ -449,7 +439,6 @@ public class Application extends Controller {
 		System.out.println("MeterLimitValForm  amountOfConsequenceYellow > " + meterLimitValFields.amountOfConsequenceYellow);
 		System.out.println("MeterLimitValForm  amountOfConditionYellow > " + meterLimitValFields.amountOfConditionYellow);		
 		
-		final Map<String, String[]> values = request().body().asFormUrlEncoded();
 		System.out.println("Request map values > " + request().body().asText()/*values.toString()*/);
 
 		return ok(views.html.indexResults.render(sortBy, order, pipeIndexSummary.pipeIndexSummaryUI));

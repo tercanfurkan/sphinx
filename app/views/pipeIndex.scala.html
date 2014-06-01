@@ -1,10 +1,15 @@
 @(loader: models.DataLoader,
 meterLimitValForm: Form[models.form.MeterLimitVal],
 currentSortBy: String, currentOrder: String,
-diameterLengthArray: List[Double], diameterLengthArray2: List[Double], groundWaterLengthArray: List[Double], areaLengthArray: List[Double], 
+diameterLengthArray: List[Double], diameterLengthArray2: List[Double], 
+groundWaterLengthArray: List[Double], areaLengthArray: List[Double], 
 roadclassLengthArray: List[Double], blockageLengthArray: List[Double],
-flushingEventLengthArray: List[Double], extraWaterLengthArray: List[Double], cctvDefectsLengthArray: List[Double],
-	cctvMajorDefectsLengthArray: List[Double], undoubledPipeLengthArray: List[Double])
+flushingEventLengthArray: List[Double], extraWaterLengthArray: List[Double], 
+cctvDefectsLengthArray: List[Double], cctvMajorDefectsLengthArray: List[Double], 
+undoubledPipeLengthArray: List[Double], waterworkArr: List[Double], 
+nuuksioArr: List[Double], protectedAreaArr: List[Double],
+operationalTypeArr: List[Double], protectedDitchArr: List[Double], 
+railwayArr: List[Double], waterbodyArr: List[Double])
 
 @import helper._
 
@@ -625,6 +630,359 @@ flushingEventLengthArray: List[Double], extraWaterLengthArray: List[Double], cct
 
 <!-- UNDOUBLED PIPE METER END -->	
 
+<!-- WATERWORK PIPE METER START -->	
+
+						<div class="control-group span9" title="@Messages("consequence.waterwork.explanation")">
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info18">@Messages("consequence.waterwork")</label></a>
+								<div class="controls">
+									<div class="chartswaterwork" id="chartwaterwork"></div>
+									<table class="table table-bordered chartswaterwork">
+										<tbody>
+											<tr>
+												<td class="controls span1">
+													<span>@Messages("consequence.waterwork.category")</span>
+												</td>	
+												<td class="controls span1 green">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("0"->""),
+														  '_label -> "")
+													</label>
+												</td>											
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("1"->""),
+														  '_label -> "")
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("2"->""),
+														  '_label -> "")
+													</label>
+												</td>
+											</tr>									
+										</tbody>
+									</table>				
+								</div>
+							</fieldset>	
+						</div>
+						
+						<div class="control-group span2">
+							<input type="checkbox" class="importanceCheckboxesCons" id="undoubledCheckbox" name="undoubledCheckbox" value="1">
+							<input type="hidden" class="hiddenInputCheckbox" name="isUndoubledPipeImportant" value="@meterLimitValForm.data.get("isUndoubledPipeImportant")">
+						</div>	
+
+<!-- WATERWORK PIPE METER END -->
+<!-- NUUKSIO LAKE PIPE METER START -->	
+
+						<div class="control-group span9" title="@Messages("consequence.nuuksio.explanation")">
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info12">@Messages("consequence.nuuksio")</label></a>
+								<div class="controls">
+									<div class="chartsnuuksio" id="chartnuuksio"></div>
+									<table class="table table-bordered chartsnuuksio">
+										<tbody>
+											<tr>
+												<td class="controls span1">
+													<span>@Messages("consequence.nuuksio.category")</span>
+												</td>	
+												<td class="controls span1 green">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("0"->""),
+														  '_label -> "")
+													</label>
+												</td>											
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("1"->""),
+														  '_label -> "")
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("2"->""),
+														  '_label -> "")
+													</label>
+												</td>
+											</tr>									
+										</tbody>
+									</table>				
+								</div>
+							</fieldset>	
+						</div>
+						
+						<div class="control-group span2">
+							<input type="checkbox" class="importanceCheckboxesCons" id="undoubledCheckbox" name="undoubledCheckbox" value="1">
+							<input type="hidden" class="hiddenInputCheckbox" name="isUndoubledPipeImportant" value="@meterLimitValForm.data.get("isUndoubledPipeImportant")">
+						</div>	
+
+<!-- NUUKSIO LAKE PIPE METER END -->	
+<!-- PROTECTED AREA PIPE METER START -->	
+
+						<div class="control-group span9" title="@Messages("consequence.protectedarea.explanation")">
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info13">@Messages("consequence.protectedarea")</label></a>
+								<div class="controls">
+									<div class="chartsprotectedarea" id="chartprotectedarea"></div>
+									<table class="table table-bordered chartsprotectedarea">
+										<tbody>
+											<tr>
+												<td class="controls span1">
+													<span>@Messages("consequence.protectedarea.category")</span>
+												</td>	
+												<td class="controls span1 green">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("0"->""),
+														  '_label -> "")
+													</label>
+												</td>											
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("1"->""),
+														  '_label -> "")
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("2"->""),
+														  '_label -> "")
+													</label>
+												</td>
+											</tr>									
+										</tbody>
+									</table>				
+								</div>
+							</fieldset>	
+						</div>
+						
+						<div class="control-group span2">
+							<input type="checkbox" class="importanceCheckboxesCons" id="undoubledCheckbox" name="undoubledCheckbox" value="1">
+							<input type="hidden" class="hiddenInputCheckbox" name="isUndoubledPipeImportant" value="@meterLimitValForm.data.get("isUndoubledPipeImportant")">
+						</div>	
+
+<!-- PROTECTED AREA PIPE METER END -->
+<!-- OPERATIONAL TYPE PIPE METER START -->	
+
+						<div class="control-group span9" title="@Messages("consequence.operationtype.explanation")">
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info14">@Messages("consequence.operationtype")</label></a>
+								<div class="controls">
+									<div class="chartsoperationtype" id="chartoperationtype"></div>
+									<table class="table table-bordered chartsoperationtype">
+										<tbody>
+											<tr>
+												<td class="controls span1">
+													<span>@Messages("consequence.operationtype.category")</span>
+												</td>	
+												<td class="controls span1 green">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("0"->""),
+														  '_label -> "")
+													</label>
+												</td>											
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("1"->""),
+														  '_label -> "")
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("2"->""),
+														  '_label -> "")
+													</label>
+												</td>
+											</tr>									
+										</tbody>
+									</table>				
+								</div>
+							</fieldset>	
+						</div>
+						
+						<div class="control-group span2">
+							<input type="checkbox" class="importanceCheckboxesCons" id="undoubledCheckbox" name="undoubledCheckbox" value="1">
+							<input type="hidden" class="hiddenInputCheckbox" name="isUndoubledPipeImportant" value="@meterLimitValForm.data.get("isUndoubledPipeImportant")">
+						</div>	
+
+<!-- OPERATIONAL TYPE PIPE METER END	 -->	
+<!-- PROTECTED DITCH PIPE METER START -->	
+
+						<div class="control-group span9" title="@Messages("consequence.protectedditch.explanation")">
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info15">@Messages("consequence.protectedditch")</label></a>
+								<div class="controls">
+									<div class="chartsprotectedditch" id="chartprotectedditch"></div>
+									<table class="table table-bordered chartsprotectedditch">
+										<tbody>
+											<tr>
+												<td class="controls span1">
+													<span>@Messages("consequence.protectedditch.category")</span>
+												</td>	
+												<td class="controls span1 green">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("0"->""),
+														  '_label -> "")
+													</label>
+												</td>											
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("1"->""),
+														  '_label -> "")
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("2"->""),
+														  '_label -> "")
+													</label>
+												</td>
+											</tr>									
+										</tbody>
+									</table>				
+								</div>
+							</fieldset>	
+						</div>
+						
+						<div class="control-group span2">
+							<input type="checkbox" class="importanceCheckboxesCons" id="undoubledCheckbox" name="undoubledCheckbox" value="1">
+							<input type="hidden" class="hiddenInputCheckbox" name="isUndoubledPipeImportant" value="@meterLimitValForm.data.get("isUndoubledPipeImportant")">
+						</div>	
+
+<!-- PROTECTED DITCH PIPE METER END -->		
+
+<!-- RAILWAY PIPE METER START -->	
+
+						<div class="control-group span9" title="@Messages("consequence.railway.explanation")">
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info16">@Messages("consequence.railway")</label></a>
+								<div class="controls">
+									<div class="chartsrailway" id="chartrailway"></div>
+									<table class="table table-bordered chartsrailway">
+										<tbody>
+											<tr>
+												<td class="controls span1">
+													<span>@Messages("consequence.railway.category")</span>
+												</td>	
+												<td class="controls span1 green">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("0"->""),
+														  '_label -> "")
+													</label>
+												</td>											
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("1"->""),
+														  '_label -> "")
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("2"->""),
+														  '_label -> "")
+													</label>
+												</td>
+											</tr>									
+										</tbody>
+									</table>				
+								</div>
+							</fieldset>	
+						</div>
+						
+						<div class="control-group span2">
+							<input type="checkbox" class="importanceCheckboxesCons" id="undoubledCheckbox" name="undoubledCheckbox" value="1">
+							<input type="hidden" class="hiddenInputCheckbox" name="isUndoubledPipeImportant" value="@meterLimitValForm.data.get("isUndoubledPipeImportant")">
+						</div>	
+
+<!-- RAILWAY PIPE METER END -->	
+
+<!-- WATERBODY PIPE METER START -->	
+
+						<div class="control-group span9" title="@Messages("consequence.waterbody.explanation")">
+							<fieldset class="efesus-border clickable">						
+								<a><label class="control-label clickable" for="lWasteWater" id="info17">@Messages("consequence.waterbody")</label></a>
+								<div class="controls">
+									<div class="chartswaterbody" id="chartwaterbody"></div>
+									<table class="table table-bordered chartswaterbody">
+										<tbody>
+											<tr>
+												<td class="controls span1">
+													<span>@Messages("consequence.waterbody.category")</span>
+												</td>	
+												<td class="controls span1 green">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("0"->""),
+														  '_label -> "")
+													</label>
+												</td>											
+												<td class="controls span1 yellow">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("1"->""),
+														  '_label -> "")
+													</label>
+												</td>
+												<td class="controls span1 red">
+													<label class="radio inline">
+													  @inputRadioGroup(
+														  meterLimitValForm("undoubledPipeVal"),
+														  options = options("2"->""),
+														  '_label -> "")
+													</label>
+												</td>
+											</tr>									
+										</tbody>
+									</table>				
+								</div>
+							</fieldset>	
+						</div>
+						
+						<div class="control-group span2">
+							<input type="checkbox" class="importanceCheckboxesCons" id="undoubledCheckbox" name="undoubledCheckbox" value="1">
+							<input type="hidden" class="hiddenInputCheckbox" name="isUndoubledPipeImportant" value="@meterLimitValForm.data.get("isUndoubledPipeImportant")">
+						</div>	
+
+<!-- WATERBODY PIPE METER END -->
+
 <!-- INDEX LIMIT SELECTION START -->	
 
 						<div class="control-group span7">
@@ -744,10 +1102,10 @@ flushingEventLengthArray: List[Double], extraWaterLengthArray: List[Double], cct
 								</div>
 							</fieldset>
 						</div>
-						<div class="control-group span2">
+				 		<div class="control-group span2">
 							<input type="checkbox" class="importanceCheckboxesCond" id="cctvCheckbox" name="cctvCheckbox" value="1">
 							<input type="hidden" class="hiddenInputCheckbox" name="isCCTVDefectsImportant" value="@meterLimitValForm.data.get("isCCTVDefectsImportant")">
-							<!--<p>Name: <input type="text" id="ipttext" name="user"></p>-->
+							<!--<p>Name: <input type="text" id="ipttext" name="user"></p> -->
 						</div>						
 						<div class="control-group span9" title="@Messages("condition.cctvmajor.explanation")">
 							<fieldset class="efesus-border clickable">
@@ -929,8 +1287,8 @@ $(document).ready(function(){
 	}
 	plot2 = $.jqplot('chartgroundwaterarea', [sgroundwaterarea], groundWaterObj);	
 
-	/////////////////////
-	
+// -- POPULATE UNDOUBLED DISTRIBUTION BAR
+
 	var sundoubledpipe = new Array(); 
 	i = 0;
 	@for(s <- undoubledPipeLengthArray) {
@@ -941,7 +1299,7 @@ $(document).ready(function(){
 			sundoubledpipe[i] = 0;	
 		i++;
 	}
-	var ticksUndoubledPipe = ["Undoubled", "Other"];
+	var ticksUndoubledPipe = ['@Messages("consequence.undoubled")', '@Messages("consequence.other")'];
 	undoubledPipeObj = {
 		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
 		animate: !$.jqplot.use_excanvas,
@@ -957,8 +1315,233 @@ $(document).ready(function(){
 		},
 		highlighter: { show: false }
 	}
-	plot2 = $.jqplot('chartundoubledpipe', [sundoubledpipe], undoubledPipeObj);	
-	
+	plot11 = $.jqplot('chartundoubledpipe', [sundoubledpipe], undoubledPipeObj);	
+
+// -- POPULATE WATERWORK DISTRIBUTION BAR
+
+	var swaterwork = new Array(); 
+	i = 0;
+	@for(s <- waterworkArr) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			swaterwork[i] = Math.round(number / 1000);
+		else
+			swaterwork[i] = 0;	
+		i++;
+	}
+
+	var ticksWaterwork = ['@Messages("consequence.waterwork")', '@Messages("consequence.other")'];
+	waterworkObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksWaterwork
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot18 = $.jqplot('chartwaterwork', [swaterwork], waterworkObj);	
+
+// -- END
+
+// -- POPULATE NUUKSIO DISTRIBUTION BAR
+
+	var snuuksio = new Array(); 
+	i = 0;
+	@for(s <- nuuksioArr) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			snuuksio[i] = Math.round(number / 1000);
+		else
+			snuuksio[i] = 0;	
+		i++;
+	}
+	var ticksNuuksio = ['@Messages("consequence.nuuksio")', '@Messages("consequence.other")'];
+	nuuksioObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksNuuksio
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot12 = $.jqplot('chartnuuksio', [snuuksio], nuuksioObj);	
+
+// -- END
+
+// -- POPULATE PROTECTED AREA DISTRIBUTION BAR
+
+	var sprotectedarea = new Array(); 
+	i = 0;
+	@for(s <- protectedAreaArr) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sprotectedarea[i] = Math.round(number / 1000);
+		else
+			sprotectedarea[i] = 0;	
+		i++;
+	}
+	var ticksProtectedArea = ['@Messages("consequence.protectedarea")', '@Messages("consequence.other")'];
+	protectedareaObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksProtectedArea
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot13 = $.jqplot('chartprotectedarea', [sprotectedarea], protectedareaObj);	
+
+// -- END 
+
+// -- POPULATE OPERATIONAL TYPE DISTRIBUTION BAR
+
+	var soperationtype = new Array(); 
+	i = 0;
+	@for(s <- operationalTypeArr) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			soperationtype[i] = Math.round(number / 1000);
+		else
+			soperationtype[i] = 0;	
+		i++;
+	}
+	var ticksOperationType = ["Keräilyviemäri", "Pääviemäri", '@Messages("consequence.other")'];
+	operationalTypeObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksOperationType
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot14 = $.jqplot('chartoperationtype', [soperationtype], operationalTypeObj);	
+
+// -- END  
+
+// -- POPULATE OPERATIONAL TYPE DISTRIBUTION BAR
+
+	var sprotectedditch = new Array(); 
+	i = 0;
+	@for(s <- protectedDitchArr) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			sprotectedditch[i] = Math.round(number / 1000);
+		else
+			sprotectedditch[i] = 0;	
+		i++;
+	}
+	var ticksProtectedDitch = ['@Messages("consequence.protectedditch")', '@Messages("consequence.other")'];
+	protectedditchObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksProtectedDitch
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot15 = $.jqplot('chartprotectedditch', [sprotectedditch], protectedditchObj);	
+
+// -- END  
+
+// -- POPULATE OPERATIONAL TYPE DISTRIBUTION BAR
+
+	var srailway = new Array(); 
+	i = 0;
+	@for(s <- railwayArr) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			srailway[i] = Math.round(number / 1000);
+		else
+			srailway[i] = 0;	
+		i++;
+	}
+	var ticksRailway = ['@Messages("consequence.railway")', '@Messages("consequence.other")'];
+	railwayObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksRailway
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot16 = $.jqplot('chartrailway', [srailway], railwayObj);	
+
+// -- END 
+
+// -- POPULATE OPERATIONAL TYPE DISTRIBUTION BAR
+
+	var swaterbody = new Array(); 
+	i = 0;
+	@for(s <- waterbodyArr) {
+		number = Math.round(@s);
+		if (!isNaN(number))
+			swaterbody[i] = Math.round(number / 1000);
+		else
+			swaterbody[i] = 0;	
+		i++;
+	}
+	var ticksWaterbody = ['@Messages("consequence.waterbody")', '@Messages("consequence.other")'];
+	waterbodyObj = {
+		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		animate: !$.jqplot.use_excanvas,
+		seriesDefaults:{
+			renderer:$.jqplot.BarRenderer,
+			pointLabels: { show: true }
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: ticksWaterbody
+			}
+		},
+		highlighter: { show: false }
+	}
+	plot17 = $.jqplot('chartwaterbody', [swaterbody], waterbodyObj);	
+
+// -- END 
+
 	var sarea = new Array(); 
 	i = 0;
 	@for(s <- areaLengthArray) {
@@ -1183,6 +1766,48 @@ $(document).ready(function(){
 		$(".chartsundoubledpipe").slideFadeToggle(function() {
 			$("#info11").removeClass("selected");
 		});		
+	}		
+
+	function deselectWaterwork() {
+		$(".chartswaterwork").slideFadeToggle(function() {
+			$("#info18").removeClass("selected");
+		});		
+	}		
+
+	function deselectNuuksio() {
+		$(".chartsnuuksio").slideFadeToggle(function() {
+			$("#info12").removeClass("selected");
+		});		
+	}		
+
+	function deselectProtectedarea() {
+		$(".chartsprotectedarea").slideFadeToggle(function() {
+			$("#info13").removeClass("selected");
+		});		
+	}		
+
+	function deselectOperationType() {
+		$(".chartsoperationtype").slideFadeToggle(function() {
+			$("#info14").removeClass("selected");
+		});		
+	}		
+
+	function deselectProtectedDitch() {
+		$(".chartsprotectedditch").slideFadeToggle(function() {
+			$("#info15").removeClass("selected");
+		});		
+	}		
+
+	function deselectRailway() {
+		$(".chartsrailway").slideFadeToggle(function() {
+			$("#info16").removeClass("selected");
+		});		
+	}		
+
+	function deselectWaterbody() {
+		$(".chartswaterbody").slideFadeToggle(function() {
+			$("#info17").removeClass("selected");
+		});		
 	}	
 	
 	function deselectArea() {
@@ -1284,6 +1909,104 @@ $(document).ready(function(){
 			$(".chartsundoubledpipe").slideFadeToggle(function() { 
 				$("#info11").focus();
 				$("#info11").html('@Messages("consequence.hide.undoubled")');
+			});
+		}
+		return false;
+	});
+
+	$("#info18").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info18").html('@Messages("consequence.waterwork")');
+			deselectWaterwork();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartswaterwork").slideFadeToggle(function() { 
+				$("#info18").focus();
+				$("#info18").html('@Messages("consequence.hide.waterwork")');
+			});
+		}
+		return false;
+	});
+
+	$("#info12").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info12").html('@Messages("consequence.nuuksio")');
+			deselectNuuksio();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsnuuksio").slideFadeToggle(function() { 
+				$("#info12").focus();
+				$("#info12").html('@Messages("consequence.hide.nuuksio")');
+			});
+		}
+		return false;
+	});
+
+	$("#info13").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info13").html('@Messages("consequence.protectedarea")');
+			deselectProtectedarea();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsprotectedarea").slideFadeToggle(function() { 
+				$("#info13").focus();
+				$("#info13").html('@Messages("consequence.hide.protectedarea")');
+			});
+		}
+		return false;
+	});
+
+	$("#info14").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info14").html('@Messages("consequence.operationtype")');
+			deselectOperationType();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsoperationtype").slideFadeToggle(function() { 
+				$("#info14").focus();
+				$("#info14").html('@Messages("consequence.hide.operationtype")');
+			});
+		}
+		return false;
+	});
+
+	$("#info15").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info15").html('@Messages("consequence.protectedditch")');
+			deselectProtectedDitch();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsprotectedditch").slideFadeToggle(function() { 
+				$("#info15").focus();
+				$("#info15").html('@Messages("consequence.hide.protectedditch")');
+			});
+		}
+		return false;
+	});
+
+	$("#info16").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info16").html('@Messages("consequence.railway")');
+			deselectRailway();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsrailway").slideFadeToggle(function() { 
+				$("#info16").focus();
+				$("#info16").html('@Messages("consequence.hide.railway")');
+			});
+		}
+		return false;
+	});
+
+	$("#info17").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info17").html('@Messages("consequence.waterbody")');
+			deselectWaterbody();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartswaterbody").slideFadeToggle(function() { 
+				$("#info17").focus();
+				$("#info17").html('@Messages("consequence.hide.waterbody")');
 			});
 		}
 		return false;
@@ -1395,6 +2118,13 @@ $(document).ready(function(){
 	deselectDiameter();
 	deselectGroundWater();
 	deselectUndoubledPipe();
+	deselectWaterwork();
+	deselectNuuksio();
+	deselectProtectedarea();
+	deselectOperationType();
+	deselectProtectedDitch();
+	deselectRailway();
+	deselectWaterbody();
 	deselectArea();
 	deselectRoadClassification();	
 	deselectBlockage();

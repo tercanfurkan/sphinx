@@ -146,7 +146,37 @@ pipeIndex.summary.conditionAndConsequenceIndexPipeLength=Length of all pipes exc
 export.results=Export index resuls
 
 # TO BE TRANSLATED IN FI
-consequence.undoubled=Undoubled pipes
-consequence.hide.undoubled=Hide undoubled pipes
 consequence.importance=Importance
-consequence.undoubled.category=Select category
+consequence.other=Other
+
+consequence.undoubled=Undoubled pipes
+consequence.hide.undoubled=Undoubled pipes
+consequence.undoubled.category=Level
+
+consequence.waterwork=Near waterwork
+consequence.hide.waterwork=Near waterwork
+consequence.waterwork.category=Level
+
+consequence.nuuksio=Near Nuuksio lake
+consequence.hide.nuuksio=Near Nuuksio lake
+consequence.nuuksio.category=Level
+
+consequence.protectedarea=In protected area
+consequence.hide.protectedarea=In protected area
+consequence.protectedarea.category=Level
+
+consequence.operationtype=Operational type
+consequence.hide.operationtype=Operational type
+consequence.operationtype.category=Level
+
+consequence.protectedditch=Under protected ditch
+consequence.hide.protectedditch=Under protected ditch
+consequence.protectedditch.category=Level
+
+consequence.railway=Under railway
+consequence.hide.railway=Under railway
+consequence.railway.category=Level
+
+consequence.waterbody=Under waterbody
+consequence.hide.waterbody=Under waterbody
+consequence.waterbody.category=Level

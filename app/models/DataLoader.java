@@ -6,9 +6,14 @@ import models.Component;
 
 
 public class DataLoader {
-
-	//@Transactional(readOnly = true)
-	public static List<Double> loadDiameterData() {
+	
+	public DistributionBar distBar;
+	
+	public DataLoader() {
+		this.distBar = DistributionBar.getMeterDistributions();
+	}
+	
+	public List<Double> loadDiameterData() {
 		List<Double> diameterLengthArray = new ArrayList<Double>();
 		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(0, 101));
 		diameterLengthArray.add(Component.getPipeLenghtsAccordingToDiameter(101, 201));
@@ -23,7 +28,7 @@ public class DataLoader {
 		return diameterLengthArray;
 	}
 	
-	public static List<Double> loadAreaLengthData() {
+	public List<Double> loadAreaLengthData() {
 		List<Double> areaLengthArray = new ArrayList<Double>();
 		areaLengthArray.add(Component.getPipeLenghtsAccordingToRelativeFloorAreaMeters(0, 11));
 		areaLengthArray.add(Component.getPipeLenghtsAccordingToRelativeFloorAreaMeters(11, 21));
@@ -33,7 +38,7 @@ public class DataLoader {
 		return areaLengthArray;
 	}
 
-	public static List<Double> loadGroundWaterLengthData() {	
+	public List<Double> loadGroundWaterLengthData() {	
 		List<Double> groundWaterLengthArray = new ArrayList<Double>();
 		groundWaterLengthArray.add(Component.getPipeLengthsAccordingToGroundWaterArea(0, 1));
 		groundWaterLengthArray.add(Component.getPipeLengthsAccordingToGroundWaterArea(1, 2));
@@ -42,7 +47,7 @@ public class DataLoader {
 		return groundWaterLengthArray;
 	}
 
-	public static List<Double> loadRoadClassLengthData() {
+	public List<Double> loadRoadClassLengthData() {
 		List<Double> roadclassLengthArray = new ArrayList<Double>();
 		roadclassLengthArray.add(Component.getPipeLengthsAccordingToRoadClassification(1, 2));
 		roadclassLengthArray.add(Component.getPipeLengthsAccordingToRoadClassification(2, 3));
@@ -51,7 +56,7 @@ public class DataLoader {
 		return roadclassLengthArray;
 	}	
 
-	public static List<Double> loadBlockageLengthData() {	
+	public List<Double> loadBlockageLengthData() {	
 		List<Double> blockageLengthArray = new ArrayList<Double>();
 		blockageLengthArray.add(Component.getPipeLengthsAccordingToBlockages(0, 1));
 		blockageLengthArray.add(Component.getPipeLengthsAccordingToBlockages(1, 2));
@@ -61,7 +66,7 @@ public class DataLoader {
 		return blockageLengthArray;
 	}
 
-	public static List<Double> loadFlushingEventLengthData() {	
+	public List<Double> loadFlushingEventLengthData() {	
 		List<Double> flushingEventLengthArray = new ArrayList<Double>();
 		flushingEventLengthArray.add(Component.getPipeLengthsAccordingToFlushingEvents(0, 4));
 		flushingEventLengthArray.add(Component.getPipeLengthsAccordingToFlushingEvents(4, 8));
@@ -71,7 +76,7 @@ public class DataLoader {
 		return flushingEventLengthArray;
 	}	
 
-	public static List<Double> loadExtraWaterLengthData() {	
+	public List<Double> loadExtraWaterLengthData() {	
 		List<Double> extraWaterLengthArray = new ArrayList<Double>();
 		extraWaterLengthArray.add(Component.getPipeLengthsAccordingToExtraWaterPercentage(0, 4));
 		extraWaterLengthArray.add(Component.getPipeLengthsAccordingToExtraWaterPercentage(4, 8));
@@ -81,7 +86,7 @@ public class DataLoader {
 		return extraWaterLengthArray;
 	}	
 
-	public static List<Double> loadCctvDefectsLengthData() {	
+	public List<Double> loadCctvDefectsLengthData() {	
 		List<Double> cctvDefectsLengthArray = new ArrayList<Double>();
 		cctvDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVDefects(0, 6));
 		cctvDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVDefects(5, 11));
@@ -93,7 +98,7 @@ public class DataLoader {
 		return cctvDefectsLengthArray;
 	}
 
-	public static List<Double> loadCctvMajorDefectsLengthData() {	
+	public List<Double> loadCctvMajorDefectsLengthData() {	
 		List<Double> cctvMajorDefectsLengthArray = new ArrayList<Double>();
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(0, 6));
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(5, 11));
@@ -105,12 +110,59 @@ public class DataLoader {
 	}
 
 	public List<Double> loadUndoubledPipeLengthData() {
-		DistributionBar dist = DistributionBar.getMeterDistributions();
 		List<Double> undoubledPipeLengthArray = new ArrayList<Double>();
-		System.out.println(dist.undoubled);
-		System.out.println(dist.notUndoubled);
-		undoubledPipeLengthArray.add(dist.undoubled);
-		undoubledPipeLengthArray.add(dist.notUndoubled);
+		undoubledPipeLengthArray.add(distBar.undoubled);
+		undoubledPipeLengthArray.add(distBar.notUndoubled);
 		return undoubledPipeLengthArray;
+	}
+
+	public List<Double> loadPipesCloseToWaterworkData() {
+		List<Double> array = new ArrayList<Double>();
+		array.add(distBar.closeToWaterwork);
+		array.add(distBar.notCloseToWaterwork);
+		return array;
+	}
+
+	public List<Double> loadPipesCloseToNuuksioLakeData() {
+		List<Double> array = new ArrayList<Double>();
+		array.add(distBar.closeToNuuksioLake);
+		array.add(distBar.notCloseToNuuksioLake);
+		return array;
+	}
+
+	public List<Double> loadPipesUnderRailwayData() {
+		List<Double> array = new ArrayList<Double>();
+		array.add(distBar.underRailway);
+		array.add(distBar.notUnderRailway);
+		return array;
+	}
+
+	public List<Double> loadPipesInProtectedAreaData() {
+		List<Double> array = new ArrayList<Double>();
+		array.add(distBar.inProtectedArea);
+		array.add(distBar.notInProtectedArea);
+		return array;
+	}
+
+	public List<Double> loadPipesUnderWaterBodyData() {
+		List<Double> array = new ArrayList<Double>();
+		array.add(distBar.underWaterbody);
+		array.add(distBar.notUnderWaterbody);
+		return array;
+	}
+
+	public List<Double> loadPipesUnderProtectedDitchData() {
+		List<Double> undoubledPipeLengthArray = new ArrayList<Double>();
+		undoubledPipeLengthArray.add(distBar.underProtectedDitch);
+		undoubledPipeLengthArray.add(distBar.notUnderProtectedDitch);
+		return undoubledPipeLengthArray;
+	}
+
+	public List<Double> loadPipesOperationalTypeData() {
+		List<Double> array = new ArrayList<Double>();
+		array.add(distBar.kera);
+		array.add(distBar.paavi);
+		array.add(distBar.otheroperationaltype);
+		return array;
 	}
 }	

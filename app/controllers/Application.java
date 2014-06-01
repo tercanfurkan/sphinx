@@ -484,6 +484,13 @@ public class Application extends Controller {
 		List<Double> cctvDefectsLengthArray = loader.loadCctvDefectsLengthData();
 		List<Double> cctvMajorDefectsLengthArray = loader.loadCctvMajorDefectsLengthData();
 		List<Double> undoubledPipeLengthArray = loader.loadUndoubledPipeLengthData();
+		List<Double> waterworkArr = loader.loadPipesCloseToWaterworkData();
+		List<Double> nuuksioArr = loader.loadPipesCloseToNuuksioLakeData();
+		List<Double> protectedAreaArr = loader.loadPipesInProtectedAreaData();
+		List<Double> operationalTypeArr = loader.loadPipesOperationalTypeData();
+		List<Double> protectedDitchArr = loader.loadPipesUnderProtectedDitchData();
+		List<Double> railwayArr = loader.loadPipesUnderRailwayData();
+		List<Double> waterbodyArr = loader.loadPipesUnderWaterBodyData();
 		
 		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);	
 		
@@ -491,7 +498,9 @@ public class Application extends Controller {
 		return ok(views.html.pipeIndex.render(loader, meterLimitValForm, sortBy, order,
 											  diameterLengthArray, diameterLengthArray2, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
 											  blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
-											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray, undoubledPipeLengthArray), "utf-8");
+											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray, 
+											  undoubledPipeLengthArray, waterworkArr, nuuksioArr, protectedAreaArr,
+											  operationalTypeArr, protectedDitchArr, railwayArr, waterbodyArr), "utf-8");
 	}
 	
 	public static Result sendFile() {

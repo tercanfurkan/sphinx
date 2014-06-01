@@ -987,9 +987,9 @@ railwayArr: List[Double], waterbodyArr: List[Double])
 
 						<div class="control-group span7">
 							@Messages("consequence.red1")<input type="text" name="amountOfConsequenceRed" class="span1" id="amountOfConsequenceRedId" value="0" maxlength="1" required>
-							<span id="ChangeMeConsRed">/x</span>@Messages("consequence.red2")
+							<span id="ChangeMeConsRed">/x </span>@Messages("consequence.red2")
 							@Messages("consequence.yellow1")<input type="text" name="amountOfConsequenceYellow" class="span1" id="amountOfConsequenceYellowId" value="0" maxlength="1" required>
-							<span id="ChangeMeConsYellow">/x</span>@Messages("consequence.yellow2")
+							<span id="ChangeMeConsYellow">/x </span>@Messages("consequence.yellow2")
 							<input type="hidden" id="hiddenAmountOfConsequenceRed" name="amountsOfConsequenceRed" value="@meterLimitValForm.data.get("amountOfConsequenceRed")">							
 							<input type="hidden" id="hiddenAmountOfConsequenceYellow" name="amountsOfConsequenceYellow" value="@meterLimitValForm.data.get("amountOfConsequenceYellow")">							
 						</div>
@@ -1134,9 +1134,9 @@ railwayArr: List[Double], waterbodyArr: List[Double])
 						</div>
 						<div class="control-group span7">
 							@Messages("condition.red1")<input type="text" name="amountOfConditionRed" class="span1" id="amountOfConditionRedId" value="0" maxlength="1" required>
-							<span id="ChangeMeCondRed">/x</span>@Messages("condition.red2")
+							<span id="ChangeMeCondRed">/x </span>@Messages("condition.red2")
 							@Messages("condition.yellow1")<input type="text" name="amountOfConditionYellow" class="span1" id="amountOfConditionYellowId" value="0" maxlength="1" required>
-							<span id="ChangeMeCondYellow">/x</span>@Messages("condition.yellow2")
+							<span id="ChangeMeCondYellow">/x </span>@Messages("condition.yellow2")
 							<input type="hidden" id="hiddenAmountOfConditionRed" name="amountsOfConditionRed" value="@meterLimitValForm.data.get("amountOfConditionRed")">
 							<input type="hidden" id="hiddenAmountOfConditionYellow" name="amountsOfConditionYellow" value="@meterLimitValForm.data.get("amountOfConditionYellow")">							
 						</div>						
@@ -2148,7 +2148,7 @@ $(document).ready(function(){
 			amountOfConsequenceCheckedReds--;
 		}
 		$("#ChangeMeConsRed").html("/" + amountOfConsequenceCheckedReds + " ");
-		var amountOfConsequenceCheckedYellows = 5 - amountOfConsequenceCheckedReds;
+		var amountOfConsequenceCheckedYellows = 13 - amountOfConsequenceCheckedReds;
 		$("#ChangeMeConsYellow").html("/" + amountOfConsequenceCheckedYellows + " ");
 	});
 	

@@ -180,3 +180,12 @@ consequence.railway.category=Level
 consequence.waterbody=Under waterbody
 consequence.hide.waterbody=Under waterbody
 consequence.waterbody.category=Level
+
+consequence.waterbody.explanation=Display distribution bar for total length(km) of pipes under waterbodies and set the importance level
+consequence.railway.explanation=Display distribution bar for total length(km) of pipes under railways and set the importance level
+consequence.protectedditch.explanation=Display distribution bar for total length(km) of pipes under protected ditches and set the importance level
+consequence.operationtype.explanation=Display distribution bar for total length(km) of pipes having different operational types and set their importance level
+consequence.protectedarea.explanation=Display distribution bar for total length(km) of pipes close to protected areas and set the importance level
+consequence.nuuksio.explanation=Display distribution bar for total length(km) of pipes close to Nuuksio lake and set the importance level
+consequence.waterwork.explanation=Display distribution bar for total length(km) of pipes close to waterworks and set the importance level
+consequence.undoubled.explanation=Display distribution bar for total length(km) of pipes that are undoubled and set the importance level

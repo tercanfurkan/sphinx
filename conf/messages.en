@@ -12,13 +12,10 @@ pi.pipe.title=INDEX CALCULATION
 
 main.appname=Sphinx - EfeSus Database
 main.login=Login
-<<<<<<< HEAD
 main.logout=Logout
 main.signin=Sign in
 main.username=Username
 main.password=Password
-=======
->>>>>>> parent of 6922624... Login & Logout
 main.home=Home
 main.about=About
 main.contact=Contact

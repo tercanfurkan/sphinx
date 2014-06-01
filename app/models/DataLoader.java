@@ -3,7 +3,6 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 import models.Component;
-import play.db.jpa.Transactional;
 
 
 public class DataLoader {
@@ -103,5 +102,15 @@ public class DataLoader {
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(21, 26));
 		cctvMajorDefectsLengthArray.add(Component.getPipeLengthsAccordingToCCTVMajorDefects(26, 31));		
 		return cctvMajorDefectsLengthArray;
+	}
+
+	public List<Double> loadUndoubledPipeLengthData() {
+		DistributionBar dist = DistributionBar.getMeterDistributions();
+		List<Double> undoubledPipeLengthArray = new ArrayList<Double>();
+		System.out.println(dist.undoubled);
+		System.out.println(dist.notUndoubled);
+		undoubledPipeLengthArray.add(dist.undoubled);
+		undoubledPipeLengthArray.add(dist.notUndoubled);
+		return undoubledPipeLengthArray;
 	}
 }	

@@ -483,6 +483,7 @@ public class Application extends Controller {
 		List<Double> extraWaterLengthArray = loader.loadExtraWaterLengthData();
 		List<Double> cctvDefectsLengthArray = loader.loadCctvDefectsLengthData();
 		List<Double> cctvMajorDefectsLengthArray = loader.loadCctvMajorDefectsLengthData();
+		List<Double> undoubledPipeLengthArray = loader.loadUndoubledPipeLengthData();
 		
 		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);	
 		
@@ -490,7 +491,7 @@ public class Application extends Controller {
 		return ok(views.html.pipeIndex.render(loader, meterLimitValForm, sortBy, order,
 											  diameterLengthArray, diameterLengthArray2, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
 											  blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
-											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray), "utf-8");
+											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray, undoubledPipeLengthArray), "utf-8");
 	}
 	
 	public static Result sendFile() {

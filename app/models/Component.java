@@ -10,6 +10,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Query;
+import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
 
@@ -992,5 +994,19 @@ public class Component {
 		Double retVal = (Double) query.getSingleResult();
 		
 		return retVal;
-	}	
+	}
+	
+	@Entity
+	public class MeterDistribution {
+		@Id
+		public Long id;
+	    @Column(columnDefinition = "NUMERIC(19,10)")
+		public Double undoubled;
+	    @Column(columnDefinition = "NUMERIC(19,10)")
+		public Double notUndoubled;
+	    @Column(columnDefinition = "NUMERIC(19,10)")
+		public Double closeToWaterwork;
+	    @Column(columnDefinition = "NUMERIC(19,10)")
+		public Double notCloseToWaterwork;
+	}
 }

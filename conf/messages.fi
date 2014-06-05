@@ -146,45 +146,45 @@ pipeIndex.summary.conditionAndConsequenceIndexPipeLength=Sekä seuraus- että ku
 export.results=Siirrä laskennan tulokset 
 
 # TO BE TRANSLATED IN FI
-consequence.importance=Importance
-consequence.other=Other
+consequence.importance=Tärkeys
+consequence.other=Muu
 
-consequence.undoubled=Undoubled pipes
-consequence.hide.undoubled=Undoubled pipes
-consequence.undoubled.category=Level
+consequence.undoubled=Ei kaksinkertaistetut putket
+consequence.hide.undoubled=Ei kaksinkertaistetut putket
+consequence.undoubled.category=Taso
 
-consequence.waterwork=Near waterwork
-consequence.hide.waterwork=Near waterwork
-consequence.waterwork.category=Level
+consequence.waterwork=Vesityön lähellä
+consequence.hide.waterwork=Vesityön lähellä
+consequence.waterwork.category=Taso
 
-consequence.nuuksio=Near Nuuksio lake
-consequence.hide.nuuksio=Near Nuuksio lake
-consequence.nuuksio.category=Level
+consequence.nuuksio=Nuuksion lähellä
+consequence.hide.nuuksio=Nuuksion lähellä
+consequence.nuuksio.category=Taso
 
-consequence.protectedarea=In protected area
-consequence.hide.protectedarea=In protected area
-consequence.protectedarea.category=Level
+consequence.protectedarea=Suojelu alueella
+consequence.hide.protectedarea=Suojelu alueella
+consequence.protectedarea.category=Taso
 
-consequence.operationtype=Operational type
-consequence.hide.operationtype=Operational type
-consequence.operationtype.category=Level
+consequence.operationtype=Operatiivinen tyyppi
+consequence.hide.operationtype=Operatiivinen tyyppi
+consequence.operationtype.category=Taso
 
-consequence.protectedditch=Under protected ditch
-consequence.hide.protectedditch=Under protected ditch
-consequence.protectedditch.category=Level
+consequence.protectedditch=Ali suojattu oja
+consequence.hide.protectedditch=Ali suojattu oja
+consequence.protectedditch.category=Taso
 
-consequence.railway=Under railway
-consequence.hide.railway=Under railway
-consequence.railway.category=Level
+consequence.railway=Ali rautatie
+consequence.hide.railway=Ali rautatie
+consequence.railway.category=Taso
 
-consequence.waterbody=Under waterbody
-consequence.hide.waterbody=Under waterbody
-consequence.waterbody.category=Level
+consequence.waterbody=Ali vesikokonaisuus
+consequence.hide.waterbody=Ali vesikokonaisuus
+consequence.waterbody.category=Taso
 
-consequence.waterbody.explanation=Display distribution bar showing total length(km) of pipes under waterbodies and set the importance level
-consequence.railway.explanation=Display distribution bar for showing length(km) of pipes under railways and set the importance level
-consequence.protectedditch.explanation=Display distribution bar showing total length(km) of pipes under protected ditches and set the importance level
-consequence.operationtype.explanation=Display distribution bar showing total length(km) of pipes having different operational types and set their importance level
-consequence.protectedarea.explanation=Display distribution bar showing total length(km) of pipes close to protected areas and set the importance level
-consequence.nuuksio.explanation=Display distribution bar showing total length(km) of pipes close to Nuuksio lake and set the importance level
-consequence.waterwork.explanation=Display distribution bar showing total length(km) of pipes close to waterworks and set the importance level
+consequence.waterbody.explanation=Näytä jakelu palkki, joka näyttää ali vesikokonaisuus alueella olevien putkien kokonaispituus (km) ja aseta tärkeystaso
+consequence.railway.explanation=Näytä jakelu palkki, joka näyttää ali rautatie alueilla olevien putkien kokonaispituus (km) ja aseta tärkeystaso
+consequence.protectedditch.explanation=Näytä jakelu palkki, joka näyttää ali suojattu oja alueilla olevien putkien kokonaispituus (km) ja aseta tärkeystaso
+consequence.operationtype.explanation=Näytä jakelu palkki, joka näyttää operatiivisen tyyppisien putkien kokonaispituus (km) ja aseta tärkeystaso
+consequence.protectedarea.explanation=Näytä jakelu palkki, joka näyttää suojelu alueilla olevien putkien kokonaispituus (km) ja aseta tärkeystaso
+consequence.nuuksio.explanation=Näytä jakelu palkki, joka näyttää Nuuksion lähellä olevien putkien kokonaispituus (km) ja aseta tärkeystaso
+consequence.waterwork.explanation=Näytä jakelu palkki, joka näyttää vesitöiden lähellä olevien putkien kokonaispituus (km) ja aseta tärkeystaso

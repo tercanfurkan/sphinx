@@ -149,42 +149,42 @@ export.results=Siirrä laskennan tulokset
 consequence.importance=Tärkeys
 consequence.other=Muu
 
-consequence.undoubled=Ei kaksinkertaistetut putket
-consequence.hide.undoubled=Ei kaksinkertaistetut putket
+consequence.undoubled=Tuplaamattomat putket
+consequence.hide.undoubled=Tuplaamattomat putket
 consequence.undoubled.category=Taso
 
-consequence.waterwork=Vesityön lähellä
-consequence.hide.waterwork=Vesityön lähellä
+consequence.waterwork=Vesilaitoksen lähellä
+consequence.hide.waterwork=Vesilaitoksen lähellä
 consequence.waterwork.category=Taso
 
-consequence.nuuksio=Nuuksion lähellä
-consequence.hide.nuuksio=Nuuksion lähellä
+consequence.nuuksio=Nuuksion Pitkäjärven lähellä
+consequence.hide.nuuksio=Nuuksion Pitkäjärven lähellä
 consequence.nuuksio.category=Taso
 
-consequence.protectedarea=Suojelu alueella
-consequence.hide.protectedarea=Suojelu alueella
+consequence.protectedarea=Luonnonsuojelualueella
+consequence.hide.protectedarea=Luonnonsuojelualueella
 consequence.protectedarea.category=Taso
 
-consequence.operationtype=Operatiivinen tyyppi
-consequence.hide.operationtype=Operatiivinen tyyppi
+consequence.operationtype=Putken toiminnallinen tyyppi
+consequence.hide.operationtype=Putken toiminnallinen tyyppi
 consequence.operationtype.category=Taso
 
-consequence.protectedditch=Ali suojattu oja
-consequence.hide.protectedditch=Ali suojattu oja
+consequence.protectedditch= Suojellun puron alla tai lähellä
+consequence.hide.protectedditch=Suojellun puron alla tai lähellä
 consequence.protectedditch.category=Taso
 
-consequence.railway=Ali rautatie
-consequence.hide.railway=Ali rautatie
+consequence.railway=Rautatien alla tai lähellä
+consequence.hide.railway=Rautatien alla tai lähellä
 consequence.railway.category=Taso
 
-consequence.waterbody=Ali vesikokonaisuus
-consequence.hide.waterbody=Ali vesikokonaisuus
+consequence.waterbody=Vesistön alla
+consequence.hide.waterbody=Vesistön alla
 consequence.waterbody.category=Taso
 
-consequence.waterbody.explanation=Näytä jakelu palkki, joka näyttää ali vesikokonaisuus alueella olevien putkien kokonaispituus (km) ja aseta tärkeystaso
-consequence.railway.explanation=Näytä jakelu palkki, joka näyttää ali rautatie alueilla olevien putkien kokonaispituus (km) ja aseta tärkeystaso
-consequence.protectedditch.explanation=Näytä jakelu palkki, joka näyttää ali suojattu oja alueilla olevien putkien kokonaispituus (km) ja aseta tärkeystaso
-consequence.operationtype.explanation=Näytä jakelu palkki, joka näyttää operatiivisen tyyppisien putkien kokonaispituus (km) ja aseta tärkeystaso
-consequence.protectedarea.explanation=Näytä jakelu palkki, joka näyttää suojelu alueilla olevien putkien kokonaispituus (km) ja aseta tärkeystaso
-consequence.nuuksio.explanation=Näytä jakelu palkki, joka näyttää Nuuksion lähellä olevien putkien kokonaispituus (km) ja aseta tärkeystaso
-consequence.waterwork.explanation=Näytä jakelu palkki, joka näyttää vesitöiden lähellä olevien putkien kokonaispituus (km) ja aseta tärkeystaso
+consequence.waterbody.explanation=Näytä putkipituuksien jakauma (km) ja aseta tärkeys
+consequence.railway.explanation=Näytä putkipituuksien jakauma (km) ja aseta tärkeys
+consequence.protectedditch.explanation=Näytä putkipituuksien jakauma (km) ja aseta tärkeys
+consequence.operationtype.explanation=Näytä putkipituuksien jakauma (km) ja aseta tärkeys
+consequence.protectedarea.explanation=Näytä putkipituuksien jakauma (km) ja aseta tärkeys
+consequence.nuuksio.explanation=Näytä putkipituuksien jakauma (km) ja aseta tärkeys
+consequence.waterwork.explanation=Näytä putkipituuksien jakauma (km) ja aseta tärkeys

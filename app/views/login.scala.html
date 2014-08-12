@@ -1,0 +1,38 @@
+@(form: Form[Application.Login])
+
+<html>
+    <head>
+        <title>@Messages("main.appname")</title>
+    </head>
+    <body>
+        
+        @helper.form(routes.Application.authenticate) {
+            
+            <h1>@Messages("main.signin")</h1>
+            
+            @if(form.hasGlobalErrors) { 
+                <p class="error">
+                    @form.globalError.message
+                </p>
+            }
+            
+            @if(flash.contains("success")) {
+                <p class="success">
+                    @flash.get("success")
+                </p>
+            }
+            
+            <p>
+                <input type="username" name="username" placeholder="@Messages("main.username")" value="@form("username").value">
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="@Messages("main.password")">
+            </p>
+            <p>
+                <button type="submit">@Messages("main.login")</button>
+            </p>
+            
+        }
+            
+    </body>
+</html>

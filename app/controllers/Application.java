@@ -13,12 +13,14 @@ import models.Component.AreaMeterList;
 import models.form.MeterLimitVal;
 import models.meter.sensitivity.PipeSensitivityIndex;
 import models.meter.sensitivity.PipeSensitivityIndex.SensitivityIndexPage;
+import models.user.User;
 import models.wrapper.PipeIndexSummary;
 import models.wrapper.PipeIndexWrapper;
 import models.wrapper.PipeIndexWrapperView;
 import models.DataLoader;
-import play.data.Form;
+//import play.data.Form;
 import play.db.jpa.Transactional;
+import play.mvc.*;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
@@ -26,6 +28,10 @@ import service.PipeIndexServ;
 import service.export.WritePipeIndexAsXLS;
 import util.MathUtilSphinx;
 import views.html.*;
+
+import play.*;
+import play.data.*;
+import static play.data.Form.*;
 
 public class Application extends Controller {
 	
@@ -48,6 +54,7 @@ public class Application extends Controller {
 	/**
 	 * Handle default path requests, redirect to Components list
 	 */
+	@Security.Authenticated(Secured.class) 
 	public static Result index() {
 		return GO_HOME;
 	}
@@ -112,6 +119,7 @@ public class Application extends Controller {
 	 * 
 	 */
 	@Transactional(readOnly = true)
+	@Security.Authenticated(Secured.class)
 	public static Result psareas(int page, String sortBy, String order,
 			String filter, int wExtra, int wCCTV, int wOperational,
 			int wSensitivity) {
@@ -183,6 +191,7 @@ public class Application extends Controller {
 	 *            Filter applied on Component names
 	 */
 	@Transactional(readOnly = true)
+	@Security.Authenticated(Secured.class)
 	public static Result list(int page, String sortBy, String order,
 			String filter) {
 		response().setContentType("text/html; charset=utf-8");	
@@ -197,6 +206,7 @@ public class Application extends Controller {
 	 *            Id of the Component to edit
 	 */
 	@Transactional(readOnly = true)
+	@Security.Authenticated(Secured.class)
 	public static Result edit(Long id) {
 		
 		Component comp = Component.findById(id);
@@ -212,6 +222,7 @@ public class Application extends Controller {
 	 *            Id of the Component to edit
 	 */
 	@Transactional
+	@Security.Authenticated(Secured.class)
 	public static Result update(Long id) {
 		Form<Component> componentForm = play.data.Form.form(Component.class).bindFromRequest();
 		if (componentForm.hasErrors()) {
@@ -227,6 +238,7 @@ public class Application extends Controller {
 	 * Display the 'new Component form'.
 	 */
 	@Transactional(readOnly = true)
+	@Security.Authenticated(Secured.class)
 	public static Result create() {
 		Form<Component> ComponentForm = play.data.Form.form(Component.class);
 		return ok(createForm.render(ComponentForm));
@@ -236,6 +248,7 @@ public class Application extends Controller {
 	 * Handle the 'new Component form' submission
 	 */
 	@Transactional
+	@Security.Authenticated(Secured.class)
 	public static Result save() {
 		Form<Component> ComponentForm = play.data.Form.form(Component.class).bindFromRequest();
 		if (ComponentForm.hasErrors()) {
@@ -251,6 +264,7 @@ public class Application extends Controller {
 	 * Handle Component deletion
 	 */
 	@Transactional
+	@Security.Authenticated(Secured.class)
 	public static Result delete(Long id) {
 		Component.findById(id).delete();
 		flash("success", "Component has been deleted");
@@ -258,6 +272,7 @@ public class Application extends Controller {
 	}
 
 	@Transactional(readOnly = true)
+	@Security.Authenticated(Secured.class)
 	public static Result listPipes(int page, String sortBy, String order,
 			String filter) {
 		return ok(listPipes.render(
@@ -266,6 +281,7 @@ public class Application extends Controller {
 	}
 
 	@Transactional(readOnly = true)
+	@Security.Authenticated(Secured.class)
 	public static Result listManholes(int page, String sortBy, String order,
 			String filter) {
 		
@@ -449,6 +465,7 @@ public class Application extends Controller {
 	 * 
 	 */
 	@Transactional(readOnly = true)
+	@Security.Authenticated(Secured.class)
 	public static Result pipeIndex(int page, String sortBy, String order) {
         						
 		DataLoader loader = new DataLoader();
@@ -501,5 +518,47 @@ public class Application extends Controller {
 		currentLanguage = langCode;
 		changeLang(langCode);
 		return GO_HOME;
-    }	
+    }
+	
+	public static class Login {
+	    public String username;
+	    public String password;
+	    
+	    public String validate() {
+	        if (User.authenticate(username, password) == null) {
+	          return "Invalid user or password";
+	        }
+	        return null;
+	    }
+	}
+	
+	public static Result login() {
+        return ok(
+            login.render(form(Login.class))
+        );
+    }
+	
+	public static Result authenticate() {
+	    Form<Login> loginForm = form(Login.class).bindFromRequest();
+	    if (loginForm.hasErrors()) {
+	        return badRequest(login.render(loginForm));
+	    } else {
+	        session().clear();
+	        session("username", loginForm.get().username);
+	        return redirect(
+				routes.Application.index()
+	        );
+	    }
+	}
+	
+	public static Result logout() {
+	    session().clear();
+		if (currentLanguage.equals("fi"))
+			flash("success", "Olet kirjautunut ulos");
+		else	
+			flash("success", "You've been logged out");
+	    return redirect(
+	        routes.Application.login()
+	    );
+	}	
 }

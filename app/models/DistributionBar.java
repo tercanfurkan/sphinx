@@ -49,6 +49,7 @@ public class DistributionBar {
 
 
 	public static DistributionBar getMeterDistributions() {
+		System.out.println("DistributionBar getMeterDistributions > ");	
 		Query query = JPA.em().createQuery("from DistributionBar dist");
 		return (DistributionBar) query.getSingleResult();
 	}

@@ -24,6 +24,8 @@ GET     /pipesensindex            controllers.Application.pipeSensitivityIndex(p
 GET 	/pipeIndex					controllers.Application.pipeIndex(p:Int ?= 0, s ?= "pipe_consequence_index", o ?= "desc")
 GET 	/indexResults					controllers.Application.indexResults(p:Int ?= 0, s ?= "pipe_consequence_index", o ?= "desc")
 GET 	/export					controllers.Application.sendFile()
+GET 	/map					controllers.Application.map()
+GET 	/graph					controllers.Application.graph()
 
 # Add component
 GET     /components/new              controllers.Application.create()

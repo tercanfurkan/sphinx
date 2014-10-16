@@ -469,30 +469,31 @@ public class Application extends Controller {
 	public static Result pipeIndex(int page, String sortBy, String order) {
         						
 		DataLoader loader = new DataLoader();
-		List<Double> diameterLengthArray = loader.loadDiameterData();
-		List<Double> diameterLengthArray2 = new ArrayList<Double>();
-		List<Double> areaLengthArray = loader.loadAreaLengthData();
-		List<Double> groundWaterLengthArray = loader.loadGroundWaterLengthData();
-		List<Double> roadclassLengthArray = loader.loadRoadClassLengthData();
-		List<Double> blockageLengthArray = loader.loadBlockageLengthData();
-		List<Double> flushingEventLengthArray = loader.loadFlushingEventLengthData();
-		List<Double> extraWaterLengthArray = loader.loadExtraWaterLengthData();
-		List<Double> cctvDefectsLengthArray = loader.loadCctvDefectsLengthData();
-		List<Double> cctvMajorDefectsLengthArray = loader.loadCctvMajorDefectsLengthData();
-		List<Double> undoubledPipeLengthArray = loader.loadUndoubledPipeLengthData();
-		List<Double> waterworkArr = loader.loadPipesCloseToWaterworkData();
-		List<Double> nuuksioArr = loader.loadPipesCloseToNuuksioLakeData();
-		List<Double> protectedAreaArr = loader.loadPipesInProtectedAreaData();
-		List<Double> operationalTypeArr = loader.loadPipesOperationalTypeData();
-		List<Double> protectedDitchArr = loader.loadPipesUnderProtectedDitchData();
-		List<Double> railwayArr = loader.loadPipesUnderRailwayData();
-		List<Double> waterbodyArr = loader.loadPipesUnderWaterBodyData();
+		List<Double> diameterLengthArray = new ArrayList<Double>();
+		List<Double> areaLengthArray = new ArrayList<Double>();
+		List<Double> groundWaterLengthArray = new ArrayList<Double>();
+		List<Double> roadclassLengthArray = new ArrayList<Double>();
+		
+		List<Double> blockageLengthArray = new ArrayList<Double>();
+		List<Double> flushingEventLengthArray = new ArrayList<Double>();
+		List<Double> extraWaterLengthArray = new ArrayList<Double>();
+		List<Double> cctvDefectsLengthArray = new ArrayList<Double>();
+		List<Double> cctvMajorDefectsLengthArray = new ArrayList<Double>();
+		
+		List<Double> undoubledPipeLengthArray = new ArrayList<Double>();
+		List<Double> waterworkArr = new ArrayList<Double>();
+		List<Double> nuuksioArr = new ArrayList<Double>();
+		List<Double> protectedAreaArr = new ArrayList<Double>();
+		List<Double> operationalTypeArr = new ArrayList<Double>();
+		List<Double> protectedDitchArr = new ArrayList<Double>();
+		List<Double> railwayArr = new ArrayList<Double>();
+		List<Double> waterbodyArr = new ArrayList<Double>();
 		
 		Form<MeterLimitVal> meterLimitValForm = play.data.Form.form(MeterLimitVal.class);	
 		
 		response().setContentType("text/html; charset=utf-8");
 		return ok(views.html.pipeIndex.render(loader, meterLimitValForm, sortBy, order,
-											  diameterLengthArray, diameterLengthArray2, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
+											  diameterLengthArray, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
 											  blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
 											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray, 
 											  undoubledPipeLengthArray, waterworkArr, nuuksioArr, protectedAreaArr,
@@ -513,6 +514,46 @@ public class Application extends Controller {
 		response().setHeader("Content-disposition","attachment; filename=Pipe Index Results.xls");
 		  return ok(file);	
 	}
+	
+	@Transactional(readOnly = true)
+	@Security.Authenticated(Secured.class)
+	public static Result map() {
+		return ok(views.html.map.render());
+	}
+	
+	@Transactional(readOnly = true)
+	@Security.Authenticated(Secured.class)
+	public static Result graph() {
+        						
+		DataLoader loader = new DataLoader();
+		List<Double> diameterLengthArray = new ArrayList<Double>();
+		List<Double> areaLengthArray = new ArrayList<Double>();
+		List<Double> groundWaterLengthArray = new ArrayList<Double>();
+		List<Double> roadclassLengthArray = new ArrayList<Double>();
+		
+		List<Double> blockageLengthArray = new ArrayList<Double>();
+		List<Double> flushingEventLengthArray = new ArrayList<Double>();
+		List<Double> extraWaterLengthArray = new ArrayList<Double>();
+		List<Double> cctvDefectsLengthArray = new ArrayList<Double>();
+		List<Double> cctvMajorDefectsLengthArray = new ArrayList<Double>();
+		
+		List<Double> undoubledPipeLengthArray = new ArrayList<Double>();
+		List<Double> waterworkArr = new ArrayList<Double>();
+		List<Double> nuuksioArr = new ArrayList<Double>();
+		List<Double> protectedAreaArr = new ArrayList<Double>();
+		List<Double> operationalTypeArr = new ArrayList<Double>();
+		List<Double> protectedDitchArr = new ArrayList<Double>();
+		List<Double> railwayArr = new ArrayList<Double>();
+		List<Double> waterbodyArr = new ArrayList<Double>();
+		
+		response().setContentType("text/html; charset=utf-8");
+		return ok(views.html.graph.render(loader,
+											  diameterLengthArray, groundWaterLengthArray, areaLengthArray, roadclassLengthArray, 
+											  blockageLengthArray, flushingEventLengthArray, extraWaterLengthArray,
+											  cctvDefectsLengthArray, cctvMajorDefectsLengthArray, 
+											  undoubledPipeLengthArray, waterworkArr, nuuksioArr, protectedAreaArr,
+											  operationalTypeArr, protectedDitchArr, railwayArr, waterbodyArr), "utf-8");
+	}	
 	
 	public static Result change(String langCode) {
 		currentLanguage = langCode;

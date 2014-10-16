@@ -1,7 +1,7 @@
 @(loader: models.DataLoader,
 meterLimitValForm: Form[models.form.MeterLimitVal],
 currentSortBy: String, currentOrder: String,
-diameterLengthArray: List[Double], diameterLengthArray2: List[Double], 
+diameterLengthArray: List[Double], 
 groundWaterLengthArray: List[Double], areaLengthArray: List[Double], 
 roadclassLengthArray: List[Double], blockageLengthArray: List[Double],
 flushingEventLengthArray: List[Double], extraWaterLengthArray: List[Double], 
@@ -1216,528 +1216,581 @@ legend.efesus-border {
 <!--<script src="@routes.Assets.at("javascripts/xcharts.js")"></script>-->
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function(){	
+
 	//
-	// Drawing bar charts
+	// Functions for drawing bar charts
 	//
 	$.jqplot.config.enablePlugins = true;
+	@loader.SetAllowLoading();
 	
-	var sdiameter = new Array(); 
-	var i = 0;
-	var number;
-	//$('#diameterLengthArrays').html("SDLA: " + diameterLengthArray); // debug
-	@for(s <- diameterLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sdiameter[i] = Math.round(number / 1000);
-		else
-			sdiameter[i] = 0;
-		i++;
-	}
-	//$('#diameterLengthArrays').html("SDLA: " + sdiameter); // debug
-	var ticksDiameter = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-	diameterObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksDiameter
-			}
-		},
-		highlighter: { show: false }
-	}
-	plot1 = $.jqplot('chartdiameter', [sdiameter], diameterObj);	
-	// Click event
-	//$('#chartdiameter').bind('jqplotDataClick', 
-	//	function (ev, seriesIndex, pointIndex, data) {
-			//$('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
-	//	}
-	//);
-	/////////////////////
-	
-	var sgroundwaterarea = new Array(); 
-	i = 0;
-	@for(s <- groundWaterLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sgroundwaterarea[i] = Math.round(number / 1000);
-		else
-			sgroundwaterarea[i] = 0;	
-		i++;
-	}
-	var ticksGroundWater = [0, 1, 2, 3];
-	groundWaterObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksGroundWater
-			}
-		},
-		highlighter: { show: false }
-	}
-	plot2 = $.jqplot('chartgroundwaterarea', [sgroundwaterarea], groundWaterObj);	
+// -- POPULATE DIAMETER DISTRIBUTION BAR	
 
+	var diameterChartFirst = 0;	
+	
+// -- END 	
+	
+// -- POPULATE GROUND WATER AREA DISTRIBUTION BAR
+
+	var gwaChartFirst = 0;
+	function drawGWAChart() {
+		//@defining(loader.loadGroundWaterLengthData()) { groundWaterLengthArray =>	
+			var sgroundwaterarea = new Array(); 
+			i = 0;
+			@for(s <- loader.loadGroundWaterLengthData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					sgroundwaterarea[i] = Math.round(number / 1000);
+				else
+					sgroundwaterarea[i] = 0;	
+				i++;
+			}
+		//}
+		var ticksGroundWater = [0, 1, 2, 3];
+		groundWaterObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksGroundWater
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot2 = $.jqplot('chartgroundwaterarea', [sgroundwaterarea], groundWaterObj);
+	}		
+
+// -- END 
+	
+// -- POPULATE RELATIVE FLOOR AREA DISTRIBUTION BAR
+
+	var floorChartFirst = 0;
+
+// -- END 
+	
+// -- POPULATE ROAD CLASSIFICATION DISTRIBUTION BAR
+
+	var roadClassFirst = 0;
+	function drawRoadClassChart() {
+		//@defining(loader.loadRoadClassLengthData()) { roadclassLengthArray =>
+			var sroadclass = new Array();
+			i = 0;
+			@for(s <- loader.loadRoadClassLengthData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					sroadclass[i] = Math.round(number / 1000);
+				else
+					sroadclass[i] = 0;
+				i++;
+			}
+		//}	
+		var ticksRoadClass = [1, 2, 3, 4];
+		roadclassObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksRoadClass
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot5 = $.jqplot('chartroadclassification', [sroadclass], roadclassObj);
+	}
+
+// -- END 
+	
 // -- POPULATE UNDOUBLED DISTRIBUTION BAR
-
-	var sundoubledpipe = new Array(); 
-	i = 0;
-	@for(s <- undoubledPipeLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sundoubledpipe[i] = Math.round(number / 1000);
-		else
-			sundoubledpipe[i] = 0;	
-		i++;
-	}
-	var ticksUndoubledPipe = ['@Messages("consequence.undoubled")', '@Messages("consequence.other")'];
-	undoubledPipeObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksUndoubledPipe
+	
+	var undoubledFirst = 0;
+	function drawUndoubledChart() {
+		//@defining(loader.loadUndoubledPipeLengthData()) { undoubledPipeLengthArray =>
+			var sundoubledpipe = new Array(); 
+			i = 0;
+			@for(s <- loader.loadUndoubledPipeLengthData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					sundoubledpipe[i] = Math.round(number / 1000);
+				else
+					sundoubledpipe[i] = 0;	
+				i++;
 			}
-		},
-		highlighter: { show: false }
+		//}	
+		var ticksUndoubledPipe = ['@Messages("consequence.undoubled")', '@Messages("consequence.other")'];
+		undoubledPipeObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksUndoubledPipe
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot11 = $.jqplot('chartundoubledpipe', [sundoubledpipe], undoubledPipeObj);	
 	}
-	plot11 = $.jqplot('chartundoubledpipe', [sundoubledpipe], undoubledPipeObj);	
 
+// -- END 
+	
 // -- POPULATE WATERWORK DISTRIBUTION BAR
 
-	var swaterwork = new Array(); 
-	i = 0;
-	@for(s <- waterworkArr) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			swaterwork[i] = Math.round(number / 1000);
-		else
-			swaterwork[i] = 0;	
-		i++;
-	}
-
-	var ticksWaterwork = ['@Messages("consequence.waterwork")', '@Messages("consequence.other")'];
-	waterworkObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksWaterwork
+	var waterWorkFirst = 0;
+	function drawWaterWorkChart() {
+		//@defining(loader.loadPipesCloseToWaterworkData()) { waterworkArr =>
+			var swaterwork = new Array(); 
+			i = 0;
+			$('#waterWorkArrays').html("WaterWorkAcep > " + waterWorkFirst);
+			@for(s <- loader.loadPipesCloseToWaterworkData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					swaterwork[i] = Math.round(number / 1000);
+				else
+					swaterwork[i] = 0;	
+				i++;
 			}
-		},
-		highlighter: { show: false }
+		//}
+		var ticksWaterwork = ['@Messages("consequence.waterwork")', '@Messages("consequence.other")'];
+		waterworkObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksWaterwork
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot18 = $.jqplot('chartwaterwork', [swaterwork], waterworkObj);	
 	}
-	plot18 = $.jqplot('chartwaterwork', [swaterwork], waterworkObj);	
-
+	
 // -- END
 
 // -- POPULATE NUUKSIO DISTRIBUTION BAR
 
-	var snuuksio = new Array(); 
-	i = 0;
-	@for(s <- nuuksioArr) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			snuuksio[i] = Math.round(number / 1000);
-		else
-			snuuksio[i] = 0;	
-		i++;
-	}
-	var ticksNuuksio = ['@Messages("consequence.nuuksio")', '@Messages("consequence.other")'];
-	nuuksioObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksNuuksio
+	var nuuksioLakeFirst = 0;
+	function drawNuuksioLakeChart() {
+		//@defining(loader.loadPipesCloseToNuuksioLakeData()) { nuuksioArr =>
+			var snuuksio = new Array(); 
+			i = 0;
+			@for(s <- loader.loadPipesCloseToNuuksioLakeData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					snuuksio[i] = Math.round(number / 1000);
+				else
+					snuuksio[i] = 0;	
+				i++;
 			}
-		},
-		highlighter: { show: false }
+		//}	
+		var ticksNuuksio = ['@Messages("consequence.nuuksio")', '@Messages("consequence.other")'];
+		nuuksioObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksNuuksio
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot12 = $.jqplot('chartnuuksio', [snuuksio], nuuksioObj);
 	}
-	plot12 = $.jqplot('chartnuuksio', [snuuksio], nuuksioObj);	
 
 // -- END
 
 // -- POPULATE PROTECTED AREA DISTRIBUTION BAR
 
-	var sprotectedarea = new Array(); 
-	i = 0;
-	@for(s <- protectedAreaArr) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sprotectedarea[i] = Math.round(number / 1000);
-		else
-			sprotectedarea[i] = 0;	
-		i++;
-	}
-	var ticksProtectedArea = ['@Messages("consequence.protectedarea")', '@Messages("consequence.other")'];
-	protectedareaObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksProtectedArea
+	var protectedAreaFirst = 0;
+	function drawProtectedAreaChart() {
+		//@defining(loader.loadPipesInProtectedAreaData()) { protectedAreaArr =>
+			var sprotectedarea = new Array(); 
+			i = 0;
+			@for(s <- loader.loadPipesInProtectedAreaData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					sprotectedarea[i] = Math.round(number / 1000);
+				else
+					sprotectedarea[i] = 0;	
+				i++;
 			}
-		},
-		highlighter: { show: false }
+		//}
+		var ticksProtectedArea = ['@Messages("consequence.protectedarea")', '@Messages("consequence.other")'];
+		protectedareaObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksProtectedArea
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot13 = $.jqplot('chartprotectedarea', [sprotectedarea], protectedareaObj);
 	}
-	plot13 = $.jqplot('chartprotectedarea', [sprotectedarea], protectedareaObj);	
 
 // -- END 
 
 // -- POPULATE OPERATIONAL TYPE DISTRIBUTION BAR
 
-	var soperationtype = new Array(); 
-	i = 0;
-	@for(s <- operationalTypeArr) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			soperationtype[i] = Math.round(number / 1000);
-		else
-			soperationtype[i] = 0;	
-		i++;
-	}
-	var ticksOperationType = ["Keräilyviemäri", "Pääviemäri", '@Messages("consequence.other")'];
-	operationalTypeObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksOperationType
+	var operationalTypeFirst = 0;
+	function drawOperationalTypeChart() {
+		//@defining(loader.loadPipesOperationalTypeData()) { operationalTypeArr =>
+			var soperationtype = new Array(); 
+			i = 0;
+			@for(s <- loader.loadPipesOperationalTypeData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					soperationtype[i] = Math.round(number / 1000);
+				else
+					soperationtype[i] = 0;	
+				i++;
 			}
-		},
-		highlighter: { show: false }
+		//}
+		var ticksOperationType = ["Keräilyviemäri", "Pääviemäri", '@Messages("consequence.other")'];
+		operationalTypeObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksOperationType
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot14 = $.jqplot('chartoperationtype', [soperationtype], operationalTypeObj);
 	}
-	plot14 = $.jqplot('chartoperationtype', [soperationtype], operationalTypeObj);	
 
 // -- END  
 
-// -- POPULATE OPERATIONAL TYPE DISTRIBUTION BAR
+// -- POPULATE UNDER PROTECTED DITCH DISTRIBUTION BAR
 
-	var sprotectedditch = new Array(); 
-	i = 0;
-	@for(s <- protectedDitchArr) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sprotectedditch[i] = Math.round(number / 1000);
-		else
-			sprotectedditch[i] = 0;	
-		i++;
-	}
-	var ticksProtectedDitch = ['@Messages("consequence.protectedditch")', '@Messages("consequence.other")'];
-	protectedditchObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksProtectedDitch
+	var protectedDitchFirst = 0;
+	function drawProtectedDitchChart() {
+		//@defining(loader.loadPipesUnderProtectedDitchData()) { protectedDitchArr =>
+			var sprotectedditch = new Array(); 
+			i = 0;
+			@for(s <- loader.loadPipesUnderProtectedDitchData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					sprotectedditch[i] = Math.round(number / 1000);
+				else
+					sprotectedditch[i] = 0;	
+				i++;
 			}
-		},
-		highlighter: { show: false }
+		//}
+		var ticksProtectedDitch = ['@Messages("consequence.protectedditch")', '@Messages("consequence.other")'];
+		protectedditchObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksProtectedDitch
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot15 = $.jqplot('chartprotectedditch', [sprotectedditch], protectedditchObj);
 	}
-	plot15 = $.jqplot('chartprotectedditch', [sprotectedditch], protectedditchObj);	
 
 // -- END  
 
-// -- POPULATE OPERATIONAL TYPE DISTRIBUTION BAR
+// -- POPULATE UNDER RAILWAY DISTRIBUTION BAR
 
-	var srailway = new Array(); 
-	i = 0;
-	@for(s <- railwayArr) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			srailway[i] = Math.round(number / 1000);
-		else
-			srailway[i] = 0;	
-		i++;
-	}
-	var ticksRailway = ['@Messages("consequence.railway")', '@Messages("consequence.other")'];
-	railwayObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksRailway
+	var underRailFirst = 0;
+	function drawUnderRailChart() {
+		//@defining(loader.loadPipesUnderRailwayData()) { railwayArr =>
+			var srailway = new Array(); 
+			i = 0;
+			@for(s <- loader.loadPipesUnderRailwayData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					srailway[i] = Math.round(number / 1000);
+				else
+					srailway[i] = 0;	
+				i++;
 			}
-		},
-		highlighter: { show: false }
+		//}
+		var ticksRailway = ['@Messages("consequence.railway")', '@Messages("consequence.other")'];
+		railwayObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksRailway
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot16 = $.jqplot('chartrailway', [srailway], railwayObj);
 	}
-	plot16 = $.jqplot('chartrailway', [srailway], railwayObj);	
 
 // -- END 
 
-// -- POPULATE OPERATIONAL TYPE DISTRIBUTION BAR
+// -- POPULATE UNDER WATERBODY DISTRIBUTION BAR
 
-	var swaterbody = new Array(); 
-	i = 0;
-	@for(s <- waterbodyArr) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			swaterbody[i] = Math.round(number / 1000);
-		else
-			swaterbody[i] = 0;	
-		i++;
-	}
-	var ticksWaterbody = ['@Messages("consequence.waterbody")', '@Messages("consequence.other")'];
-	waterbodyObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksWaterbody
+	var underWaterbodyFirst = 0;
+	function drawUnderWaterbodyChart() {
+		//@defining(loader.loadPipesUnderWaterBodyData()) { waterbodyArr =>
+			var swaterbody = new Array(); 
+			i = 0;
+			@for(s <- loader.loadPipesUnderWaterBodyData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					swaterbody[i] = Math.round(number / 1000);
+				else
+					swaterbody[i] = 0;	
+				i++;
 			}
-		},
-		highlighter: { show: false }
+		//}
+		var ticksWaterbody = ['@Messages("consequence.waterbody")', '@Messages("consequence.other")'];
+		waterbodyObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksWaterbody
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot17 = $.jqplot('chartwaterbody', [swaterbody], waterbodyObj);
 	}
-	plot17 = $.jqplot('chartwaterbody', [swaterbody], waterbodyObj);	
 
 // -- END 
 
-	var sarea = new Array(); 
-	i = 0;
-	@for(s <- areaLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sarea[i] = Math.round(number / 1000);
-		else
-			sarea[i] = 0;
-		i++;
-	}
-	var ticksArea = ["0-10", "10-20", "20-30", "30-40", "40-50"];
-	areaObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksArea
-			}
-		},
-		highlighter: { show: false }
-	}	
-	plot3 = $.jqplot('chartarea', [sarea], areaObj);	
+// -- POPULATE BLOCKAGE LENGTH DISTRIBUTION BAR
 
-	var sroadclass = new Array();
-	i = 0;
-	@for(s <- roadclassLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sroadclass[i] = Math.round(number / 1000);
-		else
-			sroadclass[i] = 0;
-		i++;
-	}
-	var ticksRoadClass = [1, 2, 3, 4];
-	roadclassObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksRoadClass
+	var blockageLengthFirst = 0;
+	function drawblockageLengthChart() {
+		//@defining(loader.loadBlockageLengthData()) { blockageLengthArray =>
+			var sblockage = new Array();
+			i = 0;
+			@for(s <- loader.loadBlockageLengthData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					sblockage[i] = Math.round(number / 1000);
+				else
+					sblockage[i] = 0;
+				i++;
 			}
-		},
-		highlighter: { show: false }
+		//}	
+		var ticksBlockage = [0, 1, 2, 3, 4];
+		blockageObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksBlockage
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot6 = $.jqplot('chartblockage', [sblockage], blockageObj);
 	}
-	plot5 = $.jqplot('chartroadclassification', [sroadclass], roadclassObj);
-
-	var sblockage = new Array();
-	i = 0;
-	@for(s <- blockageLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sblockage[i] = Math.round(number / 1000);
-		else
-			sblockage[i] = 0;
-		i++;
-	}
-	var ticksBlockage = [0, 1, 2, 3, 4];
-	blockageObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksBlockage
-			}
-		},
-		highlighter: { show: false }
-	}
-	plot6 = $.jqplot('chartblockage', [sblockage], blockageObj);
-
-	var sflush = new Array();
-	i = 0;
-	@for(s <- flushingEventLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			sflush[i] = Math.round(number / 1000);
-		else
-			sflush[i] = 0;
-		i++;
-	}
-	var ticksFlush = ["0-3", "4-7", "8-11", "12-15", "16-19"];
-	flushingObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksFlush
-			}
-		},
-		highlighter: { show: false }
-	}
-	plot7 = $.jqplot('chartflushing', [sflush], flushingObj);
-
-	var swater = new Array();
-	i = 0;
-	@for(s <- extraWaterLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			swater[i] = Math.round(number / 1000);
-		else
-			swater[i] = 0;
-		i++;
-	}
-	var ticksExtraWarer = ["0-3", "4-7", "8-11", "12-15", "16-19"];
-	extraWaterObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksExtraWarer
-			}
-		},
-		highlighter: { show: false }
-	}
-	plot8 = $.jqplot('chartextrawater', [swater], extraWaterObj);
-
-	var scctv = new Array();
-	i = 0;
-	@for(s <- cctvDefectsLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			scctv[i] = Math.round(number / 1000);
-		else
-			scctv[i] = 0;
-		i++;
-	}
-	var ticksCCTV = ["0-5", "6-10", "11-15", "16-20", "21-25", "26-30", "31-35"];
-	CCTVdefectsObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksCCTV
-			}
-		},
-		highlighter: { show: false }
-	}
-	plot9 = $.jqplot('chartCCTVdefects', [scctv], CCTVdefectsObj);
-
-	var scctvmajor = new Array();
-	i = 0;
-	@for(s <- cctvMajorDefectsLengthArray) {
-		number = Math.round(@s);
-		if (!isNaN(number))
-			scctvmajor[i] = Math.round(number / 1000);
-		else
-			scctvmajor[i] = 0;
-		i++;
-	}
-	var ticksCCTVmajor = ["0-5", "6-10", "11-15", "16-20", "21-25", "26-30"];
-	CCTVmajordefectsObj = {
-		// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		animate: !$.jqplot.use_excanvas,
-		seriesDefaults:{
-			renderer:$.jqplot.BarRenderer,
-			pointLabels: { show: true }
-		},
-		axes: {
-			xaxis: {
-				renderer: $.jqplot.CategoryAxisRenderer,
-				ticks: ticksCCTVmajor
-			}
-		},
-		highlighter: { show: false }
-	}
-	plot10 = $.jqplot('chartCCTVmajordefects', [scctvmajor], CCTVmajordefectsObj);
 	
+// -- END 
+
+// -- POPULATE FLUSHING EVENTS DISTRIBUTION BAR
+
+	var flushingEventsFirst = 0;
+	function drawFlushingEventsChart() {
+		//@defining(loader.loadFlushingEventLengthData()) { flushingEventLengthArray =>
+			var sflush = new Array();
+			i = 0;
+			@for(s <- loader.loadFlushingEventLengthData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					sflush[i] = Math.round(number / 1000);
+				else
+					sflush[i] = 0;
+				i++;
+			}
+		//}
+		var ticksFlush = ["0-3", "4-7", "8-11", "12-15", "16-19"];
+		flushingObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksFlush
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot7 = $.jqplot('chartflushing', [sflush], flushingObj);
+	}
+		
+// -- END 
+
+// -- POPULATE INFLOW AND INFILTRATION DISTRIBUTION BAR
+	
+	var inflowInfiltrationFirst = 0;
+	function drawInflowInfiltrationChart() {
+		//@defining(loader.loadExtraWaterLengthData()) { extraWaterLengthArray =>
+			var swater = new Array();
+			i = 0;
+			@for(s <- loader.loadExtraWaterLengthData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					swater[i] = Math.round(number / 1000);
+				else
+					swater[i] = 0;
+				i++;
+			}
+		//}	
+		var ticksExtraWater = ["0-3", "4-7", "8-11", "12-15", "16-19"];
+		extraWaterObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksExtraWater
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot8 = $.jqplot('chartextrawater', [swater], extraWaterObj);
+	}
+
+// -- END 
+
+// -- POPULATE CCTV DEFECTS DISTRIBUTION BAR
+	
+	var cctvDefectsFirst = 0;
+	function drawCctvDefectsChart() {
+		//@defining(loader.loadCctvDefectsLengthData()) { cctvDefectsLengthArray =>
+			var scctv = new Array();
+			i = 0;
+			@for(s <- loader.loadCctvDefectsLengthData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					scctv[i] = Math.round(number / 1000);
+				else
+					scctv[i] = 0;
+				i++;
+			}
+		//}
+		var ticksCCTV = ["0-5", "6-10", "11-15", "16-20", "21-25", "26-30", "31-35"];
+		CCTVdefectsObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksCCTV
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot9 = $.jqplot('chartCCTVdefects', [scctv], CCTVdefectsObj);
+	}	
+
+// -- END 
+
+// -- POPULATE MAJOR CCTV DEFECTS DISTRIBUTION BAR
+	
+	var cctvMajorDefectsFirst = 0;
+	function drawMajorCctvDefectsChart() {
+		//@defining(loader.loadCctvMajorDefectsLengthData()) { cctvMajorDefectsLengthArray =>
+			var scctvmajor = new Array();
+			i = 0;
+			@for(s <- loader.loadCctvMajorDefectsLengthData) {
+				number = Math.round(@s);
+				if (!isNaN(number))
+					scctvmajor[i] = Math.round(number / 1000);
+				else
+					scctvmajor[i] = 0;
+				i++;
+			}
+		//}	
+		var ticksCCTVmajor = ["0-5", "6-10", "11-15", "16-20", "21-25", "26-30"];
+		CCTVmajordefectsObj = {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate: !$.jqplot.use_excanvas,
+			seriesDefaults:{
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true }
+			},
+			axes: {
+				xaxis: {
+					renderer: $.jqplot.CategoryAxisRenderer,
+					ticks: ticksCCTVmajor
+				}
+			},
+			highlighter: { show: false }
+		}
+		plot10 = $.jqplot('chartCCTVmajordefects', [scctvmajor], CCTVmajordefectsObj);
+	}
+	
+// -- END 
+
 	//
 	//Popup/hide the sewers
 	//		
@@ -1751,13 +1804,15 @@ $(document).ready(function(){
 	//Popup/hide the bar charts
 	//	
 	function deselectDiameter() {
-		$(".chartsdiameter").slideFadeToggle(function() {
+		$(".chartsdiameter").slideFadeToggleDiameter(function() {
+			@loader.debugdebug("debugDiameterDESELECT_DESELECT");
 			$("#info1").removeClass("selected");
 		});		
 	}
 
 	function deselectGroundWater() {
 		$(".chartsgroundwaterarea").slideFadeToggle(function() {
+			@loader.debugdebug("debugGWA_DESELECT_DESELECT");
 			$("#info4").removeClass("selected");
 		});		
 	}	
@@ -1851,19 +1906,19 @@ $(document).ready(function(){
 			$("#info10").removeClass("selected");
 		});	
 	} 
- 
+	
 	//
 	// Show/hide Sewers
 	//
  	$("#info0").on('click', function() {
 		if($(this).hasClass("selected")) {
 			$("#info0").html('@Messages("consequence.sewertype")');
-			deselectSewers();               
+			deselectSewers();
         } else {
 			$(this).addClass("selected");
-			$(".sewer-group").slideFadeToggle(function() { 
-				$("#info0").focus();
-				$("#info0").html('@Messages("consequence.hide.sewertype")');
+			$(".sewer-group").slideFadeToggle(function() {
+				$("#info0").focus();							
+				$("#info0").html('@Messages("consequence.hide.sewertype")');									
 			});
 		}
 		return false;
@@ -1872,27 +1927,113 @@ $(document).ready(function(){
 	//
 	// Show/hide Bar Charts
 	//
-	$("#info1").on('click', function() {
+	$("#info1").on("click", function() {
 		if($(this).hasClass("selected")) {
 			$("#info1").html('@Messages("consequence.diameter")');
+			@loader.debugdebug("debugDiameterDESELECT");
 			deselectDiameter();               
         } else {
 			$(this).addClass("selected");			
-			$(".chartsdiameter").slideFadeToggle(function() { 
+			$(".chartsdiameter").slideFadeToggleDiameter(function() { 
+					if (diameterChartFirst == 0) {
+						diameterChartFirst++;
+						var sdiameter = new Array(); 
+						var i = 0;
+						var number = 0;
+						@loader.debugdebug("drawDiameterChart()");
+						@for(s <- loader.loadDiameterData()) {
+							number = Math.round(@s);
+							if (!isNaN(number))
+								sdiameter[i] = Math.round(number / 1000);
+							else
+								sdiameter[i] = 0;
+							i++;
+						}
+						ticksDiameter = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+						diameterObj = {
+							// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+							animate: !$.jqplot.use_excanvas,
+							seriesDefaults:{
+								renderer:$.jqplot.BarRenderer,
+								pointLabels: { show: true }
+							},
+							axes: {
+								xaxis: {
+									renderer: $.jqplot.CategoryAxisRenderer,
+									ticks: ticksDiameter
+								}
+							},
+							highlighter: { show: false }
+						}
+						plot1 = $.jqplot('chartdiameter', [sdiameter], diameterObj);
+					}
 				$("#info1").focus();
 				$("#info1").html('@Messages("consequence.hide.diameter")');
 			});
 		}
 		return false;
 	});
-
+	
+	$("#info2").on("click", function() {
+		if($(this).hasClass("selected")) {
+			$("#info2").html('@Messages("consequence.floor") (m<sup>2</sup>/m)');
+			@loader.debugdebug("debugFloorAreaDESELECT");
+			deselectArea();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsarea").slideFadeToggle(function() {
+				if (floorChartFirst == 0) {
+					floorChartFirst++;
+					@loader.debugdebug("drawFloorAreaChart()");		
+					var sarea = new Array(); 
+					var i = 0;
+					var number = 0;
+					@for(s <- loader.loadAreaLengthData) {
+						number = Math.round(@s);
+						if (!isNaN(number))
+							sarea[i] = Math.round(number / 1000);
+						else
+							sarea[i] = 0;
+						i++;
+					}
+					var ticksArea = ["0-10", "10-20", "20-30", "30-40", "40-50"];
+					areaObj = {
+						// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+						animate: !$.jqplot.use_excanvas,
+						seriesDefaults:{
+							renderer:$.jqplot.BarRenderer,
+							pointLabels: { show: true }
+						},
+						axes: {
+							xaxis: {
+								renderer: $.jqplot.CategoryAxisRenderer,
+								ticks: ticksArea
+							}
+						},
+						highlighter: { show: false }
+					}	
+					plot3 = $.jqplot('chartarea', [sarea], areaObj);
+				}
+				$("#info2").focus();
+				$("#info2").html('@Messages("consequence.hide.floor")');
+			});
+		}
+		return false;
+	});		
+	
 	$("#info4").on('click', function() {
 		if($(this).hasClass("selected")) {
 			$("#info4").html('@Messages("consequence.gwa")');
+			@loader.debugdebug("debugGWA_DESELECT");
 			deselectGroundWater();               
         } else {
             $(this).addClass("selected");
 			$(".chartsgroundwaterarea").slideFadeToggle(function() { 
+				if (gwaChartFirst == 0) {
+					gwaChartFirst++;
+					@loader.debugdebug("drawGWA()");
+					drawGWAChart();
+				}				
 				$("#info4").focus();
 				$("#info4").html('@Messages("consequence.hide.gwa")');
 			});
@@ -1900,27 +2041,145 @@ $(document).ready(function(){
 		return false;
 	});
 
+	$("#info5").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info5").html('@Messages("consequence.roadcls")');
+			@loader.debugdebug("debugRoadClassDESELECT");
+			deselectRoadClassification();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsroadclassification").slideFadeToggle(function() { 
+				if (roadClassFirst == 0) {
+					roadClassFirst++;
+					@loader.debugdebug("drawRoadClass()");
+					drawRoadClassChart();
+				}							
+				$("#info5").focus();
+				$("#info5").html('@Messages("consequence.hide.roadcls")');
+			});
+		}
+		return false;
+	});	
+
+	$("#info6").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info6").html('@Messages("condition.blockages")');
+			deselectBlockage();               
+        } else {
+            $(this).addClass("selected");
+			$(".chartsblockage").slideFadeToggle(function() {
+				if (blockageLengthFirst == 0) {
+					blockageLengthFirst++;
+					drawblockageLengthChart();
+				}										
+				$("#info6").focus();
+				$("#info6").html('@Messages("condition.hide.blockages")');
+			});
+		}
+		return false;
+	});	
+
+	$("#info7").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info7").html('@Messages("condition.flush")');
+			deselectFlushing();               
+        } else {
+			$(this).addClass("selected");
+			$(".chartsflushing").slideFadeToggle(function() {
+				if (flushingEventsFirst == 0) {
+					flushingEventsFirst++;
+					drawFlushingEventsChart();
+				}													
+				$("#info7").focus();
+				$("#info7").html('@Messages("condition.number.flushing")');
+			});
+		}
+		return false;
+	});	
+
+	$("#info8").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info8").html('@Messages("condition.flowfiltr")');
+			deselectExtraWater();               
+        } else {
+			$(this).addClass("selected");
+			$(".chartsextrawater").slideFadeToggle(function() {
+				if (inflowInfiltrationFirst == 0) {
+					inflowInfiltrationFirst++;
+					drawInflowInfiltrationChart();
+				}			
+				$("#info8").focus();
+				$("#info8").html('@Messages("condition.hide.flowfiltr")');
+			});
+		}
+		return false;
+	});
+	
+	$("#info9").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info9").html('@Messages("condition.cctv")');
+			deselectCCTVdefects();               
+        } else {
+			$(this).addClass("selected");
+			$(".chartsCCTVdefects").slideFadeToggle(function() {
+				if (cctvDefectsFirst == 0) {
+					cctvDefectsFirst++;
+					drawCctvDefectsChart();
+				}					
+				$("#info9").focus();
+				$("#info9").html('@Messages("condition.hide.cctv")');
+			});
+		}
+		return false;
+	});	
+	
+	$("#info10").on('click', function() {
+		if($(this).hasClass("selected")) {
+			$("#info10").html('@Messages("condition.cctvmajor")');
+			deselectCCTVmajordefects();               
+        } else {
+			$(this).addClass("selected");
+			$(".chartsCCTVmajordefects").slideFadeToggle(function() {
+				if (cctvMajorDefectsFirst == 0) {
+					cctvMajorDefectsFirst++;
+					drawMajorCctvDefectsChart();
+				}			
+				$("#info10").focus();
+				$("#info10").html('@Messages("condition.hide.cctvmajor")');
+			});
+		}
+		return false;
+	});	
+
 	$("#info11").on('click', function() {
 		if($(this).hasClass("selected")) {
 			$("#info11").html('@Messages("consequence.undoubled")');
 			deselectUndoubledPipe();               
         } else {
             $(this).addClass("selected");
-			$(".chartsundoubledpipe").slideFadeToggle(function() { 
+			$(".chartsundoubledpipe").slideFadeToggle(function() {
+				if (undoubledFirst == 0) {
+					undoubledFirst++;
+					drawUndoubledChart();
+				}				
 				$("#info11").focus();
 				$("#info11").html('@Messages("consequence.hide.undoubled")');
 			});
 		}
 		return false;
 	});
-
+	
 	$("#info18").on('click', function() {
 		if($(this).hasClass("selected")) {
 			$("#info18").html('@Messages("consequence.waterwork")');
 			deselectWaterwork();               
         } else {
             $(this).addClass("selected");
-			$(".chartswaterwork").slideFadeToggle(function() { 
+			$(".chartswaterwork").slideFadeToggle(function() {
+				if (waterWorkFirst == 0) {
+					waterWorkFirst++;
+					drawWaterWorkChart();
+				}
 				$("#info18").focus();
 				$("#info18").html('@Messages("consequence.hide.waterwork")');
 			});
@@ -1934,21 +2193,29 @@ $(document).ready(function(){
 			deselectNuuksio();               
         } else {
             $(this).addClass("selected");
-			$(".chartsnuuksio").slideFadeToggle(function() { 
+			$(".chartsnuuksio").slideFadeToggle(function() {
+				if (nuuksioLakeFirst == 0) {
+					nuuksioLakeFirst++;
+					drawNuuksioLakeChart();
+				}			
 				$("#info12").focus();
 				$("#info12").html('@Messages("consequence.hide.nuuksio")');
 			});
 		}
 		return false;
 	});
-
+	
 	$("#info13").on('click', function() {
 		if($(this).hasClass("selected")) {
 			$("#info13").html('@Messages("consequence.protectedarea")');
 			deselectProtectedarea();               
         } else {
             $(this).addClass("selected");
-			$(".chartsprotectedarea").slideFadeToggle(function() { 
+			$(".chartsprotectedarea").slideFadeToggle(function() {
+				if (protectedAreaFirst == 0) {
+					protectedAreaFirst++;
+					drawProtectedAreaChart();
+				}						
 				$("#info13").focus();
 				$("#info13").html('@Messages("consequence.hide.protectedarea")');
 			});
@@ -1962,7 +2229,11 @@ $(document).ready(function(){
 			deselectOperationType();               
         } else {
             $(this).addClass("selected");
-			$(".chartsoperationtype").slideFadeToggle(function() { 
+			$(".chartsoperationtype").slideFadeToggle(function() {
+				if (operationalTypeFirst == 0) {
+					operationalTypeFirst++;
+					drawOperationalTypeChart();
+				}									
 				$("#info14").focus();
 				$("#info14").html('@Messages("consequence.hide.operationtype")');
 			});
@@ -1976,7 +2247,11 @@ $(document).ready(function(){
 			deselectProtectedDitch();               
         } else {
             $(this).addClass("selected");
-			$(".chartsprotectedditch").slideFadeToggle(function() { 
+			$(".chartsprotectedditch").slideFadeToggle(function() {
+				if (protectedDitchFirst == 0) {
+					protectedDitchFirst++;
+					drawProtectedDitchChart();
+				}												
 				$("#info15").focus();
 				$("#info15").html('@Messages("consequence.hide.protectedditch")');
 			});
@@ -1991,6 +2266,10 @@ $(document).ready(function(){
         } else {
             $(this).addClass("selected");
 			$(".chartsrailway").slideFadeToggle(function() { 
+				if (underRailFirst == 0) {
+					underRailFirst++;
+					drawUnderRailChart();
+				}												
 				$("#info16").focus();
 				$("#info16").html('@Messages("consequence.hide.railway")');
 			});
@@ -2005,112 +2284,22 @@ $(document).ready(function(){
         } else {
             $(this).addClass("selected");
 			$(".chartswaterbody").slideFadeToggle(function() { 
+				if (underWaterbodyFirst == 0) {
+					underWaterbodyFirst++;
+					drawUnderWaterbodyChart();
+				}												
 				$("#info17").focus();
 				$("#info17").html('@Messages("consequence.hide.waterbody")');
 			});
 		}
 		return false;
 	});
-	
-	$("#info2").on('click', function() {
-		if($(this).hasClass("selected")) {
-			$("#info2").html('@Messages("consequence.floor") (m<sup>2</sup>/m)');
-			deselectArea();               
-        } else {
-            $(this).addClass("selected");
-			$(".chartsarea").slideFadeToggle(function() { 
-				$("#info2").focus();
-				$("#info2").html('@Messages("consequence.hide.floor")');
-			});
-		}
-		return false;
-	});	
-	
-	$("#info5").on('click', function() {
-		if($(this).hasClass("selected")) {
-			$("#info5").html('@Messages("consequence.roadcls")');
-			deselectRoadClassification();               
-        } else {
-            $(this).addClass("selected");
-			$(".chartsroadclassification").slideFadeToggle(function() { 
-				$("#info5").focus();
-				$("#info5").html('@Messages("consequence.hide.roadcls")');
-			});
-		}
-		return false;
-	});	
-
-	$("#info6").on('click', function() {
-		if($(this).hasClass("selected")) {
-			$("#info6").html('@Messages("condition.blockages")');
-			deselectBlockage();               
-        } else {
-            $(this).addClass("selected");
-			$(".chartsblockage").slideFadeToggle(function() { 
-				$("#info6").focus();
-				$("#info6").html('@Messages("condition.hide.blockages")');
-			});
-		}
-		return false;
-	});	
-
-	$("#info7").on('click', function() {
-		if($(this).hasClass("selected")) {
-			$("#info7").html('@Messages("condition.flush")');
-			deselectFlushing();               
-        } else {
-			$(this).addClass("selected");
-			$(".chartsflushing").slideFadeToggle(function() { 
-				$("#info7").focus();
-				$("#info7").html('@Messages("condition.number.flushing")');
-			});
-		}
-		return false;
-	});	
-
-	$("#info8").on('click', function() {
-		if($(this).hasClass("selected")) {
-			$("#info8").html('@Messages("condition.flowfiltr")');
-			deselectExtraWater();               
-        } else {
-			$(this).addClass("selected");
-			$(".chartsextrawater").slideFadeToggle(function() { 
-				$("#info8").focus();
-				$("#info8").html('@Messages("condition.hide.flowfiltr")');
-			});
-		}
-		return false;
-	});	
-
-	$("#info9").on('click', function() {
-		if($(this).hasClass("selected")) {
-			$("#info9").html('@Messages("condition.cctv")');
-			deselectCCTVdefects();               
-        } else {
-			$(this).addClass("selected");
-			$(".chartsCCTVdefects").slideFadeToggle(function() { 
-				$("#info9").focus();
-				$("#info9").html('@Messages("condition.hide.cctv")');
-			});
-		}
-		return false;
-	});	
-	
-	$("#info10").on('click', function() {
-		if($(this).hasClass("selected")) {
-			$("#info10").html('@Messages("condition.cctvmajor")');
-			deselectCCTVmajordefects();               
-        } else {
-			$(this).addClass("selected");
-			$(".chartsCCTVmajordefects").slideFadeToggle(function() { 
-				$("#info10").focus();
-				$("#info10").html('@Messages("condition.hide.cctvmajor")');
-			});
-		}
-		return false;
-	});	
-	
+		
 	$.fn.slideFadeToggle = function(easing, callback) {
+		return this.animate({ opacity: 'toggle', height: 'toggle' }, "fast", easing, callback);
+	};
+	
+	$.fn.slideFadeToggleDiameter = function(easing, callback) {
 		return this.animate({ opacity: 'toggle', height: 'toggle' }, "fast", easing, callback);
 	};
 	
@@ -2195,7 +2384,7 @@ $(document).ready(function(){
 		$("#hiddenAmountOfConditionYellow").val($("#amountOfConditionYellowId").val());
 		//$("#abc").html($("#hiddenAmountOfConditionYellow").val());
 	});	
-	
+		
 	//////////////////////
 	//
 	// Slider handling
